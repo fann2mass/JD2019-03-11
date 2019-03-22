@@ -9,7 +9,6 @@ public class TaskA1 {
         Pattern word4 = Pattern.compile("[а-яА-ЯёЁ]{4,}");
         Matcher matcher = word4.matcher(sb);
         while (matcher.find()){
-            String word = matcher.group();
             sb.setCharAt(matcher.start()+3,'#');
             if(matcher.end()-matcher.start()>6)
             sb.setCharAt(matcher.start()+6,'#');

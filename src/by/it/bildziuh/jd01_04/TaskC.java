@@ -72,8 +72,7 @@ public class TaskC {
         return merged;
     }
     private static int binarySearch(double[] array, double value) {
-        int index = Integer.MAX_VALUE;
-
+        int result = 0;
         int low = 0;
         int high = array.length-1;
 
@@ -84,11 +83,11 @@ public class TaskC {
             } else if (array[mid] > value) {
                 high = mid - 1;
             } else if (array[mid] == value) {
-                index = mid;
+                result = mid;
                 break;
             }
         }
-        return index;
+        return result;
     }
 
 

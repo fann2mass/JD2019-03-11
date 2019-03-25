@@ -41,11 +41,10 @@ class InOut {
      * @version 2019-03-15
      *
      */
-    static void printArray(double[] array, int cols){
+    static void printArray(double[] array, String name,int cols){
 
         for (int i = 0; i < array.length; i++) {
-            System.out.print("arr");
-            System.out.printf("[% -3d]=%-6.2f ",i,array[i]);
+            System.out.printf("%s[% -3d]=%-6.2f ",name,i,array[i]);
             if((0==(i+1)%cols)||(array.length-1==i)){
 
                 System.out.println();

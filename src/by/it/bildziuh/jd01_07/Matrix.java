@@ -1,6 +1,7 @@
 package by.it.bildziuh.jd01_07;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Matrix extends Var {
 
@@ -15,21 +16,26 @@ public class Matrix extends Var {
     }
 
     Matrix(String strMatrix) {
-/*
+
         StringBuilder sb = new StringBuilder(strMatrix);
         sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
-// запихнуть цикл c разделением
-        String str = sb.toString();
-        String[] arrayString = str.split("[^\\d.]+");
-        double[][] arrayDouble = new double[arrayString[0].length()][arrayString.length];
+        sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
+        String string = sb.toString();
 
-        for (int i = 0; i < arrayString[0].length(); i++) {
-            for (int j = 0; j < arrayString.length; j++) {
-                arrayDouble[i][j] = Double.parseDouble(arrayString[j]);
+        String[] splitedString = string.split("[{]");
+        //  System.out.println(splitedString[0]);
+        //  System.out.println(splitedString[1]);
+
+        double[][] matrix = new double[splitedString.length][2];
+
+        for (int i = 0; i < splitedString.length; i++) {
+
+            for (int j = 0; j < splitedString.length; j++) {
+                String[] raw = splitedString[i].split("[^\\d.]+");
+                matrix[i][j] = Double.parseDouble(raw[j]);
             }
-            this.value = arrayDouble;
+            this.value = matrix;
         }
-*/
     }
 
 

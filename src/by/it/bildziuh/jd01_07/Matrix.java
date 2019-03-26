@@ -21,13 +21,8 @@ public class Matrix extends Var {
         sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
         String string = sb.toString();
-
         String[] splitedString = string.split("[{]");
-      //    System.out.println(splitedString[0]);
-      //    System.out.println(splitedString[1]);
-
         double[][] matrix = new double[splitedString.length][2];
-
         for (int i = 0; i < splitedString.length; i++) {
             for (int j = 0; j < 2; j++) {
                 String[] row = splitedString[i].split("[^\\d.]+");

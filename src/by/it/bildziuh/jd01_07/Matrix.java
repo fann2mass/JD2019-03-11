@@ -23,8 +23,8 @@ public class Matrix extends Var {
         String string = sb.toString();
 
         String[] splitedString = string.split("[{]");
-          System.out.println(splitedString[2]);
-      //    System.out.println(splitedString[3]);
+      //    System.out.println(splitedString[0]);
+      //    System.out.println(splitedString[1]);
 
         double[][] matrix = new double[splitedString.length][2];
 

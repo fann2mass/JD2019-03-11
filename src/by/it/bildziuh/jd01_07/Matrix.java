@@ -29,7 +29,6 @@ public class Matrix extends Var {
         double[][] matrix = new double[splitedString.length][2];
 
         for (int i = 0; i < splitedString.length; i++) {
-
             for (int j = 0; j < splitedString.length; j++) {
                 String[] raw = splitedString[i].split("[^\\d.]+");
                 matrix[i][j] = Double.parseDouble(raw[j]);

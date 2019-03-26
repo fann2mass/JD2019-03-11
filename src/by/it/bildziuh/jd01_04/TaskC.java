@@ -1,53 +1,46 @@
 package by.it.bildziuh.jd01_04;
 
 
+import java.util.Scanner;
+
 public class TaskC {
     public static void main(String[] args) {
 
-        //Scanner scanner = new Scanner(System.in);
-        //String doubleLine = scanner.nextLine();
-        double[] array = {1, 9, 7, 2, 6, 4, 3, 11};
-        TaskC.mergeSort(array);
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
+        Scanner scanner = new Scanner(System.in);
+        String doubleLine = scanner.nextLine();
+        buildOneDimArray(doubleLine);
     }
-    /*   static void buildOneDimArray(String line) {
-           double[] array = InOut.getArray(line);
-           InOut.printArray(array, "V", 5);
-           double iFirst = array[0];
-           double iLast = array[array.length - 1];
 
-           InOut.printArray(array, "V", 4);
-           for (int i = 0; i < array.length; i++) {
-               if (iFirst == array[i]) {
-                   System.out.println("Index of first element=" + i);
-                   break;
-               }
-           }
-           for (int i = 0; i < array.length; i++) {
-               if (iLast == array[i]) {
-                   System.out.println("Index of last element=" + i);
-                   break;
-               }
-           }
-       }   */
+    static void buildOneDimArray(String line) {
+        double[] array = InOut.getArray(line);
+        InOut.printArray(array, "V", 5);
+        double iFirst = array[0];
+        double iLast = array[array.length - 1];
+        TaskC.mergeSort(array);
+        int newFirst = TaskC.binarySearch(array, iFirst);
+        int newLast = TaskC.binarySearch(array, iLast);
+        InOut.printArray(array, "V", 4);
+        System.out.println("Index of first element=" + newFirst);
+        System.out.println("Index of last element=" + newLast);
+
+    }
+
     static void mergeSort(double[] array) {
         if (array.length > 1) {
             int mid = array.length / 2;
             double[] leftArray = new double[mid];
             System.arraycopy(array, 0, leftArray, 0, leftArray.length);
             double[] rightArray = new double[array.length - mid];
-            System.arraycopy(array, mid, rightArray, 0,rightArray.length );
+            System.arraycopy(array, mid, rightArray, 0, rightArray.length);
 
-                mergeSort(leftArray);
-                mergeSort(rightArray);
-                merge(leftArray, rightArray);
+            mergeSort(leftArray);
+            mergeSort(rightArray);
+            merge(leftArray, rightArray);
 
-                double[] result = merge(leftArray, rightArray);
-                System.arraycopy(result,0,array,0,array.length);
-            }
+            double[] result = merge(leftArray, rightArray);
+            System.arraycopy(result, 0, array, 0, array.length);
         }
+    }
 
     private static double[] merge(double[] left, double[] right) {
         int size = left.length + right.length;
@@ -78,7 +71,24 @@ public class TaskC {
         }
         return merged;
     }
+
+    private static int binarySearch(double[] array, double value) {
+        int result = 0;
+        int low = 0;
+        int high = array.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (array[mid] < value) {
+                low = mid + 1;
+            } else if (array[mid] > value) {
+                high = mid - 1;
+            } else if (array[mid] == value) {
+                result = mid;
+                break;
+            }
+        }
+        return result;
+    }
 }
-
-
 

@@ -30,8 +30,8 @@ public class Matrix extends Var {
 
         for (int i = 0; i < splitedString.length; i++) {
             for (int j = 0; j < splitedString.length; j++) {
-                String[] raw = splitedString[i].split("[^\\d.]+");
-                matrix[i][j] = Double.parseDouble(raw[j]);
+                String[] row = splitedString[i].split("[^\\d.]+");
+                matrix[i][j] = Double.parseDouble(row[j]);
             }
             this.value = matrix;
         }

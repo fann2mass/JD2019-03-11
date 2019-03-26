@@ -20,7 +20,7 @@ public class Runner {
         double[][] matrix1 = {{1.0, 2.0},{3.0, 4.0}};
         Var v7 = new Matrix(matrix1);
     //    Var v8 = v7;
-        Var v9 = new Matrix("{{1.0, 2.0}, {3.0, 4.0}}");
+        Var v9 = new Matrix("{{1.0, 2.0}, {3.0, 4.0}, {5.0, 6.0}}");
         System.out.println(v7);
     //    System.out.println(v8);
         System.out.println(v9);

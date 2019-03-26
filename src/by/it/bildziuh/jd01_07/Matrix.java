@@ -23,13 +23,13 @@ public class Matrix extends Var {
         String string = sb.toString();
 
         String[] splitedString = string.split("[{]");
-        //  System.out.println(splitedString[0]);
-        //  System.out.println(splitedString[1]);
+          System.out.println(splitedString[2]);
+      //    System.out.println(splitedString[3]);
 
         double[][] matrix = new double[splitedString.length][2];
 
         for (int i = 0; i < splitedString.length; i++) {
-            for (int j = 0; j < splitedString.length; j++) {
+            for (int j = 0; j < 2; j++) {
                 String[] row = splitedString[i].split("[^\\d.]+");
                 matrix[i][j] = Double.parseDouble(row[j]);
             }

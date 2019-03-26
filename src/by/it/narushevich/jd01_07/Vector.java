@@ -15,7 +15,10 @@ public class Vector extends Var {
     }
 
     Vector(String strVector) {
-        String[] arrayString = strVector.split("[^\\d.]+");
+        StringBuilder sb = new StringBuilder(strVector);
+        sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
+        String str = sb.toString();
+        String[] arrayString = str.split("[^\\d.]+");
         double[] arrayDouble = new double[arrayString.length];
         for (int i = 0; i < arrayString.length; i++) {
             arrayDouble[i] = Double.parseDouble(arrayString[i]);

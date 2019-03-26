@@ -9,8 +9,10 @@ import java.util.regex.Pattern;
 
 public class TaskB2 {
     public static void main(String[] args) {
+        String poem = Poem.text;
+        String text = poem.replaceAll("[./]{3}"," ");//заменяем троеточие на пробел, чтобы правильно разделить текст на проедложения
         Pattern point = Pattern.compile("[./]+");
-        String[] array = point.split(Poem.text);//делим текст на предложения.
+        String[] array = point.split(text);//делим текст на предложения по шаблону
         StringBuilder[] arrayBuilders = new StringBuilder[array.length];
         //делаем из массива string такой же массив stringBuilder так же делаем trim() для каждого предложения.
         for (int i = 0; i < array.length; i++) {
@@ -24,7 +26,22 @@ public class TaskB2 {
             while (matcher.find()) {
                 arrayBuilder.setCharAt(matcher.start(), ' ');
             }
-            System.out.println(arrayBuilder);
+        }
+        String[] newArray = new String[arrayBuilders.length];
+        for (int i = 0; i < arrayBuilders.length; i++) {
+            newArray[i] = arrayBuilders[i].toString().replaceAll("[ ]+"," ");
+        }
+        for (int i = 0; i < newArray.length; i++) {
+            for (int j = 0; j < newArray.length-1-i; j++) {
+                if(newArray[j].length() > newArray[j+1].length()){
+                    String str = newArray[j];
+                    newArray[j]=newArray[j+1];
+                    newArray[j+1]=str;
+                }
+            }
+        }
+        for (String s : newArray) {
+           System.out.println(s);
         }
     }
 

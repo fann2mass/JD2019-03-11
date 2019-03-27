@@ -1,5 +1,6 @@
 package by.it.narushevich.jd01_07;
 
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Matrix extends Var {
@@ -7,11 +8,10 @@ public class Matrix extends Var {
     private double[][] value;
 
     Matrix(double[][] value) {
-        this.value = value;
+        this.value = Arrays.copyOf(Arrays.copyOf(value, value[0].length), value.length);;
     }
 
     Matrix(Matrix matrix){
-        //matrix.value = Arrays.copyOf(Arrays.copyOf(value, value[0].length), value.length);
         this.value = matrix.value;
     }
 

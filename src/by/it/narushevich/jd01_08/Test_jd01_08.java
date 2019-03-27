@@ -282,8 +282,8 @@ public class Test_jd01_08 {
     public void testTaskС1_add__Matrix() throws Exception {
         Test_jd01_08 ok = run("", false);
         Constructor c = ok.aClass.getDeclaredConstructor(String.class);
-        Object v1 = c.newInstance("{{1, 2}, {3, 4}}");
-        Object v2 = c.newInstance("{{4, 5}, {7, 8}}");
+        Object v1 = c.newInstance("{{1, 2},{3, 4}}");
+        Object v2 = c.newInstance("{{4, 5},{7, 8}}");
         Class<?> var = v2.getClass().getSuperclass();
         String op = "add";
         Method m = findMethod(ok.aClass, op, var);

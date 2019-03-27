@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd01_06;
+package by.it.Runtso.jd01_06;
 
 
 import org.junit.Test;

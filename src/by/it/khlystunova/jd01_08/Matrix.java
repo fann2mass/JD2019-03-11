@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd01_07;
+package by.it.khlystunova.jd01_08;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,11 +16,7 @@ public class Matrix extends Var {
     }
 
     Matrix(String matrix){
-        String[] line = matrix.split("},");
-        for (int i = 0; i < line.length; i++) {
-            line[i]=line[i].replace("{","").replace("}","");
-
-        }
+        String[] line = matrix.split("[}, {]{4}");
         int matrixLen = line.length;//кол-во строк
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(line[0]);

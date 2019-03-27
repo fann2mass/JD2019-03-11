@@ -9,14 +9,41 @@ class Vector extends Var {
     public double[] getValue() {
         return value;
     }
+    Vector(double[] value){ this.value= Arrays.copyOf(value,value.length); }
 
     @Override
     public Var add(Var other) {
+        Vector result = new Vector(value);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] + ((Scalar) other).getValue();
+            }
+            return result;
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] + ((Vector) other).value[i];
+            }
+            return result;
+        }
         return super.add(other);
     }
 
     @Override
     public Var sub(Var other) {
+        Vector result = new Vector(value);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] - ((Scalar) other).getValue();
+            }
+            return result;
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] - ((Vector) other).value[i];
+            }
+            return result;
+        }
         return super.sub(other);
     }
 
@@ -30,10 +57,6 @@ class Vector extends Var {
         return super.div(other);
     }
 
-    Vector(double[] value){
-
-        this.value= Arrays.copyOf(value,value.length);
-    }
 
     Vector(String str) {
         StringBuilder sb=new StringBuilder(str);

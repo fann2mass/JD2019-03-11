@@ -11,13 +11,15 @@ class Vector extends Var {
         this.value= Arrays.copyOf(value,value.length);
     }
     Vector(String str) {
-        String result = str.replaceAll("[^0-9. ]", "");
-        String strArr[] = result.split(" ");
-        double value[] = new double[strArr.length];
+        StringBuilder sb=new StringBuilder(str);
+        sb.deleteCharAt(0).deleteCharAt(sb.length()-1);
+        String result=sb.toString();
+        String[] strArr = result.split("[^\\d.]+");
+        double[] value = new double[strArr.length];
         for (int i = 0; i < strArr.length; i++) {
             value[i] = Double.parseDouble(strArr[i]);
         }
-        this.value= Arrays.copyOf(value,value.length);
+        this.value=value;
     }
 
 

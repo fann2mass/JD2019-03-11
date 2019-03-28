@@ -21,6 +21,7 @@ class Vector extends Var {
             return result;
         }
         if (other instanceof Vector) {
+            if (!(result.value.length ==((Vector) other).value.length)) return super.add(other);
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
@@ -39,6 +40,7 @@ class Vector extends Var {
             return result;
         }
         if (other instanceof Vector) {
+            if (!(result.value.length ==((Vector) other).value.length)) return super.sub(other);
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
@@ -49,11 +51,38 @@ class Vector extends Var {
 
     @Override
     public Var mul(Var other) {
+        Vector result = new Vector(value);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] * ((Scalar) other).getValue();
+            }
+            return result;
+        }
+        if (other instanceof Vector) {
+            if (!(result.value.length ==((Vector) other).value.length)) return super.mul(other);
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] * ((Vector) other).value[i];
+            }
+            for (int i = 1; i < result.value.length; i++) {
+                result.value[0]+= result.value[i];
+                result.value[i]=0;
+            }
+            return result;
+        }
         return super.mul(other);
     }
 
     @Override
     public Var div(Var other) {
+        Vector result = new Vector(value);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.value.length; i++) {
+                result.value[i] = result.value[i] / ((Scalar) other).getValue();
+            }
+            return result;
+        }
+        if (other instanceof Vector) return super.div(other);
+
         return super.div(other);
     }
 

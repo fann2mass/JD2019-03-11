@@ -13,11 +13,47 @@ class Matrix extends Var {
 
     @Override
     public Var add(Var other) {
+        Matrix result = new Matrix(matrix);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] + ((Scalar) other).getValue();
+                }
+            }
+            return result;
+        }
+        if (other instanceof Matrix) {
+            if (!(result.matrix.length ==((Matrix) other).matrix.length)) return super.add(other);
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] + ((Matrix) other).matrix[i][j];
+                }
+            }
+            return result;
+        }
         return super.add(other);
     }
 
     @Override
     public Var sub(Var other) {
+        Matrix result = new Matrix(matrix);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] - ((Scalar) other).getValue();
+                }
+            }
+            return result;
+        }
+        if (other instanceof Matrix) {
+            if (!(result.matrix.length ==((Matrix) other).matrix.length)) return super.sub(other);
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] - ((Matrix) other).matrix[i][j];
+                }
+            }
+            return result;
+        }
         return super.sub(other);
     }
 

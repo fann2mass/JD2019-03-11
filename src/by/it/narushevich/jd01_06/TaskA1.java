@@ -7,11 +7,11 @@ public class TaskA1 {
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder(Poem.text);
         Pattern word4=Pattern.compile("[а-яА-ЯёЁ]{4,}");
-        Matcher matcher = word4.matcher(sb);
-        while(matcher.find()){
-            sb.setCharAt(matcher.start()+3, '#');
-            if (matcher.end()-matcher.start()>6)
-                sb.setCharAt(matcher.start()+6, '#');
+        Matcher match = word4.matcher(sb);
+        while(match.find()){
+            sb.setCharAt(match.start()+3, '#');
+            if (match.end()-match.start()>6)
+                sb.setCharAt(match.start()+6, '#');
         }
         System.out.println(sb);
     }

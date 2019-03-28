@@ -1,6 +1,4 @@
-package by.it.khlystunova.jd01_07;
-
-import java.util.regex.Matcher;
+package by.it.khlystunova.jd01_08;
 
 public class Runner {
     public static void main(String[] args) {

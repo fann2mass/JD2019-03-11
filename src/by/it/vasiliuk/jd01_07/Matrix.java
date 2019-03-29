@@ -1,9 +1,9 @@
-package by.it.bolotko.jd01_07;
+package by.it.vasiliuk.jd01_07;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Matrix extends Var {
+public class Matrix extends Var {
 
     private double[][] matrix;
 
@@ -17,15 +17,15 @@ class Matrix extends Var {
 
     Matrix(String matrix){
         String[] line = matrix.split("[}, {]{4}");
-        int matrixLen = line.length;//кол-во строк
+        int matrixLength = line.length;//кол-во строк
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(line[0]);
-        int len = 0;
+        int length = 0;
         while(matcher.find()){
-            len++;
+            length++;
         }
         matcher.reset();
-        double[][]result = new double[matrixLen][len];
+        double[][]result = new double[matrixLength][length];
         for (int i =  0;i<line.length;i++) {
             matcher = pattern.matcher(line[i]);
             int j = 0;
@@ -42,19 +42,19 @@ class Matrix extends Var {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("{");
+        StringBuilder res = new StringBuilder("{");
         for (int i = 0; i < matrix.length; i++) {
-            result.append("{");
+            res.append("{");
             for (int j = 0; j < matrix[0].length; j++) {
-                result.append(matrix[i][j]);
+                res.append(matrix[i][j]);
                 if(j!= matrix[0].length-1)
-                    result.append(", ");
-                else result.append("}");
+                    res.append(", ");
+                else res.append("}");
             }
-            if(i!=matrix.length-1) result.append(",");
+            if(i!=matrix.length-1)
+                res.append(",");
         }
-        result.append("}");
-        return result.toString();
+        res.append("}");
+        return res.toString();
     }
 }
-

@@ -27,14 +27,9 @@ public class Matrix extends Var {
             sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
         }
         String str = sb.toString();
-        String[] arrStr = str.split("}");
-        String[] rowsM = new String[arrStr.length];
-        rowsM[0] = arrStr[0];
+        String[] rowsM = str.split("(},\\s?\\{)");
         String[] colsInRow = rowsM[0].split("[, ]+");
-        for (int i = 1; i < arrStr.length; i++) {
-            String rowM = arrStr[i].replaceFirst("[, {]+", "");
-            rowsM[i] = rowM;
-        }
+
         double[][] resMatrix = new double[rowsM.length][colsInRow.length];
         for (int i = 0; i < rowsM.length; i++) {
             String[] colsM = rowsM[i].split("[, ]+");

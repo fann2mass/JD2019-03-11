@@ -7,7 +7,7 @@ public class Runner {
     }
 
     public static void main(String[] args) {
-        Var s = new Scalar(1.0);
+        Var s = new Scalar(3.0);
         Var v = new Vector(new double[]{1, 2, 3});
         Var m = new Matrix("{{1,2,3},{4,5,6},{7,8,9}}");
         Var m1 = new Matrix("{{1, 2},{3, 4}}");
@@ -34,7 +34,7 @@ public class Runner {
         /* Уровень сложности C (матричные операции и умножение на вектор)
         закомментируйте, если не реализовали */
         System.out.println("Сложение матрицы и скаляра: ");
-        print(m1.add(s)); //{{4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}, {10.0, 11.0, 12.0}}
+        print(m1.add(s)); //
         System.out.println("Сложение матрицы и вектора: ");
         print(m.add(v)); // Сложение невозможно
         System.out.println("Сложение 2-х матриц: ");

@@ -23,7 +23,7 @@ class Matrix extends Var {
             return result;
         }
         if (other instanceof Matrix) {
-            if (!(result.matrix.length ==((Matrix) other).matrix.length)) return super.add(other);
+            if (!(result.matrix.length == ((Matrix) other).matrix.length)) return super.add(other);
             for (int i = 0; i < result.matrix.length; i++) {
                 for (int j = 0; j < result.matrix.length; j++) {
                     result.matrix[i][j] = result.matrix[i][j] + ((Matrix) other).matrix[i][j];
@@ -46,7 +46,7 @@ class Matrix extends Var {
             return result;
         }
         if (other instanceof Matrix) {
-            if (!(result.matrix.length ==((Matrix) other).matrix.length)) return super.sub(other);
+            if (!(result.matrix.length == ((Matrix) other).matrix.length)) return super.sub(other);
             for (int i = 0; i < result.matrix.length; i++) {
                 for (int j = 0; j < result.matrix.length; j++) {
                     result.matrix[i][j] = result.matrix[i][j] - ((Matrix) other).matrix[i][j];
@@ -59,45 +59,70 @@ class Matrix extends Var {
 
     @Override
     public Var mul(Var other) {
+        Matrix result = new Matrix(matrix);
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] * ((Scalar) other).getValue();
+                }
+            }
+            return result;
+        }
+        if (other instanceof Vector) {
+            //if (!(result.matrix.length == ((Vector) other).matrix.length)) return super.mul(other);
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] * ((Matrix) other).matrix[i][j];
+                }
+            }
+            return result;
+        }
+        if (other instanceof Matrix) {
+            if (!(result.matrix.length == ((Matrix) other).matrix.length)) return super.mul(other);
+            for (int i = 0; i < result.matrix.length; i++) {
+                for (int j = 0; j < result.matrix.length; j++) {
+                    result.matrix[i][j] = result.matrix[i][j] * ((Matrix) other).matrix[j][i];
+                }
+            }
+            return result;
+        }
         return super.mul(other);
     }
 
-    @Override
-    public Var div(Var other) {
-        return super.div(other);
-    }
 
     Matrix(double[][] matrix) {
         this.matrix = matrix;
     }
 
-    Matrix(Matrix matrix){
+    Matrix(Matrix matrix) {
         this.matrix = matrix.matrix;
     }
 
-    Matrix(String matrix){
-        String[] line = matrix.split("[}, {]{4}");
+    Matrix(String matrix) {
+        String[] line = matrix.split("},");
+        for (int i = 0; i < line.length; i++) {
+            line[i] = line[i].replace("{", "").replace("}", "");
+
+        }
         int matrixLen = line.length;//кол-во строк
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(line[0]);
         int len = 0;
-        while(matcher.find()){
+        while (matcher.find()) {
             len++;
         }
         matcher.reset();
-        double[][]result = new double[matrixLen][len];
-        for (int i =  0;i<line.length;i++) {
+        double[][] result = new double[matrixLen][len];
+        for (int i = 0; i < line.length; i++) {
             matcher = pattern.matcher(line[i]);
             int j = 0;
-            while(matcher.find()){
+            while (matcher.find()) {
                 String stringElement = matcher.group();
                 result[i][j] = Double.parseDouble(stringElement);
                 j++;
             }
         }
         this.matrix = result;
-
-
     }
 
     @Override
@@ -107,11 +132,12 @@ class Matrix extends Var {
             result.append("{");
             for (int j = 0; j < matrix[0].length; j++) {
                 result.append(matrix[i][j]);
-                if(j!= matrix[0].length-1)
+                if (j != matrix[0].length - 1)
                     result.append(", ");
                 else result.append("}");
             }
-            if(i!=matrix.length-1) result.append(",");
+            if (i != matrix.length - 1)
+                result.append(", ");
         }
         result.append("}");
         return result.toString();

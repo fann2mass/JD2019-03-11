@@ -11,33 +11,35 @@ class Matrix extends Var {
         this.matrix = matrix;
     }
 
-    Matrix(Matrix matrix){
+    Matrix(Matrix matrix) {
         this.matrix = matrix.matrix;
     }
 
-    Matrix(String matrix){
-        String[] line = matrix.split("[}, {]{4}");
+    Matrix(String matrix) {
+        String[] line = matrix.split("},");
+        for (int i = 0; i < line.length; i++) {
+            line[i] = line[i].replace("{", "").replace("}", "");
+
+        }
         int matrixLen = line.length;//кол-во строк
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(line[0]);
         int len = 0;
-        while(matcher.find()){
+        while (matcher.find()) {
             len++;
         }
         matcher.reset();
-        double[][]result = new double[matrixLen][len];
-        for (int i =  0;i<line.length;i++) {
+        double[][] result = new double[matrixLen][len];
+        for (int i = 0; i < line.length; i++) {
             matcher = pattern.matcher(line[i]);
             int j = 0;
-            while(matcher.find()){
+            while (matcher.find()) {
                 String stringElement = matcher.group();
                 result[i][j] = Double.parseDouble(stringElement);
                 j++;
             }
         }
         this.matrix = result;
-
-
     }
 
     @Override
@@ -47,11 +49,12 @@ class Matrix extends Var {
             result.append("{");
             for (int j = 0; j < matrix[0].length; j++) {
                 result.append(matrix[i][j]);
-                if(j!= matrix[0].length-1)
+                if (j != matrix[0].length - 1)
                     result.append(", ");
                 else result.append("}");
             }
-            if(i!=matrix.length-1) result.append(",");
+            if (i != matrix.length - 1)
+                result.append(", ");
         }
         result.append("}");
         return result.toString();

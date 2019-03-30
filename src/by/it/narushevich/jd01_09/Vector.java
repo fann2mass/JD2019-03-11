@@ -13,13 +13,13 @@ public class Vector extends Var {
     @Override
     public Var add(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] + ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
+        if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
@@ -31,13 +31,13 @@ public class Vector extends Var {
     @Override
     public Var sub(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
+        if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
@@ -50,13 +50,13 @@ public class Vector extends Var {
     public Var mul(Var other) {
         Vector result = new Vector(value);
         double result0 = 0;
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] * ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
+        if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < this.value.length; i++) {
                 result0 += this.value[i] * ((Vector) other).value[i];
             }
@@ -68,7 +68,7 @@ public class Vector extends Var {
     @Override
     public Var div(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] / ((Scalar) other).getValue();
             }

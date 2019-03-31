@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd01_08;
+package by.it.khlystunova.jd01_09;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -8,7 +8,7 @@ public class Matrix extends Var {
 
     private double[][] matrix;
 
-    Matrix(double[][] value) {
+    private Matrix(double[][] value) {
         this.matrix = Arrays.copyOf(value,value.length);
     }
 

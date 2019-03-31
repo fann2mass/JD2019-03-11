@@ -1,6 +1,6 @@
-package by.it.khlystunova.jd01_08;
+package by.it.khlystunova.jd01_09;
 
-public class Scalar extends Var implements Operation{
+public class Scalar extends Var implements Operation {
     private double value;
 
     public double getValue() {

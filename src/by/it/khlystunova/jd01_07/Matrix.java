@@ -16,7 +16,11 @@ public class Matrix extends Var {
     }
 
     Matrix(String matrix){
-        String[] line = matrix.split("[}, {]{4}");
+        String[] line = matrix.split("},");
+        for (int i = 0; i < line.length; i++) {
+            line[i]=line[i].replace("{","").replace("}","");
+
+        }
         int matrixLen = line.length;//кол-во строк
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(line[0]);
@@ -52,7 +56,7 @@ public class Matrix extends Var {
                 else result.append("}");
             }
             if(i!=matrix.length-1)
-            result.append(",");
+            result.append(", ");
         }
         result.append("}");
         return result.toString();

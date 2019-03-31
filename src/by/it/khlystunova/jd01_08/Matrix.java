@@ -1,9 +1,9 @@
-package by.it.bolotko.jd01_07;
+package by.it.khlystunova.jd01_08;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Matrix extends Var {
+public class Matrix extends Var {
 
     private double[][] matrix;
 
@@ -31,7 +31,7 @@ class Matrix extends Var {
             int j = 0;
             while(matcher.find()){
                 String stringElement = matcher.group();
-                result[i][j] = Double.parseDouble(stringElement);
+             result[i][j] = Double.parseDouble(stringElement);
                 j++;
             }
         }
@@ -51,10 +51,10 @@ class Matrix extends Var {
                     result.append(", ");
                 else result.append("}");
             }
-            if(i!=matrix.length-1) result.append(",");
+            if(i!=matrix.length-1)
+            result.append(", ");
         }
         result.append("}");
         return result.toString();
     }
 }
-

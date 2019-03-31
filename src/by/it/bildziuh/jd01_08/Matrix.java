@@ -1,18 +1,19 @@
 package by.it.bildziuh.jd01_08;
 
-import java.util.Arrays;
-
 public class Matrix extends Var {
 
     private double[][] value;
 
+    public double[][] getValue() {
+        return value;
+    }
+
     Matrix(double[][] value) {
-        double[][] thisMatrix = new double[value[0].length][value.length];
-        for (int i = 0; i < thisMatrix[0].length; i++)
-            for (int j = 0; j < thisMatrix.length; j++)
+        double[][] thisMatrix = new double[value.length][value[0].length];
+        for (int i = 0; i < thisMatrix.length; i++)
+            for (int j = 0; j < thisMatrix[0].length; j++)
                 thisMatrix[i][j] = value[i][j];
         this.value = thisMatrix;
-        //что-то не так
     }
 
     Matrix(Matrix matrix) {
@@ -61,19 +62,19 @@ public class Matrix extends Var {
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
-          //   Matrix resAddScalar = new Matrix(value);
-            double[][] resAddScalar = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < resAddScalar[0].length; i++) {
-                for (int j = 0; j < resAddScalar.length; j++) {
-                    resAddScalar[i][j] = resAddScalar[i][j] + ((Scalar) other).getValue();
+            Matrix resAddScalar = new Matrix(value);
+            for (int i = 0; i < resAddScalar.value.length; i++) {
+                for (int j = 0; j < resAddScalar.value.length; j++) {
+                    resAddScalar.value[i][j] = resAddScalar.value[i][j] + ((Scalar) other).getValue();
                 }
             }
             return new Matrix(resAddScalar);
+
         } else if (other instanceof Matrix) {
-            double[][] resAddMatrix = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < resAddMatrix[0].length; i++) {
-                for (int j = 0; j < resAddMatrix.length; j++) {
-                    resAddMatrix[i][j] = resAddMatrix[i][j] + ((Matrix) other).value[i][j];
+            Matrix resAddMatrix = new Matrix(value);
+            for (int i = 0; i < resAddMatrix.value[0].length; i++) {
+                for (int j = 0; j < resAddMatrix.value.length; j++) {
+                    resAddMatrix.value[i][j] = resAddMatrix.value[i][j] + ((Matrix) other).value[i][j];
                 }
             }
             return new Matrix(resAddMatrix);
@@ -86,18 +87,19 @@ public class Matrix extends Var {
     @Override
     public Var sub(Var other) {
         if (other instanceof Scalar) {
-            double[][] resSubScalar = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < resSubScalar[0].length; i++) {
-                for (int j = 0; j < resSubScalar.length; j++) {
-                    resSubScalar[i][j] = resSubScalar[i][j] - ((Scalar) other).getValue();
+            Matrix resSubScalar = new Matrix(value);
+            for (int i = 0; i < resSubScalar.value[0].length; i++) {
+                for (int j = 0; j < resSubScalar.value.length; j++) {
+                    resSubScalar.value[i][j] = resSubScalar.value[i][j] - ((Scalar) other).getValue();
                 }
             }
             return new Matrix(resSubScalar);
+
         } else if (other instanceof Matrix) {
-            double[][] resSubMatrix = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < resSubMatrix[0].length; i++)
-                for (int j = 0; j < resSubMatrix.length; j++)
-                    resSubMatrix[i][j] = resSubMatrix[i][j] - ((Matrix) other).value[i][j];
+            Matrix resSubMatrix = new Matrix(value);
+            for (int i = 0; i < resSubMatrix.value[0].length; i++)
+                for (int j = 0; j < resSubMatrix.value.length; j++)
+                    resSubMatrix.value[i][j] = resSubMatrix.value[i][j] - ((Matrix) other).value[i][j];
 
             return new Matrix(resSubMatrix);
         }
@@ -107,34 +109,42 @@ public class Matrix extends Var {
     @Override
     public Var mul(Var other) {
         if (other instanceof Scalar) {
-            double[][] resMulScalar = Arrays.copyOf(value, value.length);
-            for (int i = 0; i < resMulScalar[0].length; i++) {
-                for (int j = 0; j < resMulScalar.length; j++) {
-                    resMulScalar[i][j] = resMulScalar[i][j] * ((Scalar) other).getValue();
+            Matrix resMulScalar = new Matrix(value);
+            for (int i = 0; i < resMulScalar.value[0].length; i++) {
+                for (int j = 0; j < resMulScalar.value.length; j++) {
+                    resMulScalar.value[i][j] = resMulScalar.value[i][j] * ((Scalar) other).getValue();
                 }
             }
             return new Matrix(resMulScalar);
         }
-        //
-/*
+        if (other instanceof Vector) {
+            Matrix MulVector = new Matrix(value);
+            double[] resMulVector = new double[value.length];
+            for (int i = 0; i < MulVector.value[0].length; i++) {
+                for (int j = 0; j < MulVector.value.length; j++) {
+                    resMulVector[i] = resMulVector[i] + MulVector.value[i][j] * ((Vector) other).getValue()[j];
+                }
+            }
+            return new Vector(resMulVector);
+        }
+
         if (other instanceof Matrix) {
-            double[][] resMulMatrix = Arrays.copyOf(value, value.length);
+            Matrix MulMatrix = new Matrix(value);
+            double[][] resMulMatrix = new double[MulMatrix.value.length][((Matrix) other).value[0].length];
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[0].length; j++) {
                     for (int k = 0; k < value.length; k++) {
-                        resMulMatrix[i][j] = resMulMatrix[i][j] + ((Matrix) other).value[i][k] * ((Matrix) other).value[k][j];
+                        resMulMatrix[i][j] = resMulMatrix[i][j] + this.value[i][k] * ((Matrix) other).value[k][j];
                     }
                 }
             }
             return new Matrix(resMulMatrix);
         }
-*/
         return super.mul(other);
     }
 
     @Override
     public Var div(Var other) {
-
         return super.div(other);
     }
 }

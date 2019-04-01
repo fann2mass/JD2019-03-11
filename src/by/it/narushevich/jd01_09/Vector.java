@@ -1,27 +1,25 @@
-package by.it.bolotko.jd01_08;
+package by.it.narushevich.jd01_09;
 
 import java.util.Arrays;
 
-class Vector extends Var {
+public class Vector extends Var {
 
     private double[] value;
 
     public double[] getValue() {
         return value;
     }
-    Vector(double[] value){ this.value= Arrays.copyOf(value,value.length); }
 
     @Override
     public Var add(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] + ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
-            if (!(result.value.length ==((Vector) other).value.length)) return super.add(other);
+        if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
@@ -33,14 +31,13 @@ class Vector extends Var {
     @Override
     public Var sub(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
-            if (!(result.value.length ==((Vector) other).value.length)) return super.sub(other);
+        if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
@@ -52,62 +49,63 @@ class Vector extends Var {
     @Override
     public Var mul(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        double result0 = 0;
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] * ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) {
-            double sum = 0;
-            for (int i = 0; i < result.value.length; i++) {
-                result.value[i] = result.value[i] * ((Vector) other).value[i];
-                sum=sum+result.value[i];
+        if (other.toString().matches(Patterns.VECTOR)) {
+            for (int i = 0; i < this.value.length; i++) {
+                result0 += this.value[i] * ((Vector) other).value[i];
             }
-            return new Scalar(sum);
+            return new Scalar(result0);
         }
-        return super.mul(other);
+        return super.sub(other);
     }
 
     @Override
     public Var div(Var other) {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] / ((Scalar) other).getValue();
             }
             return result;
         }
-        if (other instanceof Vector) return super.div(other);
-
         return super.div(other);
     }
 
-
-    Vector(String str) {
-        StringBuilder sb=new StringBuilder(str);
-        sb.deleteCharAt(0).deleteCharAt(sb.length()-1);
-        String result=sb.toString();
-        String[] strArr = result.split("[^\\d.]+");
-        double[] value = new double[strArr.length];
-        for (int i = 0; i < strArr.length; i++) {
-            value[i] = Double.parseDouble(strArr[i]);
-        }
-        this.value=value;
+    Vector(double[] value) {
+        this.value = Arrays.copyOf(value, value.length);
     }
 
-    Vector(Vector vector){this.value=vector.value;}
+    Vector(Vector vector) {
+        this.value = vector.value;
+    }
 
+    Vector(String strVector) {
+        StringBuilder sb = new StringBuilder(strVector);
+        sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
+        String str = sb.toString();
+        String[] arrayString = str.split("[^\\d.]+");
+        double[] arrayDouble = new double[arrayString.length];
+        for (int i = 0; i < arrayString.length; i++) {
+            arrayDouble[i] = Double.parseDouble(arrayString[i]);
+        }
+        this.value = arrayDouble;
+    }
 
     @Override
     public String toString() {
-        StringBuilder res=new StringBuilder("{");
-        String delimiter="";
+        StringBuilder sb = new StringBuilder("{");
+        String delimiter = "";
         for (double element : value) {
-            res.append(delimiter).append(element);
+            sb.append(delimiter).append(element);
             delimiter = ", ";
         }
-        res.append("}");
-        return res.toString();
+        sb.append("}");
+        return sb.toString();
     }
 }

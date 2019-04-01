@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_09;
+package by.it.narushevich.jd01_09;
 
 import java.util.Scanner;
 
@@ -7,10 +7,9 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
-        for (; ; ) {
-            String expression = scanner.nextLine().replace(" ", "");
-            if (expression.equals("end")) break;
-            Var result = parser.calc(expression);
+        String expr;
+        while (!(expr=scanner.nextLine()).equals("end")){
+            Var result = parser.calc(expr);
             printer.print(result);
         }
     }

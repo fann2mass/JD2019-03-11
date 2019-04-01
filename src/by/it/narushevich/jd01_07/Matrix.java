@@ -26,7 +26,7 @@ public class Matrix extends Var {
         rowsM[0] = arrStr[0];
         String[] colsInRow = rowsM[0].split("[, ]+");
         for (int i = 1; i < arrStr.length; i++) {
-            String rowM = arrStr[i].replace(",{","");
+            String rowM = arrStr[i].replaceFirst("[, {]+","");
             rowsM[i] = rowM;
         }
         double[][] resMatrix = new double[rowsM.length][colsInRow.length];

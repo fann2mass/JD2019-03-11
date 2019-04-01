@@ -1,9 +1,13 @@
-package by.it.khlystunova.jd01_08;
+package by.it.bildziuh.jd01_09;
 
-   interface Operation {
+interface Operation {
 
     Var add(Var other);
+
     Var sub(Var other);
+
     Var mul(Var other);
+
     Var div(Var other);
 }
+

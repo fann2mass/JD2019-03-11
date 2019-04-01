@@ -1,4 +1,4 @@
-package by.it.narushevich.jd01_08;
+package by.it.narushevich.jd01_09;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -44,7 +44,7 @@ public class Matrix extends Var {
     @Override
     public Var add(Var other) {
         Matrix result1 = new Matrix(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result1.value.length; i++)
                 for (int j = 0; j < result1.value[0].length; j++)
                     result1.value[i][j] = result1.value[i][j] + ((Scalar) other).getValue();
@@ -52,7 +52,7 @@ public class Matrix extends Var {
         }
 
         Matrix result2 = new Matrix(value);
-        if (other instanceof Matrix) {
+        if (other.toString().matches(Patterns.MATRIX)) {
             for (int i = 0; i < result2.value.length; i++)
                 for (int j = 0; j < result2.value[0].length; j++)
                     result2.value[i][j] = result2.value[i][j] + ((Matrix) other).value[i][j];
@@ -65,7 +65,7 @@ public class Matrix extends Var {
     @Override
     public Var sub(Var other) {
         Matrix result3 = new Matrix(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result3.value.length; i++)
                 for (int j = 0; j < result3.value[0].length; j++)
                     result3.value[i][j] = result3.value[i][j] - ((Scalar) other).getValue();
@@ -73,7 +73,7 @@ public class Matrix extends Var {
         }
 
         Matrix result4 = new Matrix(value);
-        if (other instanceof Matrix) {
+        if (other.toString().matches(Patterns.MATRIX)) {
             for (int i = 0; i < result4.value.length; i++)
                 for (int j = 0; j < result4.value[0].length; j++)
                     result4.value[i][j] = result4.value[i][j] - ((Matrix) other).value[i][j];
@@ -86,7 +86,7 @@ public class Matrix extends Var {
     @Override
     public Var mul(Var other) {
         Matrix result5 = new Matrix(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result5.value.length; i++)
                 for (int j = 0; j < result5.value[0].length; j++)
                     result5.value[i][j] = result5.value[i][j] * ((Scalar) other).getValue();
@@ -94,7 +94,7 @@ public class Matrix extends Var {
         }
 
         Matrix result6 = new Matrix(value);
-        if (other instanceof Vector) {
+        if (other.toString().matches(Patterns.VECTOR)) {
             double[] resultVector = new double[value.length];
             for (int i = 0; i < result6.value.length; i++)
                 for (int j = 0; j < resultVector.length; j++)
@@ -103,7 +103,7 @@ public class Matrix extends Var {
         }
 
         Matrix result7 = new Matrix(value);
-        if (other instanceof Matrix) {
+        if (other.toString().matches(Patterns.MATRIX)) {
             double[][] result0 = new double[result7.value.length][((Matrix) other).value[0].length];
             for (int i = 0; i < result7.value.length; i++)
                 for (int j = 0; j < ((Matrix) other).value[0].length; j++)

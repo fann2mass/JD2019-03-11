@@ -8,7 +8,7 @@ public class Matrix extends Var {
 
     private double[][] matrix;
 
-    private Matrix(double[][] value) {
+    Matrix(double[][] value) {
         this.matrix = Arrays.copyOf(value,value.length);
     }
 
@@ -55,7 +55,7 @@ public class Matrix extends Var {
                 else result.append("}");
             }
             if(i!=matrix.length-1)
-            result.append(", ");
+                result.append(", ");
         }
         result.append("}");
         return result.toString();
@@ -64,24 +64,24 @@ public class Matrix extends Var {
     @Override
     public Var add(Var other) {
         double[][] result = new double[this.matrix.length][this.matrix[0].length];
-   if(other instanceof Matrix){
-       //если размерность матриц одинаковая
-       if(this.matrix.length == ((Matrix) other).matrix.length  && this.matrix[0].length == ((Matrix) other).matrix[0].length ){
-           for (int i = 0; i < ((Matrix) other).matrix.length; i++) {
-               for (int j = 0; j < ((Matrix) other).matrix.length; j++) {
-                   result[i][j] = this.matrix[i][j] + ((Matrix) other).matrix[i][j];
-               }
-           }
-       }return new Matrix(result);
-   }else if(other instanceof Scalar){
-       for (int i = 0; i < this.matrix.length; i++) {
-           for (int j = 0; j < this.matrix.length; j++) {
-               result[i][j] = this.matrix[i][j] + ((Scalar) other).getValue();
-           }
-       }
-       return new Matrix(result);
-   }
-     else return  super.add(other);
+        if(other instanceof Matrix){
+            //если размерность матриц одинаковая
+            if(this.matrix.length == ((Matrix) other).matrix.length  && this.matrix[0].length == ((Matrix) other).matrix[0].length ){
+                for (int i = 0; i < ((Matrix) other).matrix.length; i++) {
+                    for (int j = 0; j < ((Matrix) other).matrix.length; j++) {
+                        result[i][j] = this.matrix[i][j] + ((Matrix) other).matrix[i][j];
+                    }
+                }
+            }return new Matrix(result);
+        }else if(other instanceof Scalar){
+            for (int i = 0; i < this.matrix.length; i++) {
+                for (int j = 0; j < this.matrix.length; j++) {
+                    result[i][j] = this.matrix[i][j] + ((Scalar) other).getValue();
+                }
+            }
+            return new Matrix(result);
+        }
+        else return  super.add(other);
     }
 
     @Override

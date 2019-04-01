@@ -59,15 +59,12 @@ class Vector extends Var {
             return result;
         }
         if (other instanceof Vector) {
-            if (!(result.value.length ==((Vector) other).value.length)) return super.mul(other);
+            double sum = 0;
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] * ((Vector) other).value[i];
+                sum=sum+result.value[i];
             }
-            for (int i = 1; i < result.value.length; i++) {
-                result.value[0]+= result.value[i];
-                result.value[i]=0;
-            }
-            return result;
+            return new Scalar(sum);
         }
         return super.mul(other);
     }

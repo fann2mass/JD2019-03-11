@@ -6,8 +6,7 @@ import java.lang.reflect.Modifier;
 
 public class PrintMath {
 	public static void main(String[] args) {
-		Class<Math> structMath = Math.class;
-		Method[] methods = structMath.getDeclaredMethods();
+		Method[] methods = Math.class.getDeclaredMethods();
 		for (Method method : methods) {
 			if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC) {
 				if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
@@ -16,7 +15,7 @@ public class PrintMath {
 
 			}
 		}
-		Field[] fields = structMath.getFields();
+		Field[] fields = Math.class.getFields();
 		for (Field field : fields) {
 			System.out.println(new StringBuilder(String.valueOf(field).replace("java.lang.Math.", "")));
 		}

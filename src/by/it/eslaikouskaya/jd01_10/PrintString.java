@@ -5,8 +5,7 @@ import java.lang.reflect.Modifier;
 
 public class PrintString {
 	public static void main(String[] args) {
-		Class<String> structString = String.class;
-		Method [] methods = structString.getDeclaredMethods();
+		Method [] methods = String.class.getDeclaredMethods();
 		for (Method method : methods) {
 			if ((method.getModifiers()& Modifier.STATIC)!= Modifier.STATIC){
 				System.out.println(method);

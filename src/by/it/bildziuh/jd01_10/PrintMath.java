@@ -54,7 +54,7 @@ public class PrintMath {
             case 3:
                 return "(" + method.getParameterTypes()[0] + "," + method.getParameterTypes()[1] + "," + method.getParameterTypes()[2] + ")";
             default:
-                return "()";
+                return "(" + method.getParameterTypes()[0] + ")";
         }
     }
 }

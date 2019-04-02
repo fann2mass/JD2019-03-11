@@ -18,12 +18,7 @@ public class BeanTester {
                 Param an = method.getAnnotation(anno);
                 int aValue = (int) a.invoke(an);
                 int bValue = (int) b.invoke(an);
-                double result;
-                if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC) {
-                    result = (double) method.invoke(null, aValue, bValue);
-                } else {
-                    result = (double) method.invoke(instance, aValue, bValue);
-                }
+                double result = (double) method.invoke(instance, aValue, bValue);
                 System.out.println("Имя найденого метода: " + method.getName() + " результат запуска: " + result);
             }
         }

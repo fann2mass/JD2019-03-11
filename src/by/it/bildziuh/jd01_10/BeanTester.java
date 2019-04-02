@@ -1,7 +1,6 @@
 package by.it.bildziuh.jd01_10;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 
 public class BeanTester {
     public static void main(String[] args) throws Exception {

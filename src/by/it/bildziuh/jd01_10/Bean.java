@@ -10,15 +10,13 @@ public class Bean {
 
     @Param(a = 2, b = 4)
     double max(int a, int b) {
-        if (a > b)
-            return a;
+        if (a > b) return a;
         else return b;
     }
 
-    @Param(a = 5, b = 6)
+    @Param(a = 2, b = 4)
     double min(int a, int b) {
-        if (a < b)
-            return a;
+        if (a < b) return a;
         else return b;
     }
 

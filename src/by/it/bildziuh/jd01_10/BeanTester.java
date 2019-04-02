@@ -24,7 +24,7 @@ public class BeanTester {
                 } else {
                     result = (double) method.invoke(instance, aValue, bValue);
                 }
-                System.out.println("Для " + method.getName() + " ожидается " + result);
+                System.out.println("Имя найденого метода: " + method.getName() + " результат запуска: " + result);
             }
         }
     }

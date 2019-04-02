@@ -1,15 +1,31 @@
 package by.it.bildziuh.jd01_10;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 public class BeanTester {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
-        Class<Bean> beanClass = Bean.class;
-        Method [] methods = beanClass.getDeclaredMethods();
+        Class<Bean> bean = Bean.class;
+        Class<Param> anno = Param.class;
+        Method a = anno.getMethod("a");
+        Method b = anno.getMethod("b");
+        Object instance = bean.getDeclaredConstructor().newInstance();
+        Method[] methods = bean.getDeclaredMethods();
 
-        for (int i = 0; i < methods.length; i++) {
-            System.out.println(methods[i]);
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(anno)) {
+                Param an = method.getAnnotation(anno);
+                int aValue = (int) a.invoke(an);
+                int bValue = (int) b.invoke(an);
+                double result;
+                if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC) {
+                    result = (double) method.invoke(null, aValue, bValue);
+                } else {
+                    result = (double) method.invoke(instance, aValue, bValue);
+                }
+                System.out.println("Для " + method.getName() + " ожидается " + result);
+            }
         }
     }
 }

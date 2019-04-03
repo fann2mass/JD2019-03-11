@@ -9,8 +9,8 @@ public class PrintMath {
     public static void main(String[] args) {
 
         Class<Math> mathClass = Math.class;
-        Method[] methods = mathClass.getDeclaredMethods(); // в массив methods помещаем все методы в классе Math.
-        Field[] fields = mathClass.getDeclaredFields(); /*в массив fields помещаем все поля в классе Math.
+        Method[] methods = mathClass.getDeclaredMethods(); // в массив methods помещаем все методы из класса Math.
+        Field[] fields = mathClass.getDeclaredFields(); /*в массив fields помещаем все поля из класса Math.
          Некоторые математические опекрации не выделены в отдельные методы и находятся непосредственно в классе Math,
          например число ПИ или число Эйлера(E).*/
 

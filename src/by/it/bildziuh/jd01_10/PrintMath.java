@@ -20,7 +20,6 @@ public class PrintMath {
                 System.out.print(modifiers(method.getModifiers()));
                 System.out.print(method.getName());
                 System.out.println(parameters(count, method));
-
                 if (method.getTypeParameters()!=null)
                     System.out.print(method.getParameters()[0].toString().replace("arg0", ""));
                 else

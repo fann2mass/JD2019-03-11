@@ -14,7 +14,7 @@ public class PrintMath {
 
         for (Method method : methods) {
             if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
-                // System.out.println((String.valueOf(method).replace("java.lang.Math.", "")));
+                // System.out.println((String.valueOf(method).replace("java.lang.Math.", ""))); - способ номер 2, но реплейс привязан к текущему значению
                 int count = method.getParameterCount();
                 System.out.print(modifiers(method.getModifiers()));
                 System.out.print(method.getReturnType().toString() + " ");
@@ -25,9 +25,9 @@ public class PrintMath {
 
         for (Field field : fields) {
             if ((field.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
-             //    System.out.println((String.valueOf(field).replace("java.lang.Math.", "")));
+             //    System.out.println((String.valueOf(field).replace("java.lang.Math.", "")));  - способ номер 2, но реплейс привязан к текущему значению
                 System.out.print(modifiers(field.getModifiers()));
-                System.out.print(field.getGenericType().toString() + " ");
+                System.out.print(field.getType().toString() + " ");
                 System.out.println(field.getName());
             }
         }

@@ -10,7 +10,6 @@ public class BeanTester {
         Class<Param> param = Param.class;
         Method a = param.getMethod("a");
         Method b = param.getMethod("b");
-        Object instance = bean.getDeclaredConstructor().newInstance();
         Method[] methods = bean.getDeclaredMethods();
 
         for (Method method : methods) {
@@ -20,6 +19,7 @@ public class BeanTester {
                 int valueB = (int) b.invoke(annotation);
                 String nameMethod = method.getName();
                 double result;
+                Object instance = bean.getDeclaredConstructor().newInstance();
                 int modifiers = method.getModifiers();
                 if ((modifiers & Modifier.STATIC) == Modifier.STATIC)
                     result = (double) method.invoke(null,valueA,valueB);

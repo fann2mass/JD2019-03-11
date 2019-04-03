@@ -19,7 +19,7 @@ public class PrintMath {
                  только публичные методы */
 
                 System.out.print(modifiers(method.getModifiers())); /* getModifiers - возвращает число, в десятичной системе счисления
-                 соответсвующее модификаторам рассматриваемого метода, подробнее внутри метода modifiers в строке 46*/
+                 соответсвующее модификаторам рассматриваемого метода, подробнее внутри метода modifiers в строке 48*/
                 System.out.print(method.getReturnType() + " "); // получаем тип возвращаемого значение (int/double/string/void и т.д.)
                 System.out.print(method.getName()); // получаем имя метода (abs/pow/atan/wait/random и т.д.)
                 System.out.println(parameters(method.getParameterCount(), method)); /* метод для вывода типа передаваемых в метод параметра(ов)

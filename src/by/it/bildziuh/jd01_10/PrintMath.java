@@ -69,7 +69,11 @@ public class PrintMath {
     }
 
     private static String parameters(int count, Method method) {
-        switch (count) {//getParameterTypes - возвращает массив, в котором записаны
+        switch (count) {//count = getParameterCount() - строка 26
+            //method.getParameterTypes() - возвращает массив с типами передаваемых в метод параметров
+            //например, для (float,double) параметров массив будет выглядеть:
+            //method.getParameterTypes()[0] - float
+            //method.getParameterTypes()[1] - double
             case 1:
                 return "(" + method.getParameterTypes()[0] + ")"; //если в метод передаётся 1 значение, выводит первое значение массива,
             // которое имеет индекс [0]

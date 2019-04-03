@@ -35,7 +35,7 @@ public class PrintMath {
         Field[] fields = object.getFields();
         for (Field field : fields) {
             int modifiers = field.getModifiers();
-            if(Modifier.isPublic(modifiers)){
+            //if(Modifier.isPublic(modifiers)){
                 StringBuilder sb = new StringBuilder("public ");
                 if(Modifier.isStatic(modifiers)){
                     sb.append("static ");
@@ -46,7 +46,7 @@ public class PrintMath {
                     sb.append(field.getName());
                 }
                 System.out.println(sb);
-            }
+           // }
 
         }
     }

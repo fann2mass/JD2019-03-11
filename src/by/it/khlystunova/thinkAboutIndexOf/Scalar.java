@@ -59,7 +59,8 @@ public class Scalar extends Var {
 
     @Override
     public Var div(Scalar other) {
-        return new Scalar(this.value / other.value);
+        double s = this.value / other.value;
+        return new Scalar(s);
     }
 
     @Override

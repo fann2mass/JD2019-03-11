@@ -2,11 +2,12 @@ package by.it.narushevich.jd01_11;
 
 import java.util.*;
 
-public class ListA<E> implements List<E> {
+public class ListB<E> implements List<E> {
 
+    private static final int DEFAULT_CAPACITY = 10;
     private E[] elements = (E[]) new Object[0];
-
     private int size = 0;
+
 
     @Override
     public boolean add(E e) {
@@ -25,38 +26,34 @@ public class ListA<E> implements List<E> {
     }
 
     @Override
-    public boolean remove(Object o) {
-        int index = indexOf(o);
-        if (index >= 0) {
-            remove(index);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public E get(int index) {
         return elements[index];
     }
 
     @Override
-    public int indexOf(Object o) {
-        if (o == null) {
-            for (int i = 0; i < size; i++) {
-                if (elements[i] == null)
-                    return i;
-            }
-        } else
-            for (int i = 0; i < size; i++) {
-                if (o.equals(elements[i]))
-                    return i;
-            }
-        return -1;
+    public E set(int index, E element) {
+        E oldValue = elements[index];
+        elements[index] = element;
+        return oldValue;
     }
 
     @Override
-    public int size() {
-        return size;
+    public void add(int index, E element) {
+        System.arraycopy(elements, index, elements, index + 1, size - index);
+        elements[index] = element;
+        size++;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        E[] a = (E[]) c.toArray();
+        int addLength = a.length;
+        int minCapacity = size + addLength;
+        if (minCapacity > elements.length)
+            elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
+        System.arraycopy(a,0, elements,size, addLength);
+        size += addLength;
+        return addLength != 0;
     }
 
     @Override
@@ -69,6 +66,12 @@ public class ListA<E> implements List<E> {
         sb.append("]");
         return sb.toString();
     }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
 
     //stabs
     @Override
@@ -96,14 +99,13 @@ public class ListA<E> implements List<E> {
         return null;
     }
 
-
     @Override
-    public boolean containsAll(Collection<?> c) {
+    public boolean remove(Object o) {
         return false;
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {
+    public boolean containsAll(Collection<?> c) {
         return false;
     }
 
@@ -127,17 +129,10 @@ public class ListA<E> implements List<E> {
 
     }
 
-
     @Override
-    public E set(int index, E element) {
-        return null;
+    public int indexOf(Object o) {
+        return 0;
     }
-
-    @Override
-    public void add(int index, E element) {
-
-    }
-
 
     @Override
     public int lastIndexOf(Object o) {

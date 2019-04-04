@@ -1,12 +1,9 @@
 package by.it.bolotko.jd01_11;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class ListA<T> implements List<T> {
+public class ListB<T> implements List<T> {
+
 
     private T[] elements = (T[]) new Object[0];
 
@@ -34,6 +31,13 @@ public class ListA<T> implements List<T> {
     @Override
     public T get(int index) {
         return elements[index];
+    }
+
+    @Override
+    public T set(int index, T element) {
+        T oldValue = (T) elements[index];
+        elements[index] = element;
+        return oldValue;
     }
 
     @Override
@@ -77,13 +81,23 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
+    public boolean addAll(Collection<? extends T> c) {
+        Object[] a = c.toArray();
+        int numNew = a.length;
+        //ensureCapacityInternal(size + numNew);
+        System.arraycopy(a, 0, elements, size, numNew);
+        size += numNew;
+        return numNew != 0;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         String delimiter="";
         for (int i = 0; i < size; i++) {
-                sb.append(delimiter).append(elements[i]);
-                delimiter = ", ";
-            }
+            sb.append(delimiter).append(elements[i]);
+            delimiter = ", ";
+        }
         /*for (int i = 0; i < size; i++) {
             if (i > 0) sb.append(", ");
             sb.append(elements[i]);
@@ -127,11 +141,6 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
     public boolean addAll(int index, Collection<? extends T> c) {
         return false;
     }
@@ -149,12 +158,6 @@ public class ListA<T> implements List<T> {
     @Override
     public void clear() {
 
-    }
-
-
-    @Override
-    public T set(int index, T element) {
-        return null;
     }
 
 
@@ -177,4 +180,5 @@ public class ListA<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {
         return null;
     }
+
 }

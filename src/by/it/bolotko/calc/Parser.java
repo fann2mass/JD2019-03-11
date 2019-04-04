@@ -5,9 +5,13 @@ import java.util.regex.Pattern;
 
 class Parser {
     Var calc(String expression) {
+        expression = expression.trim().replaceAll("\\s+", "");
         String[] operand = expression.split(Patterns.OPERATION);
-        Var one = Var.createVar(operand[0]);
         Var two = Var.createVar(operand[1]);
+        if (expression.contains("=")) {
+           return Var.saveVar(operand[0], two);
+        }
+        Var one = Var.createVar(operand[0]);
         if (one == null || two == null)
             return null; //todo create error
         Pattern p = Pattern.compile(Patterns.OPERATION);

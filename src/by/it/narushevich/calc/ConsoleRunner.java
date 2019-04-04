@@ -11,6 +11,10 @@ public class ConsoleRunner {
         while (!(expr=scanner.nextLine()).equals("end")){
             Var result = parser.calc(expr);
             printer.print(result);
+            if (scanner.nextLine().equals("printvar")){
+                printer.printMap(Var.getVars());
+            }
         }
+
     }
 }

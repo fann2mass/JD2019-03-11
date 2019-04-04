@@ -1,11 +1,20 @@
 package by.it.narushevich.calc;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 abstract class Var implements Operation {
 
     private static Map<String,Var> vars = new HashMap<>();
+
+    static Map<String, Var> getVars() {
+        return vars;
+    }
+
+    static void saveVar(String name, Var var){
+        vars.put(name, var);
+    }
 
     static Var createVar(String operand) {
         operand = operand.trim();
@@ -15,10 +24,9 @@ abstract class Var implements Operation {
             return new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
             return new Matrix(operand);
-        return vars.get(operand);
-    }
-
-    public static void saveVar(String operand, Var second) {
+        if (vars.containsKey(operand))
+            return vars.get(operand);
+        return null;
     }
 
     @Override

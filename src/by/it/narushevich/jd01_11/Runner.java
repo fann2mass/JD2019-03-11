@@ -1,8 +1,6 @@
 package by.it.narushevich.jd01_11;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Runner {
 
@@ -10,12 +8,18 @@ public class Runner {
 
         List<String> list = new ArrayList<>();
         Test(list);
-        //System.out.println("-------------My ListA---------------");
-        //list = new ListA<>();
-        //Test(list);
+        System.out.println("-------------My ListA---------------");
+        list = new ListA<>();
+        Test(list);
         System.out.println("-------------My ListB---------------");
         list = new ListB<>();
         Test(list);
+        System.out.println("-------------My SetC----------------");
+        Set<String> set = new SetC<>();
+        set.add("bool");
+
+
+
 
     }
 

@@ -4,7 +4,6 @@ import java.util.*;
 
 public class ListB<E> implements List<E> {
 
-    private static final int DEFAULT_CAPACITY = 10;
     private E[] elements = (E[]) new Object[0];
     private int size = 0;
 
@@ -67,6 +66,25 @@ public class ListB<E> implements List<E> {
         return sb.toString();
     }
 
+    public int indexOf(Object o) {
+        if (o == null) {
+            for (int i = 0; i < size; i++)
+                if (elements[i]==null)
+                    return i;
+        } else {
+            for (int i = 0; i < size; i++)
+                if (o.equals(elements[i]))
+                    return i;
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return indexOf(o) >= 0;
+    }
+
+
     @Override
     public int size() {
         return size;
@@ -76,11 +94,6 @@ public class ListB<E> implements List<E> {
     //stabs
     @Override
     public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
         return false;
     }
 
@@ -127,11 +140,6 @@ public class ListB<E> implements List<E> {
     @Override
     public void clear() {
 
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
     }
 
     @Override

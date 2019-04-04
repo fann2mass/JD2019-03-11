@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-public class SetC<E> implements Set<E> {
+public class SetC<T> implements Set<T> {
 
     @Override
     public int size() {
@@ -23,7 +23,7 @@ public class SetC<E> implements Set<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<T> iterator() {
         return null;
     }
 
@@ -38,9 +38,10 @@ public class SetC<E> implements Set<E> {
     }
 
     @Override
-    public boolean add(E e) {
+    public boolean add(T t) {
         return false;
     }
+
 
     @Override
     public boolean remove(Object o) {
@@ -53,7 +54,7 @@ public class SetC<E> implements Set<E> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {
+    public boolean addAll(Collection<? extends T> c) {
         return false;
     }
 

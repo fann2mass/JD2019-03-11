@@ -9,7 +9,7 @@ import java.util.*;
 
 public class SetC<E> implements Set<E> {
 
-    public  E[] elements = (E[]) new Object[0];
+    private E[] elements = (E[]) new Object[0];
 
     public int size = 0;
 
@@ -20,27 +20,23 @@ public class SetC<E> implements Set<E> {
 
     @Override
     public boolean isEmpty() {
-        if(size==0)
-            return true;
-        else return false;
+        return size == 0;
     }
 
     @Override
     public boolean add(E e) {
-        for (int i = 0; i <size; i++)
-            if (e.equals(elements[i])) return false;
-        if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
-        }
-        elements[size++] = e;//переданное е добавляем в конец
+        if(this.contains(e))
+            return false;
+        if (size==elements.length)
+            elements= Arrays.copyOf(elements, (size*3)/2+1);
+        elements[size++]=e;
         return true;
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        for (E e : c) {
-            this.add(e);
-        }
+        E[] a = (E[]) c.toArray();
+        Collections.addAll(this, a);
         return true;
     }
 
@@ -78,9 +74,7 @@ public class SetC<E> implements Set<E> {
     @Override
     public boolean contains(Object o) {
         int i1 = indexOf(o);
-        if(i1!=-1)
-            return  true;
-        else return false;
+        return i1 != -1;
     }
 
     @Override
@@ -92,12 +86,11 @@ public class SetC<E> implements Set<E> {
         return  true;
     }
 
-
-
     @Override
     public boolean removeAll(Collection<?> c) {
-        for (Object o : c) {
-            this.remove(o);
+        E[] a = (E[]) c.toArray();
+        for (E e : a) {
+            this.remove(e);
         }
         return  true;
     }
@@ -120,6 +113,7 @@ public class SetC<E> implements Set<E> {
         return null;
     }
 
+
     @Override
     public Iterator<E> iterator() {
         return null;
@@ -127,7 +121,7 @@ public class SetC<E> implements Set<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return null;
     }
 
     @Override
@@ -142,6 +136,7 @@ public class SetC<E> implements Set<E> {
 
     @Override
     public void clear() {
-
+        size=0;
+        elements = Arrays.copyOf(elements, 0);
     }
 }

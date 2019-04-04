@@ -24,9 +24,7 @@ public class ListB<E> extends ListA<E>{
         }
         System.out.println("----rightArray-----");
         elements = Arrays.copyOf(elements, elements.length+1);//длина нашего массива + массива из элементов коллекции
-        for (int i = 0; i < leftArray.length; i++) {
-            elements[i] = leftArray[i];
-        }
+        System.arraycopy(leftArray, 0, elements, 0, leftArray.length);
         System.out.println("----leftArray-----");
         for (E e : leftArray) {
             System.out.println(e);;
@@ -48,9 +46,8 @@ public class ListB<E> extends ListA<E>{
     public boolean addAll(Collection<? extends E> c) {
         List<E> s = (List<E>)c;
         elements = Arrays.copyOf(elements, size + s.size());//длина нашего массива + массива из элементов коллекции
-        for (int i = 0; i < s.size(); i++) {
-
-            elements[size++] = s.get(i);
+        for (E e : s) {
+            elements[size++] = e;
         }
         return true;
     }

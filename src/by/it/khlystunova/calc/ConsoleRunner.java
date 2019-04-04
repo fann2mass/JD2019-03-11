@@ -12,7 +12,7 @@ public class ConsoleRunner {
             String expression = scanner.nextLine().replace(" ","");
             if(expression.equals("end"))break;
             if(expression.equals("printVar"))
-                Var.printVar();
+                Printer.printVar(Var.getVar());
             if(expression.equals("sortVar"))
                 Var.sortVar();
             Var result = parser.calc(expression);

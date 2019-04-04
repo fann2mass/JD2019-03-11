@@ -20,13 +20,12 @@ public abstract class Var implements Operation {
         vars.put(operand,two);
     }
 
-    public static void printVar(){
-        System.out.println(vars);
+    public static void sortVar() {
+        Printer.printVar(vars);
     }
 
-    public static void sortVar() {
-        System.out.println(vars);
-
+    public static Map getVar() {
+        return vars;
     }
 
     @Override

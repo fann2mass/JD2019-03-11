@@ -7,14 +7,14 @@ import java.util.Set;
 
 public class Runner {
     public static void main(String[] args) {
-       /* List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         TestA(list);
         System.out.println("----------My ListA----------");
         list = new ListA<>();
         TestA(list);
         System.out.println("----------My ListB----------");
         list=new ListB<>();
-        TestB(list);*/
+        TestB(list);
         //TaskC
         Set<String> array = new HashSet<>();
         TaskC(array);
@@ -46,10 +46,11 @@ public class Runner {
         System.out.println("Массив пустой?");
         System.out.println(array.isEmpty());
         System.out.println("добавляем в массив five seven seven");
-        Set<String> array2 = new HashSet<>();
+        ArrayList<String> array2 = new ArrayList<>();
         array2.add("five");
         array2.add("seven");
         array2.add("seven");
+        array2.add("nine");
         System.out.println("Коллекция "+ array2);
         array.addAll(array2);
         System.out.println(array);
@@ -59,9 +60,11 @@ public class Runner {
         System.out.println("удаляем из массива коллекцию  "+array2);
         array.removeAll(array2);
         System.out.println(array);
+        System.out.println("Удаляем все");
+        array.clear();
+        System.out.println(array);
 
     }
-
 
     private static void TestA(List<String> list) {
         list.add("one");

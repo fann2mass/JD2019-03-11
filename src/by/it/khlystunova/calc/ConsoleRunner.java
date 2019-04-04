@@ -1,4 +1,4 @@
-package by.it.khlystunova.Calc;
+package by.it.khlystunova.calc;
 
 import java.util.Scanner;
 
@@ -11,6 +11,10 @@ public class ConsoleRunner {
         while(true){
             String expression = scanner.nextLine().replace(" ","");
             if(expression.equals("end"))break;
+            if(expression.equals("printVar"))
+                Var.printVar();
+            if(expression.equals("sortVar"))
+                Var.sortVar();
             Var result = parser.calc(expression);
             printer.print(result);
         }

@@ -1,25 +1,32 @@
-package by.it.khlystunova.Calc;
+package by.it.khlystunova.calc;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Var implements Operation {
 
-    private static Map<String,Var> vars = new HashMap<>();
+    private static Map<String,Var> vars = new TreeMap<>();
 
     static Var createVar(String operand){
-
      if(operand.matches(Patterns.SCALAR))
         return new Scalar(operand);
      else if(operand.matches(Patterns.VECTOR))
          return new Vector(operand);
      else if(operand.matches(Patterns.MATRIX))
          return new Matrix(operand);
-      return vars.get(operand);
+        return vars.get(operand);//возвращает объект с указанным ключом
     }
 
-    public static void saveVar(String name, Var var) {
-        vars.put(name,var);
+    public static void saveVar(String operand, Var two) {
+        vars.put(operand,two);
+    }
+
+    public static void printVar(){
+        System.out.println(vars);
+    }
+
+    public static void sortVar() {
+        System.out.println(vars);
+
     }
 
     @Override

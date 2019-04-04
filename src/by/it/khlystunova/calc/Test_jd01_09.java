@@ -1,4 +1,4 @@
-package by.it.khlystunova.Calc;
+package by.it.khlystunova.calc;
 
 
 import org.junit.Test;

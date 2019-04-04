@@ -1,37 +1,44 @@
-package by.it._tasks_.jd01_11;
+package by.it.khlystunova.jd01_11;
 
 import java.util.*;
 
+/*TaskA. Свой ListA. Напишите класс ListA<T>, который реализует 3 метода add(T e),
+remove(int index), get(int index)из интерфейса List<T>
+(реализация остальных –фиктивная)и плюс к этому реализует toString()как в ArrayList.*/
+
 public class ListA<E> implements List<E> {
 
-    private E[] elements = (E[])new Object[0];
-    private int size =0;
+  public  E[] elements = (E[]) new Object[0];
+
+   public int size = 0;
 
     @Override
     public boolean add(E e) {
-        if(size== elements.length){
-           elements =  Arrays.copyOf(elements, elements.length*3/2+1);
+        if (size == elements.length) {
+            elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
         }
-        elements[size++] = e;
+        elements[size++] = e;//переданное е добавляем в конец
         return true;
     }
+
+
     @Override
     public E get(int index) {
-        return null;
+        return elements[index];
     }
+
     @Override
     public E remove(int index) {
         E ret = elements[index];
-        System.arraycopy(elements,index+1,elements,index,size-index-1);
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
         return ret;
-
     }
 
     @Override
     public boolean remove(Object o) {
-        int index = indexOf(o) ;
-        if(index>=0){
+        int index = indexOf(o);
+        if (index >= 0) {
             remove(index);
             return true;
         }
@@ -45,17 +52,17 @@ public class ListA<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        if(o==null){
+        if (o == null) {
             for (int i = 0; i < size; i++) {
-               if(elements[i]==null)
-                   return i;
+                if (elements[i] == null)
+                    return i;
             }
-        }else {
+        } else
             for (int i = 0; i < size; i++) {
                 if (o.equals(elements[i]))
                     return i;
             }
-        }
+
         return -1;
     }
 
@@ -63,15 +70,15 @@ public class ListA<E> implements List<E> {
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < size; i++) {
-            if(i>0)sb.append(",");
+            if (i > 0) sb.append(", ");
             sb.append(elements[i]);
         }
         sb.append("]");
         return sb.toString();
     }
 
-    //stabs
 
+    // stubs
 
     @Override
     public boolean isEmpty() {
@@ -130,7 +137,6 @@ public class ListA<E> implements List<E> {
     }
 
 
-
     @Override
     public E set(int index, E element) {
         return null;
@@ -140,9 +146,6 @@ public class ListA<E> implements List<E> {
     public void add(int index, E element) {
 
     }
-
-
-
 
 
     @Override

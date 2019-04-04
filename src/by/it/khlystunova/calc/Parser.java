@@ -1,4 +1,4 @@
-package by.it.akhmelev.calc_v3;
+package by.it.khlystunova.calc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +9,6 @@ class Parser {
         String[] operands = expression.split(Patterns.OPERATION);
         if (operands.length != 2)
             return null;
-
         Pattern po = Pattern.compile(Patterns.OPERATION);
         Matcher mo = po.matcher(expression);
         Var two = Var.createVar(operands[1]);
@@ -22,8 +21,6 @@ class Parser {
             }
         }
         Var one = Var.createVar(operands[0]);
-
-
         if (one == null || two == null)
             return null;
         //ok find op

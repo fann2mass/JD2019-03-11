@@ -10,14 +10,14 @@ public class PrintMath {
 		for (Method method : methods) {
 			if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC) {
 				if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
-					System.out.println(new StringBuilder(String.valueOf(method).replace("java.lang.Math.", "")));
+					System.out.println(String.valueOf(method).replace("java.lang.Math.", ""));
 				}
 
 			}
 		}
 		Field[] fields = Math.class.getFields();
 		for (Field field : fields) {
-			System.out.println(new StringBuilder(String.valueOf(field).replace("java.lang.Math.", "")));
+			System.out.println(String.valueOf(field).replace("java.lang.Math.", ""));
 		}
 	}
 }

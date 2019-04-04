@@ -1,14 +1,13 @@
 package by.it.narushevich.calc;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 abstract class Var implements Operation {
 
     private static Map<String,Var> vars = new HashMap<>();
 
-    static Map<String, Var> getVars() {
+    public static Map<String, Var> getVars() {
         return vars;
     }
 
@@ -37,19 +36,19 @@ abstract class Var implements Operation {
 
     @Override
     public Var sub(Var other) {
-        System.out.printf("Операция вычитания %s+%s невозможна!\n",this,other);
+        System.out.printf("Операция вычитания %s-%s невозможна!\n",this,other);
         return null;
     }
 
     @Override
     public Var mul(Var other) {
-        System.out.printf("Операция умножения %s+%s невозможна!\n",this,other);
+        System.out.printf("Операция умножения %s*%s невозможна!\n",this,other);
         return null;
     }
 
     @Override
     public Var div(Var other) {
-        System.out.printf("Операция деления %s+%s невозможна!\n",this,other);
+        System.out.printf("Операция деления %s/%s невозможна!\n",this,other);
         return null;
     }
 

@@ -18,6 +18,7 @@ class Parser {
             operation = m.group();
             if (operation.equals("=")) {
                 Var.saveVar(operands[0],second);
+                return second;
             }
         }
         Var first = Var.createVar(operands[0]);

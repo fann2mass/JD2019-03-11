@@ -1,7 +1,6 @@
 package by.it.narushevich.calc;
 
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 class Printer {
     public void print(Var result) {
@@ -9,12 +8,23 @@ class Printer {
             System.out.println(result);
     }
 
-    void printMap(Map vars) {
-        Iterator it = vars.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            it.remove();
+    void println(Map<String, Var> vars) {
+        Set<Map.Entry<String, Var>> entries = vars.entrySet();
+        for (Map.Entry<String, Var> entry : entries) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
         }
+    }
+
+    void sortPrint(Map<String, Var> vars) {
+        Set<Map.Entry<String, Var>> entries = vars.entrySet();
+        TreeSet<String> elements = new TreeSet<>();
+        for (Map.Entry<String, Var> entry : entries) {
+            String element = entry.getKey()+" = "+entry.getValue();
+            elements.add(element);
+        }
+        for (String element : elements) {
+            System.out.println(element);
+        }
+
     }
 }

@@ -46,6 +46,5 @@ public class Runner {
         System.out.println(myList);
         System.out.println(arList);
 
-
     }
 }

@@ -4,7 +4,21 @@ import java.util.*;
 
 public abstract class Var implements Operation {
 
-    private static Map<String,Var> vars = new TreeMap<>();
+    private static Map<String,Var> vars = new HashMap<>();
+
+    public static Map getVar() {
+        Map<String,Var> copy = new HashMap<>();
+        for (Map.Entry<String, Var> stringVarEntry : vars.entrySet()) {
+            String key = (String) ((Map.Entry) stringVarEntry).getKey();
+            Var value = (Var) ((Map.Entry) stringVarEntry).getValue();
+            copy.put(key, value);
+        }
+        return copy;
+    }
+
+    static void saveVar(String operand, Var two) {
+        vars.put(operand,two);
+    }
 
     static Var createVar(String operand){
      if(operand.matches(Patterns.SCALAR))
@@ -16,18 +30,15 @@ public abstract class Var implements Operation {
         return vars.get(operand);//возвращает объект с указанным ключом
     }
 
-    public static void saveVar(String operand, Var two) {
-        vars.put(operand,two);
+    static void sortVar() {
+        Map<String,Var> sortArray = new TreeMap<>();
+        for (Map.Entry<String, Var> stringVarEntry : vars.entrySet()) {
+            String key = (String) ((Map.Entry) stringVarEntry).getKey();
+            Var value = (Var) ((Map.Entry) stringVarEntry).getValue();
+            sortArray.put(key, value);
+        }
+        Printer.printVar(sortArray);
     }
-
-    public static void sortVar() {
-        Printer.printVar(vars);
-    }
-
-    public static Map getVar() {
-        return vars;
-    }
-
     @Override
     public String toString() {
         return "abstract Var";

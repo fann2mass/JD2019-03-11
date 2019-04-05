@@ -100,10 +100,6 @@ public class ListB<T> implements List<T> {
             sb.append(delimiter).append(elements[i]);
             delimiter = ", ";
         }
-        /*for (int i = 0; i < size; i++) {
-            if (i > 0) sb.append(", ");
-            sb.append(elements[i]);
-        }*/
         sb.append("]");
         return sb.toString();
     }

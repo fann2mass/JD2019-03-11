@@ -23,8 +23,8 @@ public class ListB<T> implements List<T> {
         if (size == elements.length) {
             elements = Arrays.copyOf(elements, (size * 3) / 2 + 1);
         }
-        System.arraycopy(elements, index, elements, index+1, size-index);
-        elements[index]=element;
+        System.arraycopy(elements, index, elements, index + 1, size - index);
+        elements[index] = element;
         size++;
     }
 
@@ -84,7 +84,9 @@ public class ListB<T> implements List<T> {
     public boolean addAll(Collection<? extends T> c) {
         Object[] a = c.toArray();
         int numNew = a.length;
-        //ensureCapacityInternal(size + numNew);
+        int minCapacity = size + numNew;
+        if (minCapacity > elements.length)
+            elements = Arrays.copyOf(elements, (size * 3) / 2 + 1);
         System.arraycopy(a, 0, elements, size, numNew);
         size += numNew;
         return numNew != 0;
@@ -93,7 +95,7 @@ public class ListB<T> implements List<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
-        String delimiter="";
+        String delimiter = "";
         for (int i = 0; i < size; i++) {
             sb.append(delimiter).append(elements[i]);
             delimiter = ", ";

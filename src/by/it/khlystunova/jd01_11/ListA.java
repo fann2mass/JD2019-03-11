@@ -8,7 +8,7 @@ remove(int index), get(int index)из интерфейса List<T>
 
 public class ListA<E> implements List<E> {
 
-  public  E[] elements = (E[]) new Object[0];
+  public  E[] elements = (E[]) new Object[0];//приводим к нужному типу
 
    public int size = 0;
 

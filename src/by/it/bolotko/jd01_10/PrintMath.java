@@ -16,10 +16,6 @@ public class PrintMath {
                 System.out.print(method.getReturnType() + " ");
                 System.out.print(method.getName());
                 System.out.println(parameters(method.getParameterCount(), method));
-
-                 /* Ниже способ номер два одной строкой для методов — просто удаляем лишнее по заданию из строки,
-                 но привязываемся к текущему значению реплейса */
-                //System.out.println((String.valueOf(method).replace("java.lang.Math.", "")));
             }
         }
 
@@ -29,19 +25,12 @@ public class PrintMath {
                 System.out.print(modifiers(field.getModifiers()));
                 System.out.print(field.getType() + " ");
                 System.out.println(field.getName());
-
-                 /* Ниже способ номер два одной строкой для полей — просто удаляем лишнее по заданию из строки,
-                 но привязываемся к текущему значению реплейса */
-                //System.out.println((String.valueOf(field).replace("java.lang.Math.", "")));
             }
         }
     }
 
     private static String modifiers(int mods) {
-        switch (mods) { /* модификаторы хранятся одним числом в двоичном виде, но т.к. командой getModifiers мы получаем их значение
-             в десятичной системе счисления, то и свич привязываем к ней. Например первая единица в двоичной системе счисления
-             отвечает за "public", значит все возвращаемые в десятичной системе счисления нечетные числа будут указывать на публичный тип.
-             бинарные значения чисел читаем справа налево. */
+        switch (mods) {
             case 1: //0001 - в бинарном коде: первый бит отвечает за модификатор "public"
                 return "public ";
             case 9: //1001 - в бинарном коде: первый бит читаем выше, 4й бит отвечает за модификатор "static"

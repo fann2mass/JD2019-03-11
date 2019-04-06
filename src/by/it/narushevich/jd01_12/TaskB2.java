@@ -12,9 +12,7 @@ public class TaskB2 {
         for (int i = 0; i < peoples.length; i++) {
             peoples[i] = "name" + (i + 1);
         }
-        for (String man : peoples) {
-            System.out.println(man);
-        }
+
         List<String> arr = Arrays.asList(peoples);
         ArrayList<String> resA = new ArrayList<>(arr);
         LinkedList<String> resL = new LinkedList<>(arr);
@@ -26,12 +24,29 @@ public class TaskB2 {
     }
 
     static String process(LinkedList<String> peoples) {
-        return null;
+        int safePos = 0;
+        int step = 2;
+        for (int i = 0; i < peoples.size(); i++) {
+            safePos = (safePos + step) % (i + 1);
+        }
+        String s = Integer.toString(safePos);
+
+        ListIterator<String> listIt = peoples.listIterator();
+        while (listIt.hasNext()) {
+            if (listIt.next().endsWith(s))
+                return listIt.next();
+        }
+        return listIt.next();
     }
+
 
     static String process(ArrayList<String> peoples) {
-        return null;
+        int pos = 0;
+        int step = 2;
+        while (peoples.size() != 1) {
+            pos = (pos + step - 1) % peoples.size();
+            peoples.remove(pos);
+        }
+        return peoples.get(0);
     }
-
-
 }

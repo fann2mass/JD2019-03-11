@@ -37,9 +37,10 @@ public class TaskB1 {
     }
 
     private static void process(String word) {
+        int code = word.hashCode();
         Set<Map.Entry<String, Integer>> entries = words.entrySet();
         for (Map.Entry<String, Integer> entry : entries) {
-            if (entry.getKey().equals(word)) {
+            if (entry.getKey().hashCode()==code) {
                 Integer count = entry.getValue();
                 count++;
                 entry.setValue(count);

@@ -14,12 +14,19 @@ public class TaskA2 {
         System.out.println("HashSet: "+a);
         System.out.println("TreeSet: "+b);
         System.out.println("Union: " + getUnion(a,b));
+        System.out.println("Cross: " + getCross(a, b));
 
+    }
+
+    private static Set<Integer> getCross(Set<Integer> a, Set<Integer> b) {
+        Set<Integer> result = new HashSet<>(a);
+        result.retainAll(b);
+        return result;
     }
 
     private static Set<Integer> getUnion(Set<Integer> a, Set<Integer> b) {
         Set<Integer> result = new HashSet<>(a);
-
+        result.addAll(b);
         return result;
     }
 }

@@ -21,6 +21,7 @@ public class TaskA1 {
         System.out.println("AFTER: " + instance.grades);
     }
 
+    @SuppressWarnings("all")
     private void clearBad(List<Integer> grades){
         Iterator<Integer> iterator = grades.iterator();
         while(iterator.hasNext()){
@@ -28,6 +29,5 @@ public class TaskA1 {
             if (currentGrade <4)
                 iterator.remove();
         }
-
     }
 }

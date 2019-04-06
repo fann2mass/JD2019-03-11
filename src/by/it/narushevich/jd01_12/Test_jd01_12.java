@@ -76,7 +76,7 @@ public class Test_jd01_12 {
                     "after they were warned, by that wise old witch, the husband's mother, not to take on anyone off the \n" +
                     "street. They were inscribed in a medical benefit society, their pet dog was licensed, they were \n" +
                     "insured against fire, flood damage and theft, and subscribed to the local Neighborhood Watch, \n" +
-                    "which supplied them with a plaque for their gates lettered Y OU HAVE BEEN WARNED \n" +
+                    "which supplied them with a plaque for their gates lettered YOU HAVE BEEN WARNED \n" +
                     "over the silhouette of a would-be intruder. He was masked; it could not be said if he was \n" +
                     "black or white, and therefore proved the property owner was no racist. \n" +
                     "\n" +

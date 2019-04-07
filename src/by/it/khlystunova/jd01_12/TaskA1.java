@@ -1,20 +1,14 @@
 package by.it.khlystunova.jd01_12;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TaskA1 {
 
 private List<Integer> grades = new ArrayList<>();
 
-    void clearBad(List<Integer> grades){
-        Iterator<Integer> iterator = grades.iterator();
-        while(iterator.hasNext()){
-            Integer next = iterator.next();
-            if(next<4)
-                iterator.remove();
-        }
+    private void clearBad(List<Integer> grades){
+        grades.removeIf(next -> next < 4);
     }
 
     public static void main(String[] args) {

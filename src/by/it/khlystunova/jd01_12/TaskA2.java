@@ -1,7 +1,11 @@
 package by.it.khlystunova.jd01_12;
 
 import java.util.*;
-
+/*TaskA2.В main класса TaskA2 определите два множества (a и b) на основе целых чисел.
+Создайте статические методы для определения пересечения множеств getCross и
+объединения множеств getUnion.
+Покажите работу этих методов на примере двух разных множеств
+(например, HashSet aи TreeSet b).*/
 public class TaskA2 {
     public static void main(String[] args) {
         Integer[] arrayA ={1,2,3,4,4,4,5,6,6,3,3};
@@ -14,8 +18,6 @@ public class TaskA2 {
         System.out.println("TreeSet: "+b);
         System.out.println("Cross: "+ getCross(a,b));
         System.out.println("Union: "+ getUnion(a,b));
-
-
     }
 
     private static Set<Integer> getCross(Set<Integer> a, Set<Integer> b) {

@@ -4,22 +4,62 @@ import java.util.*;
 
 public class SetC<T> implements Set<T> {
 
-    private HashSet<String> elements = new HashSet<>();
-
-    //private T[] elements = (T[]) new Object[]{};
+    private T[] elements = (T[]) new Object[]{};
     private int size = 0;
-    private Iterator<String> it = elements.iterator();
+
+    @Override
+    public boolean add(T t) {
+        if (this.contains(t))
+            return false;
+        if (size == elements.length)
+            elements = Arrays.copyOf(elements, (size * 3) / 2 + 1);
+        elements[size++] = t;
+        return false;
+    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         String delimiter = "";
-        while(it.hasNext()) {
-            sb.append(delimiter).append(it.next());
+        for (int i = 0; i < size; i++) {
+            sb.append(delimiter).append(elements[i]);
             delimiter = ", ";
         }
         sb.append("]");
         return sb.toString();
+    }
+
+
+    @Override
+    public boolean remove(Object o) {
+        int index = indexOf(o);
+        if (index > -1) remove(index);
+        return (index > -1);
+    }
+
+
+    public int indexOf(Object o) {
+        if (o == null) {
+            for (int i = 0; i < size; i++)
+                if (elements[i] == null)
+                    return i;
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (o.equals(elements[i]))
+                    return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+
+        if (size < elements.length + c.size())
+            elements = Arrays.copyOf(elements, size + c.size());
+        System.arraycopy(c.toArray(), 0, elements, size, c.size());
+        size = size + c.size();
+        return true;
     }
 
     @Override
@@ -28,17 +68,20 @@ public class SetC<T> implements Set<T> {
     }
 
     @Override
+    public Object[] toArray() {
+        return Arrays.copyOf(elements, size);
+    }
+
+
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
-        while (it.hasNext()) {
-            if (o.equals(elements))
-                return true;
-        }
-        return false;
+        int exists = indexOf(o);
+        return exists != -1;
     }
 
     @Override
@@ -47,41 +90,12 @@ public class SetC<T> implements Set<T> {
     }
 
     @Override
-    public Object[] toArray() {
+    public <T1> T1[] toArray(T1[] a) {
         return null;
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
-    @Override
-    public boolean add(T e) {
-        if (this.contains(e))
-            return false;
-
-
-        return true;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return true;
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
         return false;
     }
 
@@ -91,8 +105,15 @@ public class SetC<T> implements Set<T> {
     }
 
     @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
     public void clear() {
 
     }
+
+
 }
 

@@ -6,6 +6,8 @@ import java.util.Map;
 abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
+
+
     static Var saveVar (String name, Var var){
         vars.put (name, var);
         return var;

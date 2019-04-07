@@ -130,7 +130,7 @@ public class ListA<T> implements List<T> {
 
     @Override
     public int size() {
-        return 0;
+        return elements.length;
     }
 
     @Override
@@ -150,7 +150,7 @@ public class ListA<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(elements, size);
     }
 
     @Override

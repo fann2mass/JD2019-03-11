@@ -101,8 +101,7 @@ public class ListB<T> implements List<T> {
 
     @Override
     public int size() {
-        size = elements.length;
-        return size;
+        return elements.length;
     }
 
     @Override

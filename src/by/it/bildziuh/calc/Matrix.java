@@ -1,4 +1,4 @@
-package by.it.bildziuh.jd01_09;
+package by.it.bildziuh.calc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -40,6 +40,9 @@ public class Scalar extends Var {
             return new Scalar(this.value / z);
         }
 
+        if (!other.toString().matches(Patterns.SCALAR)) {
+            throw new CalcException("Деление невозможно из-за несоответствия типов");
+        }
         return other.div(this);
     }
 

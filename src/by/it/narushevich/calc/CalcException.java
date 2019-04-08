@@ -1,8 +1,7 @@
 package by.it.narushevich.calc;
 
 public class CalcException extends Exception {
-    public CalcException(String s, Var var, Var other) {
-        super("ERROR: ");
+    public CalcException() {
     }
 
     public CalcException(String message) {

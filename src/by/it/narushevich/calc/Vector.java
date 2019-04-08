@@ -21,6 +21,9 @@ public class Vector extends Var {
         }
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
+                if (this.value.length!=((Vector) other).value.length){
+                    throw new CalcException("Несоответствующий размер");
+                }
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
             return result;
@@ -39,6 +42,9 @@ public class Vector extends Var {
         }
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
+                if (this.value.length!=((Vector) other).value.length){
+                    throw new CalcException("Несоответствующий размер");
+                }
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
             return result;
@@ -58,6 +64,9 @@ public class Vector extends Var {
         }
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < this.value.length; i++) {
+                if (this.value.length!=((Vector) other).value.length){
+                    throw new CalcException("Несоответствующий размер");
+                }
                 result0 += this.value[i] * ((Vector) other).value[i];
             }
             return new Scalar(result0);

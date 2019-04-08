@@ -54,8 +54,11 @@ public class Matrix extends Var {
         Matrix result2 = new Matrix(value);
         if (other.toString().matches(Patterns.MATRIX)) {
             for (int i = 0; i < result2.value.length; i++)
-                for (int j = 0; j < result2.value[0].length; j++)
-                    result2.value[i][j] = result2.value[i][j] + ((Matrix) other).value[i][j];
+                for (int j = 0; j < result2.value[0].length; j++){
+                    if (result2.value[i].length!=((Matrix) other).value[j].length){
+                        throw new CalcException("Неподходящий размер");
+                    }
+                    result2.value[i][j] = result2.value[i][j] + ((Matrix) other).value[i][j];}
             return result2;
         }
 
@@ -75,8 +78,12 @@ public class Matrix extends Var {
         Matrix result4 = new Matrix(value);
         if (other.toString().matches(Patterns.MATRIX)) {
             for (int i = 0; i < result4.value.length; i++)
-                for (int j = 0; j < result4.value[0].length; j++)
+                for (int j = 0; j < result4.value[0].length; j++) {
+                    if (result4.value[i].length!=((Matrix) other).value[j].length){
+                        throw new CalcException("Неподходящий размер");
+                    }
                     result4.value[i][j] = result4.value[i][j] - ((Matrix) other).value[i][j];
+                }
             return result4;
         }
 
@@ -97,14 +104,21 @@ public class Matrix extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             double[] resultVector = new double[value.length];
             for (int i = 0; i < result6.value.length; i++)
-                for (int j = 0; j < resultVector.length; j++)
+                for (int j = 0; j < resultVector.length; j++) {
+                    if (result6.value[i].length!=((Vector) other).getValue().length){
+                        throw new CalcException("Неподходящий размер");
+                    }
                     resultVector[i] += result6.value[i][j] * ((Vector) other).getValue()[j];
+                }
             return new Vector(resultVector);
         }
 
         Matrix result7 = new Matrix(value);
         if (other.toString().matches(Patterns.MATRIX)) {
             double[][] result0 = new double[result7.value.length][((Matrix) other).value[0].length];
+            if (result7.value.length!=((Matrix) other).value[0].length){
+                throw new CalcException("Неподходящий размер");
+            }
             for (int i = 0; i < result7.value.length; i++)
                 for (int j = 0; j < ((Matrix) other).value[0].length; j++)
                     for (int k = 0; k < ((Matrix) other).value.length; k++)

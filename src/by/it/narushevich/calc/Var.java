@@ -30,22 +30,22 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Операция сложения %s+%s невозможна!\n",this,other);
+        throw new CalcException();
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычитания %s-%s невозможна!\n",this,other);
+        throw new CalcException();
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения %s*%s невозможна!\n",this,other);
+        throw new CalcException();
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления %s/%s невозможна!\n",this,other);
+        throw new CalcException();
     }
 
     @Override

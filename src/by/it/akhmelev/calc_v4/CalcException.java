@@ -1,20 +1,20 @@
 package by.it.akhmelev.calc_v4;
 
-public class CalcException extends Exception{
+class CalcException extends Exception{
 
-    public CalcException() {
+    CalcException() {
         super();
     }
 
-    public CalcException(String message) {
+    CalcException(String message) {
         super("ERROR: "+message);
     }
 
-    public CalcException(String message, Throwable cause) {
+    CalcException(String message, Throwable cause) {
         super("ERROR: "+message, cause);
     }
 
-    public CalcException(Throwable cause) {
+    CalcException(Throwable cause) {
         super(cause);
     }
 }

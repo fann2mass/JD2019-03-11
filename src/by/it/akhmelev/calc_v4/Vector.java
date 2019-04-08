@@ -47,8 +47,7 @@ public class Vector extends Var {
     public String toString() {
         StringBuilder res = new StringBuilder("{");
         String delimiter = "";
-        for (int i = 0; i < value.length; i++) {
-            double element = value[i];
+        for (double element : value) {
             res.append(delimiter).append(element);
             delimiter = ", ";
         }

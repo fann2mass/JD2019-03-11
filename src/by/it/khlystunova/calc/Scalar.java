@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd01_09;
+package by.it.khlystunova.calc;
 
 public class Scalar extends Var {
     private double value;

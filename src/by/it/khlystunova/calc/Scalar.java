@@ -27,7 +27,7 @@ public class Scalar extends Var {
 
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if(other instanceof Scalar)
             return new Scalar(this.value+((Scalar) other).value);
         else return other.add(this);
@@ -35,7 +35,7 @@ public class Scalar extends Var {
 
     @Override
     //тот объект который вызвал этот метод ТОЧНО Scalar
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if(other instanceof Scalar)
             return new Scalar(this.value -((Scalar) other).value);
         Scalar minus = new Scalar(-1);
@@ -43,14 +43,14 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if(other instanceof Scalar)
             return new Scalar(this.value *((Scalar) other).value);
         else return other.mul(this);
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         if(other instanceof Scalar)
             return new Scalar(this.value/((Scalar) other).value);
         else  return super.div(other);//вызваем метод родителя, потому что число можно поделить только на число(на матрицу и вектор нельзя)

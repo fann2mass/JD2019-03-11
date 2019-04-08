@@ -62,7 +62,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         double[][] result = new double[this.matrix.length][this.matrix[0].length];
         if(other instanceof Matrix){
             //если размерность матриц одинаковая
@@ -85,7 +85,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         double[][] result = new double[this.matrix.length][this.matrix[0].length];
         if(other instanceof Matrix){
             //если размерность матриц одинаковая
@@ -107,7 +107,7 @@ public class Matrix extends Var {
         else return  super.add(other);
     }
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if(other instanceof Vector){
             double[] result = new double[((Vector) other).getVector().length];
             //если число столбцов матрицы = кол-ву элементов вектора

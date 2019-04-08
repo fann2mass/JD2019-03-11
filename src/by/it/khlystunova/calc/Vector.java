@@ -53,7 +53,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
          if(other instanceof Vector){
              if(((Vector) other).vector.length == result.vector.length){
@@ -72,7 +72,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Vector){
             //если вектор, который вызвал этот метод и вектор other одинаковой длины то вычитаем
@@ -92,7 +92,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Vector){
             //если вектор, который вызвал этот метод и вектор other одинаковой длины то вычитаем
@@ -113,7 +113,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {

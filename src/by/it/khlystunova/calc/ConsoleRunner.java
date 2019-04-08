@@ -15,7 +15,12 @@ public class ConsoleRunner {
                 Printer.printVar(Var.getVar());
             if(expression.equals("sortVar"))
                 Var.sortVar();
-            Var result = parser.calc(expression);
+            Var result = null;
+            try {
+                result = parser.calc(expression);
+            } catch (CalcException e) {
+                e.printStackTrace();
+            }
             printer.print(result);
         }
 

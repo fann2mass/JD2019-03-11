@@ -3,13 +3,20 @@ package by.it.khlystunova.jd01_12;
 import java.util.Deque;
 import java.util.LinkedList;
 
+
 /*TaskC3.В консоль вводится строка,
 состоящая из выражений и символов «(», «)», «[», «]», «{», «}».
 Проверьте и выведите в консоль корректность расстановки скобок(true или false)
 с помощью коллекций.*/
 
 public class TaskC3 {
+
+   private static Deque<Character> bracketsRound = new LinkedList<>();
+   private static  Deque<Character> bracketsSquare = new LinkedList<>();
+   private static Deque<Character> bracketsFigure = new LinkedList<>();
+
     public static void main(String[] args) {
+        //демонстрация работы метода
         String expr="[1,1,1],{2,2,2},((2+2)*2)";
         System.out.println(expr+" "+TaskC3.isBracketsCorrect(expr));
         expr="[1,1,1],{{2,2,2},(2+2)*2)";
@@ -18,9 +25,6 @@ public class TaskC3 {
 
     private static boolean isBracketsCorrect(String expr) {
         StringBuilder s = new StringBuilder(expr);
-        Deque<Character> bracketsRound = new LinkedList<>();
-        Deque<Character> bracketsSquare = new LinkedList<>();
-        Deque<Character> bracketsFigure = new LinkedList<>();
         char openBr = '(';
         char closeBr = ')';
         char openSquare = '[';
@@ -50,12 +54,14 @@ public class TaskC3 {
                 case '}':
                     bracketsFigure.addLast(closeFigure);
                     break;
-
                 default:
                     break;
             }
-
         }
+      return isCorrect();
+}
+
+    private static boolean isCorrect() {
         while ((bracketsRound.peekFirst() == '(') && (bracketsRound.peekLast() == ')')) {
             bracketsRound.removeFirst();
             bracketsRound.removeLast();
@@ -79,5 +85,7 @@ public class TaskC3 {
         }
         return bracketsRound.isEmpty() && bracketsSquare.isEmpty() && bracketsFigure.isEmpty();
     }
+
 }
+
 

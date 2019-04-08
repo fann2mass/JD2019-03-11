@@ -42,7 +42,7 @@ public class Matrix extends Var {
 
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         Matrix result1 = new Matrix(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result1.value.length; i++)
@@ -63,7 +63,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         Matrix result3 = new Matrix(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result3.value.length; i++)
@@ -84,7 +84,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         Matrix result5 = new Matrix(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result5.value.length; i++)
@@ -116,7 +116,7 @@ public class Matrix extends Var {
 
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 

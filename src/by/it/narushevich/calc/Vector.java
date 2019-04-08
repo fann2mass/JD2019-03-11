@@ -11,7 +11,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         Vector result = new Vector(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
@@ -29,7 +29,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         Vector result = new Vector(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
@@ -47,7 +47,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         Vector result = new Vector(value);
         double result0 = 0;
         if (other.toString().matches(Patterns.SCALAR)) {
@@ -66,11 +66,15 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         Vector result = new Vector(value);
         if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
-                result.value[i] = result.value[i] / ((Scalar) other).getValue();
+                double z = ((Scalar) other).getValue();
+                if (z==0) {
+                    throw new CalcException("Деление на ноль");
+                }
+                result.value[i] = result.value[i] / z;
             }
             return result;
         }

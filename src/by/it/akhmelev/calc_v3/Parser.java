@@ -22,8 +22,6 @@ class Parser {
             }
         }
         Var one = Var.createVar(operands[0]);
-
-
         if (one == null || two == null)
             return null;
         //ok find op

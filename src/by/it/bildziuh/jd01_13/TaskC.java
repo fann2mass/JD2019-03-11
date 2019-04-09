@@ -15,18 +15,23 @@ public class TaskC {
         ArrayList<Double> numbers = new ArrayList<>();
         String line;
         double number;
-        try {
-            while (!(line = scanner.nextLine()).equals("END")) {
+        int count = 0;
+
+        while (!(line = scanner.nextLine()).equals("END")) {
+            try {
                 number = Double.parseDouble(line);
-          /*      if (number < 0)
-                    throw new NumberFormatException();*/
                 numbers.add(number);
-            }
-        } catch (NumberFormatException e) {
-            Thread.sleep(100);
-            for (int i = numbers.size() - 1; i >= 0; i--) {
-                Double num = numbers.get(i);
-                System.out.println(num);
+
+            } catch (NumberFormatException e) {
+                if (++count < 5) {
+                    Thread.sleep(100);
+                    for (int i = numbers.size() - 1; i >= 0; i--) {
+                        Double num = numbers.get(i);
+                        System.out.printf("%2.1f ",num);
+                    }
+                    System.out.println();
+                }
+               // else throw new NumberFormatException();
             }
         }
     }

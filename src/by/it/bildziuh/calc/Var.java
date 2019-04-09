@@ -2,14 +2,30 @@ package by.it.bildziuh.calc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
     private static Map<String, Var> vars = new HashMap<>();
 
+    static Map<String, Var> varList() {
+        return vars;
+    }
 
-    static Var saveVar (String name, Var var){
-        vars.put (name, var);
+    static Map<String, Var> sortVarList() {
+        Map<String, Var> sortedList = new TreeMap<>();
+        for (Map.Entry<String, Var> stringVarEntry : vars.entrySet()) {
+            String key = (String) ((Map.Entry) stringVarEntry).getKey();
+            Var value = (Var) ((Map.Entry) stringVarEntry).getValue();
+            sortedList.put(key, value);
+        }
+        return sortedList;
+
+    }
+
+
+    static Var saveVar(String name, Var var) {
+        vars.put(name, var);
         return var;
     }
 

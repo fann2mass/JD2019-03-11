@@ -1,6 +1,6 @@
 package by.it.khlystunova.jd01_09;
 
-public class Scalar extends Var implements Operation {
+public class Scalar extends Var {
     private double value;
 
     public double getValue() {
@@ -8,7 +8,7 @@ public class Scalar extends Var implements Operation {
     }
 
     Scalar(double value){
-       this.value = value;
+        this.value = value;
     }
 
     Scalar(Scalar scalar) {
@@ -25,6 +25,7 @@ public class Scalar extends Var implements Operation {
         return Double.toString(value);
     }
 
+
     @Override
     public Var add(Var other) {
         if(other instanceof Scalar)
@@ -36,7 +37,7 @@ public class Scalar extends Var implements Operation {
     //тот объект который вызвал этот метод ТОЧНО Scalar
     public Var sub(Var other) {
         if(other instanceof Scalar)
-           return new Scalar(this.value -((Scalar) other).value);
+            return new Scalar(this.value -((Scalar) other).value);
         Scalar minus = new Scalar(-1);
         return other.sub(this).mul(minus);
     }
@@ -44,7 +45,7 @@ public class Scalar extends Var implements Operation {
     @Override
     public Var mul(Var other) {
         if(other instanceof Scalar)
-           return new Scalar(this.value *((Scalar) other).value);
+            return new Scalar(this.value *((Scalar) other).value);
         else return other.mul(this);
     }
 

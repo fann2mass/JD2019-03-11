@@ -8,12 +8,12 @@ public class SetC<T> implements Set<T> {
     private int size = 0;
 
     @Override
-    public boolean add(T t) {
-        if (this.contains(t))
+    public boolean add(T e) {
+        if (this.contains(e))
             return false;
         if (size == elements.length)
             elements = Arrays.copyOf(elements, (size * 3) / 2 + 1);
-        elements[size++] = t;
+        elements[size++] = e;
         return false;
     }
 
@@ -54,11 +54,8 @@ public class SetC<T> implements Set<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-
-        if (size < elements.length + c.size())
-            elements = Arrays.copyOf(elements, size + c.size());
-        System.arraycopy(c.toArray(), 0, elements, size, c.size());
-        size = size + c.size();
+        T[] a = (T[]) c.toArray();
+        Collections.addAll(this, a);
         return true;
     }
 
@@ -80,8 +77,7 @@ public class SetC<T> implements Set<T> {
 
     @Override
     public boolean contains(Object o) {
-        int exists = indexOf(o);
-        return exists != -1;
+        return indexOf(o) != -1;
     }
 
     @Override
@@ -96,12 +92,27 @@ public class SetC<T> implements Set<T> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (Object o : c) {
+            if (!this.contains(o))
+                return false;
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        T[] a = (T[]) c.toArray();
+        for (T e : a) {
+            this.remove(e);
+        }
+        return true;
+    }
+
+    public T remove(int index) {  //спасибо Лизе
+        T ret = elements[index];
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
+        size--;
+        return ret;
     }
 
     @Override
@@ -111,9 +122,9 @@ public class SetC<T> implements Set<T> {
 
     @Override
     public void clear() {
-
+        size=0;
+        elements = Arrays.copyOf(elements, 0);
     }
-
 
 }
 

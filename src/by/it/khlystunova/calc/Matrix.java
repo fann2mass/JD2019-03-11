@@ -64,15 +64,16 @@ public class Matrix extends Var {
     @Override
     public Var add(Var other) throws CalcException {
         double[][] result = new double[this.matrix.length][this.matrix[0].length];
-        if(other instanceof Matrix){
+        if(other instanceof Matrix) {
             //если размерность матриц одинаковая
-            if(this.matrix.length == ((Matrix) other).matrix.length  && this.matrix[0].length == ((Matrix) other).matrix[0].length ){
+            if (this.matrix.length == ((Matrix) other).matrix.length && this.matrix[0].length == ((Matrix) other).matrix[0].length) {
                 for (int i = 0; i < ((Matrix) other).matrix.length; i++) {
                     for (int j = 0; j < ((Matrix) other).matrix.length; j++) {
                         result[i][j] = this.matrix[i][j] + ((Matrix) other).matrix[i][j];
                     }
                 }
-            }return new Matrix(result);
+            return new Matrix(result);
+        }else throw  new CalcException("Неправильная размерность матриц.");
         }else if(other instanceof Scalar){
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix.length; j++) {
@@ -87,15 +88,16 @@ public class Matrix extends Var {
     @Override
     public Var sub(Var other) throws CalcException {
         double[][] result = new double[this.matrix.length][this.matrix[0].length];
-        if(other instanceof Matrix){
+        if(other instanceof Matrix) {
             //если размерность матриц одинаковая
-            if(this.matrix.length == ((Matrix) other).matrix.length  && this.matrix[0].length == ((Matrix) other).matrix[0].length ){
+            if (this.matrix.length == ((Matrix) other).matrix.length && this.matrix[0].length == ((Matrix) other).matrix[0].length) {
                 for (int i = 0; i < ((Matrix) other).matrix.length; i++) {
                     for (int j = 0; j < ((Matrix) other).matrix.length; j++) {
                         result[i][j] = this.matrix[i][j] - ((Matrix) other).matrix[i][j];
                     }
                 }
-            }return new Matrix(result);
+            return new Matrix(result);
+            }else throw  new CalcException("Неправильная размерность матриц.");
         }else if(other instanceof Scalar){
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix.length; j++) {
@@ -117,21 +119,21 @@ public class Matrix extends Var {
                         result[i] += this.matrix[i][j]*((Vector) other).getVector()[j];
                     }
                 }
-            }
-            return new Vector(result);
-        }else if(other instanceof Matrix){
+                return new Vector(result);
+            }else throw  new CalcException("Число столбцов матрицы должно быть равно кол-ву элементов вектора.");
+        }else if(other instanceof Matrix) {
             double[][] result = new double[this.matrix.length][this.matrix[0].length];
             //кол-во столбцов 1 матрицы = кол-ву строк во 2
-            if(this.matrix[0].length == ((Matrix) other).matrix.length){
+            if (this.matrix[0].length == ((Matrix) other).matrix.length) {
                 for (int i = 0; i < this.matrix.length; i++) {
                     for (int j = 0; j < ((Matrix) other).matrix[0].length; j++) {
                         for (int k = 0; k < ((Matrix) other).matrix.length; k++) {
-                            result[i][j] += this.matrix[i][k]*((Matrix) other).matrix[k][j];
+                            result[i][j] += this.matrix[i][k] * ((Matrix) other).matrix[k][j];
                         }
                     }
                 }
-            }
             return new Matrix(result);
+            }else throw  new CalcException("Кол-во столбцов 1 матрицы должно быть равно кол-ву строк во 2 матрице.\n");
         }else if(other instanceof Scalar){
             double[][] result = new double[this.matrix.length][this.matrix[0].length];
             for (int i = 0; i < this.matrix.length; i++) {

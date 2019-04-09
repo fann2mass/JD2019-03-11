@@ -27,11 +27,11 @@ public abstract class Var implements Operation {
          return new Vector(operand);
      else if(operand.matches(Patterns.MATRIX))
          return new Matrix(operand);
-
-        Var var = vars.get(operand);
-        if(var==null)
-        throw  new CalcException();//возвращает объект с указанным ключом
-        return  var;
+     else{
+         Var var = vars.get(operand);
+         if(var==null)throw  new CalcException("Нет такой переменной "+operand);
+         return  var;
+     }
     }
 
     static void sortVar() {

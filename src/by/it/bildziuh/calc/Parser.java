@@ -10,12 +10,11 @@ class Parser {
         expression = expression.replace(" ", "");
         String[] operand = expression.split(Patterns.OPERATION);
         if (operand.length != 2)
-            return null;
-        Var one = Var.createVar(operand[0]);
+            throw new CalcException("Некорректный ввод значения");
         Var two = Var.createVar(operand[1]);
-        if (expression.contains("=")){
-            return Var.saveVar(operand[0],two);
-        }
+        if (expression.contains("="))
+            return Var.saveVar(operand[0], two);
+        Var one = Var.createVar(operand[0]);
         if (one == null || two == null)
             return null;
         Pattern p = Pattern.compile(Patterns.OPERATION);

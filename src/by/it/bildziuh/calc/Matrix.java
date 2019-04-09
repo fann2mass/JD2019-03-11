@@ -1,5 +1,6 @@
 package by.it.bildziuh.calc;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +21,7 @@ public class Matrix extends Var {
     }
 
     Matrix(Matrix matrix) {
-        this.value = matrix.value;
+        this.value = Arrays.copyOf(matrix.value, matrix.value.length);
     }
 
     Matrix(String strMatrix) {
@@ -75,7 +76,7 @@ public class Matrix extends Var {
 
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resAddScalar = new Matrix(value);
             for (int i = 0; i < resAddScalar.value.length; i++) {
@@ -100,7 +101,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resSubScalar = new Matrix(value);
             for (int i = 0; i < resSubScalar.value[0].length; i++) {
@@ -122,7 +123,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resMulScalar = new Matrix(value);
             for (int i = 0; i < resMulScalar.value[0].length; i++) {
@@ -159,7 +160,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 }

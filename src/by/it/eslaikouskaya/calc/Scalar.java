@@ -9,32 +9,34 @@ class Scalar extends Var {
 	}
 
 	@Override
-	public Var add(Var other) {
+	public Var add(Var other) throws CalcException{
 		if (other instanceof Scalar)
 			return new Scalar(this.value + ((Scalar) other).value);
 		return other.add(this);
 	}
 
 	@Override
-	public Var sub(Var other) {
-		if (other instanceof Scalar)
+	public Var sub(Var other) throws CalcException {
+		if (other.toString().matches(Patterns.SCALAR))
 			return new Scalar(this.value - ((Scalar) other).value);
-		//Scalar minus1=new Scalar(-1);
-		return this.sub(other);
-		//return other.sub(this).mul(minus1);
+		Scalar minus=new Scalar(-1);
+		return other.sub(this).mul(minus);
 	}
 
 	@Override
-	public Var mul(Var other) {
+	public Var mul(Var other) throws CalcException{
 		if (other instanceof Scalar)
 			return new Scalar(this.value * ((Scalar) other).value);
 		return other.mul(this);
 	}
 
 	@Override
-	public Var div(Var other) {
-		if (other instanceof Scalar)
+	public Var div(Var other) throws CalcException{
+		if (other instanceof Scalar) {
+			if (((Scalar) other).value == 0)
+				throw new CalcException("Деление на ноль");
 			return new Scalar(this.value / ((Scalar) other).value);
+		}
 		return super.div(other);
 	}
 

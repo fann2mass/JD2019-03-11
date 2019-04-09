@@ -11,17 +11,14 @@ public class TaskC {
     private static int count = 0;
 
     public static void main(String[] args) throws Exception {
-
         Scanner scanner = new Scanner(System.in);
         while (!(line = scanner.nextLine()).equals("END"))
             readData();
     }
 
     static void readData() throws Exception {
-
         try {
             numbers.add(Double.parseDouble(line));
-
         } catch (NumberFormatException e) {
             if (++count < 5) {
                 Thread.sleep(100);

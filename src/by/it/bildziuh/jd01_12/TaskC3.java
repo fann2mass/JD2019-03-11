@@ -24,7 +24,7 @@ public class TaskC3 {
 
             line.getChars(0, line.length() / 2, start, 0);
             line.getChars(line.length() / 2, line.length(), finish, 0);
-            line.getChars(line.length(), line.length(), symbols, 0);
+            line.getChars(0, line.length(), symbols, 0);
 
             finish = reverse(finish);
             reverseCheck(finish);

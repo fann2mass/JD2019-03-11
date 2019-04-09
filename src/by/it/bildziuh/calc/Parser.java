@@ -3,7 +3,7 @@ package by.it.bildziuh.calc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+class Parser {
 
     Var calc(String expression) throws CalcException {
 

@@ -16,8 +16,7 @@ public class TaskB1 {
         String[] words;
 
         while (!(line = scanner.nextLine()).equals("end")) {
-            line = line.replaceAll("[,\";.—]", " ");
-            line = line.replace("isn't", "don't");
+            line = line.replaceAll("[,\";.—]", " ").replace("isn't", "don't");
             words = line.split(" ");
             WordsCount(words, list);
         }

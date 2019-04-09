@@ -8,7 +8,8 @@ public class TaskC {
 
     }
 
-    static void readData(){
+    static void readData(Scanner scanner){
+
 
     }
 

@@ -27,7 +27,6 @@ public class TaskB2 {
 
         int pos = 0;
         while (peoples.size() > 1) {
-
             pos = ++pos % peoples.size();
             peoples.remove(pos);
         }

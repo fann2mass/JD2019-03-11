@@ -33,7 +33,6 @@ public class TaskB {
                     int lineNum = element.getLineNumber();
                     System.out.printf("name:%s\nclass:%s\nline:%s\n", name, className, lineNum);
                 }
-
             }
         }
     }

@@ -19,7 +19,6 @@ public class TaskB1 {
         print(list);
     }
 
-
     private static void logic (String[] words,Map<String,Integer> list){
         for (String word : words) {
             if (list.containsKey(word)) {

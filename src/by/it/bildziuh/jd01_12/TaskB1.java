@@ -36,6 +36,5 @@ public class TaskB1 {
         for (Map.Entry<String, Integer> entry : list.entrySet())
             System.out.println(entry.getKey() + "=" + entry.getValue());
     }
-
 }
 

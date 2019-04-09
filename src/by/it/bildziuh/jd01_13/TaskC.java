@@ -8,7 +8,6 @@ public class TaskC {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         readData(scanner);
-
     }
 
     static void readData(Scanner scanner) throws Exception {

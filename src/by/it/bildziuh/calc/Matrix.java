@@ -88,6 +88,8 @@ public class Matrix extends Var {
 
         } else if (other instanceof Matrix) {
             Matrix resAddMatrix = new Matrix(value);
+            if (((Matrix) other).value.length != this.value.length)
+                throw new CalcException("Не согласованы размеры");
             for (int i = 0; i < resAddMatrix.value[0].length; i++) {
                 for (int j = 0; j < resAddMatrix.value.length; j++) {
                     resAddMatrix.value[i][j] = resAddMatrix.value[i][j] + ((Matrix) other).value[i][j];
@@ -113,10 +115,13 @@ public class Matrix extends Var {
 
         } else if (other instanceof Matrix) {
             Matrix resSubMatrix = new Matrix(value);
-            for (int i = 0; i < resSubMatrix.value[0].length; i++)
-                for (int j = 0; j < resSubMatrix.value.length; j++)
-                    resSubMatrix.value[i][j] = resSubMatrix.value[i][j] - ((Matrix) other).value[i][j];
 
+            for (int i = 0; i < resSubMatrix.value[0].length; i++)
+                for (int j = 0; j < resSubMatrix.value.length; j++) {
+                    if (((Matrix) other).value[j].length != this.value[i].length)
+                        throw new CalcException("Не согласованы размеры");
+                    resSubMatrix.value[i][j] = resSubMatrix.value[i][j] - ((Matrix) other).value[i][j];
+                }
             return new Matrix(resSubMatrix);
         }
         return super.sub(other);
@@ -138,6 +143,8 @@ public class Matrix extends Var {
             double[] resMulVector = new double[value.length];
             for (int i = 0; i < MulVector.value[0].length; i++) {
                 for (int j = 0; j < MulVector.value.length; j++) {
+                    if (((Vector) other).getValue().length != this.value[i].length)
+                        throw new CalcException("Не согласованы размеры");
                     resMulVector[i] = resMulVector[i] + MulVector.value[i][j] * ((Vector) other).getValue()[j];
                 }
             }
@@ -150,6 +157,8 @@ public class Matrix extends Var {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[0].length; j++) {
                     for (int k = 0; k < value.length; k++) {
+                        if (((Matrix) other).value[j].length != this.value[i].length)
+                            throw new CalcException("Не согласованы размеры");
                         resMulMatrix[i][j] = resMulMatrix[i][j] + this.value[i][k] * ((Matrix) other).value[k][j];
                     }
                 }

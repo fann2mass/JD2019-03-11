@@ -2,7 +2,7 @@ package by.it.narushevich.jd01_12;
 
 import java.util.*;
 
-public class TaskB2 {
+public class TaskB3 {
 
     public static void main(String[] args) {
         System.out.println("Введите число человек: ");
@@ -16,10 +16,11 @@ public class TaskB2 {
         List<String> arr = Arrays.asList(peoples);
         ArrayList<String> resA = new ArrayList<>(arr);
         LinkedList<String> resL = new LinkedList<>(arr);
+        Timer t = new Timer();
         String resultA = process(resA);
         String resultL = process(resL);
-        System.out.println("ArrayList " + resultA);
-        System.out.println("LinkedList " + resultL);
+        System.out.println("ArrayList " + resultA + t);
+        System.out.println("LinkedList " + resultL + t);
 
     }
 
@@ -51,4 +52,18 @@ public class TaskB2 {
         return peoples.get(0);
     }
 
+    public static class Timer {
+        private long iniTime;
+        Timer() {
+            iniTime = System.nanoTime();
+        }
+
+        public String toString() {
+            double delta = (double) (System.nanoTime() - iniTime) / 1000;
+            iniTime = System.nanoTime();
+
+            return " Прошло " + delta + " микросекунд.";
+        }
+
+    }
 }

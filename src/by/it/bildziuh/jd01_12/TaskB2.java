@@ -28,7 +28,7 @@ public class TaskB2 {
         int pos = 0;
         while (peoples.size() > 1) {
 
-            pos = (pos + 1) % peoples.size();
+            pos = ++pos % peoples.size();
             peoples.remove(pos);
         }
         return peoples.get(0);
@@ -63,7 +63,7 @@ public class TaskB2 {
             Delta = (double) (System.nanoTime() - iniTime) / 1000;
             iniTime = System.nanoTime();
 
-            return "Прошло " + Delta.toString() + " микросекунд. Результат — ";
+            return " остался. Прошло " + Delta.toString() + " микросекунд.";
         }
 
     }

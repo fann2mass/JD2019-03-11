@@ -30,7 +30,7 @@ public class TaskC {
                         System.out.printf("%2.1f ", num);
                     }
                     System.out.println();
-                } else throw new Exception("Превышен лимит в 5 допущенных ошибок");
+                } else throw new Exception("Достигнут лимит в 5 допущенных ошибок");
             }
         }
     }

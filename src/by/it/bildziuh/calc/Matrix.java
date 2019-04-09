@@ -1,5 +1,6 @@
 package by.it.bildziuh.calc;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +21,7 @@ public class Matrix extends Var {
     }
 
     Matrix(Matrix matrix) {
-        this.value = matrix.value;
+        this.value = Arrays.copyOf(matrix.value, matrix.value.length);
     }
 
     Matrix(String strMatrix) {
@@ -75,7 +76,7 @@ public class Matrix extends Var {
 
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resAddScalar = new Matrix(value);
             for (int i = 0; i < resAddScalar.value.length; i++) {
@@ -87,6 +88,8 @@ public class Matrix extends Var {
 
         } else if (other instanceof Matrix) {
             Matrix resAddMatrix = new Matrix(value);
+            if (((Matrix) other).value.length != this.value.length)
+                throw new CalcException("Не согласованы размеры");
             for (int i = 0; i < resAddMatrix.value[0].length; i++) {
                 for (int j = 0; j < resAddMatrix.value.length; j++) {
                     resAddMatrix.value[i][j] = resAddMatrix.value[i][j] + ((Matrix) other).value[i][j];
@@ -100,7 +103,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resSubScalar = new Matrix(value);
             for (int i = 0; i < resSubScalar.value[0].length; i++) {
@@ -112,17 +115,20 @@ public class Matrix extends Var {
 
         } else if (other instanceof Matrix) {
             Matrix resSubMatrix = new Matrix(value);
-            for (int i = 0; i < resSubMatrix.value[0].length; i++)
-                for (int j = 0; j < resSubMatrix.value.length; j++)
-                    resSubMatrix.value[i][j] = resSubMatrix.value[i][j] - ((Matrix) other).value[i][j];
 
+            for (int i = 0; i < resSubMatrix.value[0].length; i++)
+                for (int j = 0; j < resSubMatrix.value.length; j++) {
+                    if (((Matrix) other).value[j].length != this.value[i].length)
+                        throw new CalcException("Не согласованы размеры");
+                    resSubMatrix.value[i][j] = resSubMatrix.value[i][j] - ((Matrix) other).value[i][j];
+                }
             return new Matrix(resSubMatrix);
         }
         return super.sub(other);
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Matrix resMulScalar = new Matrix(value);
             for (int i = 0; i < resMulScalar.value[0].length; i++) {
@@ -137,6 +143,8 @@ public class Matrix extends Var {
             double[] resMulVector = new double[value.length];
             for (int i = 0; i < MulVector.value[0].length; i++) {
                 for (int j = 0; j < MulVector.value.length; j++) {
+                    if (((Vector) other).getValue().length != this.value[i].length)
+                        throw new CalcException("Не согласованы размеры");
                     resMulVector[i] = resMulVector[i] + MulVector.value[i][j] * ((Vector) other).getValue()[j];
                 }
             }
@@ -149,6 +157,8 @@ public class Matrix extends Var {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[0].length; j++) {
                     for (int k = 0; k < value.length; k++) {
+                        if (((Matrix) other).value[j].length != this.value[i].length)
+                            throw new CalcException("Не согласованы размеры");
                         resMulMatrix[i][j] = resMulMatrix[i][j] + this.value[i][k] * ((Matrix) other).value[k][j];
                     }
                 }
@@ -159,7 +169,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         return super.div(other);
     }
 }

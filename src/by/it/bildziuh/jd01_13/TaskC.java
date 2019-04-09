@@ -25,9 +25,8 @@ public class TaskC {
             } catch (NumberFormatException e) {
                 if (++count < 5) {
                     Thread.sleep(100);
-                    for (int i = numbers.size() - 1; i >= 0; i--) {
+                    for (int i = numbers.size() - 1; i >= 0; i--)
                         System.out.print(numbers.get(i) + " ");
-                    }
                     System.out.println();
                 } else throw new Exception("Достигнут лимит в 5 допущенных ошибок");
             }

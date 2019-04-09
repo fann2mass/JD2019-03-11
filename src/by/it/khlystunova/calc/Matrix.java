@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd01_09;
+package by.it.khlystunova.calc;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

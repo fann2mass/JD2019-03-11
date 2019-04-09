@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskC {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         readData(scanner);
 
     }
 
-    static void readData(Scanner scanner) throws InterruptedException {
+    static void readData(Scanner scanner) throws Exception {
         ArrayList<Double> numbers = new ArrayList<>();
         String line;
         double number;
@@ -27,11 +27,10 @@ public class TaskC {
                     Thread.sleep(100);
                     for (int i = numbers.size() - 1; i >= 0; i--) {
                         Double num = numbers.get(i);
-                        System.out.printf("%2.1f ",num);
+                        System.out.printf("%2.1f ", num);
                     }
                     System.out.println();
-                }
-               // else throw new NumberFormatException();
+                } else throw new Exception("Превышен лимит в 5 допущенных ошибок");
             }
         }
     }

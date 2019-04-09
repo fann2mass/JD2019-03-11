@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+
 public class PrintMath {
     public static void main(String[] args) {
 
@@ -23,6 +24,10 @@ public class PrintMath {
                 System.out.print(method.getName()); // получаем имя метода (abs/pow/atan/wait/random и т.д.)
                 System.out.println(parameters(method.getParameterCount(), method)); /* метод для вывода типа передаваемых в метод параметра(ов)
                  getParameterCount() - получаем количество параметров передаваемых в рассматриваемый метод (в классе Math их от 0 до 2)*/
+
+                 /* Ниже способ номер два одной строкой для методов — просто удаляем лишнее по заданию из строки,
+                 но привязываемся к текущему значению реплейса */
+                 //System.out.println((String.valueOf(method).replace("java.lang.Math.", "")));
             }
         }
 
@@ -32,6 +37,10 @@ public class PrintMath {
                 System.out.print(modifiers(field.getModifiers())); // читаем строки номер 21 и 22
                 System.out.print(field.getType() + " "); // получаем тип поля (в текущем задании оба числа Е и Пи имеют тип double)
                 System.out.println(field.getName()); //получаем имя поля (E/PI и еще несколько, не проходящих условие "public")
+
+                 /* Ниже способ номер два одной строкой для полей — просто удаляем лишнее по заданию из строки,
+                 но привязываемся к текущему значению реплейса */
+                 //System.out.println((String.valueOf(field).replace("java.lang.Math.", "")));
             }
         }
     }

@@ -11,7 +11,8 @@ public class TaskB1 {
         String [] words;
 
         while (!(line = scanner.nextLine()).equals("end")) {
-            line = line.replace("[—,\";.]", " ");
+            line = line.replaceAll("[,\";.—]", " ");
+            line = line.replace("isn't", "don't");
             words = line.split(" ");
             logic (words,list);
         }
@@ -31,7 +32,7 @@ public class TaskB1 {
 
     private static void print(Map<String,Integer> list) {
         for (Map.Entry<String, Integer> entry : list.entrySet())
-            System.out.println(entry.getKey() + " = " + entry.getValue());
+            System.out.println(entry.getKey() + "=" + entry.getValue());
     }
 
 }

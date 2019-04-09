@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskC {
+
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         readData(scanner);
@@ -25,8 +26,7 @@ public class TaskC {
                 if (++count < 5) {
                     Thread.sleep(100);
                     for (int i = numbers.size() - 1; i >= 0; i--) {
-                        Double num = numbers.get(i);
-                        System.out.printf("%2.1f ", num);
+                        System.out.print(numbers.get(i) + " ");
                     }
                     System.out.println();
                 } else throw new Exception("Достигнут лимит в 5 допущенных ошибок");

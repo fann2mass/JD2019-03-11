@@ -31,7 +31,7 @@ public class TaskB {
                     String name = e.getClass().getName();
                     String className = element.getClassName();
                     int lineNum = element.getLineNumber();
-                    System.err.printf("name:%s\nclass:%s\nline:%s\n", name, className, lineNum);
+                    System.out.printf("name:%s\nclass:%s\nline:%s\n", name, className, lineNum);
                 }
 
             }

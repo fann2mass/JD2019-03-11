@@ -6,21 +6,19 @@ import java.util.Scanner;
 
 public class TaskC {
 
+    private static ArrayList<Double> numbers = new ArrayList<>();
+    private static String line;
+    private static int count = 0;
+
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         readData(scanner);
     }
 
     static void readData(Scanner scanner) throws Exception {
-        ArrayList<Double> numbers = new ArrayList<>();
-        String line;
-        double number;
-        int count = 0;
-
         while (!(line = scanner.nextLine()).equals("END")) {
             try {
-                number = Double.parseDouble(line);
-                numbers.add(number);
+                numbers.add(Double.parseDouble(line));
 
             } catch (NumberFormatException e) {
                 if (++count < 5) {

@@ -122,7 +122,6 @@ public class SetC<T> implements Set<T> {
 
     @Override
     public void clear() {
-        size=0;
         elements = Arrays.copyOf(elements, 0);
     }
 

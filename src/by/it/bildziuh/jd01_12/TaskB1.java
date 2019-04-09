@@ -7,11 +7,11 @@ public class TaskB1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Map<String, Integer> list = new HashMap<>();
-        sort(scanner, list);
+        splitToWords(scanner, list);
         print(list);
     }
 
-    private static void sort(Scanner scanner, Map<String, Integer> list) {
+    private static void splitToWords(Scanner scanner, Map<String, Integer> list) {
         String line;
         String[] words;
 
@@ -19,11 +19,11 @@ public class TaskB1 {
             line = line.replaceAll("[,\";.—]", " ");
             line = line.replace("isn't", "don't");
             words = line.split(" ");
-            logic(words, list);
+            WordsCount(words, list);
         }
     }
 
-    private static void logic(String[] words, Map<String, Integer> list) {
+    private static void WordsCount(String[] words, Map<String, Integer> list) {
         for (String word : words) {
             if (list.containsKey(word)) {
                 int newValue = list.get(word);

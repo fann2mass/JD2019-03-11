@@ -39,7 +39,6 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        //return null;
         throw new CalcException("Невозможно создать " + operand);
     }
 

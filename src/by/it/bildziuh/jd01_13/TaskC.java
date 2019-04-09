@@ -11,23 +11,24 @@ public class TaskC {
     private static int count = 0;
 
     public static void main(String[] args) throws Exception {
+
         Scanner scanner = new Scanner(System.in);
-        readData(scanner);
+        while (!(line = scanner.nextLine()).equals("END"))
+            readData();
     }
 
-    static void readData(Scanner scanner) throws Exception {
-        while (!(line = scanner.nextLine()).equals("END")) {
-            try {
-                numbers.add(Double.parseDouble(line));
+    static void readData() throws Exception {
 
-            } catch (NumberFormatException e) {
-                if (++count < 5) {
-                    Thread.sleep(100);
-                    for (int i = numbers.size() - 1; i >= 0; i--)
-                        System.out.print(numbers.get(i) + " ");
-                    System.out.println();
-                } else throw new Exception("Достигнут лимит в 5 допущенных ошибок");
-            }
+        try {
+            numbers.add(Double.parseDouble(line));
+
+        } catch (NumberFormatException e) {
+            if (++count < 5) {
+                Thread.sleep(100);
+                for (int i = numbers.size() - 1; i >= 0; i--)
+                    System.out.print(numbers.get(i) + " ");
+                System.out.println();
+            } else throw new Exception("Достигнут лимит в 5 допущенных ошибок");
         }
     }
 }

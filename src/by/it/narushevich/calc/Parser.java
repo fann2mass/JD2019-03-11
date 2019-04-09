@@ -4,11 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expr) {
+    Var calc(String expr) throws CalcException {
         expr = expr.replaceAll("\\s+", "");
         String[] operands = expr.split(Patterns.OPERATION);
         if (operands.length != 2)
-            return null;
+            throw new CalcException("Не указана операция или введено не число");
 
         Pattern p = Pattern.compile(Patterns.OPERATION);
         Matcher m = p.matcher(expr);
@@ -23,7 +23,7 @@ class Parser {
         }
         Var first = Var.createVar(operands[0]);
         if (first == null || second == null)
-            return null;
+            throw new CalcException("Операция невозможна");
         switch (operation) {
             case "+":
                 return first.add(second);
@@ -34,7 +34,7 @@ class Parser {
             case "/":
                 return first.div(second);
             default:
-                return null;
+                throw new CalcException("Нет такой операции");
         }
     }
 }

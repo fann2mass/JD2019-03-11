@@ -18,35 +18,37 @@ public class TaskB2 {
         LinkedList<String> resL = new LinkedList<>(arr);
         String resultA = process(resA);
         String resultL = process(resL);
-        System.out.println("Последним останется " + resultA);
-        System.out.println("Последним останется " + resultL);
+        System.out.println("ArrayList " + resultA);
+        System.out.println("LinkedList " + resultL);
 
     }
-
-    static String process(LinkedList<String> peoples) {
-        int safePos = 0;
-        int step = 2;
-        for (int i = 0; i < peoples.size(); i++) {
-            safePos = (safePos + step) % (i + 1);
-        }
-        String s = Integer.toString(safePos);
-
-        ListIterator<String> listIt = peoples.listIterator();
-        while (listIt.hasNext()) {
-            if (listIt.next().endsWith(s))
-                return listIt.next();
-        }
-        return listIt.next();
-    }
-
 
     static String process(ArrayList<String> peoples) {
-        int pos = 0;
-        int step = 2;
-        while (peoples.size() != 1) {
-            pos = (pos + step - 1) % peoples.size();
-            peoples.remove(pos);
+        Iterator<String> it = peoples.iterator();
+        while (peoples.size()!=1){
+            if (!it.hasNext())
+                it = peoples.iterator();
+            it.next();
+            if (!it.hasNext())
+                it = peoples.iterator();
+            it.next();
+            it.remove();
         }
         return peoples.get(0);
     }
+
+    static String process(LinkedList<String> peoples) {
+        Iterator<String> it = peoples.iterator();
+        while (peoples.size()!=1){
+            if (!it.hasNext())
+                it = peoples.iterator();
+            it.next();
+            if (!it.hasNext())
+                it = peoples.iterator();
+            it.next();
+            it.remove();
+        }
+        return peoples.get(0);
+    }
+
 }

@@ -9,14 +9,14 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other.toString().matches(Patterns.SCALAR))
             return new Scalar(this.value + ((Scalar) other).value);
         return other.add(this);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other.toString().matches(Patterns.SCALAR))
             return new Scalar(this.value - ((Scalar) other).value);
         Scalar minus=new Scalar(-1);
@@ -24,16 +24,25 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other.toString().matches(Patterns.SCALAR))
             return new Scalar(this.value * ((Scalar) other).value);
         return other.mul(this);
     }
 
     @Override
-    public Var div(Var other) {
-        if (other.toString().matches(Patterns.SCALAR))
-            return new Scalar(this.value / ((Scalar) other).value);
+    public Var div(Var other) throws CalcException {
+        if (other.toString().matches(Patterns.SCALAR)) {
+            double z = ((Scalar) other).value;
+            if (z==0){
+                throw new CalcException("Деление на ноль");
+            }
+            return new Scalar(this.value / z);
+        }
+
+        if (!other.toString().matches(Patterns.SCALAR)) {
+            throw new CalcException("Деление невозможно из-за несоответствия типов");
+        }
         return other.div(this);
     }
 

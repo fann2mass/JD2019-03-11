@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expression) {
+    Var calc(String expression) throws CalcException {
         expression = expression.replace(" ", "");
         String[] operands = expression.split(Patterns.OPERATION);
         if (operands.length != 2)
@@ -34,7 +34,7 @@ class Parser {
             case "/":
                 return one.div(two);
             default:
-                return null;
+               throw new CalcException("неизвестная операция");
         }
     }
 }

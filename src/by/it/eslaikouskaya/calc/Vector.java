@@ -1,5 +1,6 @@
 package by.it.eslaikouskaya.calc;
 
+
 import java.util.Arrays;
 
 class Vector extends Var {
@@ -12,17 +13,21 @@ class Vector extends Var {
 
 
 	@Override
-	public Var add(Var other) {
+	public Var add(Var other) throws CalcException{
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
+				if (this.value.length!=((Vector) other).value.length)
+					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] + ((Scalar) other).getValue();
 			}
 			return result;
 		}
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
+				if (this.value.length!=((Vector) other).value.length)
+					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] + ((Vector) other).value[i];
 			}
 			return result;
@@ -31,7 +36,7 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var sub(Var other) {
+	public Var sub(Var other) throws CalcException{
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
@@ -42,6 +47,8 @@ class Vector extends Var {
 		}
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
+				if (this.value.length!=((Vector) other).value.length)
+					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] - ((Vector) other).value[i];
 			}
 			return result;
@@ -50,7 +57,7 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var mul(Var other) {
+	public Var mul(Var other) throws CalcException{
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
@@ -63,6 +70,8 @@ class Vector extends Var {
 		if (other instanceof Vector) {
 			double sum = 0;
 			for (int i = 0; i < result.value.length; i++) {
+				if (this.value.length!=((Vector) other).value.length)
+					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] * ((Vector) other).value[i];
 				sum=sum+result.value[i];
 			}
@@ -72,11 +81,12 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var div(Var other) {
+	public Var div(Var other) throws CalcException{
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
+				if (((Scalar) other).getValue()==0) throw new CalcException("Деление на ноль");
 				result.value[i] = result.value[i] / ((Scalar) other).getValue();
 			}
 			return result;

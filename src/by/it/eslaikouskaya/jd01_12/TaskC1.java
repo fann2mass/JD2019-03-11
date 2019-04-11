@@ -1,47 +1,23 @@
 package by.it.eslaikouskaya.jd01_12;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TaskC1 {
-	private static Map<String, Integer> wordsCount= new HashMap<>();
-
 	public static void main(String[] args) {
+		Map<String, Integer> removed = new HashMap<>();
+		List<String> names = new ArrayList<>();
 		Scanner scanner = new Scanner(System.in);
 		String str;
-		while ((!(str = scanner.next()).equals("end"))) {
-			Pattern pattern = Pattern.compile("[А-Яа-яЁё]+");
-			Matcher matcher = pattern.matcher(str);
-			while (matcher.find()) {
-				String word = matcher.group();
-				actions1(word);
-			}
+		while ((!(str=scanner.nextLine()).equals("end"))){
+			names.add(str);
 		}
-		print(wordsCount);
-		//actions2(wordsCount);
-	}
-
-
-	private static void actions1 (String currentWord) {
-		Integer count = 1;
-		Set<Map.Entry<String, Integer>> entries = wordsCount.entrySet();
-		for (Map.Entry<String, Integer> entry : entries) {
-				count++;
-				entry.setValue(count);
+		for (int i = 0; i < names.size(); i++) {
+			removed.put(names.get(i), i + 1);
 		}
-		wordsCount.put(currentWord, 1);
-	}
 
-	/*private static void actions2(Map<String, Integer> wordsCount) {
-
-	}*/
-
-
-	private static void print(Map<String, Integer> wordsCount) {
-		Set<Map.Entry<String, Integer>> entries = wordsCount.entrySet();
-		for (Map.Entry<String, Integer> entry : entries) {
-			System.out.println(entry.getKey() + "=" + entry.getValue());
+		System.out.println(names);
+		for (Map.Entry<String, Integer> entry : removed.entrySet()){
+			System.out.println(entry.getKey()+"="+entry.getValue());
 		}
 	}
 }

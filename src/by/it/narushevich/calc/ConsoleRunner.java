@@ -11,7 +11,13 @@ public class ConsoleRunner {
         for (; ; ) {
             expr = scanner.nextLine();
             if (expr.equals("end")) break;
-                Var result = parser.calc(expr);
+            Var result = null;
+                try {
+                    result = parser.calc(expr);
+                }
+                catch (CalcException e){
+                    System.out.println(e.getMessage());
+                }
                 printer.print(result);
             if (expr.equals("printvar")){
                 printer.println(Var.getVars());

@@ -15,9 +15,9 @@ public class Vector extends Var {
         this.vector = Arrays.copyOf(value, value.length);
     }
 
-    Vector(Vector vector) {
-        this.vector = vector.vector;
-    }
+    //Vector(Vector vector) {
+     //   this.vector = vector.vector;
+    //}
 
     Vector(String vector) {
 
@@ -53,14 +53,14 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
          if(other instanceof Vector){
              if(((Vector) other).vector.length == result.vector.length){
                  for (int i = 0; i < result.vector.length; i++) {
                      result.vector[i] =result.vector[i]+((Vector) other).vector[i];
                  }
-             }
+             }else throw new CalcException("Неправильная длина.");
            return result;
          }else if(other instanceof Scalar){
              for (int i = 0; i < result.vector.length; i++) {
@@ -72,7 +72,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Vector){
             //если вектор, который вызвал этот метод и вектор other одинаковой длины то вычитаем
@@ -80,7 +80,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     result.vector[i] =result.vector[i]-((Vector) other).vector[i];
                 }
-            }
+            }else throw new CalcException("Неправильная длина.");
             return result;
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -92,7 +92,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Vector){
             //если вектор, который вызвал этот метод и вектор other одинаковой длины то вычитаем
@@ -101,7 +101,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     value +=result.vector[i]*((Vector) other).vector[i];
                 }
-            }
+            }else throw new CalcException("Неправильная длина.");
             return new Scalar(value);
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -113,9 +113,10 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         Vector result = new Vector(this.vector);//копируем вектор, который вызвал этот метод(this.vector) в вектор результата.
         if(other instanceof Scalar){
+            if(((Scalar) other).getValue()==0) throw new CalcException("Деление на ноль.");
             for (int i = 0; i < result.vector.length; i++) {
                 result.vector[i] = result.vector[i] / ((Scalar)other).getValue();
             }

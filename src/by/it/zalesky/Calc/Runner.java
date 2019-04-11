@@ -7,7 +7,7 @@ public class Runner {
                 System.out.println(var);
         }
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws CalcException{
 
             Var v1 = new Scalar(3.0);
             Var v2 = new Vector(new double[]{1, 2, 3}); // закомментируйте вектор и/или

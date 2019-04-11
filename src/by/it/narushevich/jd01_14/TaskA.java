@@ -1,47 +1,65 @@
 package by.it.narushevich.jd01_14;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskA {
-    public static void main(String[] args) throws FileNotFoundException {
-        //Записать в двоичный файл dataTaskA.bin 20 случайных чисел типа Integer.
-        // Файл должен быть в том же каталоге, что и исходный код для класса
-        //TaskA.java.
-        // Затем нужно прочитать записанный файл в коллекцию ArrayList.
-        // Вывести в консоль прочитанные числа через пробел
-        // Вывести с новой строки их среднее арифметическое avg=20.123.
-        // Продублировать вывод в консоль в файл resultTaskA.txt
-        String filename = getFileName(TaskA.class, "dataTaskA.bin");
 
-        try (
-                FileOutputStream fileOutputStream = new FileOutputStream(filename);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-                DataOutputStream dataOutputStream = new DataOutputStream(bufferedOutputStream)
-        ) {
-            for (int i = 0; i < 20; i++) {
-                Integer value = (int) (Math.random() * 101 - 50);
-                dataOutputStream.writeInt(value);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private static List<Integer> list = new ArrayList<>();
 
-        try (DataInputStream dataInputStream = new DataInputStream(
-                new BufferedInputStream(
-                        new FileInputStream(filename)))) {
-            while (dataInputStream.available()>0){
-                
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) {
+        String filename = createFile(TaskA.class, "dataTaskA.bin");
+        String fileResultToTxt = createFile(TaskA.class, "resultTaskA.txt");
 
+        writeFile(filename);
+
+        readAndPrintToFile(filename, fileResultToTxt);
     }
 
-    private static String getFileName(Class<?> cl, String name) {
-        String src = System.getProperty("user.dir");
-        String strPackage = cl.getPackage().getName();
-        String relPath = strPackage.replace(".", File.separator);
-        return src + relPath + File.separator + name;
+    private static String createFile(Class<?> cl, String name) {
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String replacePath = cl.getPackage().getName().replace(".", File.separator);
+        return src + replacePath + File.separator + name;
+    }
+
+    private static void writeFile(String filename) {
+        try (DataOutputStream dataOutputStream =
+                     new DataOutputStream(
+                             new BufferedOutputStream(
+                                     new FileOutputStream(filename)))
+        ) {
+            for (int i = 0; i < 20; i++) {
+                int value = (int) (Math.random() * 40);
+                dataOutputStream.writeInt(value);
+                list.add(value);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void readAndPrintToFile(String filename, String fileResultToTxt) {
+        try (DataInputStream dataInputStream =
+                     new DataInputStream(
+                             new BufferedInputStream(
+                                     new FileInputStream(filename)));
+             PrintWriter printWriter = new PrintWriter(new FileWriter(fileResultToTxt))
+        ) {
+            double sum = 0;
+            double avg;
+            while (dataInputStream.available() > 0) {
+                int number = dataInputStream.readInt();
+                sum += number;
+                System.out.print(number + " ");
+                printWriter.print(number + " ");
+            }
+            avg = sum / list.size();
+            System.out.print("\navg=" + avg);
+            printWriter.print("\navg=" + avg);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

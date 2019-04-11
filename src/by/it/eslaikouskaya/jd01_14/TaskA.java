@@ -28,6 +28,7 @@ public class TaskA {
 		List<Integer> list = readListInteger(filename);
 		printListInteger(list);
 		saveListIntegerToTxt(filetxt, list);
+		System.out.println(System.getProperty("user.dir"));
 	}
 
 	//Записать в двоичный файл dataTaskA.bin 20 случайных чисел типа Integer.

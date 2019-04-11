@@ -9,7 +9,8 @@ import java.util.Arrays;
 public class TaskC {
 
 	public static void main(String[] args) {
-		String[] packagesNames = getNameOfPackages();
+		String name = "eslaikouskaya";
+		String[] packagesNames = getNameOfPackages(name);
 		Arrays.sort(packagesNames);
 		String [] filesNames = new String[0];
 		for (String strPackage : packagesNames) {
@@ -17,7 +18,7 @@ public class TaskC {
 			else {
 			System.out.println();
 			System.out.println("dir:"+strPackage);
-				filesNames = getNameOfFiles(strPackage);
+				filesNames = getNameOfFiles(strPackage, name);
 				for (String file : filesNames) {
 					System.out.println("file:" + file);
 				}
@@ -26,13 +27,17 @@ public class TaskC {
 		saveToFileTxt(packagesNames,filesNames);
 	}
 
-	private static String[] getNameOfPackages() {
-		File file = new File("/Users/ekaterina/Documents/projects/src/by/it/eslaikouskaya/JD2019-03-11/src/by/it/eslaikouskaya");
+	private static String[] getNameOfPackages(String name) {
+		String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+		String  wayToPackage = ("by"+File.separator+"it"+File.separator+name);
+		File file = new File(src+wayToPackage);
 		return file.list();
 	}
 
-	private static String[] getNameOfFiles(String nameOfPackage) {
-		File file = new File("/Users/ekaterina/Documents/projects/src/by/it/eslaikouskaya/JD2019-03-11/src/by/it/eslaikouskaya/"+nameOfPackage);
+	private static String[] getNameOfFiles(String nameOfPackage, String name) {
+		String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+		String  wayToPackage = ("by"+File.separator+"it"+File.separator+name);
+		File file = new File(src+wayToPackage+File.separator+nameOfPackage);
 		return file.list();
 	}
 

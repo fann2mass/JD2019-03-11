@@ -8,7 +8,7 @@ class Parser {
         expr = expr.replaceAll("\\s+", "");
         String[] operands = expr.split(Patterns.OPERATION);
         if (operands.length != 2)
-            throw new CalcException("Не указана операция или введено не число");
+            throw new CalcException();
 
         Pattern p = Pattern.compile(Patterns.OPERATION);
         Matcher m = p.matcher(expr);

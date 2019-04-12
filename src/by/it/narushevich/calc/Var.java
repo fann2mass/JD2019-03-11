@@ -1,8 +1,6 @@
 package by.it.narushevich.calc;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +14,7 @@ abstract class Var implements Operation {
 
     static void saveVar(String name, Var var){
         vars.put(name, var);
+        save();
     }
 
     static Var createVar(String operand) {
@@ -31,13 +30,29 @@ abstract class Var implements Operation {
         return null;
     }
 
-    static void save() {
-        try {
+    private static void save() {
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(createFile()))){
         for (Map.Entry<String, Var> pair : vars.entrySet()) {
-            System.out.println(pair.getKey() +" = "+ pair.getValue());
+            printWriter.println(pair.getKey() +" = "+ pair.getValue());
         }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    static void load() throws CalcException {
+        Parser p = new Parser();
+        File file = new File(createFile());
+        if (file.exists()) {
+            try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = in.readLine()) != null) {
+                    p.calc(line);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

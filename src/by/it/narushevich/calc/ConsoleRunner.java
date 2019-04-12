@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
     public static void main(String[] args) {
+        try {
+            Var.load();
+        } catch (CalcException e) {
+            e.printStackTrace();
+        }
         Parser parser = new Parser();
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);

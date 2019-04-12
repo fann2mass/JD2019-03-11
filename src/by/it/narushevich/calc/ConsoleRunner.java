@@ -10,7 +10,8 @@ public class ConsoleRunner {
         String expr;
         for (; ; ) {
             expr = scanner.nextLine();
-            if (expr.equals("end")) break;
+            if (expr.equals("end"))
+                break;
             Var result = null;
                 try {
                     result = parser.calc(expr);

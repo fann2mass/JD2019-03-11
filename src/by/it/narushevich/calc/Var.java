@@ -1,5 +1,8 @@
 package by.it.narushevich.calc;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +29,22 @@ abstract class Var implements Operation {
         if (vars.containsKey(operand))
             return vars.get(operand);
         return null;
+    }
+
+    static void save() {
+        try {
+        for (Map.Entry<String, Var> pair : vars.entrySet()) {
+            System.out.println(pair.getKey() +" = "+ pair.getValue());
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String createFile() {
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String replacePath = Var.class.getPackage().getName().replace(".", File.separator);
+        return src + replacePath + File.separator + "vars.txt";
     }
 
     @Override

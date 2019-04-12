@@ -23,7 +23,7 @@ public class TaskC {
 
             for (File currentFile : allFiles) {
                 if (currentFile.isDirectory()) {
-                    CheckFolder(currentFile.getAbsolutePath(), outTxt);
+                    CheckFolder(currentFile.getAbsolutePath(), outTxt); // вот она, родная — рекурсия!
                 } else {
                     printWriter.println("\tfile:" + currentFile.getName());
                     System.out.println("\tfile:" + currentFile.getName());

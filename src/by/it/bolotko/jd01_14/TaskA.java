@@ -3,6 +3,12 @@ package by.it.bolotko.jd01_14;
 import java.io.*;
 
 public class TaskA {
+    private static String getFileName(Class<?> cl, String name) {
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String strPackage = cl.getPackage().getName();
+        String relPath = strPackage.replace(".", File.separator);
+        return src + relPath + File.separator + name;
+    }
 
     private static String dir(Class<?> cl) {
         String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;

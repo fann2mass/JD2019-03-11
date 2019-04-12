@@ -36,8 +36,9 @@ public class TaskC {
     }
 
     private static String getPath(Class<?> cl) {
-        String userDir = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String pathPack = cl.getPackage().getName().replace(".", File.separator);
-        return userDir + pathPack;
+        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String classDir = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
+        return path + classDir;
+
     }
 }

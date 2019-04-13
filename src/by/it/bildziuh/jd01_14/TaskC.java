@@ -23,7 +23,7 @@ public class TaskC {
 
         System.out.println(offSet + "dir:" + file.getName());
         printWriter.println(offSet + "dir:" + file.getName());
-        counter++;
+        counter += 1;
         for (File currentFile : allFiles) {
             if (currentFile.isDirectory()) {
                 CheckFolder(currentFile.getPath(), printWriter); // вот она, родная — рекурсия!
@@ -32,7 +32,7 @@ public class TaskC {
                 System.out.println(offSet + "\tfile:" + currentFile.getName());
             }
         }
-        counter--;
+        counter -= 1;
     }
 
     private static String getPath(Class<?> cl) {

@@ -11,33 +11,39 @@ public class TaskA {
     }
 
     public static void main(String[] args) {
-        int[][] array=create(6,4,15);
-        String filename=getFileName(TaskA.class, "matrix.txt");
+        int[][] array = create(6, 4, 15);
+        String filename=getFileName(TaskA.class,"matrix.txt");
+        saveMatrix(array, filename);
+        showFile(filename);
+    }
 
-        try (PrintWriter out=new PrintWriter(new FileWriter(filename))) {
-            for (int[] row : array) {
-                for (int element : row) {
-                    System.out.printf("%3d ", element);
-                }
-                System.out.println();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private static void showFile(String filename) {
 
         try (BufferedReader in=new BufferedReader(new FileReader(filename))){
             String line;
             while ((line=in.readLine())!=null){
                 System.out.println(line);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static void saveMatrix(int[][] array, String filename) {
+        try (PrintWriter out=new PrintWriter(new FileWriter(filename))){
+            for (int[] row : array) {
+                for (int element : row) {
+                    out.printf("%3d ",element);
+                }
+                out.println();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static int[][] create(int rows, int cols, int max) {
-        int [][]result=new int[rows][cols];
+        int[][] result = new int[rows][cols];
         boolean maxOk;
         boolean minOk;
         do {
@@ -45,13 +51,12 @@ public class TaskA {
             minOk=false;
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
-                    result[i][j]=(int) (Math.random()*31)-15;
-                    if (result[i][j] == max) maxOk=true;
-                    if (result[i][j] == -max) minOk=true;
+                    result[i][j] = (int) (Math.random() * (max*2+1)) - 15;
+                    if (result[i][j]==max) maxOk=true;
+                    if (result[i][j]==-max) minOk=true;
                 }
             }
         } while (!(maxOk && minOk));
         return result;
-
     }
 }

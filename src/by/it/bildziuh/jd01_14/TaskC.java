@@ -18,6 +18,7 @@ public class TaskC {
 
     private static void CheckFolder(String dirPath, PrintWriter printWriter) {
         String offSet = String.format("%" + counter + "s", " ");
+
         File file = new File(dirPath);
         File[] allFiles = file.listFiles();
 

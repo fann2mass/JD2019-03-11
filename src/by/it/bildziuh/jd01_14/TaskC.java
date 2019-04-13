@@ -15,6 +15,7 @@ public class TaskC {
             e.printStackTrace();
         }
     }
+
     private static void CheckFolder(String dirPath, PrintWriter printWriter) {
         String offSet = String.format("%" + counter + "s", " ");
 
@@ -23,12 +24,10 @@ public class TaskC {
 
         System.out.println(offSet + "dir:" + file.getName());
         printWriter.println(offSet + "dir:" + file.getName());
-
         counter++;
         for (File currentFile : allFiles) {
             if (currentFile.isDirectory()) {
                 CheckFolder(currentFile.getPath(), printWriter); // вот она, родная — рекурсия!
-
             } else {
                 printWriter.println(offSet + "file:" + currentFile.getName());
                 System.out.println(offSet + "file:" + currentFile.getName());

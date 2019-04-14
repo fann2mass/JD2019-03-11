@@ -42,6 +42,7 @@ public class TaskC {
         if (command.contains("..")) {
             newPath.delete(newPath.lastIndexOf("\\"), newPath.length()).delete(newPath.lastIndexOf("\\") + 1, newPath.length());
             path = newPath.toString();
+            return;
         }
 
         StringBuilder newFolder = new StringBuilder(command);
@@ -51,6 +52,7 @@ public class TaskC {
             if (newFolder.toString().equals(currentFile.getName())) {
                 newPath.append(currentFile.getName()).append(File.separator);
                 path = newPath.toString();
+                return;
             }
         }
         System.out.println("Неверно указан путь!");

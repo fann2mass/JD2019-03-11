@@ -23,19 +23,21 @@ public class TaskB {
 	 * @param putIn way to file with corrected text
 	 * @param getFrom way to original file
 	 */
-
 	private static void getDeleteAndPut (String putIn, String getFrom) {
 		try (BufferedReader in = new BufferedReader(new FileReader(getFrom));
 		     BufferedWriter out = new BufferedWriter(new FileWriter(putIn))) {
 			String line; // String for reading from file
 			while ((line = in.readLine())!= null){
 				StringBuilder sb = new StringBuilder(line).append("\n");
+				if (line.contains("*/")&&!line.contains("contains"))
+					sb.delete(line.indexOf("*"), line.length());
 				if (line.contains("/")&&!line.contains("contains")&&!line.contains("indexOf"))
 					sb.delete(line.indexOf("/"), line.length());
-				if (line.contains("*")&&!line.contains("contains"))
+				else if (line.contains("*")&&!line.contains("contains")
+						&&!line.contains("import")&&!line.contains("indexOf"))
 					sb.delete(line.indexOf("*"), line.length());
-				String changed = sb.toString();
-				out.write(changed);
+				System.out.print(sb.toString());
+				out.write(sb.toString());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

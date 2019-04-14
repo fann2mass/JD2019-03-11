@@ -16,7 +16,6 @@ public class TaskC {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		String filename = getFileName(TaskB.class);
-		System.out.println(filename);
 		directory.append(filename);
 		for (; ; ) {
 			StringBuilder command = new StringBuilder(scan.nextLine());
@@ -30,20 +29,21 @@ public class TaskC {
 			directory.delete(directory.lastIndexOf(File.separator), directory.length());
 		}
 		if (command.toString().contains("cd ")){
+			File file = new File(directory.toString());
 			command.delete(0,3);
-			directory.append(File.separator).append(command);
+			for (File listFile : file.listFiles()) {
+				if (command.toString().equals(listFile.getName())){
+					directory.append(File.separator).append(listFile.getName());
+				}
+			}
 		}
 		if (command.toString().equals("dir")) {
 			try {
 				File file = new File(directory.toString());
-				String[] dir = file.list();
-				StringBuilder resentDir = new StringBuilder(directory);
-				System.out.println("     "+resentDir.delete(resentDir.lastIndexOf(File.separator),
-						resentDir.length()).delete(0, resentDir.lastIndexOf(File.separator) + 1));
-				for (String s : dir) {
-					System.out.println(s);
+				System.out.println("dir: " + file.getName());
+				for (File currentFile : file.listFiles()) {
+					System.out.println("\tfile: " + currentFile.getName());
 				}
-				System.out.println();
 			} catch (NullPointerException e){
 				System.out.println("Error: empty");
 			}

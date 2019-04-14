@@ -16,8 +16,8 @@ class Printer {
         Set<Map.Entry<String, Var>> entries = vars.entrySet();
         for (Map.Entry<String, Var> entry : entries) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
-            logger.fillReport(entry.getKey() + " = " + entry.getValue());
         }
+        logger.fillReport(vars.toString());
     }
 
     void sortPrint(Map<String, Var> vars) {
@@ -29,8 +29,7 @@ class Printer {
         }
         for (String element : elements) {
             System.out.println(element);
-            logger.fillReport(element);
         }
-
+        logger.fillReport(elements.toString());
     }
 }

@@ -13,7 +13,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException{
         Matrix result = new Matrix(value);
         this.value= Arrays.copyOf(value,value.length);
         if (other instanceof Scalar) {
@@ -37,7 +37,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException{
         Matrix result = new Matrix(value);
         if (other instanceof Scalar) {
             for (int i = 0; i < result.value.length; i++) {
@@ -49,9 +49,9 @@ class Matrix extends Var {
         }
         this.value= Arrays.copyOf(value,value.length);
         if (other instanceof Matrix) {
-            if (!(result.value.length == ((Matrix) other).value.length)) return super.sub(other);
+            if ((result.value.length != ((Matrix) other).value[0].length)) return super.sub(other);
             for (int i = 0; i < result.value.length; i++) {
-                for (int j = 0; j < result.value.length; j++) {
+                for (int j = 0; j < ((Matrix) other).value.length; j++) {
                     result.value[i][j] = result.value[i][j] - ((Matrix) other).value[i][j];
                 }
             }
@@ -61,7 +61,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException{
         Matrix result = new Matrix(value);
         this.value= Arrays.copyOf(value,value.length);
         if (other instanceof Scalar) {
@@ -83,7 +83,7 @@ class Matrix extends Var {
             return new Vector(resultVector);
         }
         if (other instanceof Matrix) {
-            if (!(result.value.length == ((Matrix) other).value.length)) return super.mul(other);
+            if ((result.value.length != ((Matrix) other).value[0].length)) return super.mul(other);
             double[][] sum=new double[value.length][value.length];
             for (int i = 0; i < result.value.length; i++) {
                 for (int j = 0; j < result.value.length; j++) {

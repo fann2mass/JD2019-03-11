@@ -22,14 +22,14 @@ public class TaskB {
         Pattern wordsPattern = Pattern.compile("[а-яА-ЯЁё]+");
         Pattern symbolsPattern = Pattern.compile("[^ а-яА-ЯЁё]+");
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(input));
-             PrintWriter printWriter = new PrintWriter(new FileWriter(output))
+        try (BufferedReader reader = new BufferedReader(new FileReader(input));
+             PrintWriter writer = new PrintWriter(new FileWriter(output))
         ) {
             int countWords = 0;
             int countSymbols = 0;
 
-            while (bufferedReader.ready()) {
-                String line = bufferedReader.readLine();
+            while (reader.ready()) {
+                String line = reader.readLine();
                 Matcher words = wordsPattern.matcher(line);
                 Matcher symbols = symbolsPattern.matcher(line);
 
@@ -39,7 +39,7 @@ public class TaskB {
                     countSymbols++;
             }
 
-            printWriter.printf("words=%d, punctuation marks=%d", countWords, countSymbols);
+            writer.printf("words=%d, punctuation marks=%d", countWords, countSymbols);
             System.out.printf("words=%d, punctuation marks=%d", countWords, countSymbols);
         } catch (IOException e) {
             e.printStackTrace();

@@ -20,9 +20,6 @@ public class TaskB {
         process(inpTxt, outTxt);
     }
     //однострочный коммент номер два\
-    /*
-    многострочный комментарий
-     */
     private static void process(String input, String output) {
         try (BufferedReader reader = new BufferedReader(new FileReader(input));
              PrintWriter writer = new PrintWriter(new FileWriter(output))
@@ -31,15 +28,13 @@ public class TaskB {
             boolean write = true;
             while (reader.ready()) {
                 String line = reader.readLine();
-                String emptyLine = new String();
-
-                if (line.contains("//") && !line.contains("line.contains"))
-                    line = emptyLine;
-                if (line.contains("/*") && !line.contains("line.contains"))
+                if (line.contains("//") && !line.contains("contains"))
+                    line = "doNotWriteThisLine";
+                if (line.contains("/*") && !line.contains("contains"))
                     write = false;
-                if (line.contains("/**") && !line.contains("line.contains"))
+                if (line.contains("/**") && !line.contains("contains"))
                     write = false;
-                if (write)
+                if (write && !line.equals("doNotWriteThisLine"))
                     result.append(line).append("\n");
                 if (line.endsWith("*/"))
                     write = true;

@@ -12,7 +12,7 @@ public class TaskB {
         return path + classDir + File.separator + name;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         String inpTxt = getPath(TaskB.class, "text.txt");
         String outTxt = getPath(TaskB.class, "resultTaskB.txt");
         process(inpTxt, outTxt);

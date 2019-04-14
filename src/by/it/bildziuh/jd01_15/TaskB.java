@@ -8,17 +8,19 @@ public class TaskB {
      * @param name
      * @return
      */
-    private static String getPath(Class<?> cl, String name) {
+    private static String getPath(Class<?> cl, String name) { //однострочный коммент номер три
         String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         String classDir = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
         return path + classDir + File.separator + name;
     }
+
     //однострочный коммент номер один
     public static void main(String[] args) {
         String inpTxt = getPath(TaskB.class, "TaskB.java");
         String outTxt = getPath(TaskB.class, "TaskB.txt");
         process(inpTxt, outTxt);
     }
+
     //однострочный коммент номер два\
     private static void process(String input, String output) {
         try (BufferedReader reader = new BufferedReader(new FileReader(input));
@@ -26,15 +28,20 @@ public class TaskB {
         ) {
             StringBuilder result = new StringBuilder();
             boolean write = true;
+
             while (reader.ready()) {
                 String line = reader.readLine();
-                if (line.contains("//") && !line.contains("contains"))
-                    line = "doNotWriteThisLine";
+
+                if (line.contains("//") && !line.contains("contains")) {
+                    result.append(line);
+                    result.delete(result.indexOf("//"), result.length()).append("\n");
+                    continue;
+                }
                 if (line.contains("/*") && !line.contains("contains"))
                     write = false;
                 if (line.contains("/**") && !line.contains("contains"))
                     write = false;
-                if (write && !line.equals("doNotWriteThisLine"))
+                if (write)
                     result.append(line).append("\n");
                 if (line.endsWith("*/"))
                     write = true;

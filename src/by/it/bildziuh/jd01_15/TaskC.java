@@ -10,11 +10,11 @@ public class TaskC {
         String line;
 
         while (!(line = scanner.nextLine()).equals("end")) {
-            if (line.contains("cd")) {
+            if (line.contains("cd"))
                 cd(path, line);
-            } else if (line.contains("dir")) {
+            if (line.contains("dir"))
                 dir(path);
-            } else
+            if (!(line.contains("dir") || line.contains("cd")))
                 System.out.println("Неверная команда!");
         }
     }

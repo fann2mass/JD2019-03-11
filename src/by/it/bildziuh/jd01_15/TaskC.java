@@ -28,7 +28,6 @@ public class TaskC {
     }
 
     private static void dir(String dirPath) {
-
         System.out.println("dir: " + getFile(dirPath).getName());
 
         for (File currentFile : getFile(dirPath).listFiles()) {

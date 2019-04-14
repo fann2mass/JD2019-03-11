@@ -1,4 +1,12 @@
-package by.it.akhmelev.jd01_14;
+package by.it.khlystunova.jd01_14;
+
+/*Вариант А.В классе TaskAнужно выполнить следующие шаги:
+Записать в двоичный файл dataTaskA.bin20 случайных чисел типа Integer.
+Файл должен быть в том же каталоге, что и исходный код для класса TaskA.java.
+Затем нужно прочитать записанный файл в коллекцию ArrayList.
+Вывести в консоль прочитанные числа через пробел
+Вывести с новой строки их среднее арифметическое avg=20.123.
+Продублировать вывод в консоль в файл resultTaskA.txt*/
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -15,17 +23,18 @@ import java.util.List;
 
 public class TaskA {
 
-    private static String getFileName(Class<?> cl, String name) {
+    private static String getFileName(String name) {
         String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String strPackage = cl.getPackage().getName();
+        String strPackage = TaskA.class.getPackage().getName();
         String relPath = strPackage.replace(".", File.separator);
         return src + relPath + File.separator + name;
     }
 
     public static void main(String[] args) {
         //Записать в двоичный файл dataTaskA.bin 20 случайных чисел типа Integer
-        String filename = getFileName(TaskA.class, "dataTaskA.bin");
-        String filetxt = getFileName(TaskA.class, "resultTaskA.txt");
+        String filename = getFileName("dataTaskA.bin");
+        System.out.println(filename);
+        String filetxt = getFileName("resultTaskA.txt");
 
         writeInt(filename);
         List<Integer> list = readListInteger(filename);
@@ -38,7 +47,7 @@ public class TaskA {
                 new BufferedOutputStream(new FileOutputStream(filename)))
         ) {
             for (int i = 0; i < 20; i++) {
-                Integer value = (int) (Math.random() * 101 - 50);
+                int value = (int) (Math.random() * 101 - 50);
                 dos.writeInt(value);
             }
         } catch (IOException e) {

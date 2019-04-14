@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
     public static void main(String[] args) {
+        try {
+            Var.load();
+        } catch (Exception e) {
+        }
         Scanner scan = new Scanner(System.in);
         String line;
 

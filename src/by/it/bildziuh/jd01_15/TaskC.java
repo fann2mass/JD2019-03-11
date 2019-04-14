@@ -21,9 +21,11 @@ public class TaskC {
 
     private static String path = getPath(TaskC.class);
 
+    private static String separator = File.separator;
+
     private static String getPath(Class<?> cl) {
-        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String classDir = cl.getName().replace(cl.getSimpleName(), "").replace(".", File.separator);
+        String path = System.getProperty("user.dir") + separator + "src" + separator;
+        String classDir = cl.getName().replace(cl.getSimpleName(), "").replace(".", separator);
         return path + classDir;
     }
 
@@ -40,7 +42,7 @@ public class TaskC {
         StringBuilder newPath = new StringBuilder(oldPath);
 
         if (command.contains("..")) {
-            newPath.delete(newPath.lastIndexOf("\\"), newPath.length()).delete(newPath.lastIndexOf("\\") + 1, newPath.length());
+            newPath.delete(newPath.lastIndexOf(separator), newPath.length()).delete(newPath.lastIndexOf(separator) + 1, newPath.length());
             path = newPath.toString();
             return;
         }
@@ -50,7 +52,7 @@ public class TaskC {
 
         for (File currentFile : getFile(oldPath).listFiles()) {
             if (newFolder.toString().equals(currentFile.getName())) {
-                newPath.append(currentFile.getName()).append(File.separator);
+                newPath.append(currentFile.getName()).append(separator);
                 path = newPath.toString();
                 return;
             }

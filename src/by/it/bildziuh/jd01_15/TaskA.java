@@ -19,16 +19,16 @@ public class TaskA {
 
     public static void main(String[] args) {
         int[][] array = create(6, 4, 15);
-        String filename=getFileName(TaskA.class,"matrix.txt");
+        String filename = getFileName(TaskA.class, "matrix.txt");
         saveMatrix(array, filename);
         showFile(filename);
     }
 
     private static void showFile(String filename) {
 
-        try (BufferedReader in=new BufferedReader(new FileReader(filename))){
+        try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
             String line;
-            while ((line=in.readLine())!=null){
+            while ((line = in.readLine()) != null) {
                 System.out.println(line);
             }
         } catch (IOException e) {
@@ -37,10 +37,10 @@ public class TaskA {
     }
 
     private static void saveMatrix(int[][] array, String filename) {
-        try (PrintWriter out=new PrintWriter(new FileWriter(filename))){
+        try (PrintWriter out = new PrintWriter(new FileWriter(filename))) {
             for (int[] row : array) {
                 for (int element : row) {
-                    out.printf("%3d ",element);
+                    out.printf("%3d ", element);
                 }
                 out.println();
             }
@@ -54,13 +54,13 @@ public class TaskA {
         boolean maxOk;
         boolean minOk;
         do {
-            maxOk=false;
-            minOk=false;
+            maxOk = false;
+            minOk = false;
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
-                    result[i][j] = (int) (Math.random() * (max*2+1)) - 15;
-                    if (result[i][j]==max) maxOk=true;
-                    if (result[i][j]==-max) minOk=true;
+                    result[i][j] = (int) (Math.random() * (max * 2 + 1)) - 15;
+                    if (result[i][j] == max) maxOk = true;
+                    if (result[i][j] == -max) minOk = true;
                 }
             }
         } while (!(maxOk && minOk));

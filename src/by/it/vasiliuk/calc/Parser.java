@@ -1,16 +1,16 @@
-package by.it.vasiliuk.jd01_09;
+package by.it.vasiliuk.calc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expression) {
+    Var calc(String expression) throws CalcException {
         expression = expression.replace(" ", "");
         String[] operands = expression.split(Patterns.OPERATION);
         if (operands.length != 2)
             return null;
-        Pattern op = Pattern.compile(Patterns.OPERATION);
-        Matcher mo = op.matcher(expression);
+        Pattern po = Pattern.compile(Patterns.OPERATION);
+        Matcher mo = po.matcher(expression);
         Var two = Var.createVar(operands[1]);
         String operation = "";
         if (mo.find()) {
@@ -23,7 +23,8 @@ class Parser {
         Var one = Var.createVar(operands[0]);
         if (one == null || two == null)
             return null;
-                switch (operation) {
+        //ok find op
+        switch (operation) {
             case "+":
                 return one.add(two);
             case "-":
@@ -33,7 +34,7 @@ class Parser {
             case "/":
                 return one.div(two);
             default:
-                return null;
+                throw new CalcException("неизвестная операция");
         }
     }
 }

@@ -1,19 +1,46 @@
 package by.it.vasiliuk.jd01_09;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 public abstract class Var implements Operation {
 
-    static Var createVar(String operand){
+    private static Map<String, Var> vars = new HashMap<>();
 
+    public static Map getVar() {
+        Map<String, Var> copy = new HashMap<>();
+        for (Map.Entry<String, Var> stringVarEntry : vars.entrySet()) {
+            String key = (String) ((Map.Entry) stringVarEntry).getKey();
+            Var value = (Var) ((Map.Entry) stringVarEntry).getValue();
+            copy.put(key, value);
+        }
+        return copy;
+    }
+
+    static void saveVar(String operand, Var two) {
+        vars.put(operand,two);
+    }
+
+    static Var createVar(String operand){
         if(operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         else if(operand.matches(Patterns.VECTOR))
             return new Vector(operand);
         else if(operand.matches(Patterns.MATRIX))
             return new Matrix(operand);
-
-        else return null;
+        return vars.get(operand);
     }
 
+    static void sortVar() {
+        Map<String, Var> sortArray = new TreeMap<>();
+        for (Map.Entry<String, Var> stringVarEntry : vars.entrySet()) {
+            String key = (String) ((Map.Entry) stringVarEntry).getKey();
+            Var valueof = (Var) ((Map.Entry) stringVarEntry).getValue();
+            sortArray.put(key, valueof);
+        }
+        Printer.printVar(sortArray);
+    }
     @Override
     public String toString() {
         return "abstract Var";

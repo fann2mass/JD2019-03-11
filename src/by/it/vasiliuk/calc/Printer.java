@@ -1,4 +1,4 @@
-package by.it.vasiliuk.jd01_09;
+package by.it.vasiliuk.calc;
 
 
 import java.util.Iterator;
@@ -14,10 +14,9 @@ public class Printer {
     static void printVar(Map vars){
         Iterator it = vars.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry coup = (Map.Entry) it.next();
-            System.out.println(coup.getKey() + " = " + coup.getValue());
+            Map.Entry pair = (Map.Entry) it.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
             it.remove();
         }
     }
 }
-

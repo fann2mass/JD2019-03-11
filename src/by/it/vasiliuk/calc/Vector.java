@@ -1,4 +1,4 @@
-package by.it.vasiliuk.jd01_09;
+package by.it.vasiliuk.calc;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -15,20 +15,17 @@ public class Vector extends Var {
         this.vector = Arrays.copyOf(value, value.length);
     }
 
-    Vector(Vector vector) {
-        this.vector = vector.vector;
-    }
 
     Vector(String vector) {
 
         Pattern pattern = Pattern.compile("[^{}, ]+");
         Matcher matcher = pattern.matcher(vector);
-        int length = 0;
+        int len = 0;
         while (matcher.find()) {
-            length++;
+            len++;
         }
         matcher.reset();
-        double[] array = new double[length];
+        double[] array = new double[len];
         int i = 0;
         while (matcher.find()){
             String s = matcher.group();
@@ -42,25 +39,25 @@ public class Vector extends Var {
 
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder("{");
+        StringBuilder result = new StringBuilder("{");
         for (int i = 0; i < vector.length; i++) {
-            res.append(vector[i]);
+            result.append(vector[i]);
             if(i== vector.length-1)
-                res.append("}");
-            else res.append(", ");
+                result.append("}");
+            else result.append(", ");
         }
-        return res.toString();
+        return result.toString();
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         Vector result = new Vector(this.vector);
         if(other instanceof Vector){
             if(((Vector) other).vector.length == result.vector.length){
                 for (int i = 0; i < result.vector.length; i++) {
                     result.vector[i] =result.vector[i]+((Vector) other).vector[i];
                 }
-            }
+            }else throw new CalcException("Неправильная длина.");
             return result;
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -72,14 +69,14 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         Vector result = new Vector(this.vector);
         if(other instanceof Vector){
             if(((Vector) other).vector.length == result.vector.length){
                 for (int i = 0; i < result.vector.length; i++) {
                     result.vector[i] =result.vector[i]-((Vector) other).vector[i];
                 }
-            }
+            }else throw new CalcException("Неправильная длина.");
             return result;
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -91,7 +88,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         Vector result = new Vector(this.vector);
         if(other instanceof Vector){
             double value = 0;
@@ -99,7 +96,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     value +=result.vector[i]*((Vector) other).vector[i];
                 }
-            }
+            }else throw new CalcException("Неправильная длина.");
             return new Scalar(value);
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -111,13 +108,14 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
-        Vector result = new Vector(this.vector);
+    public Var div(Var other) throws CalcException {
+        Vector res = new Vector(this.vector);
         if(other instanceof Scalar){
-            for (int i = 0; i < result.vector.length; i++) {
-                result.vector[i] = result.vector[i] / ((Scalar)other).getValue();
+            if(((Scalar) other).getValue()==0) throw new CalcException("Деление на ноль.");
+            for (int i = 0; i < res.vector.length; i++) {
+                res.vector[i] = res.vector[i] / ((Scalar)other).getValue();
             }
-            return result;
+            return res;
         }
         return super.div(other);
     }

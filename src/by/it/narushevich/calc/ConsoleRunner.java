@@ -17,8 +17,6 @@ public class ConsoleRunner {
         String expr;
         for (; ; ) {
             expr = scanner.nextLine();
-            logger.fillReport(expr);
-            Thread.sleep(1000);
             if (expr.equals("end"))
                 break;
             if (expr.equals("printvar")){

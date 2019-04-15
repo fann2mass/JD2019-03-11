@@ -67,7 +67,8 @@ public class Test_jd01_15 {
     @Test(timeout = 1500)
     public void testTaskC() throws Exception {
         run("dir\n" +
-                "end\n").include("TaskC.java")
+                "end\n")
+                .include("TaskC.java")
                 .include("Test_jd01_15.java");
         run("cd ..\n" +
                 "cd ..\n" +
@@ -87,6 +88,7 @@ public class Test_jd01_15 {
         scanner.close();
         return sb.toString();
     }
+
 
 
     private static String dir(Class cl) {

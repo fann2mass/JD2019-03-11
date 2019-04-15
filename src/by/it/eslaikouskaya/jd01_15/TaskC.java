@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class TaskC {
 
-	private static StringBuilder directory = new StringBuilder();
+	private static StringBuilder directory;
 
 	private static String getFileName(Class<?> cl) {
 		String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
@@ -14,9 +14,11 @@ public class TaskC {
 	}
 
 	public static void main(String[] args) {
+		directory=new StringBuilder();
 		Scanner scan = new Scanner(System.in);
 		String filename = getFileName(TaskB.class);
 		directory.append(filename);
+		System.out.println(filename);
 		for (; ; ) {
 			StringBuilder command = new StringBuilder(scan.nextLine());
 			if (command.toString().equals("end")) break;
@@ -27,6 +29,7 @@ public class TaskC {
 	private static void whatToDo(StringBuilder command) {
 		if (command.toString().equals("cd ..")||command.toString().equals("cd..")) {
 			directory.delete(directory.lastIndexOf(File.separator), directory.length());
+			System.out.println(directory);
 		}
 		if (command.toString().contains("cd ")){
 			File file = new File(directory.toString());

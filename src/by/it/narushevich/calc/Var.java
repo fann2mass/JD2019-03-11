@@ -1,5 +1,6 @@
 package by.it.narushevich.calc;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ abstract class Var implements Operation {
 
     static void saveVar(String name, Var var){
         vars.put(name, var);
+        save();
     }
 
     static Var createVar(String operand) {
@@ -26,6 +28,38 @@ abstract class Var implements Operation {
         if (vars.containsKey(operand))
             return vars.get(operand);
         return null;
+    }
+
+    private static void save() {
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(createFile()))){
+        for (Map.Entry<String, Var> pair : vars.entrySet()) {
+            printWriter.println(pair.getKey() +" = "+ pair.getValue());
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void load() throws CalcException {
+        Parser p = new Parser();
+        File file = new File(createFile());
+        if (file.exists()) {
+            try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = in.readLine()) != null) {
+                    p.calc(line);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static String createFile() {
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String replacePath = Var.class.getPackage().getName().replace(".", File.separator);
+        return src + replacePath + File.separator + "vars.txt";
     }
 
     @Override

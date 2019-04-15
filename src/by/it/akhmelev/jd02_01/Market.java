@@ -27,10 +27,10 @@ public class Market {
             try {
                 th.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("wow");
             }
         }
-        System.out.println("market is closed");
+        System.out.println("=================market is closed");
 
     }
 }

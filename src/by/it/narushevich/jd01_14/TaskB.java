@@ -12,14 +12,13 @@ public class TaskB {
 
         Pattern words = Pattern.compile("[а-яА-ЯЁё]+");
         Pattern punctuation = Pattern.compile("[,.!?:;-]+");
-        int countChars = 0;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
              PrintWriter printWriter = new PrintWriter(new FileWriter(fileResultToTxt))
             ) {
             int counterWords = 0;
             int counterPunct = 0;
-            while ((countChars = bufferedReader.read()) != -1) {
+            while (bufferedReader.ready()) {
                 String str = bufferedReader.readLine();
                 Matcher matcherWord = words.matcher(str);
                 while (matcherWord.find()){

@@ -17,7 +17,7 @@ public class TaskB {
     }
 
     /*
-    Пример многострочного комментария
+   * Пример многострочного комментария
      */
 
     public static void main(String[] args) {     /*main*/

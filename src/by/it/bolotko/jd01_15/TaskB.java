@@ -23,7 +23,7 @@ public class TaskB {
     public static void main(String[] args) {     /*main*/
         String fileName=getFileName("TaskB.java");
         StringBuilder sb = readTaskB(fileName);
-        String resultFileName = getFileName("resultTaskB.txt");
+        String resultFileName = getFileName("TaskB.txt");
         saveLineToTheFileTxt(sb, resultFileName);
 
     }

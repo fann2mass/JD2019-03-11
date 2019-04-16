@@ -15,9 +15,15 @@ public class Market {
         while (time < Dispatcher.finishTime) {
             int count = Util.random(2);
             for (int n = 0; n < count; n++) {
-                Buyer buyer = new Buyer(++numberBuyer);
-                buyer.start();
-                buyers.add(buyer);
+                if (numberBuyer%4!=0){
+                    Buyer buyer = new Buyer(++numberBuyer, "");
+                    buyer.start();
+                    buyers.add(buyer);}
+                else {
+                    Buyer buyer = new Buyer(++numberBuyer, "-pensioner");
+                    buyer.start();
+                    buyers.add(buyer);
+                }
             }
             time++;
             Util.sleep(1000);
@@ -33,4 +39,6 @@ public class Market {
         System.out.println("=================market is close");
 
     }
+
 }
+

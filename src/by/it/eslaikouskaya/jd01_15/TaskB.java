@@ -1,6 +1,11 @@
 package by.it.eslaikouskaya.jd01_15;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class TaskB {
 	//all the actions
@@ -25,7 +30,7 @@ public class TaskB {
 	 */
 	private static void getDeleteAndPut (String putIn, String getFrom) {
 		try (BufferedReader in = new BufferedReader(new FileReader(getFrom));
-		     BufferedWriter out = new BufferedWriter(new FileWriter(putIn))) {
+		     BufferedWriter out = new BufferedWriter(new PrintWriter(putIn))) {
 			String line; // String for reading from file
 			while ((line = in.readLine())!= null){
 				StringBuilder sb = new StringBuilder(line).append("\n");
@@ -33,8 +38,7 @@ public class TaskB {
 					sb.delete(line.indexOf("*"), line.length());
 				if (line.contains("/")&&!line.contains("contains")&&!line.contains("indexOf"))
 					sb.delete(line.indexOf("/"), line.length());
-				else if (line.contains("*")&&!line.contains("contains")
-						&&!line.contains("import")&&!line.contains("indexOf"))
+				else if (line.contains("*")&&!line.contains("contains")&&!line.contains("indexOf"))
 					sb.delete(line.indexOf("*"), line.length());
 				System.out.print(sb.toString());
 				out.write(sb.toString());

@@ -12,7 +12,7 @@ class Vector extends Var {
     Vector(double[] value){ this.value= Arrays.copyOf(value,value.length); }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException{
         Vector result = new Vector(value);
         if (other instanceof Scalar) {
             for (int i = 0; i < result.value.length; i++) {
@@ -31,7 +31,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException{
         Vector result = new Vector(value);
         if (other instanceof Scalar) {
             for (int i = 0; i < result.value.length; i++) {
@@ -50,7 +50,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException{
         Vector result = new Vector(value);
         if (other instanceof Scalar) {
             for (int i = 0; i < result.value.length; i++) {
@@ -70,9 +70,11 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException{
         Vector result = new Vector(value);
         if (other instanceof Scalar) {
+            if (((Scalar) other).value==0)
+                throw new CalcException("Деление на ноль");
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] / ((Scalar) other).getValue();
             }

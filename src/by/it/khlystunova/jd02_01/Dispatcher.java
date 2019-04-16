@@ -5,8 +5,8 @@ import java.util.HashMap;
 
  class Dispatcher {
 
-    final static int kSpeed=100;//спать будем в kspeed раз быстрее
-    final static int finishTime=120;
+    final static int kSpeed=1;//спать будем в kspeed раз быстрее
+    final static int finishTime=60;
 
      private static HashMap<String,Double> listOfGoods = new HashMap<String,Double>(){{
         put("Milk", 1.68);

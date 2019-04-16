@@ -4,17 +4,22 @@ import java.util.*;
 
 public class Buyer extends Thread implements IBuyer,IUseBasket {
 
+    private boolean pensioneer = false;
+
     Buyer(int number) {
-        super("Buyer № "+number);
+        super("Buyer № " + number+" ");
+        if(number%4==0)this.pensioneer=true;
     }
 
     @Override
     public void run() {
-        enterToMarket();
-        takeBasket();
-        chooseGoods();
-        putGoodsToBasket();
-        goOut();
+
+            enterToMarket();
+            takeBasket();
+            chooseGoods();
+            putGoodsToBasket();
+            goOut();
+
     }
 
     @Override
@@ -25,6 +30,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
     @Override
     public void chooseGoods() {
         System.out.println(this+" Start to choose goods");
+        if(pensioneer)Util.sleep(Util.random(750,3_000));
         Util.sleep(Util.random(500,2_000));
         System.out.println(this+" Finish to choose goods");
 
@@ -37,18 +43,19 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
     @Override
     public String toString() {
-        return this.getName();
+        return this.getName()+" "+pensioneer;
     }
 
     @Override
     public void takeBasket() {
+        if(pensioneer)Util.sleep(Util.random(150,300));
         Util.sleep(Util.random(100,200));
         System.out.println(this+" Take a backet");
     }
 
     @Override
     public void putGoodsToBasket() {
-
+        if(pensioneer)Util.sleep(Util.random(150,300));
         Util.sleep(Util.random(100,200));
         int numberOfGoods = Util.random(1,4);
 

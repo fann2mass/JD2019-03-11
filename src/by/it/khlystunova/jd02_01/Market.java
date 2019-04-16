@@ -11,20 +11,38 @@ public class Market {
         System.out.println("market is opened");
         List<Thread> buyers = new ArrayList<>();
 
-        int time = 0;
         int numberBuyer = 0;
-        //нам нужно поспать 120 раз по секунде чтобы было 2 минуты в общем
-        while(time<Dispatcher.finishTime){
-            int count = Util.random(2);
-            for (int n = 0; n < count; n++) {
-                Buyer buyer = new Buyer(++numberBuyer);
-                buyer.start();
-                buyers.add(buyer);
+
+        for (int countMinuts = 0; countMinuts < 2; countMinuts++) {
+            int time = 0;
+            while(time<Dispatcher.finishTime){
+                if(time<=30) {
+                        int count = Util.random(2);
+                        if(!(numberBuyer>=time+10)) {
+                            for (int n = 0; n < count; n++) {
+                                Buyer buyer = new Buyer(++numberBuyer);
+                                buyer.start();
+                                buyers.add(buyer);
+                            }
+                        }
+                    time++;
+                    Util.sleep(1000);
+
+                }else {
+                    int count = Util.random(2);
+                      if(numberBuyer<=40+(30-time)) {
+                        for (int n = 0; n < count; n++) {
+                            Buyer buyer = new Buyer(++numberBuyer);
+                            buyer.start();
+                            buyers.add(buyer);
+                        }
+                      }
+                    time++;
+                    Util.sleep(1000);
+                }
             }
-            time++;
-            //спим секунду прежде чем запустить новую партию покупателей в магазин
-            Util.sleep(1000);
         }
+
         for (Thread buyer : buyers) {
             try {
                 buyer.join();

@@ -35,6 +35,7 @@ class Market {
                 th.join();
             } catch (InterruptedException e) {
                 System.out.println("wow");
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println("=================market is closed");

@@ -40,7 +40,8 @@ class Buyer extends Thread implements IBuyer {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println(this + " complete service at cashier");

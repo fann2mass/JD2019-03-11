@@ -5,6 +5,7 @@ import java.util.*;
 public class Buyer extends Thread implements IBuyer,IUseBasket {
 
     private boolean pensioneer = false;
+    static Integer numberInTheShop = 0;
 
     Buyer(int number) {
         super("Buyer № " + number+" ");
@@ -13,12 +14,13 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
     @Override
     public void run() {
-
+            numberInTheShop++;
             enterToMarket();
             takeBasket();
             chooseGoods();
             putGoodsToBasket();
             goOut();
+            numberInTheShop--;
 
     }
 

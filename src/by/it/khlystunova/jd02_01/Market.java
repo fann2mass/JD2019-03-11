@@ -18,9 +18,10 @@ public class Market {
             while(time<Dispatcher.finishTime){
                 if(time<=30) {
                         int count = Util.random(2);
-                        if(!(numberBuyer>=time+10)) {
+                        if(!(Buyer.numberInTheShop>=time+10)) {
                             for (int n = 0; n < count; n++) {
                                 Buyer buyer = new Buyer(++numberBuyer);
+                                numberBuyer++;
                                 buyer.start();
                                 buyers.add(buyer);
                             }
@@ -30,10 +31,11 @@ public class Market {
 
                 }else {
                     int count = Util.random(2);
-                      if(numberBuyer<=40+(30-time)) {
+                      if(Buyer.numberInTheShop<=40+(30-time)) {
                         for (int n = 0; n < count; n++) {
                             Buyer buyer = new Buyer(++numberBuyer);
                             buyer.start();
+                            numberBuyer++;
                             buyers.add(buyer);
                         }
                       }

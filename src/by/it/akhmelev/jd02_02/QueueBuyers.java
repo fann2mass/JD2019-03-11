@@ -8,7 +8,7 @@ class QueueBuyers {
     private QueueBuyers() {
     }
 
-    private final static Deque<Buyer> buyerDeque = new ArrayDeque<>();
+    private static final Deque<Buyer> buyerDeque = new ArrayDeque<>();
 
     static synchronized void add(Buyer buyer) {
         buyerDeque.addLast(buyer);

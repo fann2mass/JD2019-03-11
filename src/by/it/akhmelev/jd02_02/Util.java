@@ -1,11 +1,15 @@
 package by.it.akhmelev.jd02_02;
 
 class Util {
+
+    private Util() {
+    }
+
     static void sleep(int timeout){
         try {
             Thread.sleep(timeout/ Dispatcher.kSpeed);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

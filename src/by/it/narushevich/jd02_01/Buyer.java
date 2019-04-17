@@ -67,12 +67,13 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             Collections.shuffle(keysList);
             String randomKey = keysList.get(new Random().nextInt(keysList.size()));
             Double price = Dispatcher.listOfGoods.get(randomKey);
+            keysList.remove(randomKey);
             sum += price;
             list.append(randomKey);
-            if (i == numberOfGoods) list.append(" - total price is ").append(sum);
+            if (i == numberOfGoods) list.append(" - total price is ");
             else list.append(", ");
         }
-        System.out.println(this + " put goods: " + list);
+        System.out.printf("%s put goods: %s%5.2f%n",this,list,sum);
     }
 
     @Override

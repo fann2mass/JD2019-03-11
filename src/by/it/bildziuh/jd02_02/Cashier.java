@@ -16,16 +16,17 @@ class Cashier implements Runnable {
             Buyer buyer = QueueBuyers.extract();
             if (buyer != null) {
                 System.out.println(this + " started service " + buyer);
-                buyer.getMonitor().notify();
-                try {
-                    buyer.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 int timeout = Util.random(2000, 5000);
                 Util.sleep(timeout);
                 System.out.println(this + " finished service " + buyer);
                 synchronized (buyer.getMonitor()) {
+                    buyer.getMonitor().notify();
+                    try {
+                        buyer.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

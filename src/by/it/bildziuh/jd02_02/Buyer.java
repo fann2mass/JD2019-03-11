@@ -7,6 +7,8 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
 
     private static final Object sync = new Object();
 
+    HashMap<String, Double> paymentCheck = new HashMap<>();
+
     @Override
     public void run() {
         enterToMarket();
@@ -57,6 +59,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
                 Thread.currentThread().interrupt();
             }
         }
+        print();
         System.out.println(this + " complete service at cashier");
 
 
@@ -99,13 +102,16 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
                 size--;
             }
         }
-
         System.out.println(this + " putted goods into a bucket");
+        paymentCheck.putAll(chosenGoods);
+    }
+
+    private void print() {
         double total = 0;
         System.out.println("------------------");
         System.out.printf("| %-13s |\n", this);
         System.out.println("------------------");
-        for (HashMap.Entry<String, Double> entry : chosenGoods.entrySet()) {
+        for (HashMap.Entry<String, Double> entry : paymentCheck.entrySet()) {
             total += entry.getValue();
             System.out.printf("| %-6s = %-5.2f |\n", entry.getKey(), entry.getValue());
         }

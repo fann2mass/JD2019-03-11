@@ -1,8 +1,7 @@
 package by.it.bildziuh.jd02_01;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.Iterator;
 
 public class Buyer extends Thread implements IBuyer, IUseBucket {
 
@@ -19,7 +18,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
 
     Buyer(int number) {
         super("Buyer № " + number);
-        if (Util.random(0, 3) == 3)
+        if (Util.random(1, 4) == 4)
             this.pensioneer = true;
     }
 
@@ -32,6 +31,8 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     public void chooseGoods() {
         System.out.println(this + " start to choose goods");
         int timeout = Util.random(500, 2000);
+        if (pensioneer)
+            timeout = timeout * 3 / 2;
         Util.sleep(timeout);
         System.out.println(this + " finish to choose goods");
     }
@@ -48,8 +49,9 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
 
     @Override
     public void takeBucket() {
-
         int timeout = Util.random(100, 200);
+        if (pensioneer)
+            timeout = timeout * 3 / 2;
         Util.sleep(timeout);
         System.out.println(this + " took a bucket");
 
@@ -58,6 +60,8 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void putGoodsToBucket() {
         int timeout = Util.random(100, 200);
+        if (pensioneer)
+            timeout = timeout * 3 / 2;
         Util.sleep(timeout);
         pickUpGoods();
         System.out.println(this + " putted goods into a bucket");
@@ -65,29 +69,17 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     }
 
     private void pickUpGoods() {
-        HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
-            {
-                put("Soda", 3.99);
-                put("Beer", 7.99);
-                put("Cereal", 3.49);
-                put("Frozen dinners", 9.99);
-                put("Snacks", 2.99);
-                put("Milk", 4.49);
-                put("Bread", 2.99);
-                put("Meat", 14.49);
-                put("Pasta", 6.49);
+        HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
+        Iterator iterator = chosenGoods.entrySet().iterator();
+        int size = chosenGoods.size();
+        int goodsCount = Util.random(1, 4);
+        while (iterator.hasNext() && chosenGoods.size() != goodsCount) {
+            iterator.next();
+            if (Util.random(1, size) != size) {
+                iterator.remove();
+                size--;
             }
-        };
-
-        int goods = Util.random(0, 3);
-        HashMap<String, Double> choosedGoods = new HashMap<>();
-        Set<String> keySet = listOfGoods.keySet();
-        ArrayList<String> keys = new ArrayList<>(keySet);
-
-
-        for (int i = 0; i <= goods; i++) {
-            int thing = Util.random(0, keys.size() - 1);
-
         }
+        System.out.println(chosenGoods);
     }
 }

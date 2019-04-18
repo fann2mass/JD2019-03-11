@@ -18,4 +18,8 @@ class QueueBuyers {
         return buyerDeque.pollFirst();
     }
 
+    static synchronized int size() {
+        return buyerDeque.size();
+    }
+
 }

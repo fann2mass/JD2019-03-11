@@ -1,6 +1,6 @@
 package by.it.bildziuh.jd02_02;
 
-class Cashier implements Runnable{
+class Cashier implements Runnable {
 
     private int number;
 
@@ -10,19 +10,26 @@ class Cashier implements Runnable{
 
     @Override
     public void run() {
-        while (Dispatcher.marketOpened()){
+        while (Dispatcher.marketOpened()) {
+
+
             Buyer buyer = QueueBuyers.extract();
-            if (buyer!=null){
-                System.out.println(this+" started service "+buyer);
+            if (buyer != null) {
+                System.out.println(this + " started service " + buyer);
                 int timeout = Util.random(2000, 5000);
                 Util.sleep(timeout);
-                System.out.println(this+" finished service "+buyer);
-                synchronized (buyer.getMonitor()){
+                System.out.println(this + " finished service " + buyer);
+                synchronized (buyer.getMonitor()) {
                     buyer.getMonitor().notify();
+                    try {
+                        buyer.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-        System.out.println(this+" closed");
+        System.out.println(this + " closed");
     }
 
     @Override

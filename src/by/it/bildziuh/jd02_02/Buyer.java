@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 class Buyer extends Thread implements IBuyer, IUseBucket {
 
+    private static final Object sync = new Object();
+
     @Override
     public void run() {
         enterToMarket();
@@ -56,6 +58,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
             }
         }
         System.out.println(this + " complete service at cashier");
+
     }
 
     @Override
@@ -95,8 +98,18 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
                 size--;
             }
         }
-        System.out.println(this + " putted goods into a bucket");
 
-        System.out.println(chosenGoods);
+            System.out.println(this + " putted goods into a bucket");
+            double total = 0;
+            System.out.println("---------------");
+            for (HashMap.Entry<String, Double> entry : chosenGoods.entrySet()) {
+                total += entry.getValue();
+                System.out.println("| " + entry.getKey() + "=" + entry.getValue() + " |");
+            }
+            System.out.println("---------------");
+            System.out.printf("| Total = %f  |\n",total);
+            System.out.println("---------------");
+
     }
 }
+

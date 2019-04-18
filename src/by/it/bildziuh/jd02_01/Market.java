@@ -27,9 +27,8 @@ public class Market {
                 if (time <= 30 && Dispatcher.buyerInMarket <= time + 10)
                     continue;
 
-                Util.sleep(1000);
+                Util.sleep(100);
                 time++;
-
             }
         }
         for (Thread th : buyers) {

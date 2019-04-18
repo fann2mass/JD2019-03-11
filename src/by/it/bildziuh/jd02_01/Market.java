@@ -12,7 +12,7 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
-        for (int cycles = 0; cycles < 2; cycles++) {
+        for (int cycle = 1; cycle <= 2; cycle++) {
             while (time < Dispatcher.fullCycle) {
 
                 int count = Util.random(2);

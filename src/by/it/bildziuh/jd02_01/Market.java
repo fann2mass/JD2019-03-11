@@ -21,13 +21,13 @@ public class Market {
                     buyer.start();
                     buyers.add(buyer);
                 }
-                if (time > 30 && Dispatcher.buyerInMarket <= 40 + (30 - time))
+                if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time))
                     continue;
 
-                if (time <= 30 && Dispatcher.buyerInMarket <= time + 10)
+                if (time <= 30 && Dispatcher.buyerInMarket <= time + 5)
                     continue;
 
-                Util.sleep(100);
+                Util.sleep(1000);
                 time++;
             }
         }

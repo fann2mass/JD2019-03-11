@@ -3,7 +3,7 @@ package by.it.akhmelev.jd02_01;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Market {
+class Market {
 
     public static void main(String[] args) {
 

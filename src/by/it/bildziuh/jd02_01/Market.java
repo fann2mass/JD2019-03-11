@@ -23,12 +23,12 @@ public class Market {
                 }
                 if (time > 30 && Buyer.buyersInside <= 40 + (30 - time))
                     continue;
-
                 if (time <= 30 && Buyer.buyersInside <= time + 10)
                     continue;
 
                 Util.sleep(1000);
                 time++;
+
             }
         }
         for (Thread th : buyers) {

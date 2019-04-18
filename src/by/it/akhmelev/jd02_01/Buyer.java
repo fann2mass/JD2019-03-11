@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd02_01;
 
-public class Buyer extends Thread implements IBuyer {
+class Buyer extends Thread implements IBuyer {
 
     @Override
     public void run() {

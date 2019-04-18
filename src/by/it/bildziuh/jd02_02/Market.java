@@ -3,10 +3,10 @@ package by.it.bildziuh.jd02_02;
 import java.util.ArrayList;
 import java.util.List;
 
-class Market {
+public class Market {
 
     public static void main(String[] args) {
-
+/*
         List<Thread> threads = new ArrayList<>();
         System.out.println("market is opened");
 
@@ -35,10 +35,9 @@ class Market {
                 th.join();
             } catch (InterruptedException e) {
                 System.out.println("wow");
-                Thread.currentThread().interrupt();
             }
         }
         System.out.println("=================market is closed");
-
+*/
     }
 }

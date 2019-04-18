@@ -67,11 +67,6 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
         if (pensioneer)
             timeout *= 3 / 2;
         Util.sleep(timeout);
-        System.out.println(this + " putted goods into a bucket");
-        putGoods();
-    }
-
-    private void putGoods() {
         HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
         Iterator iterator = chosenGoods.entrySet().iterator();
         int size = chosenGoods.size();
@@ -83,7 +78,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
                 size--;
             }
         }
+        System.out.println(this + " putted goods into a bucket");
         System.out.println(chosenGoods);
     }
-
 }

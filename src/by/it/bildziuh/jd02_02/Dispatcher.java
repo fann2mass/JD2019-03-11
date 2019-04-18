@@ -1,14 +1,13 @@
 package by.it.bildziuh.jd02_02;
 
-class Dispatcher {
+import java.util.HashMap;
 
-    private Dispatcher() {
-    }
+class Dispatcher {
 
     private static final Object monitorCounters = new Object();
 
-    static final int K_SPEED = 10;
-
+    final static int kSpeed = 100;
+ //   final static int finishTime = 120;
     private static final int PLAN = 100;
     private static volatile int buyerCounter = 0;
     private static volatile int buyerInMarket = 0;
@@ -33,4 +32,19 @@ class Dispatcher {
     static boolean planComplete() {
         return buyerCounter == PLAN;
     }
+
+    final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
+        {
+            put("Soda", 3.99);
+            put("Beer", 7.99);
+            put("Cereal", 3.49);
+            put("Frozen dinners", 9.99);
+            put("Snacks", 2.99);
+            put("Milk", 4.49);
+            put("Bread", 2.99);
+            put("Meat", 14.49);
+            put("Pasta", 6.49);
+        }
+    };
+
 }

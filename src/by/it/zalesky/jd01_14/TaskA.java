@@ -8,7 +8,7 @@ public class TaskA {
 
        //создаем путь к каталогу с нашими проектами, куда будет генерироваться файл с данными
 
-       String path = System.getProperty("user.dir") + File.separator+"src"+File.separator;
+        String path = System.getProperty("user.dir") + File.separator+"src"+File.separator;
         String clDir = cl.getName().replace(cl.getSimpleName(),"").replace(".",File.separator);
         return path+clDir;
     }

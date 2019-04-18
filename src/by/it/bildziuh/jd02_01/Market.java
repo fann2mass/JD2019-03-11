@@ -12,6 +12,7 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
+
         while (time < Dispatcher.finishTime) {
 
             int count = Util.random(2);
@@ -19,12 +20,13 @@ public class Market {
                 Buyer buyer = new Buyer(++numberBuyer);
                 buyer.start();
                 buyers.add(buyer);
+       /*   }  if (time > 30 && Buyer.buyersInside <= 40 + (30 - time)) {
+                continue;
+            } else {*/
+                Util.sleep(1000);
+                time++;
             }
-            time++;
-            Util.sleep(1000);
-
         }
-
         for (Thread th : buyers) {
             try {
                 th.join();

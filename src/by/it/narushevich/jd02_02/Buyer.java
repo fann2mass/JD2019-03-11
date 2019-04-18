@@ -1,8 +1,11 @@
-package by.it.narushevich.jd02_01;
+package by.it.narushevich.jd02_02;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
-public class Buyer extends Thread implements IBuyer, IUseBacket {
+class Buyer extends Thread implements IBuyer, IUseBacket {
 
     @Override
     public void run() {
@@ -10,11 +13,14 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
         takeBacket();
         chooseGoods();
         putGoodsToBasket();
+        addToQueue();
         goOut();
     }
 
     Buyer(int number) {
         super("Buyer №" + number);
+        Dispatcher.buyerCounter++;
+        Dispatcher.buyerInMarket++;
     }
 
     static boolean pensioneer = false;
@@ -46,6 +52,20 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
             Util.sleep(newTimeOut);
         } else Util.sleep(timeout);
         System.out.println(this + " finish to choose goods");
+    }
+
+    @Override
+    public void addToQueue() {
+        System.out.println(this + " added to queue and wait");
+        QueueBuyers.add(this);
+        synchronized (this) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(this + " complete service at cashier");
     }
 
     @Override

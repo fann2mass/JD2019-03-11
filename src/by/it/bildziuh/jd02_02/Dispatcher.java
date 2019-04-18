@@ -6,8 +6,7 @@ class Dispatcher {
 
     private static final Object monitorCounters = new Object();
 
-    final static int kSpeed = 1;
- //   final static int finishTime = 120;
+    final static int kSpeed = 100;
     private static final int PLAN = 100;
     private static volatile int buyerCounter = 0;
     private static volatile int buyerInMarket = 0;

@@ -5,15 +5,17 @@ import java.util.Iterator;
 
 public class Buyer extends Thread implements IBuyer, IUseBucket {
 
-    //static int buyersInside = 0;
+    static int buyersInside = 0;
 
     @Override
     public void run() {
+        buyersInside++;
         enterToMarket();
         takeBucket();
         chooseGoods();
         putGoodsToBucket();
         goOut();
+        buyersInside--;
     }
 
     private boolean pensioneer = false;

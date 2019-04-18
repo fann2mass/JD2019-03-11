@@ -12,17 +12,21 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
+        for (int cycles = 0; cycles < 2; cycles++) {
+            while (time < Dispatcher.fullCycle) {
 
-        while (time < Dispatcher.finishTime) {
+                int count = Util.random(2);
+                for (int n = 0; n < count; n++) {
+                    Buyer buyer = new Buyer(++numberBuyer);
+                    buyer.start();
+                    buyers.add(buyer);
+                }
+                if (time > 30 && Buyer.buyersInside <= 40 + (30 - time))
+                    continue;
 
-            int count = Util.random(2);
-            for (int n = 0; n < count; n++) {
-                Buyer buyer = new Buyer(++numberBuyer);
-                buyer.start();
-                buyers.add(buyer);
-       /*   }  if (time > 30 && Buyer.buyersInside <= 40 + (30 - time)) {
-                continue;
-            } else {*/
+                if (time <= 30 && Buyer.buyersInside <= time + 10)
+                    continue;
+
                 Util.sleep(1000);
                 time++;
             }

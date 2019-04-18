@@ -12,7 +12,6 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
-        long intenceMod = 1;
         while (time < Dispatcher.finishTime) {
 
             int count = Util.random(2);
@@ -22,8 +21,7 @@ public class Market {
                 buyers.add(buyer);
             }
             time++;
-//          intenceMod += 0.1;
-            Util.sleep(1000 * intenceMod);
+            Util.sleep(1000);
 
         }
 

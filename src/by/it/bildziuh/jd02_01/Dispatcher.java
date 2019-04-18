@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 class Dispatcher {
 
-    final static int kSpeed = 1000;
+    final static int kSpeed = 1;
     final static int fullCycle = 120;
 
     final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {

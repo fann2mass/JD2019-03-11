@@ -21,6 +21,7 @@ public class Market {
                     buyer.start();
                     buyers.add(buyer);
                 }
+
                 if (time > 30 && Buyer.buyersInside <= 40 + (30 - time))
                     continue;
                 if (time <= 30 && Buyer.buyersInside <= time + 10)

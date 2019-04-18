@@ -37,7 +37,7 @@ class Dispatcher {
             put("Soda", 3.99);
             put("Beer", 7.99);
             put("Cereal", 3.49);
-            put("Frozen dinners", 9.99);
+            put("Dinner", 9.99);
             put("Snacks", 2.99);
             put("Milk", 4.49);
             put("Bread", 2.99);

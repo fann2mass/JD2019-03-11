@@ -59,6 +59,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         }
         System.out.println(this + " complete service at cashier");
 
+
     }
 
     @Override
@@ -99,16 +100,18 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
             }
         }
 
-            System.out.println(this + " putted goods into a bucket");
-            double total = 0;
-            System.out.println("---------------");
-            for (HashMap.Entry<String, Double> entry : chosenGoods.entrySet()) {
-                total += entry.getValue();
-                System.out.println("| " + entry.getKey() + "=" + entry.getValue() + " |");
-            }
-            System.out.println("---------------");
-            System.out.printf("| Total = %f  |\n",total);
-            System.out.println("---------------");
+        System.out.println(this + " putted goods into a bucket");
+        double total = 0;
+        System.out.println("------------------");
+        System.out.printf("| %-13s |\n", this);
+        System.out.println("------------------");
+        for (HashMap.Entry<String, Double> entry : chosenGoods.entrySet()) {
+            total += entry.getValue();
+            System.out.printf("| %-6s = %-5.2f |\n", entry.getKey(), entry.getValue());
+        }
+        System.out.println("------------------");
+        System.out.printf("| Total = %-5.2f  |\n", total);
+        System.out.println("------------------");
 
     }
 }

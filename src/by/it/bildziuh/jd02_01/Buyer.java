@@ -32,7 +32,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
         System.out.println(this + " start to choose goods");
         int timeout = Util.random(500, 2000);
         if (pensioneer)
-            timeout = timeout * 3 / 2;
+            timeout *= 3 / 2;
         Util.sleep(timeout);
         System.out.println(this + " finish to choose goods");
     }
@@ -51,7 +51,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     public void takeBucket() {
         int timeout = Util.random(100, 200);
         if (pensioneer)
-            timeout = timeout * 3 / 2;
+            timeout *= 3 / 2;
         Util.sleep(timeout);
         System.out.println(this + " took a bucket");
 
@@ -61,14 +61,13 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     public void putGoodsToBucket() {
         int timeout = Util.random(100, 200);
         if (pensioneer)
-            timeout = timeout * 3 / 2;
+            timeout *= 3 / 2;
         Util.sleep(timeout);
-        pickUpGoods();
         System.out.println(this + " putted goods into a bucket");
-
+        putGoods();
     }
 
-    private void pickUpGoods() {
+    private void putGoods() {
         HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
         Iterator iterator = chosenGoods.entrySet().iterator();
         int size = chosenGoods.size();
@@ -82,4 +81,5 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
         }
         System.out.println(chosenGoods);
     }
+
 }

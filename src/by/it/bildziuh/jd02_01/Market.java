@@ -12,16 +12,19 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
+        long intenceMod = 1;
         while (time < Dispatcher.finishTime) {
+
             int count = Util.random(2);
             for (int n = 0; n < count; n++) {
                 Buyer buyer = new Buyer(++numberBuyer);
                 buyer.start();
                 buyers.add(buyer);
-
             }
             time++;
-            Util.sleep(1000);
+//          intenceMod += 0.1;
+            Util.sleep(1000 * intenceMod);
+
         }
 
         for (Thread th : buyers) {

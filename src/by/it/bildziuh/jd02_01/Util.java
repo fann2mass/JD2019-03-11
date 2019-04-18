@@ -1,7 +1,7 @@
 package by.it.bildziuh.jd02_01;
 
 class Util {
-    static void sleep(int timeout){
+    static void sleep(long timeout){
         try {
             Thread.sleep(timeout/Dispatcher.kSpeed);
         } catch (InterruptedException e) {

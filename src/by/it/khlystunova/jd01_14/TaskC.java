@@ -11,6 +11,7 @@ import java.util.ArrayList;
  file:имя_файла или dir:имя_каталога.
 Продублировать вывод в консоль в файл resultTaskC.txt*/
 public class TaskC {
+    private static StringBuilder sb =  new StringBuilder();
 
     private static String getFileName() {
         String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
@@ -35,12 +36,23 @@ public class TaskC {
     }
 
     private static String[] getNameOfPackages() {
-        File file = new File("C:\\JD2019-03-11\\src\\by\\it\\khlystunova");
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String strPackage = TaskC.class.getPackage().getName();
+        String relPath = strPackage.replace(".", File.separator);
+        String s = src + relPath;
+        String[] split = s.split(File.separator+File.separator);
+        for (int i = 0; i <split.length-1 ; i++) {
+            sb.append(split[i]);
+            sb.append(File.separator);
+        }
+        System.out.println(sb.toString());//C:\JD2019-03-11\src\by\it\khlystunova\
+        File file = new File(sb.toString());//sb = "C:\\JD2019-03-11\\src\\by\\it\\khlystunova"
         return file.list();
     }
 
     private static String[] getNameOfFiles(String nameOfPackage) {
-        File file = new File("C:\\JD2019-03-11\\src\\by\\it\\khlystunova\\"+nameOfPackage);
+        //"C:\\JD2019-03-11\\src\\by\\it\\khlystunova\\"
+        File file = new File(sb+nameOfPackage);
         return file.list();
     }
 

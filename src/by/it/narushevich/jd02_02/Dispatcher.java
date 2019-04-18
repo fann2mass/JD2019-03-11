@@ -4,13 +4,24 @@ import java.util.HashMap;
 
 class Dispatcher {
 
+    private Dispatcher() {
+    }
+
     private static final Object monitorCounters = new Object();
 
-    final static int kSpeed = 10000;
+    final static int kSpeed = 100;
 
     private final static int plan = 100;
-     static volatile int buyerCounter = 0;
-     static volatile int buyerInMarket = 0;
+    private static volatile int buyerCounter = 0;
+    private static volatile int buyerInMarket = 0;
+
+    public static int getBuyerCounter() {
+        return buyerCounter;
+    }
+
+    public static int getBuyerInMarket() {
+        return buyerInMarket;
+    }
 
     static void newBuyer() {
         synchronized (monitorCounters) {
@@ -23,13 +34,6 @@ class Dispatcher {
         synchronized (monitorCounters) {
             buyerInMarket--;
         }
-    }
-
-    static boolean marketOpened() {
-        return buyerCounter < plan || buyerInMarket > 0;
-    }
-    static boolean planComplete() {
-        return buyerCounter == plan;
     }
 
     static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {{
@@ -57,4 +61,13 @@ class Dispatcher {
         put("Cabbage", 0.15);
         put("Rice", 2.15);
     }};
+
+    static boolean marketOpened() {
+        return buyerCounter < plan || buyerInMarket > 0;
+    }
+
+    static boolean planComplete() {
+        return buyerCounter == plan;
+    }
 }
+

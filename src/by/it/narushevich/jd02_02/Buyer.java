@@ -1,5 +1,6 @@
 package by.it.narushevich.jd02_02;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,15 +18,17 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         goOut();
     }
 
+    Object getMonitor() {
+        return this;
+    }
+
     Buyer(int number) {
         super("Buyer №" + number);
-        Dispatcher.buyerCounter++;
-        Dispatcher.buyerInMarket++;
+        if (number % 4 == 0) pensioneer = true;
+        Dispatcher.newBuyer();
     }
 
     static boolean pensioneer = false;
-
-    static int inMarket = 0;
 
     @Override
     public void enterToMarket() {
@@ -37,7 +40,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     public void takeBacket() {
         int timeout = Util.random(100, 200);
         if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
+            int newTimeOut = (timeout * 3) / 2;
             Util.sleep(newTimeOut);
         } else Util.sleep(timeout);
         System.out.println(this + " take basket");
@@ -48,7 +51,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         System.out.println(this + " start to choose goods");
         int timeout = Util.random(500, 2000);
         if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
+            int newTimeOut = (timeout * 3) / 2;
             Util.sleep(newTimeOut);
         } else Util.sleep(timeout);
         System.out.println(this + " finish to choose goods");
@@ -62,7 +65,8 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println(this + " complete service at cashier");
@@ -72,7 +76,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     public void putGoodsToBasket() {
         int timeout = Util.random(100, 200);
         if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
+            int newTimeOut = (timeout * 3) / 2;
             putGoods();
             Util.sleep(newTimeOut);
         } else {
@@ -81,27 +85,46 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         }
     }
 
+    static String getPath() {
+        String userDir = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String pathPack = Cashier.class.getPackage().getName().replace(".", File.separator) + File.separator;
+        return userDir + pathPack + "buyers.txt";
+    }
+
+    private final File buyers = new File(getPath());
+
+    private void writeToFile(File f, String string) {
+        synchronized (buyers) {
+            try (FileWriter fw = new FileWriter(f, true)) {
+                fw.write(string);
+                fw.flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     private void putGoods() {
         int numberOfGoods = Util.random(1, 4);
         List<String> keysList = new ArrayList<>(Dispatcher.listOfGoods.keySet());
         StringBuilder list = new StringBuilder();
-        double sum = 0;
         for (int i = 1; i < numberOfGoods + 1; i++) {
             Collections.shuffle(keysList);
             String randomKey = keysList.get(new Random().nextInt(keysList.size()));
             Double price = Dispatcher.listOfGoods.get(randomKey);
             keysList.remove(randomKey);
-            sum += price;
-            list.append(randomKey);
-            if (i == numberOfGoods) list.append(" - total price is ");
+            list.append(randomKey).append("=").append(price);
+            if (i == numberOfGoods) list.append(".");
             else list.append(", ");
         }
-        System.out.printf("%s put goods: %s%5.2f%n",this,list,sum);
+        System.out.printf("%s put goods: %s%n", this, list);
+        writeToFile(buyers, this.toString() + " bought: " + list.toString() + System.lineSeparator());
     }
 
     @Override
     public void goOut() {
         System.out.println(this + " go out from the market");
+        Dispatcher.deleteBuyer();
     }
 
     @Override

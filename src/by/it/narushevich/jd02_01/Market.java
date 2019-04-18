@@ -11,18 +11,26 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
-        int counter = 0;
-        while (time < Dispatcher.finishTime) {
-            int count = Util.random(2);
-            for (int n = 0; n < count; n++) {
-                Buyer buyer = new Buyer(++numberBuyer);
-                Buyer.pensioneer = numberBuyer % 4 == 0;
-                buyer.start();
-                buyers.add(buyer);
+            while (time <= Dispatcher.finishTime) {
+                if ((time < 30 || (time > 60 && time < 90)) && Buyer.inMarket <= time + 10) {
+                    int count = Util.random(2);
+                    for (int n = 0; n < count; n++) {
+                        Buyer buyer = new Buyer(++numberBuyer);
+                        buyer.start();
+                        buyers.add(buyer);
+                    }
+                }
+                if (((time > 30 && time < 60) || (time > 90 && time <= 120)) && Buyer.inMarket <= 40 + (30 - time)) {
+                    int count = Util.random(2);
+                    for (int n = 0; n < count; n++) {
+                        Buyer buyer = new Buyer(++numberBuyer);
+                        buyer.start();
+                        buyers.add(buyer);
+                    }
+                }
+                time++;
+                Util.sleep(1000);
             }
-            time++;
-            Util.sleep(1000);
-        }
 
         for (Thread th : buyers) {
             try {

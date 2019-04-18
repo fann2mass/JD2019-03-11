@@ -4,6 +4,9 @@ import java.util.*;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
 
+    static boolean pensioneer = false;
+    static int inMarket = 0;
+
     @Override
     public void run() {
         enterToMarket();
@@ -15,11 +18,11 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     Buyer(int number) {
         super("Buyer №" + number);
+        if (number % 4 == 0){
+            pensioneer = true;
+        }
+        inMarket++;
     }
-
-    static boolean pensioneer = false;
-
-    static int inMarket = 0;
 
     @Override
     public void enterToMarket() {
@@ -82,6 +85,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void goOut() {
         System.out.println(this + " go out from the market");
+        inMarket--;
     }
 
     @Override

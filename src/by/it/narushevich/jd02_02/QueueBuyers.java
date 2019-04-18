@@ -10,6 +10,10 @@ class QueueBuyers {
 
     private static Deque<Buyer> buyerDeque = new ArrayDeque<>();
 
+    public static Deque<Buyer> getBuyerDeque() {
+        return buyerDeque;
+    }
+
     static synchronized void add(Buyer buyer) {
         buyerDeque.addLast(buyer);
     }

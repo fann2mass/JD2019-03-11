@@ -5,17 +5,13 @@ import java.util.Iterator;
 
 public class Buyer extends Thread implements IBuyer, IUseBucket {
 
-    static int buyersInside = 0;
-
     @Override
     public void run() {
-        buyersInside++;
         enterToMarket();
         takeBucket();
         chooseGoods();
         putGoodsToBucket();
         goOut();
-        buyersInside--;
     }
 
     private boolean pensioneer = false;
@@ -29,6 +25,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void enterToMarket() {
         System.out.println(this + " enter to the market");
+        Dispatcher.newBuyer();
     }
 
     @Override
@@ -44,6 +41,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void goOut() {
         System.out.println(this + " go out from the market");
+        Dispatcher.deleteBuyer();
     }
 
     @Override

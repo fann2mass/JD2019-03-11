@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 class Dispatcher {
 
-    final static int kSpeed = 1;
+    private static final Object monitorCounters = new Object();
+    final static int kSpeed = 100;
     final static int fullCycle = 120;
+    static volatile int buyerInMarket = 0;
 
     final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
         {
@@ -20,5 +22,17 @@ class Dispatcher {
             put("Pasta", 6.49);
         }
     };
+
+    static void newBuyer() {
+        synchronized (monitorCounters) {
+            buyerInMarket++;
+        }
+    }
+
+    static void deleteBuyer() {
+        synchronized (monitorCounters) {
+            buyerInMarket--;
+        }
+    }
 
 }

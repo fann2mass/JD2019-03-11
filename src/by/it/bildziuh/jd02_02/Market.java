@@ -6,7 +6,7 @@ import java.util.List;
 public class Market {
 
     public static void main(String[] args) {
-/*
+
         List<Thread> threads = new ArrayList<>();
         System.out.println("market is opened");
 
@@ -38,6 +38,6 @@ public class Market {
             }
         }
         System.out.println("=================market is closed");
-*/
+
     }
 }

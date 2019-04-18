@@ -1,5 +1,5 @@
 package by.it.bildziuh.jd02_02;
-/*
+
 class Cashier implements Runnable{
 
     private int number;
@@ -30,4 +30,3 @@ class Cashier implements Runnable{
         return "-- Cashier №" + number;
     }
 }
-*/

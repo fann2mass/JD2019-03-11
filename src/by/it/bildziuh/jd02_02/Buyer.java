@@ -11,7 +11,12 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         takeBucket();
         chooseGoods();
         putGoodsToBucket();
+        addToQueue();
         goOut();
+    }
+
+    Object getMonitor() {
+        return this;
     }
 
     private boolean pensioneer = false;
@@ -20,6 +25,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         super("Buyer № " + number);
         if (Util.random(1, 4) == 4)
             this.pensioneer = true;
+        Dispatcher.newBuyer();
     }
 
     @Override
@@ -39,7 +45,17 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
 
     @Override
     public void addToQueue() {
-
+        System.out.println(this + " added to queue and wait");
+        QueueBuyers.add(this);
+        synchronized (this) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.println(this + " complete service at cashier");
     }
 
     @Override

@@ -88,8 +88,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
         Iterator iterator = chosenGoods.entrySet().iterator();
         int size = chosenGoods.size();
-        int goodsCount = Util.random(1, 4);
-        while (iterator.hasNext() && chosenGoods.size() != goodsCount) {
+        while (iterator.hasNext() && chosenGoods.size() != Util.random(1, 4)) {
             iterator.next();
             if (Util.random(1, size) != size) {
                 iterator.remove();

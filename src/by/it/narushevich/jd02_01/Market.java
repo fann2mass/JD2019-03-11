@@ -20,7 +20,7 @@ public class Market {
                         buyers.add(buyer);
                     }
                 }
-                if (((time > 30 && time < 60) || (time > 90 && time <= 120)) && Buyer.inMarket <= 40 + (30 - time)) {
+                if ((time > 30 && time < 60) || time > 90 && Buyer.inMarket <= 40 + (30 - time)) {
                     int count = Util.random(2);
                     for (int n = 0; n < count; n++) {
                         Buyer buyer = new Buyer(++numberBuyer);

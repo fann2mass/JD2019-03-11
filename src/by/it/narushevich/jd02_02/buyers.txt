@@ -1,162 +1,180 @@
-Buyer №2 bought: Ice-cream=0.65, Banana=3.25, Milk=1.55.
-Buyer №5 bought: Parsley=0.45, Rice=2.15.
-Buyer №1 bought: Onion=0.85, Butter=2.45, Sweets=10.85, Rice=2.15.
-Buyer №3 bought: Kefir=1.6, Butter=2.45.
-Buyer №4 bought: Dumplings=3.35, Kefir=1.6, Rice=2.15, Sweets=10.85.
-Buyer №6 bought: Ice-cream=0.65, Apples=1.95, Eggs=3.2.
+Buyer №3 bought: Banana=3.25.
+Buyer №1 bought: Sour cream=1.95, Kefir=1.6, Sausages=8.35.
+Buyer №2 bought: Sour cream=1.95, Onion=0.85, Bun=0.45, Cabbage=0.15.
+Buyer №4 bought: Dumplings=3.35.
 Buyer №7 bought: Bread=0.75.
-Buyer №8 bought: Banana=3.25, Kefir=1.6, Ice-cream=0.65, Eggs=3.2.
-Buyer №24 bought: Sweets=10.85, Fish=12.95.
-Buyer №17 bought: Rice=2.15.
-Buyer №23 bought: Kefir=1.6, Onion=0.85, Eggs=3.2.
-Buyer №29 bought: Banana=3.25, Rice=2.15.
-Buyer №19 bought: Sausages=8.35, Milk=1.55, Cookies=5.95, Bun=0.45.
-Buyer №11 bought: Cabbage=0.15, Onion=0.85.
-Buyer №20 bought: Bread=0.75, Cookies=5.95, Bag=0.2, Apples=1.95.
-Buyer №16 bought: Bag=0.2, Dumplings=3.35.
-Buyer №25 bought: Onion=0.85, Bread=0.75.
-Buyer №28 bought: Cabbage=0.15, Cheese=9.45, Butter=2.45, Bun=0.45.
-Buyer №12 bought: Banana=3.25, Eggs=3.2, Rice=2.15.
-Buyer №27 bought: Bun=0.45, Sour cream=1.95, Eggs=3.2.
-Buyer №13 bought: Cheese=9.45, Kefir=1.6, Cabbage=0.15.
-Buyer №15 bought: Eggs=3.2, Bread=0.75, Kefir=1.6.
-Buyer №22 bought: Kefir=1.6, Cheese=9.45, Fish=12.95.
-Buyer №21 bought: Cookies=5.95, Bag=0.2, Ice-cream=0.65.
-Buyer №14 bought: Dumplings=3.35.
-Buyer №10 bought: Sausages=8.35, Rice=2.15, Cabbage=0.15.
-Buyer №9 bought: Rice=2.15, Dumplings=3.35.
-Buyer №30 bought: Apples=1.95, Dumplings=3.35.
-Buyer №18 bought: Rice=2.15, Oranges=1.85.
-Buyer №26 bought: Oranges=1.85, Fish=12.95.
-Buyer №32 bought: Milk=1.55, Apples=1.95, Kefir=1.6.
-Buyer №31 bought: Ice-cream=0.65, Oranges=1.85.
-Buyer №33 bought: Ice-cream=0.65.
-Buyer №37 bought: Cookies=5.95, Kefir=1.6.
-Buyer №40 bought: Parsley=0.45, Onion=0.85.
-Buyer №39 bought: Dumplings=3.35.
-Buyer №36 bought: Fish=12.95.
-Buyer №35 bought: Cheese=9.45, Bag=0.2, Fish=12.95, Parsley=0.45.
-Buyer №41 bought: Fish=12.95, Cheese=9.45, Ice-cream=0.65.
-Buyer №38 bought: Onion=0.85, Apples=1.95, Milk=1.55.
-Buyer №34 bought: Onion=0.85, Apples=1.95, Bread=0.75.
-Buyer №46 bought: Rice=2.15, Bread=0.75, Cabbage=0.15, Meat=13.95.
-Buyer №49 bought: Bread=0.75, Rice=2.15.
-Buyer №45 bought: Sour cream=1.95, Dumplings=3.35, Fish=12.95.
-Buyer №44 bought: Oranges=1.85.
-Buyer №43 bought: Parsley=0.45, Fish=12.95.
-Buyer №54 bought: Dumplings=3.35, Kefir=1.6.
-Buyer №52 bought: Rice=2.15, Eggs=3.2.
-Buyer №53 bought: Rice=2.15.
-Buyer №42 bought: Cabbage=0.15, Milk=1.55, Bread=0.75.
-Buyer №48 bought: Sausages=8.35.
-Buyer №51 bought: Bread=0.75, Cabbage=0.15, Banana=3.25.
-Buyer №50 bought: Eggs=3.2.
-Buyer №47 bought: Oranges=1.85, Bread=0.75, Bun=0.45.
-Buyer №57 bought: Ice-cream=0.65, Sour cream=1.95.
-Buyer №69 bought: Eggs=3.2, Fish=12.95, Meat=13.95, Bread=0.75.
-Buyer №70 bought: Oranges=1.85, Eggs=3.2, Rice=2.15, Parsley=0.45.
-Buyer №59 bought: Butter=2.45, Apples=1.95, Banana=3.25.
-Buyer №60 bought: Onion=0.85.
-Buyer №61 bought: Cookies=5.95, Meat=13.95.
-Buyer №62 bought: Bag=0.2, Cabbage=0.15.
-Buyer №58 bought: Bun=0.45.
-Buyer №56 bought: Apples=1.95, Meat=13.95, Bun=0.45.
-Buyer №78 bought: Kefir=1.6, Cheese=9.45, Rice=2.15.
-Buyer №75 bought: Meat=13.95, Cabbage=0.15, Bun=0.45, Fish=12.95.
-Buyer №73 bought: Onion=0.85, Cabbage=0.15.
-Buyer №79 bought: Meat=13.95, Oranges=1.85, Sour cream=1.95, Cookies=5.95.
-Buyer №66 bought: Sweets=10.85, Cabbage=0.15.
-Buyer №76 bought: Milk=1.55.
-Buyer №67 bought: Onion=0.85, Meat=13.95.
-Buyer №63 bought: Cheese=9.45, Sausages=8.35, Milk=1.55, Butter=2.45.
-Buyer №65 bought: Sour cream=1.95, Sweets=10.85.
-Buyer №77 bought: Eggs=3.2, Butter=2.45, Bun=0.45, Kefir=1.6.
-Buyer №74 bought: Sour cream=1.95, Onion=0.85, Meat=13.95, Eggs=3.2.
-Buyer №64 bought: Fish=12.95, Oranges=1.85, Bun=0.45, Butter=2.45.
-Buyer №72 bought: Parsley=0.45.
-Buyer №68 bought: Parsley=0.45, Cabbage=0.15, Ice-cream=0.65.
-Buyer №71 bought: Cabbage=0.15, Apples=1.95, Sour cream=1.95.
-Buyer №55 bought: Sour cream=1.95.
-Buyer №81 bought: Ice-cream=0.65.
-Buyer №82 bought: Rice=2.15, Eggs=3.2, Banana=3.25, Milk=1.55.
-Buyer №80 bought: Bun=0.45.
-Buyer №95 bought: Cookies=5.95.
-Buyer №90 bought: Cookies=5.95, Milk=1.55.
-Buyer №91 bought: Fish=12.95, Cabbage=0.15.
-Buyer №92 bought: Rice=2.15, Dumplings=3.35, Bread=0.75.
-Buyer №89 bought: Sweets=10.85, Cheese=9.45.
-Buyer №94 bought: Parsley=0.45, Rice=2.15.
-Buyer №93 bought: Parsley=0.45, Cheese=9.45.
-Buyer №86 bought: Cookies=5.95, Fish=12.95.
-Buyer №83 bought: Bag=0.2, Bread=0.75, Bun=0.45, Onion=0.85.
-Buyer №85 bought: Bread=0.75, Cheese=9.45, Cookies=5.95.
-Buyer №84 bought: Ice-cream=0.65, Eggs=3.2, Apples=1.95.
-Buyer №87 bought: Sausages=8.35, Cheese=9.45, Cookies=5.95.
-Buyer №88 bought: Dumplings=3.35, Bun=0.45.
-Buyer №99 bought: Bag=0.2, Dumplings=3.35, Sweets=10.85.
-Buyer №96 bought: Sweets=10.85.
-Buyer №98 bought: Parsley=0.45, Dumplings=3.35.
-Buyer №97 bought: Butter=2.45, Bun=0.45, Dumplings=3.35.
-Buyer №111 bought: Apples=1.95, Parsley=0.45.
-Buyer №112 bought: Ice-cream=0.65.
-Buyer №109 bought: Oranges=1.85, Dumplings=3.35, Parsley=0.45, Apples=1.95.
-Buyer №110 bought: Butter=2.45, Cookies=5.95, Banana=3.25, Rice=2.15.
-Buyer №108 bought: Butter=2.45, Sausages=8.35, Cookies=5.95.
-Buyer №107 bought: Bread=0.75.
-Buyer №102 bought: Banana=3.25, Bun=0.45, Rice=2.15, Cabbage=0.15.
-Buyer №100 bought: Bread=0.75, Fish=12.95.
-Buyer №101 bought: Banana=3.25, Oranges=1.85, Onion=0.85, Sausages=8.35.
-Buyer №103 bought: Rice=2.15, Onion=0.85.
-Buyer №106 bought: Parsley=0.45, Sweets=10.85, Milk=1.55, Cabbage=0.15.
-Buyer №104 bought: Bag=0.2, Cabbage=0.15.
-Buyer №105 bought: Bun=0.45.
-Buyer №122 bought: Bread=0.75, Onion=0.85.
-Buyer №119 bought: Apples=1.95, Sweets=10.85, Eggs=3.2.
-Buyer №123 bought: Cookies=5.95, Sweets=10.85, Milk=1.55, Banana=3.25.
-Buyer №121 bought: Milk=1.55, Apples=1.95, Bag=0.2.
-Buyer №120 bought: Bread=0.75.
-Buyer №118 bought: Cabbage=0.15, Butter=2.45.
-Buyer №116 bought: Dumplings=3.35, Rice=2.15, Bag=0.2.
-Buyer №113 bought: Apples=1.95, Sweets=10.85, Bun=0.45, Milk=1.55.
-Buyer №115 bought: Butter=2.45, Sausages=8.35, Eggs=3.2, Dumplings=3.35.
-Buyer №114 bought: Milk=1.55.
-Buyer №117 bought: Ice-cream=0.65.
-Buyer №126 bought: Fish=12.95, Bun=0.45, Meat=13.95.
-Buyer №124 bought: Meat=13.95, Sausages=8.35, Rice=2.15, Bag=0.2.
-Buyer №125 bought: Kefir=1.6, Bag=0.2, Butter=2.45, Cookies=5.95.
-Buyer №143 bought: Bag=0.2.
-Buyer №144 bought: Ice-cream=0.65, Oranges=1.85, Dumplings=3.35, Bag=0.2.
-Buyer №141 bought: Cookies=5.95, Sour cream=1.95, Cabbage=0.15.
-Buyer №138 bought: Butter=2.45, Cheese=9.45.
-Buyer №140 bought: Bag=0.2.
-Buyer №142 bought: Milk=1.55.
-Buyer №137 bought: Oranges=1.85, Apples=1.95, Sour cream=1.95, Bun=0.45.
-Buyer №139 bought: Sweets=10.85, Dumplings=3.35, Kefir=1.6.
-Buyer №135 bought: Cookies=5.95, Bag=0.2, Rice=2.15.
-Buyer №130 bought: Cheese=9.45, Milk=1.55, Rice=2.15.
-Buyer №133 bought: Ice-cream=0.65.
-Buyer №132 bought: Parsley=0.45, Cheese=9.45.
-Buyer №136 bought: Cabbage=0.15, Kefir=1.6, Sour cream=1.95, Oranges=1.85.
-Buyer №131 bought: Sausages=8.35, Oranges=1.85.
-Buyer №134 bought: Ice-cream=0.65, Bun=0.45, Cheese=9.45.
-Buyer №128 bought: Cabbage=0.15.
-Buyer №127 bought: Rice=2.15, Kefir=1.6, Cabbage=0.15, Meat=13.95.
-Buyer №129 bought: Banana=3.25, Bun=0.45, Cheese=9.45, Eggs=3.2.
-Buyer №148 bought: Cookies=5.95, Banana=3.25, Bag=0.2, Onion=0.85.
-Buyer №147 bought: Apples=1.95, Onion=0.85, Butter=2.45.
-Buyer №145 bought: Ice-cream=0.65, Milk=1.55.
-Buyer №156 bought: Ice-cream=0.65, Sweets=10.85, Rice=2.15, Milk=1.55.
-Buyer №153 bought: Eggs=3.2, Sour cream=1.95, Butter=2.45, Parsley=0.45.
-Buyer №152 bought: Sweets=10.85, Bread=0.75, Bag=0.2.
-Buyer №150 bought: Banana=3.25, Cookies=5.95, Fish=12.95.
-Buyer №151 bought: Onion=0.85, Ice-cream=0.65, Cookies=5.95.
-Buyer №149 bought: Bread=0.75.
-Buyer №146 bought: Cookies=5.95, Eggs=3.2.
-Buyer №161 bought: Parsley=0.45, Ice-cream=0.65, Bread=0.75.
-Buyer №162 bought: Sausages=8.35, Banana=3.25.
-Buyer №158 bought: Bag=0.2, Dumplings=3.35, Milk=1.55, Onion=0.85.
-Buyer №159 bought: Meat=13.95, Milk=1.55, Apples=1.95, Sausages=8.35.
-Buyer №157 bought: Bun=0.45, Parsley=0.45, Kefir=1.6, Bread=0.75.
-Buyer №155 bought: Sour cream=1.95, Kefir=1.6, Cheese=9.45.
-Buyer №154 bought: Bun=0.45, Banana=3.25, Sweets=10.85, Ice-cream=0.65.
-Buyer №160 bought: Dumplings=3.35, Sweets=10.85, Cabbage=0.15, Milk=1.55.
+Buyer №9 bought: Cabbage=0.15, Cheese=9.45.
+Buyer №11 bought: Parsley=0.45, Apples=1.95, Rice=2.15, Kefir=1.6.
+Buyer №12 bought: Dumplings=3.35, Bag=0.2, Butter=2.45.
+Buyer №10 bought: Sweets=10.85, Milk=1.55, Cabbage=0.15, Eggs=3.2.
+Buyer №19 bought: Sour cream=1.95.
+Buyer №15 bought: Sour cream=1.95.
+Buyer №6 bought: Sweets=10.85.
+Buyer №14 bought: Sour cream=1.95, Oranges=1.85.
+Buyer №26 bought: Sour cream=1.95, Sweets=10.85, Cabbage=0.15, Sausages=8.35.
+Buyer №25 bought: Milk=1.55, Parsley=0.45.
+Buyer №23 bought: Bread=0.75, Sweets=10.85, Cabbage=0.15.
+Buyer №27 bought: Kefir=1.6, Onion=0.85.
+Buyer №22 bought: Bag=0.2.
+Buyer №24 bought: Bag=0.2, Rice=2.15, Eggs=3.2.
+Buyer №31 bought: Ice-cream=0.65.
+Buyer №21 bought: Banana=3.25.
+Buyer №35 bought: Parsley=0.45, Ice-cream=0.65.
+Buyer №36 bought: Dumplings=3.35, Cookies=5.95, Cabbage=0.15.
+Buyer №38 bought: Sour cream=1.95, Bag=0.2, Eggs=3.2.
+Buyer №37 bought: Dumplings=3.35, Cabbage=0.15.
+Buyer №33 bought: Oranges=1.85, Apples=1.95, Fish=12.95.
+Buyer №5 bought: Sweets=10.85.
+Buyer №34 bought: Cabbage=0.15, Sweets=10.85.
+Buyer №29 bought: Cabbage=0.15, Bread=0.75, Banana=3.25.
+Buyer №28 bought: Sour cream=1.95, Cabbage=0.15, Cheese=9.45.
+Buyer №16 bought: Milk=1.55, Bun=0.45, Eggs=3.2.
+Buyer №20 bought: Dumplings=3.35, Milk=1.55, Meat=13.95, Bag=0.2.
+Buyer №13 bought: Milk=1.55, Fish=12.95, Cabbage=0.15, Sausages=8.35.
+Buyer №18 bought: Apples=1.95, Banana=3.25, Cabbage=0.15, Bread=0.75.
+Buyer №17 bought: Cookies=5.95.
+Buyer №32 bought: Parsley=0.45, Kefir=1.6, Meat=13.95.
+Buyer №8 bought: Eggs=3.2, Fish=12.95, Banana=3.25, Butter=2.45.
+Buyer №30 bought: Bun=0.45, Milk=1.55, Parsley=0.45.
+Buyer №41 bought: Bread=0.75, Meat=13.95.
+Buyer №42 bought: Bun=0.45, Meat=13.95, Dumplings=3.35, Onion=0.85.
+Buyer №40 bought: Kefir=1.6, Bun=0.45, Bread=0.75, Cabbage=0.15.
+Buyer №39 bought: Bread=0.75, Milk=1.55, Bag=0.2, Sweets=10.85.
+Buyer №51 bought: Onion=0.85, Oranges=1.85, Butter=2.45.
+Buyer №47 bought: Kefir=1.6, Cheese=9.45.
+Buyer №48 bought: Bread=0.75, Oranges=1.85, Rice=2.15, Eggs=3.2.
+Buyer №43 bought: Bread=0.75, Ice-cream=0.65, Eggs=3.2.
+Buyer №46 bought: Bag=0.2, Sweets=10.85, Bun=0.45, Eggs=3.2.
+Buyer №45 bought: Kefir=1.6.
+Buyer №60 bought: Banana=3.25.
+Buyer №58 bought: Kefir=1.6, Milk=1.55, Bun=0.45, Onion=0.85.
+Buyer №44 bought: Cheese=9.45, Rice=2.15, Banana=3.25, Bread=0.75.
+Buyer №57 bought: Kefir=1.6, Bag=0.2, Meat=13.95.
+Buyer №49 bought: Cabbage=0.15.
+Buyer №50 bought: Apples=1.95, Onion=0.85, Ice-cream=0.65, Fish=12.95.
+Buyer №52 bought: Sausages=8.35, Onion=0.85, Sweets=10.85, Ice-cream=0.65.
+Buyer №54 bought: Kefir=1.6, Cookies=5.95, Bread=0.75.
+Buyer №53 bought: Sour cream=1.95, Onion=0.85, Milk=1.55, Banana=3.25.
+Buyer №55 bought: Apples=1.95, Oranges=1.85, Banana=3.25.
+Buyer №56 bought: Dumplings=3.35, Cheese=9.45.
+Buyer №59 bought: Parsley=0.45, Banana=3.25, Cabbage=0.15, Sour cream=1.95.
+Buyer №65 bought: Parsley=0.45.
+Buyer №63 bought: Bag=0.2, Kefir=1.6, Oranges=1.85.
+Buyer №64 bought: Butter=2.45, Rice=2.15, Sweets=10.85, Dumplings=3.35.
+Buyer №61 bought: Ice-cream=0.65, Onion=0.85, Bag=0.2.
+Buyer №78 bought: Banana=3.25, Oranges=1.85, Cookies=5.95.
+Buyer №72 bought: Parsley=0.45, Onion=0.85, Apples=1.95, Eggs=3.2.
+Buyer №71 bought: Milk=1.55, Sour cream=1.95.
+Buyer №73 bought: Dumplings=3.35.
+Buyer №74 bought: Eggs=3.2, Banana=3.25, Rice=2.15.
+Buyer №75 bought: Sweets=10.85.
+Buyer №76 bought: Bun=0.45.
+Buyer №77 bought: Rice=2.15.
+Buyer №69 bought: Milk=1.55, Cheese=9.45, Apples=1.95, Oranges=1.85.
+Buyer №70 bought: Bun=0.45.
+Buyer №62 bought: Eggs=3.2, Bun=0.45, Fish=12.95, Ice-cream=0.65.
+Buyer №67 bought: Bun=0.45, Bag=0.2, Parsley=0.45, Cabbage=0.15.
+Buyer №68 bought: Cheese=9.45, Cookies=5.95, Butter=2.45.
+Buyer №66 bought: Dumplings=3.35, Meat=13.95.
+Buyer №84 bought: Milk=1.55.
+Buyer №79 bought: Apples=1.95, Meat=13.95, Bag=0.2.
+Buyer №80 bought: Bun=0.45, Ice-cream=0.65, Milk=1.55, Bag=0.2.
+Buyer №90 bought: Dumplings=3.35, Bread=0.75, Sour cream=1.95.
+Buyer №91 bought: Oranges=1.85, Sausages=8.35, Kefir=1.6.
+Buyer №92 bought: Parsley=0.45, Rice=2.15.
+Buyer №86 bought: Dumplings=3.35, Meat=13.95, Oranges=1.85.
+Buyer №82 bought: Cabbage=0.15, Cheese=9.45.
+Buyer №81 bought: Dumplings=3.35, Sweets=10.85.
+Buyer №83 bought: Bread=0.75, Sausages=8.35, Dumplings=3.35.
+Buyer №89 bought: Oranges=1.85, Fish=12.95.
+Buyer №85 bought: Dumplings=3.35, Parsley=0.45, Sour cream=1.95.
+Buyer №88 bought: Dumplings=3.35, Oranges=1.85, Fish=12.95, Bun=0.45.
+Buyer №87 bought: Kefir=1.6, Cheese=9.45, Butter=2.45.
+Buyer №97 bought: Kefir=1.6.
+Buyer №93 bought: Ice-cream=0.65, Kefir=1.6, Onion=0.85.
+Buyer №95 bought: Rice=2.15.
+Buyer №96 bought: Fish=12.95, Dumplings=3.35.
+Buyer №94 bought: Bag=0.2, Ice-cream=0.65, Bread=0.75, Cheese=9.45.
+Buyer №98 bought: Butter=2.45, Milk=1.55, Onion=0.85, Dumplings=3.35.
+Buyer №99 bought: Ice-cream=0.65, Bag=0.2, Apples=1.95, Rice=2.15.
+Buyer №111 bought: Eggs=3.2, Parsley=0.45.
+Buyer №108 bought: Ice-cream=0.65, Butter=2.45, Parsley=0.45, Eggs=3.2.
+Buyer №112 bought: Cheese=9.45, Bag=0.2, Bun=0.45.
+Buyer №114 bought: Milk=1.55, Meat=13.95, Bag=0.2.
+Buyer №109 bought: Onion=0.85, Bun=0.45, Sour cream=1.95.
+Buyer №106 bought: Parsley=0.45, Cookies=5.95.
+Buyer №113 bought: Fish=12.95, Cheese=9.45.
+Buyer №105 bought: Cabbage=0.15, Ice-cream=0.65.
+Buyer №103 bought: Banana=3.25, Dumplings=3.35, Oranges=1.85.
+Buyer №102 bought: Cookies=5.95, Bun=0.45, Onion=0.85, Milk=1.55.
+Buyer №100 bought: Cheese=9.45, Butter=2.45, Bread=0.75.
+Buyer №107 bought: Fish=12.95, Sweets=10.85, Onion=0.85.
+Buyer №110 bought: Parsley=0.45, Cabbage=0.15, Sour cream=1.95, Eggs=3.2.
+Buyer №104 bought: Bread=0.75, Parsley=0.45, Apples=1.95, Ice-cream=0.65.
+Buyer №101 bought: Oranges=1.85.
+Buyer №118 bought: Cabbage=0.15, Bag=0.2.
+Buyer №120 bought: Dumplings=3.35, Apples=1.95.
+Buyer №119 bought: Meat=13.95.
+Buyer №116 bought: Cabbage=0.15.
+Buyer №117 bought: Sweets=10.85, Dumplings=3.35.
+Buyer №131 bought: Sausages=8.35.
+Buyer №129 bought: Cookies=5.95, Rice=2.15, Onion=0.85, Bun=0.45.
+Buyer №130 bought: Milk=1.55, Bread=0.75, Oranges=1.85, Sour cream=1.95.
+Buyer №128 bought: Cabbage=0.15, Banana=3.25.
+Buyer №126 bought: Dumplings=3.35, Bag=0.2, Sour cream=1.95, Onion=0.85.
+Buyer №125 bought: Bag=0.2.
+Buyer №115 bought: Eggs=3.2, Sour cream=1.95, Onion=0.85.
+Buyer №122 bought: Meat=13.95.
+Buyer №121 bought: Cookies=5.95, Cabbage=0.15.
+Buyer №123 bought: Sour cream=1.95, Milk=1.55.
+Buyer №127 bought: Rice=2.15, Fish=12.95, Sausages=8.35, Sweets=10.85.
+Buyer №124 bought: Banana=3.25.
+Buyer №139 bought: Ice-cream=0.65.
+Buyer №138 bought: Sour cream=1.95.
+Buyer №140 bought: Ice-cream=0.65, Dumplings=3.35.
+Buyer №133 bought: Bag=0.2, Rice=2.15, Oranges=1.85.
+Buyer №134 bought: Cabbage=0.15, Sour cream=1.95, Sausages=8.35.
+Buyer №136 bought: Meat=13.95.
+Buyer №135 bought: Sausages=8.35, Cookies=5.95.
+Buyer №132 bought: Parsley=0.45, Fish=12.95, Dumplings=3.35, Sour cream=1.95.
+Buyer №151 bought: Oranges=1.85, Cabbage=0.15.
+Buyer №146 bought: Cabbage=0.15.
+Buyer №150 bought: Bread=0.75, Apples=1.95, Milk=1.55, Bun=0.45.
+Buyer №147 bought: Meat=13.95, Parsley=0.45.
+Buyer №149 bought: Sweets=10.85, Cookies=5.95.
+Buyer №148 bought: Kefir=1.6.
+Buyer №141 bought: Dumplings=3.35, Butter=2.45.
+Buyer №145 bought: Bread=0.75, Dumplings=3.35, Cabbage=0.15.
+Buyer №142 bought: Ice-cream=0.65, Onion=0.85, Sour cream=1.95.
+Buyer №143 bought: Eggs=3.2, Bag=0.2.
+Buyer №144 bought: Bag=0.2.
+Buyer №137 bought: Onion=0.85, Kefir=1.6, Banana=3.25, Parsley=0.45.
+Buyer №153 bought: Apples=1.95.
+Buyer №155 bought: Oranges=1.85, Sour cream=1.95, Milk=1.55.
+Buyer №152 bought: Rice=2.15, Parsley=0.45, Kefir=1.6, Bread=0.75.
+Buyer №154 bought: Kefir=1.6.
+Buyer №165 bought: Fish=12.95.
+Buyer №160 bought: Dumplings=3.35.
+Buyer №158 bought: Oranges=1.85, Eggs=3.2, Butter=2.45, Meat=13.95.
+Buyer №161 bought: Parsley=0.45.
+Buyer №159 bought: Apples=1.95, Bag=0.2, Oranges=1.85, Sausages=8.35.
+Buyer №162 bought: Cookies=5.95, Cabbage=0.15, Cheese=9.45, Oranges=1.85.
+Buyer №163 bought: Ice-cream=0.65, Parsley=0.45.
+Buyer №157 bought: Butter=2.45, Eggs=3.2, Rice=2.15.
+Buyer №156 bought: Oranges=1.85, Milk=1.55, Bun=0.45.
+Buyer №164 bought: Kefir=1.6, Milk=1.55, Banana=3.25, Rice=2.15.
+Buyer №179 bought: Parsley=0.45.
+Buyer №180 bought: Sweets=10.85, Bread=0.75, Onion=0.85.
+Buyer №178 bought: Cabbage=0.15, Apples=1.95.
+Buyer №177 bought: Fish=12.95, Oranges=1.85, Sweets=10.85.
+Buyer №176 bought: Meat=13.95, Sweets=10.85, Banana=3.25, Dumplings=3.35.
+Buyer №170 bought: Fish=12.95, Sausages=8.35.
+Buyer №174 bought: Parsley=0.45, Kefir=1.6.
+Buyer №168 bought: Banana=3.25, Meat=13.95, Dumplings=3.35.
+Buyer №171 bought: Onion=0.85.
+Buyer №172 bought: Ice-cream=0.65.
+Buyer №175 bought: Banana=3.25, Sausages=8.35, Cabbage=0.15, Milk=1.55.
+Buyer №173 bought: Bag=0.2.
+Buyer №166 bought: Sour cream=1.95.
+Buyer №185 bought: Kefir=1.6, Onion=0.85, Cookies=5.95, Bread=0.75.
+Buyer №184 bought: Sweets=10.85, Fish=12.95, Kefir=1.6.

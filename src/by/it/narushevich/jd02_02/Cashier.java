@@ -10,16 +10,6 @@ class Cashier implements Runnable {
         this.number = number;
     }
 
-    private double sum = 0;
-
-    public void setSum(double sum) {
-        this.sum = sum;
-    }
-
-    public double getSum() {
-        return sum;
-    }
-
      @Override
     public void run() {
         while (Dispatcher.marketOpened()) {
@@ -29,16 +19,8 @@ class Cashier implements Runnable {
                     System.out.println("=================================");
                     System.out.println(this + " started service " + buyer);
                     int timeout = Util.random(2000, 5000);
-
-                    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath()))) {
-                        while (bufferedReader.ready()) {
-                            setSum(getCheck(bufferedReader));
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("I don't know how to print total price");
                     Util.sleep(timeout);
-                    System.out.printf("Total price is: %5.2f%n", getSum());
                     System.out.println(this + " finished service " + buyer);
                     System.out.println("=================================");
                 }

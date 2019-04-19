@@ -104,6 +104,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         }
     }
 
+
     private void putGoods() {
         int numberOfGoods = Util.random(1, 4);
         List<String> keysList = new ArrayList<>(Dispatcher.listOfGoods.keySet());

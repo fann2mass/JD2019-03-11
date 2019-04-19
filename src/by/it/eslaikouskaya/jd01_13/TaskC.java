@@ -21,12 +21,12 @@ public class TaskC {
 
 	private static void readData() throws Exception {
 		try {
+			if (counter == 5)
+				throw new Exception("Недопустимое количество ошибок");
 			double number = Double.parseDouble(text);
 			numbers.add(0, number);
 		} catch (NumberFormatException e) {
 			counter++;
-			if (counter == 5)
-				throw new Exception("Недопустимое количество ошибок");
 			Thread.sleep(100);
 			for (Double number : numbers) {
 				System.out.print(number + " ");

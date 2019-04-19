@@ -38,14 +38,14 @@ public class TaskB {
             while ((line = bufferedReader.readLine()) != null) {
                 StringBuilder sb = new StringBuilder(line).append('\n');
                 boolean containsSlash = line.contains("/");
-                if (containsSlash && exceptionCheck(line)) {
+                if (containsSlash && !exceptionCheck(line)) {
                     int indexOfSlash = sb.indexOf("/");
                     int length = sb.length();
                     sb.delete(indexOfSlash, length).append('\n');
                 }
                 String changeLine = sb.toString();
                 boolean containsStar = changeLine.contains("*");
-                if (containsStar && exceptionCheck(line)) {
+                if (containsStar && !exceptionCheck(line)) {
                     continue;
                 }
                 String changeLine2 = sb.toString();
@@ -57,7 +57,7 @@ public class TaskB {
     }
 
     private static boolean exceptionCheck(String line) {
-        return !line.contains("contains") && !line.contains("indexOf");
+        return line.contains("contains") || line.contains("indexOf");
     }
 
     /* в этом методе происходит чтение файла результата

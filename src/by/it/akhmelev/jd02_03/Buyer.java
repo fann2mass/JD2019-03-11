@@ -4,7 +4,7 @@ class Buyer extends Thread implements IBuyer {
 
     private boolean wait;
 
-    public void setWait(boolean wait) {
+    void setWait(boolean wait) {
         this.wait = wait;
     }
 

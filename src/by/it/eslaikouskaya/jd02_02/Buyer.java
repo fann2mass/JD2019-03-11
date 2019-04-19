@@ -65,19 +65,29 @@ class Buyer extends Thread implements IBuyer, IUseBasket{
             int timeout = Util.random(150, 300);
             Util.sleep(timeout);
         }
-        Map<String, Double> products = Dispatcher.getGoods();
-        Set<String> keySets = products.keySet();
-        ArrayList<String> productNames = new ArrayList<>(keySets);
-
-        int goodsInBasket = Util.random(1, 4);
-        for (int i = 0; i < goodsInBasket; i++) {
-            String productInBasket = productNames.get(Util.random
-                    (0, productNames.size() - 1));
-            Double value = products.get(productInBasket);
-            System.out.println(this + " buy " + productInBasket + ": " + value);
-        }
-        System.out.println(this+" finish put goods to basket");
+        String check = check();
+	    System.out.println(check);
+	    System.out.println(this+" finish put goods to basket");
     }
+
+   public String check() {
+	   Map<String, Double> products = Dispatcher.getGoods();
+	   Set<String> keySets = products.keySet();
+	   ArrayList<String> productNames = new ArrayList<>(keySets);
+	   StringBuilder sb = new StringBuilder();
+
+	   int goodsInBasket = Util.random(1, 4);
+	   double amount = 0;
+	   for (int i = 0; i < goodsInBasket; i++) {
+		   String productInBasket = productNames.get(Util.random
+				   (0, productNames.size() - 1));
+		   Double value = products.get(productInBasket);
+		   amount+=value;
+		   sb.append(this).append(" buy ").append(productInBasket).append(": ").append(value).append("\n");
+	   }
+	   sb.append("Total amount is: ").append(amount);
+	   return sb.toString();
+   }
 
     @Override
     public void addToQueue() {
@@ -92,6 +102,8 @@ class Buyer extends Thread implements IBuyer, IUseBasket{
             }
         }
         System.out.println(this + " complete service at cashier");
+        String check = check();
+	    System.out.println(check);
     }
 
     @Override

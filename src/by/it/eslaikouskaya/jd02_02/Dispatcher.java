@@ -20,13 +20,18 @@ class Dispatcher {
     private static HashMap<String,Double> products = new HashMap<>() {
         {
             put("potato", 2.0);
-            put("milk", 4.1);
+            put("milk", 4.5);
             put("bread", 1.5);
-            put("eggs", 3.2);
-            put("bubble gum", 1.2);
-            put("rice", 1.7);
-            put("peanuts", 4.3);
+            put("eggs", 3.0);
+            put("bubble gum", 1.0);
+            put("rice", 2.0);
+            put("peanuts", 4.0);
             put("water", 0.5);
+            put("tea", 5.0);
+            put("cheese", 3.0);
+            put("ice-cream", 6.0);
+            put("carrot", 1.0);
+            put("fish", 4.0);
         }
     };
 
@@ -41,6 +46,7 @@ class Dispatcher {
         }
     }
 
+
     static void deleteBuyer() {
         synchronized (monitorCounters) {
             buyerInMarket--;
@@ -54,4 +60,6 @@ class Dispatcher {
     static boolean planComplete() {
         return buyerCounter == PLAN;
     }
+
+    static int getBuyerCounter(){return buyerCounter;}
 }

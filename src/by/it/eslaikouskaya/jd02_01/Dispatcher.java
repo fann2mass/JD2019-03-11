@@ -6,7 +6,7 @@ class Dispatcher {
 
     final static int kSpeed=100;
     final static int finishTime=120;
-    private static HashMap<String,Double> products = new HashMap<>() {
+    private static HashMap<String,Double> products = new HashMap<String,Double>() {
         {
             put("potato", 2.0);
             put("milk", 4.1);

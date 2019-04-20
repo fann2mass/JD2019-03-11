@@ -1,6 +1,5 @@
 package by.it.narushevich.jd02_02;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,45 +7,31 @@ class Market {
 
     public static void main(String[] args) {
 
-        List<Thread> threads = new ArrayList<>();
-        System.out.println("market is opened");
+        List<Thread> buyers = new ArrayList<>();
+        List<Thread> cashiers = new ArrayList<>();
 
-        File buyers = new File(Buyer.getPath());
-        buyers.delete();
+        System.out.println("market is opened");
 
         for (int i = 1; i <=5 ; i++) {
             Cashier cashier = new Cashier(i);
+            QueueCashiers.add(cashier);
             Thread threadCashier = new Thread(cashier);
             threadCashier.start();
-            threads.add(threadCashier);
+            cashiers.add(threadCashier);
         }
 
         int time = 0;
         int numberBuyer = 0;
 
-        while (!Dispatcher.planComplete()) {
+        while (Dispatcher.planIncomplete()) {
             if (time < 30 && Dispatcher.getBuyerInMarket() <= time + 10) {
-                int count = Util.random(2);
-                if (!Dispatcher.planComplete()) {
-                    for (int n = 0; n < count; n++) {
-                        Buyer buyer = new Buyer(++numberBuyer);
-                        buyer.start();
-                        threads.add(buyer);
-                    }
-                }
-            }
-            if ((time > 30 && time < 60) && Dispatcher.getBuyerInMarket() <= 40 + (30 - time)) {
-                int count = Util.random(2);
-                if (!Dispatcher.planComplete()) {
-                    for (int n = 0; n < count; n++) {
-                        Buyer buyer = new Buyer(++numberBuyer);
-                        buyer.start();
-                        threads.add(buyer);
-                    }
-                }
-            }
+                numberBuyer = createBuyer(buyers, numberBuyer);
 
-            if (time == 60) {
+            } else
+            if ((time > 30 && time < 60) && Dispatcher.getBuyerInMarket() <= 40 + (30 - time)) {
+                numberBuyer = createBuyer(buyers, numberBuyer);
+            }
+            else if (time == 60) {
                 time = 0;
             }
 
@@ -54,9 +39,17 @@ class Market {
             Util.sleep(1000);
         }
 
-        for (Thread th : threads) {
+        for (Thread buyer : buyers) {
             try {
-                th.join();
+                buyer.join();
+            } catch (InterruptedException e) {
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
+            }
+        }
+        for (Thread cashier : cashiers) {
+            try {
+                cashier.join();
             } catch (InterruptedException e) {
                 System.err.println(e.getMessage());
                 Thread.currentThread().interrupt();
@@ -65,5 +58,15 @@ class Market {
         System.out.println("market is closed");
     }
 
-
+    private static int createBuyer(List<Thread> buyers, int numberBuyer) {
+        int count = Util.random(2);
+        if (Dispatcher.planIncomplete()) {
+            for (int n = 0; n < count; n++) {
+                Buyer buyer = new Buyer(++numberBuyer);
+                buyer.start();
+                buyers.add(buyer);
+            }
+        }
+        return numberBuyer;
+    }
 }

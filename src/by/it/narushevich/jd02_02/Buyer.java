@@ -1,12 +1,36 @@
 package by.it.narushevich.jd02_02;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 class Buyer extends Thread implements IBuyer, IUseBacket {
+
+    Buyer(int number) {
+        super("Buyer №" + number);
+        if (number % 4 == 0) {
+            pensioneer = true;
+            this.setName("Buyer №" + number + " pensioneer" );}
+        Dispatcher.newBuyer();
+    }
+
+    Basket basket = new Basket(this);
+
+    private HashMap<String, Double> myGoods = basket.putGoods();
+
+    public HashMap<String, Double> getMyGoods() {
+        return myGoods;
+    }
+
+    Object monitorBuyer() {
+        return this;
+    }
+
+    private boolean waitService;
+
+    public void setWaitService(boolean waitService) {
+        this.waitService = waitService;
+    }
+
+    boolean pensioneer = false;
 
     @Override
     public void run() {
@@ -18,17 +42,6 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         goOut();
     }
 
-    Object getMonitor() {
-        return this;
-    }
-
-    Buyer(int number) {
-        super("Buyer №" + number);
-        if (number % 4 == 0) pensioneer = true;
-        Dispatcher.newBuyer();
-    }
-
-    static boolean pensioneer = false;
 
     @Override
     public void enterToMarket() {
@@ -58,11 +71,33 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     }
 
     @Override
+    public void putGoodsToBasket() {
+        int timeout = Util.random(100, 200);
+        System.out.println(this.toString() + " bought: " + myGoods);
+        if (pensioneer) {
+            int newTimeOut = (timeout * 3) / 2;
+            Util.sleep(newTimeOut);
+        } else {
+            Util.sleep(timeout);
+        }
+    }
+
+    @Override
     public void addToQueue() {
         System.out.println(this + " added to queue and wait");
-        QueueBuyers.add(this);
-        synchronized (this) {
-            try {
+        if (pensioneer){QueueBuyers.addPensioneer(this);}
+        else QueueBuyers.add(this);
+        waitService = true;
+        Cashier cashier = QueueCashiers.extract();
+        if (cashier != null) {
+            synchronized (cashier.monitorCashier()) {
+                cashier.setWaitBuyer(false);
+                cashier.monitorCashier().notify();
+            }
+            QueueCashiers.add(cashier);
+        }
+        else synchronized (this) {
+            while (waitService) try {
                 wait();
             } catch (InterruptedException e) {
                 System.err.println(e.getMessage());
@@ -70,56 +105,6 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
             }
         }
         System.out.println(this + " complete service at cashier");
-    }
-
-    @Override
-    public void putGoodsToBasket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer) {
-            int newTimeOut = (timeout * 3) / 2;
-            putGoods();
-            Util.sleep(newTimeOut);
-        } else {
-            putGoods();
-            Util.sleep(timeout);
-        }
-    }
-
-    static String getPath() {
-        String userDir = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String pathPack = Cashier.class.getPackage().getName().replace(".", File.separator) + File.separator;
-        return userDir + pathPack + "buyers.txt";
-    }
-
-    private final File buyers = new File(getPath());
-
-    private void writeToFile(File f, String string) {
-        synchronized (buyers) {
-            try (FileWriter fw = new FileWriter(f, true)) {
-                fw.write(string);
-                fw.flush();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-
-    private void putGoods() {
-        int numberOfGoods = Util.random(1, 4);
-        List<String> keysList = new ArrayList<>(Dispatcher.listOfGoods.keySet());
-        StringBuilder list = new StringBuilder();
-        for (int i = 1; i < numberOfGoods + 1; i++) {
-            Collections.shuffle(keysList);
-            String randomKey = keysList.get(new Random().nextInt(keysList.size()));
-            Double price = Dispatcher.listOfGoods.get(randomKey);
-            keysList.remove(randomKey);
-            list.append(randomKey).append("=").append(price);
-            if (i == numberOfGoods) list.append(".");
-            else list.append(", ");
-        }
-        System.out.printf("%s put goods: %s%n", this, list);
-        writeToFile(buyers, this.toString() + " bought: " + list.toString() + System.lineSeparator());
     }
 
     @Override

@@ -11,22 +11,12 @@ public class Market {
 
         int time = 0;
         int numberBuyer = 0;
-            while (time <= Dispatcher.finishTime) {
+            while (time <= Dispatcher.FINISH_TIME) {
                 if ((time < 30 || (time > 60 && time < 90)) && Buyer.inMarket <= time + 10) {
-                    int count = Util.random(2);
-                    for (int n = 0; n < count; n++) {
-                        Buyer buyer = new Buyer(++numberBuyer);
-                        buyer.start();
-                        buyers.add(buyer);
-                    }
+                    numberBuyer = getNumberBuyer(buyers, numberBuyer);
                 }
                 if ((time > 30 && time < 60) || time > 90 && Buyer.inMarket <= 40 + (30 - time)) {
-                    int count = Util.random(2);
-                    for (int n = 0; n < count; n++) {
-                        Buyer buyer = new Buyer(++numberBuyer);
-                        buyer.start();
-                        buyers.add(buyer);
-                    }
+                    numberBuyer = getNumberBuyer(buyers, numberBuyer);
                 }
                 time++;
                 Util.sleep(1000);
@@ -40,5 +30,15 @@ public class Market {
             }
         }
         System.out.println("market is closed");
+    }
+
+    private static int getNumberBuyer(List<Thread> buyers, int numberBuyer) {
+        int count = Util.random(2);
+        for (int n = 0; n < count; n++) {
+            Buyer buyer = new Buyer(++numberBuyer);
+            buyer.start();
+            buyers.add(buyer);
+        }
+        return numberBuyer;
     }
 }

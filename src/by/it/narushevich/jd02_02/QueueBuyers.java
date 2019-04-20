@@ -9,6 +9,7 @@ class QueueBuyers {
     }
 
     private static Deque<Buyer> buyerDeque = new ArrayDeque<>();
+    private static Deque<Buyer> pensioneersDeque = new ArrayDeque<>();
 
     public static Deque<Buyer> getBuyerDeque() {
         return buyerDeque;
@@ -17,7 +18,16 @@ class QueueBuyers {
     static synchronized void add(Buyer buyer) {
         buyerDeque.addLast(buyer);
     }
+    static synchronized void addPensioneer(Buyer buyer) {
+        pensioneersDeque.addLast(buyer);
+    }
+
     static synchronized Buyer extract() {
         return buyerDeque.pollFirst();
     }
+    static synchronized Buyer extractPensioneer() {
+        return pensioneersDeque.pollFirst();
+    }
+
+
 }

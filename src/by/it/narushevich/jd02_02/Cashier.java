@@ -1,6 +1,8 @@
 package by.it.narushevich.jd02_02;
 
-import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 class Cashier implements Runnable {
 
@@ -10,44 +12,58 @@ class Cashier implements Runnable {
         this.number = number;
     }
 
-     @Override
+    Object monitorCashier() {
+        return this;
+    }
+
+    private boolean waitBuyer;
+
+    public void setWaitBuyer(boolean waitBuyer) {
+        this.waitBuyer = waitBuyer;
+    }
+
+    @Override
     public void run() {
+        System.out.println(this+" is opened");
         while (Dispatcher.marketOpened()) {
+            Buyer pensioneer = QueueBuyers.extractPensioneer();
             Buyer buyer = QueueBuyers.extract();
-            if (buyer != null) {
-                synchronized (System.out) {
-                    System.out.println("=================================");
-                    System.out.println(this + " started service " + buyer);
-                    int timeout = Util.random(2000, 5000);
-                    System.out.println("I don't know how to print total price");
-                    Util.sleep(timeout);
-                    System.out.println(this + " finished service " + buyer);
-                    System.out.println("=================================");
-                }
-                synchronized (buyer.getMonitor()) {
-                    buyer.getMonitor().notify();
+            if (pensioneer != null) cashierService(pensioneer);
+            else if (buyer != null) cashierService(buyer);
+            else synchronized (this) {
+                while (waitBuyer) try {
+                    wait(10);
+                    notify();
+                    waitBuyer = Dispatcher.getBuyerInMarket() > 0;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
         System.out.println(this + " is closed");
     }
 
-    private double getCheck(BufferedReader bufferedReader) throws IOException {
-        String line = bufferedReader.readLine();
-        double sum = 0;
-        if (line.contains(this.toString())) {
-            String[] split1 = line.split(": ");
-            for (int i = 0; i < split1.length; i++) {
-                String[] split2 = split1[1].split(",");
-                for (String good : split2) {
-                    String price = good.replaceFirst("[a-zA-Z-\\s=]+", "");
-                    double money = Double.parseDouble(price);
-                    sum = 0;
-                    sum += money;
+    private void cashierService(Buyer buyer) {
+        synchronized (System.out) {
+                System.out.println("=================================");
+                System.out.println(this + " started service " + buyer);
+                int timeout = Util.random(2000, 5000);
+                HashMap<String, Double> myGoods = buyer.getMyGoods();
+                double sum = 0;
+                Set<Map.Entry<String, Double>> entries = myGoods.entrySet();
+                for (Map.Entry<String, Double> entry : entries) {
+                    sum += entry.getValue();
+                    System.out.println(entry);
                 }
-            }
+                System.out.printf("Total sum of the buy is: %5.2f%n", sum);
+                Util.sleep(timeout);
+                System.out.println(this + " finished service " + buyer);
+                System.out.println("=================================");
         }
-        return sum;
+        synchronized (buyer.monitorBuyer()) {
+            buyer.setWaitService(false);
+            buyer.monitorBuyer().notify();
+        }
     }
 
     @Override
@@ -55,9 +71,4 @@ class Cashier implements Runnable {
         return "Cashier №" + number;
     }
 
-    private static String getPath() {
-        String userDir = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String pathPack = Cashier.class.getPackage().getName().replace(".", File.separator) + File.separator;
-        return userDir + pathPack + "buyers.txt";
-    }
 }

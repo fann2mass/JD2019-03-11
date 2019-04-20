@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Buyer extends Thread implements IBuyer, IUseBacket {
 
-    static boolean pensioneer = false;
+    boolean pensioneer = false;
     static int inMarket = 0;
 
     @Override
@@ -66,20 +66,18 @@ public class Buyer extends Thread implements IBuyer, IUseBacket {
 
     private void putGoods() {
         int numberOfGoods = Util.random(1, 4);
-        List<String> keysList = new ArrayList<>(Dispatcher.listOfGoods.keySet());
+        List<String> keysList = new ArrayList<>(Dispatcher.getListOfGoods().keySet());
         StringBuilder list = new StringBuilder();
-        double sum = 0;
         for (int i = 1; i < numberOfGoods + 1; i++) {
             Collections.shuffle(keysList);
             String randomKey = keysList.get(new Random().nextInt(keysList.size()));
-            Double price = Dispatcher.listOfGoods.get(randomKey);
+            Double price = Dispatcher.getListOfGoods().get(randomKey);
             keysList.remove(randomKey);
-            sum += price;
-            list.append(randomKey);
-            if (i == numberOfGoods) list.append(" - total price is ");
+            list.append(randomKey).append(" = ").append(price);
+            if (i == numberOfGoods) list.append('.');
             else list.append(", ");
         }
-        System.out.printf("%s put goods: %s%5.2f%n",this,list,sum);
+        System.out.printf("%s put goods: %s%n",this,list);
     }
 
     @Override

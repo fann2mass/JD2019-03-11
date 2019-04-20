@@ -33,7 +33,6 @@ class Cashier implements Runnable {
             else synchronized (this) {
                 while (waitBuyer) try {
                     wait(10);
-                    notify();
                     waitBuyer = Dispatcher.getBuyerInMarket() > 0;
                 } catch (InterruptedException e) {
                     e.printStackTrace();

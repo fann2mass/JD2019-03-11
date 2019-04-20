@@ -2,7 +2,7 @@ package by.it.narushevich.jd02_02;
 
 import java.util.*;
 
-class Buyer extends Thread implements IBuyer, IUseBacket {
+class Buyer extends Thread implements IBuyer, IUseBasket {
 
     Buyer(int number) {
         super("Buyer №" + number);
@@ -35,7 +35,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     @Override
     public void run() {
         enterToMarket();
-        takeBacket();
+        takeBasket();
         chooseGoods();
         putGoodsToBasket();
         addToQueue();
@@ -50,7 +50,7 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     }
 
     @Override
-    public void takeBacket() {
+    public void takeBasket() {
         int timeout = Util.random(100, 200);
         if (pensioneer) {
             int newTimeOut = (timeout * 3) / 2;

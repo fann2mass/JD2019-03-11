@@ -66,8 +66,7 @@ public class Test_jd01_14 {
         Test_jd01_14 run = run("");
         showDir(dir(Test_jd01_14.class)+"..",run);
         Scanner scanner = new Scanner(new File(dir(Test_jd01_14.class) + "resultTaskC.txt"));
-        //проверка соответствия вывода и содержимого файла отчета resultTaskC.txt
-        scanner.nextLine(); //пропуск потенциально возможного dir:..
+        scanner.nextLine();
         while (scanner.hasNext()) {
             run.include(scanner.nextLine());
         }

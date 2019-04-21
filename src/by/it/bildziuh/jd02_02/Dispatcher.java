@@ -9,7 +9,7 @@ class Dispatcher {
     final static int kSpeed = 100;
     private static final int PLAN = 100;
     private static volatile int buyerCounter = 0;
-    private static volatile int buyerInMarket = 0;
+    static volatile int buyerInMarket = 0;
 
     static void newBuyer() {
         synchronized (monitorCounters) {

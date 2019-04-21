@@ -20,4 +20,5 @@ class Util {
     static int random(int range) {
         return random(0, range);
     }
+
 }

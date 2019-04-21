@@ -23,7 +23,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         return this;
     }
 
-    private boolean pensioneer = false;
+    boolean pensioneer = false;
 
     Buyer(int number) {
         super("Buyer № " + number);
@@ -59,10 +59,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
                 Thread.currentThread().interrupt();
             }
         }
-        print();
         System.out.println(this + " complete service at cashier");
-
-
     }
 
     @Override
@@ -83,7 +80,6 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
             timeout *= 3 / 2;
         Util.sleep(timeout);
         System.out.println(this + " took a bucket");
-
     }
 
     @Override
@@ -104,21 +100,6 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         }
         System.out.println(this + " putted goods into a bucket");
         paymentCheck.putAll(chosenGoods);
-    }
-
-    private void print() {
-        double total = 0;
-        System.out.println("------------------");
-        System.out.printf("| %-13s |\n", this);
-        System.out.println("------------------");
-        for (HashMap.Entry<String, Double> entry : paymentCheck.entrySet()) {
-            total += entry.getValue();
-            System.out.printf("| %-6s = %-5.2f |\n", entry.getKey(), entry.getValue());
-        }
-        System.out.println("------------------");
-        System.out.printf("| Total = %-5.2f  |\n", total);
-        System.out.println("------------------");
-
     }
 }
 

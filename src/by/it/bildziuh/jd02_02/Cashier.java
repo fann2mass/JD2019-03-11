@@ -14,6 +14,10 @@ class Cashier implements Runnable {
         this.number = number;
     }
 
+    Object getMonitor() {
+        return this;
+    }
+
     @Override
     public void run() {
         while (Dispatcher.marketOpened()) {

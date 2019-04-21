@@ -1,11 +1,15 @@
 package by.it.bildziuh.jd02_02;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 class Buyer extends Thread implements IBuyer, IUseBucket {
 
     HashMap<String, Double> paymentCheck = new HashMap<>();
+
+    static List<Thread> buyers = new ArrayList<>();
 
     @Override
     public void run() {

@@ -34,7 +34,7 @@ class Cashier implements Runnable {
         System.out.println(this + " closed");
     }
 
-    private synchronized void printCheck(Buyer buyer) {
+    private void printCheck(Buyer buyer) {
 
         double total = 0;
         char[] tabCashierCh = new char[22 * (number - 1)];

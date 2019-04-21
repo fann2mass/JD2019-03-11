@@ -5,8 +5,6 @@ import java.util.Iterator;
 
 class Buyer extends Thread implements IBuyer, IUseBucket {
 
-    private static final Object sync = new Object();
-
     HashMap<String, Double> paymentCheck = new HashMap<>();
 
     @Override
@@ -88,7 +86,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         if (pensioneer)
             timeout *= 3 / 2;
         Util.sleep(timeout);
-        HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
+        HashMap<String, Double> chosenGoods = new HashMap<>(Util.listOfGoods);
         Iterator iterator = chosenGoods.entrySet().iterator();
         int size = chosenGoods.size();
         while (iterator.hasNext() && chosenGoods.size() != Util.random(1, 4)) {

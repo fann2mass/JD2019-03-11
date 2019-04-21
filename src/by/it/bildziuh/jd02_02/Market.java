@@ -19,6 +19,8 @@ public class Market {
         int time = 0;
         int numberBuyer = 0;
         while (!Dispatcher.planComplete()) {
+            if (time >= 60)
+                time -= 60;
 /*            if (QueueBuyers.size() / activeCashier < 5) {
                 try {
                     threads.wait();

@@ -1,4 +1,4 @@
-package by.it.eslaikouskaya.jd02_02;
+package by.it.eslaikouskaya.jd02_03;
 
 import java.util.HashMap;
 

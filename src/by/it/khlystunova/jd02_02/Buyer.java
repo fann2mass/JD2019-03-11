@@ -1,31 +1,34 @@
 package by.it.khlystunova.jd02_02;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Buyer extends Thread implements IBuyer, IUseBasket {
+ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     private boolean pensioneer = false;
-    static Integer numberInTheShop = 0;
+    HashMap<String,Double> basket = new HashMap<>();
+
+    Object getMonitor(){
+        return this;
+    }
 
     Buyer(int number) {
-        super("Buyer № " + number+" ");
-        if(number%4==0)this.pensioneer=true;
+        super("Buyer № " + number);
+        if(number%4==0)this.pensioneer = true;
         Dispatcher.newBuyer();
     }
 
 
     @Override
     public void run() {
-            numberInTheShop++;
             enterToMarket();
             takeBasket();
             chooseGoods();
             putGoodsToBasket();
             addToQueue();
             goOut();
-            numberInTheShop--;
     }
 
     @Override
@@ -44,13 +47,15 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void addToQueue() {
-        System.out.println(this+" added to queue and wait");
-        QueueBuyers.add(this);
+        System.err.println(this+" added to queue and wait");
+        if(pensioneer)QueuePensionners.add(this);
+        else QueueBuyers.add(this);
         synchronized (this){
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println(this+" complete service at the cashier");
@@ -66,7 +71,9 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public String toString() {
-        return this.getName()+" "+pensioneer;
+        if(this.pensioneer)
+        return this.getName()+" pensioneer";
+        else return this.getName();
     }
 
     @Override
@@ -89,9 +96,10 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
 
         for (int i = 0; i < numberOfGoods ; i++) {
             int indexRandom = Util.random(0,listOfKeys.size()-1);
-            String chosenGood = listOfKeys.get(indexRandom);
+            String chosenGood = listOfKeys.remove(indexRandom);
             Double prise = listOfGoods.get(chosenGood);
-            System.out.println(this+" Chosen: "+chosenGood+" "+prise);
+            this.basket.put(chosenGood,prise);
+            System.out.println(this+" put to the basket: "+chosenGood+" "+prise);
         }
     }
 }

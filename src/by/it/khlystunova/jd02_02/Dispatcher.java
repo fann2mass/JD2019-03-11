@@ -2,29 +2,69 @@ package by.it.khlystunova.jd02_02;
 
 import java.util.HashMap;
 
-
+@SuppressWarnings("all")
 class Dispatcher {
 
-   final static int kSpeed=100;//спать будем в kspeed раз быстрее
-   final static int finishTime=60;
-   final static int plan = 100;
+   private static final Object monitorCounters = new Object();
+   private static final Object monitorCashiers = new Object();
+
+   static final int K_SPEED =100;//спать будем в kspeed раз быстрее
+   private static final int PLAN = 100;
    private static  volatile int buyerCounter = 0;
-   private static volatile   int buyerInMarket = 0;
-   static boolean marketOpened(){//для этого места ставим волотаил выше
-      return buyerCounter<plan ||buyerInMarket>0;
-   }
-   static synchronized void newBuyer(){
-      buyerCounter++;
-      buyerInMarket++;
+   private static volatile  int buyerInMarket = 0;
+   private static  volatile int cashiersCounter = 0;
+
+
+   static final int MINUTE = 60;
+
+   static boolean marketOpened() {
+      return buyerCounter < PLAN || buyerInMarket > 0;
    }
 
-   static synchronized void deleteBuyer(){
-      buyerInMarket--;
+   static void newBuyer() {
+      synchronized (monitorCounters) {
+         buyerCounter++;
+         buyerInMarket++;
+      }
+   }
+
+   static void deleteBuyer() {
+      synchronized (monitorCounters) {
+         buyerInMarket--;
+      }
+   }
+
+   static void newCashier() {
+      synchronized (monitorCashiers) {
+         cashiersCounter++;
+      }
+   }
+
+   static void deleteCashier() {
+      synchronized (monitorCashiers) {
+         cashiersCounter--;
+      }
+   }
+
+   static int getBuyerInMarket(){
+      return buyerInMarket;
    }
 
    static  boolean planComplete(){
-      return buyerCounter == plan;
+      return buyerCounter == PLAN;
    }
+
+    /*static boolean needCashiers() {
+      boolean res;
+      synchronized (monitorCashiers) {
+          int n = cashiersCounter;
+          res = (n * 5 < QueueBuyers.getSize());
+         if (cashiersCounter >= 5 )
+            res = false;
+      }
+        return res;
+    }*/
+
 
     private static HashMap<String,Double> listOfGoods = new HashMap<String,Double>(){{
        put("Milk", 1.68);
@@ -41,7 +81,7 @@ class Dispatcher {
    }};
 
      static HashMap<String, Double> getListOfGoods() {
-           return listOfGoods;
+        return new HashMap<>(listOfGoods);
    }
 
 }

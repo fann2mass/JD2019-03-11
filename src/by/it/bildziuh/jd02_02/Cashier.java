@@ -24,7 +24,9 @@ class Cashier implements Runnable {
                 int timeout = Util.random(2000, 5000);
                 Util.sleep(timeout);
                 System.out.println(this + " finished service " + buyer);
-                printCheck(buyer);
+                synchronized (System.out) {
+                    printCheck(buyer);
+                }
                 synchronized (buyer.getMonitor()) {
                     buyer.getMonitor().notify();
                 }
@@ -43,7 +45,7 @@ class Cashier implements Runnable {
         String tabCashier = new String(tabCashierCh);
         String tab = new String(tabCh);
         String line = "------------------";
-        synchronized (System.out) {
+    //    synchronized (System.out) {
             System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
             System.out.printf("%s| %-13s |%s| In queue %-5s | \t| Total income%-2s |\n", tabCashier, buyer, tab, " ", " ");
             System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
@@ -55,7 +57,7 @@ class Cashier implements Runnable {
             System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
             System.out.printf("%s| Total  = %-5.2f |%s| %-14s |\t| %-14.2f |\n", tabCashier, total, tab, QueueBuyers.size(), Util.income);
             System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-        }
+    //    }
     }
 
     @Override

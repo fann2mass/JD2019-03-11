@@ -16,10 +16,8 @@ public class Market {
             threadCashier.start();
             threads.add(threadCashier);
         }
-        int activeCashier = 5;
         int time = 0;
         int numberBuyer = 0;
-
         while (!Dispatcher.planComplete()) {
 /*            if (QueueBuyers.size() / activeCashier < 5) {
                 try {
@@ -32,8 +30,8 @@ public class Market {
             if (QueueBuyers.size() / activeCashier > 5) {
                 threads.notify();
                 activeCashier++;
-            }
-*/
+            }*/
+
             int count = Util.random(2);
             for (int n = 0; n < count; n++) {
                 if (!Dispatcher.planComplete()) {

@@ -3,6 +3,8 @@ package by.it.bildziuh.jd02_02;
 import java.util.Arrays;
 import java.util.HashMap;
 
+
+
 class Cashier implements Runnable {
 
     private static double income = 0;

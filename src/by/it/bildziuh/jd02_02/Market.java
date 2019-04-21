@@ -27,7 +27,7 @@ public class Market {
                 }
             }
 
-            if (time > 30 && Dispatcher.buyerInMarket <= 40 + (30 - time))
+            if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time))
                 continue;
             if (time <= 30 && Dispatcher.buyerInMarket <= time + 10)
                 continue;

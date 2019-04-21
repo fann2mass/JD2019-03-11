@@ -19,11 +19,12 @@ class Cashier implements Runnable {
 
             Buyer buyer = QueueBuyers.extract();
             if (buyer != null) {
-                synchronized (System.out) {
+
                     System.out.println(this + " started service " + buyer);
                     int timeout = Util.random(2000, 5000);
                     Util.sleep(timeout);
                     System.out.println(this + " finished service " + buyer);
+                synchronized (System.out) {
                     printCheck(buyer);
                 }
                 synchronized (buyer.getMonitor()) {

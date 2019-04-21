@@ -27,10 +27,14 @@ public class Market {
                 }
             }
 
-            if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time))
+            if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time)) {
+                Util.sleep(1);
                 continue;
-            if (time <= 30 && Dispatcher.buyerInMarket <= time + 10)
+            }
+            if (time <= 30 && Dispatcher.buyerInMarket <= time + 10) {
+                Util.sleep(1);
                 continue;
+            }
             Util.sleep(1000);
             time++;
         }

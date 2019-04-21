@@ -7,6 +7,10 @@ class Util {
     private Util() {
     }
 
+    static double income = 0;
+
+    static int activeCashier = 0;
+
     final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
         {
             put("Soda", 3.99);
@@ -36,5 +40,6 @@ class Util {
     static int random(int range) {
         return random(0, range);
     }
+
 
 }

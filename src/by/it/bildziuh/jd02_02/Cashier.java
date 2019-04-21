@@ -6,21 +6,17 @@ import java.util.HashMap;
 
 class Cashier implements Runnable {
 
-    private static double income = 0;
-
     private int number;
 
     Cashier(int number) {
         this.number = number;
     }
 
-    Object getMonitor() {
-        return this;
-    }
 
     @Override
     public void run() {
         while (Dispatcher.marketOpened()) {
+
             Buyer buyer = QueueBuyers.extract();
             if (buyer != null) {
                 synchronized (System.out) {
@@ -55,9 +51,9 @@ class Cashier implements Runnable {
             total += entry.getValue();
             System.out.printf("%s| %-6s = %-5.2f |%s| %-14s |\t| %-14s |\n", tabCashier, entry.getKey(), entry.getValue(), tab, " ", " ");
         }
-        income += total;
+        Util.income += total;
         System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-        System.out.printf("%s| Total  = %-5.2f |%s| %-14s |\t| %-14.2f |\n", tabCashier, total, tab, QueueBuyers.size(), income);
+        System.out.printf("%s| Total  = %-5.2f |%s| %-14s |\t| %-14.2f |\n", tabCashier, total, tab, QueueBuyers.size(), Util.income);
         System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
     }
 

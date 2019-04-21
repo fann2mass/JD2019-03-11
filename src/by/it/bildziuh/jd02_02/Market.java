@@ -11,7 +11,9 @@ public class Market {
             Thread threadCashier = new Thread(cashier);
             threadCashier.start();
             Buyer.buyers.add(threadCashier);
+            Util.activeCashier++;
         }
+
         int time = 0;
         int numberBuyer = 0;
         while (!Dispatcher.planComplete()) {

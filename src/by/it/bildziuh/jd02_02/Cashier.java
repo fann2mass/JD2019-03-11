@@ -39,7 +39,7 @@ class Cashier implements Runnable {
 
         double total = 0;
         char[] tabCashierCh = new char[22 * (number - 1)];
-        char[] tabCh = new char[92 - 22 * (number - 1)]; //92 = 22 * 4 + 4
+        char[] tabCh = new char[92 - 22 * (number - 1)]; //92 = 22 * (5 - 1) + 4
         Arrays.fill(tabCashierCh, ' ');
         Arrays.fill(tabCh, ' ');
         String tabCashier = new String(tabCashierCh);

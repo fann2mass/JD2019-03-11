@@ -38,8 +38,8 @@ class Cashier implements Runnable {
     private void printCheck(Buyer buyer) {
 
         double total = 0;
-        char[] tabCashierCh = new char[22 * (number - 1)];
-        char[] tabCh = new char[92 - 22 * (number - 1)]; //92 = 22 * (5 - 1) + 4
+        char[] tabCashierCh = new char[22 * (number - 1)]; //22 =  18 (ширина столбца) + 4(табуляция), умножается на количество стоблбцов -1, т.к. первый столбец без отступа
+        char[] tabCh = new char[92 - 22 * (number - 1)]; //92 = ширина столбца умножается на максимальное кол-во столбцов минус один, и потом плюс 4 символа, вместо табуляции
         Arrays.fill(tabCashierCh, ' ');
         Arrays.fill(tabCh, ' ');
         String tabCashier = new String(tabCashierCh);

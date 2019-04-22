@@ -32,6 +32,7 @@ class Cashier implements Runnable {
     private void service(Buyer buyer) {
            double totalPrise = 0;
         StringBuilder check = new StringBuilder();
+        check.append("====================\n");
         check.append(this + " started service " + buyer+"\n ");
            int timeOut = Util.random(2000, 5000);
            Util.sleep(timeOut);
@@ -44,8 +45,9 @@ class Cashier implements Runnable {
            }
            Dispatcher.SUM += totalPrise;
            check.append(this + " finished service " + buyer + "\n ");
+           check.append("====================\n");
            check.append(" total prise:  "+ totalPrise+"\n");
-           printCheack(check);
+        printCheack(check);
 
            synchronized (buyer.getMonitor()) {
                buyer.setWait(false);

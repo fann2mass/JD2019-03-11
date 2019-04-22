@@ -11,9 +11,11 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
      private boolean pensioneer;
      private boolean wait;
      HashMap<String,Double> basket = new HashMap<>();
-     private Semaphore choosers = new Semaphore(20);
+     private Semaphore shopingSemaphore = new Semaphore(20);
+    private Semaphore basketSemaphore = new Semaphore(50);
 
-     Buyer(int number) {
+
+    Buyer(int number) {
          super("Buyer № " + number);
          if(number%4==0) {
              this.pensioneer = true;
@@ -47,19 +49,21 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void chooseGoods() {
         try {
-            choosers.acquire();
+            shopingSemaphore.acquire();
             System.out.println(this+" Start to choose goods");
             if(pensioneer) Util.sleep(Util.random(750,3_000));
             Util.sleep(Util.random(500,2_000));
             System.out.println(this+" Finish to choose goods");
         }catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            shopingSemaphore.release();
         }
     }
 
     @Override
     public void addToQueue() {
-        System.err.println(this+" added to queue and wait ");
+        System.out.println(this+" added to queue and wait ");
         if(pensioneer) {
             QueuePensionners.add(this);
             System.out.println("PensionnersQueue is "+ QueuePensionners.getSize());
@@ -72,7 +76,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
            while(wait)try {
                 wait();
             } catch (InterruptedException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
                 Thread.currentThread().interrupt();
             }
         }
@@ -87,9 +91,17 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        if(pensioneer) Util.sleep(Util.random(150,300));
-        Util.sleep(Util.random(100,200));
-        System.out.println(this+" Take a backet");
+        try {
+            basketSemaphore.acquire();
+            if(pensioneer) Util.sleep(Util.random(150,300));
+            Util.sleep(Util.random(100,200));
+            System.out.println(this+" Take a backet");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            basketSemaphore.release();
+        }
+
     }
 
     @Override

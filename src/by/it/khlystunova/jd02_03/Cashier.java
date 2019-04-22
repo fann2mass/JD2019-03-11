@@ -47,6 +47,7 @@ class Cashier implements Runnable {
            check.append(this + " finished service " + buyer + "\n ");
            check.append("====================\n");
            check.append(" total prise:  "+ totalPrise+"\n");
+           check.append(" Queue  is: "+QueueBuyers.getBuyers().size());
         printCheack(check);
 
            synchronized (buyer.getMonitor()) {

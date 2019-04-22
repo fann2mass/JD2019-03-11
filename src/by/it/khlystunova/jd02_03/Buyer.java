@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
 
+import static by.it.khlystunova.jd02_03.Dispatcher.*;
+
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
      private boolean pensioneer;
@@ -20,7 +22,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
          if(number%4==0) {
              this.pensioneer = true;
          }
-         Dispatcher.newBuyer();
+         newBuyer();
      }
 
      void setWait(boolean wait) {
@@ -63,14 +65,13 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void addToQueue() {
-        System.out.println(this+" added to queue and wait ");
-        if(pensioneer) {
-            QueuePensionners.add(this);
-            System.out.println("PensionnersQueue is "+ QueuePensionners.getSize());
-        } else {
-            QueueBuyers.add(this);
-            System.out.println("Queue is "+ QueueBuyers.getSize());
-        }
+            if (pensioneer) {
+                QueuePensionners.add(this);
+            } else {
+                QueueBuyers.add(this);
+            }
+        System.out.println(this + " added to queue and wait");
+
         wait = true;
         synchronized (this){
            while(wait)try {
@@ -86,7 +87,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void goOut() {
         System.out.println(this+" Go out from the market");
-        Dispatcher.deleteBuyer();
+        deleteBuyer();
     }
 
     @Override
@@ -112,7 +113,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
             Util.sleep(Util.random(100,200));
         int numberOfGoods = Util.random(1,4);
 
-        Map<String, Double> listOfGoods = Dispatcher.getListOfGoods();
+        Map<String, Double> listOfGoods = getListOfGoods();
         Set<String> keySets = listOfGoods.keySet();
         ArrayList<String> listOfKeys = new ArrayList<>(keySets);
 

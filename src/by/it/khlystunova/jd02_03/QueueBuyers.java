@@ -16,10 +16,10 @@ class QueueBuyers {
     }
 
     static Buyer extract(){
-        return BUYERS_QUEUE.pollFirst();
+        return BUYERS_QUEUE.poll();
     }
 
-    static  int getSize() {
-        return BUYERS_QUEUE.size();
+    static  BlockingDeque<Buyer>  getBuyers() {
+        return BUYERS_QUEUE;
     }
 }

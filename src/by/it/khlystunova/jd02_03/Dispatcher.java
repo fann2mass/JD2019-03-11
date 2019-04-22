@@ -11,6 +11,7 @@ class Dispatcher {
    private static final AtomicInteger buyerCounter = new AtomicInteger(0);
    private static final AtomicInteger buyerInMarket = new AtomicInteger(0);
    private static final AtomicInteger cashiersCounter = new AtomicInteger(0);
+
    static  double SUM = 0;
 
 
@@ -44,6 +45,8 @@ class Dispatcher {
    static  boolean planComplete(){
       return buyerCounter.get() == PLAN;
    }
+
+
 
     /*static boolean needCashiers() {
       int allQueue = (QueueBuyers.getSize()+ QueuePensionners.getSize());

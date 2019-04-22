@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
 interface Operation {
     Var add(Var other) throws CalcException;

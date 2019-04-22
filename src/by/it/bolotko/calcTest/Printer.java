@@ -1,8 +1,6 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 class Printer {
     Logger logger = new Logger();

@@ -1,30 +1,29 @@
-package by.it.bolotko.calc;
+package by.it.bolotko.calcTest;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-
-    private static Map<String,Integer> mapPriority=new HashMap<String,Integer>(){
+    private static Map<String, Integer> mapPriority = new HashMap<String, Integer>() {
         {
-            this.put("=",0);
-            this.put("+",1);
-            this.put("-",1);
-            this.put("*",2);
-            this.put("/",2);
+            this.put("=", 0);
+            this.put("+", 1);
+            this.put("-", 1);
+            this.put("*", 2);
+            this.put("/", 2);
         }
     };
 
     private int getIndexOperation(List<String> operations) {
-        int priorityValue=-1;
-        int index=-1;
+        int priorityValue = -1;
+        int index = -1;
         for (int i = 0; i < operations.size(); i++) {
             String op = operations.get(i);
-            int current=mapPriority.get(op);
-            if (current>priorityValue){
-                priorityValue=current;
-                index=i;
+            int current = mapPriority.get(op);
+            if (current > priorityValue) {
+                priorityValue = current;
+                index = i;
             }
         }
         return index;
@@ -57,23 +56,23 @@ class Parser {
 
     Var calc(String expression) throws CalcException {
         //A=-2+2*2-3/-4
-        List<String> operations=new ArrayList<>();
-        List<String> operands= new ArrayList<>(
+        List<String> operations = new ArrayList<>();
+        List<String> operands = new ArrayList<>(
                 Arrays.asList(expression.split(Patterns.OPERATION))
         );
-        Pattern pattern=Pattern.compile(Patterns.OPERATION);
+        Pattern pattern = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = pattern.matcher(expression);
         while (matcher.find())
             operations.add(matcher.group());
 
 
-        while (operations.size()>0) {
+        while (operations.size() > 0) {
             int index = getIndexOperation(operations);
             String operation = operations.remove(index);
             String one = operands.remove(index);
             String two = operands.remove(index);
             Var oneOperationResult = oneOperation(one, operation, two);
-            operands.add(index,oneOperationResult.toString());
+            operands.add(index, oneOperationResult.toString());
         }
         return Var.createVar(operands.get(0));
     }

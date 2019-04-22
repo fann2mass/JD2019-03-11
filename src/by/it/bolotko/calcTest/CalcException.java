@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
 public class CalcException extends Exception {
     public CalcException() {

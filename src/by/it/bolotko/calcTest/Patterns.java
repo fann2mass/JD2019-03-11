@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
 class Patterns {
     static final String OPERATION="[-+*/=]";

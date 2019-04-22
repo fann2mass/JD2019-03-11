@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
 import java.util.concurrent.atomic.AtomicReference;
 

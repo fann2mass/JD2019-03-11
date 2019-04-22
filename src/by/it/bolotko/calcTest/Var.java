@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.calcTest;
 
 import java.io.*;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 abstract class Var implements Operation {
 
-    private static Map<String, Var> vars = new HashMap<>();
+    private static Map<String,Var> vars = new HashMap<>();
 
     public static Map<String, Var> getVars() {
         return vars;

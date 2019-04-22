@@ -1,4 +1,4 @@
-package by.it.narushevich.calc;
+package by.it.narushevich.jd02_04;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -13,6 +13,7 @@ class Parser {
         mapPriority.put("-", 1);
         mapPriority.put("*", 2);
         mapPriority.put("/", 2);
+        mapPriority.put("()",3);
     }
 
     private int getIndexOperation(List<String> operations) {
@@ -37,7 +38,7 @@ class Parser {
         }
         Var first = Var.createVar(leftOperand);
         if (first == null || second == null)
-            throw new CalcException("Операция невозможна, отсутствует операнд");
+            throw new CalcException("Операция невозможна, отсутствует операнд или операнды");
         switch (operation) {
             case "+":
                 return first.add(second);

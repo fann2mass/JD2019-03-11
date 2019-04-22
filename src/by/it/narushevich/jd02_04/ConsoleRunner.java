@@ -1,4 +1,4 @@
-package by.it.narushevich.calc;
+package by.it.narushevich.jd02_04;
 
 import java.util.Scanner;
 

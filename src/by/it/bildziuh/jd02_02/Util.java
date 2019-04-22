@@ -1,9 +1,29 @@
 package by.it.bildziuh.jd02_02;
 
+import java.util.HashMap;
+
 class Util {
 
     private Util() {
     }
+
+    static double income = 0;
+
+    static int activeCashier = 0;
+
+    final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
+        {
+            put("Soda", 3.99);
+            put("Beer", 7.99);
+            put("Cereal", 3.49);
+            put("Dinner", 9.99);
+            put("Snacks", 2.99);
+            put("Milk", 4.49);
+            put("Bread", 2.99);
+            put("Meat", 14.49);
+            put("Pasta", 6.49);
+        }
+    };
 
     static void sleep(int timeout) {
         try {
@@ -20,4 +40,6 @@ class Util {
     static int random(int range) {
         return random(0, range);
     }
+
+
 }

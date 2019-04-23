@@ -18,8 +18,6 @@ class Vector extends Var {
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (this.value.length!=((Vector) other).value.length)
-					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] + ((Scalar) other).getValue();
 			}
 			return result;

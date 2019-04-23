@@ -7,6 +7,7 @@ public class ConsoleRunner {
         try {
             Var.load();
         } catch (Exception e) {
+            System.out.println("Невозможно загрузить данные");
         }
         Parser parser = new Parser();
         Printer printer = new Printer();

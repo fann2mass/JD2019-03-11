@@ -17,16 +17,4 @@ class Printer {
         }
     }
 
-    void sortPrint(Map<String, Var> vars) {
-        Set<Map.Entry<String, Var>> entries = vars.entrySet();
-        TreeSet<String> elements = new TreeSet<>();
-        for (Map.Entry<String, Var> entry : entries) {
-            String element = entry.getKey()+" = "+entry.getValue();
-            elements.add(element);
-        }
-        for (String element : elements) {
-            System.out.println(element);
-        }
-
-    }
 }

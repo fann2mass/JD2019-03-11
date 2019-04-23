@@ -12,11 +12,13 @@ abstract class Var implements Operation {
 		return vars;
 	}
 
-	static void saveVar(String name, Var var){
+	static void saveVar(String name, Var var) {
 		vars.put(name, var);
+		save();
 	}
 
 	static Var createVar(String strVar) throws CalcException {
+		strVar = strVar.trim().replace("\\s+", "");
 		if (strVar.matches(Patterns.SCALAR))
 			return new Scalar(strVar);
 		else if (strVar.matches(Patterns.VECTOR))

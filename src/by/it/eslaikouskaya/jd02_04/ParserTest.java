@@ -10,7 +10,7 @@ public class ParserTest {
 	private static Parser parser;
 
 	@BeforeClass
-	public static void creatParser(){
+	public static void createParser(){
 		parser = new Parser();
 	}
 

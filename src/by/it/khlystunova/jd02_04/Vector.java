@@ -15,9 +15,9 @@ public class Vector extends Var {
         this.vector = Arrays.copyOf(value, value.length);
     }
 
-    //Vector(Vector vector) {
-     //   this.vector = vector.vector;
-    //}
+//    Vector(Vector vector) {
+//        this.vector = vector.vector;
+//    }
 
     Vector(String vector) {
 

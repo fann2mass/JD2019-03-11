@@ -10,11 +10,12 @@ import static by.it.khlystunova.jd02_03.Dispatcher.*;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
-     private boolean pensioneer;
+     private boolean pensioneer = false;
      private boolean wait;
      HashMap<String,Double> basket = new HashMap<>();
      private Semaphore shopingSemaphore = new Semaphore(20);
     private Semaphore basketSemaphore = new Semaphore(50);
+
 
 
     Buyer(int number) {
@@ -25,7 +26,11 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
          newBuyer();
      }
 
-     void setWait(boolean wait) {
+    boolean isPensionner() {
+        return this.pensioneer;
+    }
+
+    void setWait(boolean wait) {
          this.wait = wait;
      }
 
@@ -65,11 +70,9 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void addToQueue() {
-            if (pensioneer) {
-                QueuePensionners.add(this);
-            } else {
+
                 QueueBuyers.add(this);
-            }
+
         System.out.println(this + " added to queue and wait");
 
         wait = true;

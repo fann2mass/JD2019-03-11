@@ -23,8 +23,8 @@ class Util {
     static int random(int start, int stop){
         return start+random.nextInt(stop-start+1);
     }
-    static int random(int range){
-        return random(0,range);
+    static int random(){
+        return random(0, 2);
     }
 }
 

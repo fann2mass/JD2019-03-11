@@ -8,13 +8,13 @@ public class Matrix extends Var {
 
     private double[][] matrix;
 
-    Matrix(double[][] value) {
+    private Matrix(double[][] value) {
         this.matrix = Arrays.copyOf(value,value.length);
     }
 
-    Matrix(Matrix value){
-        this.matrix = Arrays.copyOf(value.matrix,value.matrix.length);
-    }
+    //Matrix(Matrix value){
+   //    this.matrix = Arrays.copyOf(value.matrix,value.matrix.length);
+    //}
 
     Matrix(String matrix){
         String[] line = matrix.split("},");

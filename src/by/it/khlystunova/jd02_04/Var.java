@@ -36,8 +36,9 @@ public abstract class Var implements Operation {
          return new Matrix(operand);
      else{
          Var var = vars.get(operand);
-         if(var==null)throw  new CalcException("Нет такой переменной "+operand);
-         return  var;
+         if(var!=null) {
+             return var;
+         }else throw  new CalcException("Нет такой переменной"+operand);
      }
     }
 

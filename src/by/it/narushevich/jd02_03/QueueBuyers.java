@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 class QueueBuyers {
 
-    private QueueBuyers(){
+    private QueueBuyers() {
     }
 
     private static final BlockingDeque<Buyer> BUYERS = new LinkedBlockingDeque<>(30);
@@ -17,9 +17,9 @@ class QueueBuyers {
 
     static synchronized void add(Buyer buyer) {
         BUYERS.add(buyer);
-        if(buyer.pensioneer) BUYERS.addFirst(buyer);
-
+        if (buyer.pensioneer) BUYERS.addFirst(buyer);
     }
+
     static synchronized Buyer extract() {
         return BUYERS.poll();
     }

@@ -69,7 +69,7 @@ class Dispatcher {
     }
 
     static boolean planInComplete() {
-        return BUYER_COUNTER.get() != PLAN;
+        return BUYER_COUNTER.get() < PLAN;
     }
 }
 

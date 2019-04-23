@@ -95,8 +95,14 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void addToQueue() {
+        try {
+            QueueBuyers.add(this);
+        }
+        catch (IllegalStateException e){
+            System.out.println(this + " can't add to deque, deque full");
+            Util.sleep(1000);
+        }
         System.out.println(this + " added to queue and wait");
-        QueueBuyers.add(this);
         shopping.release();
         waitService = true;
         synchronized (this) {

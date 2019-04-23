@@ -13,7 +13,7 @@ import java.nio.file.StandardCopyOption;
  *
  * @author Konstantsin Bolotko
  * @author Roslakov Andrew
- * @since 09.04.19
+ * @since 20.04.19
  */
 
 public class FileManager {
@@ -44,11 +44,12 @@ public class FileManager {
                     System.out.println("Input name of file");
                     File file = new File(path.toString().substring(0, path.toString().indexOf("\\")) + "/" + reader.readLine());
                     file.createNewFile();
+                    update();
                 } else if (userInput.equals("create folder")) {
                     System.out.println("Input name of folder");
                     String nameOfFolder = reader.readLine();
                     File file = new File(path.toString().substring(0, path.toString().indexOf("\\")) + "/" + nameOfFolder);
-                    file.mkdir();
+                    System.out.println(file.mkdir());
                     System.out.println();
                     System.out.println("Folder called " + nameOfFolder + " was created");
                     System.out.println();
@@ -62,6 +63,7 @@ public class FileManager {
                     }
                     File[] array = fileList.listFiles();
                     array[delete - 1].delete();
+                    update();
                 } else if (!(userInput.contains(".")) & !(userInput.equals("stop")) & !(userInput.contains("delete"))
                         & !(userInput.equals("create")) & !(userInput.equals("create folder"))) {
                     this.path = fileList;
@@ -137,6 +139,6 @@ public class FileManager {
 
     public static void main(String[] args) {
         FileManager sm = new FileManager();
-        sm.start("d:\\\\");
+        sm.start("e:\\\\");
     }
 }

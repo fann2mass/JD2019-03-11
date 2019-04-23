@@ -1,57 +1,71 @@
 package by.it.bolotko.jd01_15;
 
 
-import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
-/**
- * JavaDoc
- */
+
 public class TaskB {
-    private static String getFileName(String name) { /*getFileName*/
-        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String strPackage = TaskB.class.getPackage().getName();
-        String relPath = strPackage.replace(".", File.separator);
-        return src + relPath + File.separator + name;
-    }
-
-    /*
-   * Пример многострочного комментария
+    /**
+     * @param cl   class
+     * @param name create file Name
+     * @return file
      */
-
-    public static void main(String[] args) {     /*main*/
-        String fileName=getFileName("TaskB.java");
-        StringBuilder sb = readTaskB(fileName);
-        String resultFileName = getFileName("TaskB.txt");
-        saveLineToTheFileTxt(sb, resultFileName);
-
+    private static String createFile(Class<?> cl, String name) {
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String replacePath = cl.getPackage().getName().replace(".", File.separator);
+        return src + replacePath + File.separator + name;
     }
 
-    private static StringBuilder readTaskB(String fileName) {
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
-            while(reader.ready()){
-                String s = reader.readLine();
-                Pattern pat=Pattern.compile("/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/"); // регулярное выражение поиска комментариев
-                Matcher match=pat.matcher(s); // получаем объект соответствий к строке s
-                String result=match.replaceAll(""); // заменяем все соответствия пустой строкой
-                System.out.println(result);
-                result=sb.toString();
+    public static void main(String[] args) {
+        String result = createFile(TaskB.class, "TaskB.txt");//путь к файлу, в котором будет лежать текст программы
+        String from = createFile(TaskB.class, "TaskB.java");//путь к файлу, в котором лежит текст программы
+        readChangeAndWrite(from, result);
+        showFile(result);
+    }
+
+    private static void readChangeAndWrite(String from, String result) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(from));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(result))
+        ) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                StringBuilder sb = new StringBuilder(line).append('\n');
+                boolean containsSlash = line.contains("/");
+                if (containsSlash && !exceptionCheck(line)) {
+                    int indexOfSlash = sb.indexOf("/");
+                    int length = sb.length();
+                    sb.delete(indexOfSlash, length).append('\n');
+                }
+                String changeLine = sb.toString();
+                boolean containsStar = changeLine.contains("*");
+                if (containsStar && !exceptionCheck(line)) {
+                    continue;
+                }
+                String changeLine2 = sb.toString();
+                bufferedWriter.write(changeLine2);
             }
-            System.out.println();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return sb;
-    }
-
-    private static void saveLineToTheFileTxt(StringBuilder sb, String resultFileName) {
-        try (PrintWriter printWriter = new PrintWriter((new FileWriter(resultFileName)))){
-            printWriter.println(sb);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private static boolean exceptionCheck(String line) {
+        return line.contains("contains") || line.contains("indexOf");
+    }
+
+    private static void showFile(String result) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(result))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

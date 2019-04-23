@@ -51,7 +51,7 @@ public class calcTest {
         assertEquals(expected, actual, 1e-6);
         System.out.println("16/2=8 OK");
     }
-
+//*********************************************************************************************************************
 
 
     //Tests Vector
@@ -117,12 +117,70 @@ public class calcTest {
         assertEquals(expected, actual);
         System.out.println("{4,5,6}/2={2.0, 2.5, 3.0} OK");
     }
+//*********************************************************************************************************************
+
+
+    //Tests Matrix
+    @Test(timeout = 5000)
+    public void MatrixAddScalar() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}+4");
+        String expected = "{{6.0, 7.0}, {8.0, 9.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}+4={{6.0, 7.0}, {8.0, 9.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void MatrixAddMatrix() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}+{{6,7},{8,9}}");
+        String expected = "{{8.0, 10.0}, {12.0, 14.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}+{{6,7},{8,9}}={{8.0, 10.0}, {12.0, 14.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void MatrixSubScalar() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}-4");
+        String expected = "{{-2.0, -1.0}, {0.0, 1.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}-4={{-2.0, -1.0}, {0.0, 1.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void MatrixSubMatrix() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}-{{6,7},{8,9}}");
+        String expected = "{{-4.0, -4.0}, {-4.0, -4.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}-{{6,7},{8,9}}={{-4.0, -4.0}, {-4.0, -4.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void MatrixMulScalar() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}*4");
+        String expected = "{{8.0, 12.0}, {16.0, 20.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}*4={{8.0, 12.0}, {16.0, 20.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void MatrixMulMatrix() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}*{{6,7},{8,9}}");
+        String expected = "{{36.0, 41.0}, {64.0, 73.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}*{{6,7},{8,9}}={{36.0, 41.0}, {64.0, 73.0}} OK");
+    }
+//*********************************************************************************************************************
 
 
 
     //Tests Expression
     @Test(timeout = 5000)
-    public void longExpressionCalc() throws Exception {
+    public void longExpressionScalarCalc() throws Exception {
         Var var = parser.calc("2+2*2");
         double expected = 6.0;
         double actual = Double.parseDouble(var.toString());
@@ -131,13 +189,53 @@ public class calcTest {
     }
 
     @Test(timeout = 5000)
-    public void createVarCalc() throws Exception {
+    public void longCreateVarScalarCalc() throws Exception {
         parser.calc("A=2+2*2");
         Var var= Var.createVar("A");
         double expected = 6.0;
         assert var != null;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("A=2+2*2, A=6  OK");
+        System.out.println("A=2+2*2=6  OK");
+    }
+
+    @Test(timeout = 5000)
+    public void longExpressionVectorCalc() throws Exception {
+        Var var = parser.calc("{2,3,4}*{3,4,5}+{7,6,5}-{2,1,3}");
+        String expected = "{43.0, 43.0, 40.0}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{2,3,4}*{3,4,5}+{7,6,5}-{2,1,3}={43.0, 43.0, 40.0} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void longCreateVarVectorCalc() throws Exception {
+        parser.calc("A={2,3,4}*{3,4,5}+{7,6,5}-{2,1,3}");
+        Var var= Var.createVar("A");
+        String expected = "{43.0, 43.0, 40.0}";
+        assert var != null;
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("A={2,3,4}*{3,4,5}+{7,6,5}-{2,1,3}={43.0, 43.0, 40.0} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void longExpressionMatrixCalc() throws Exception {
+        Var var = parser.calc("{{2,3},{4,5}}+{{5,4},{6,7}}*{{3,2},{2,2}}");
+        String expected = "{{25.0, 21.0}, {36.0, 31.0}}";
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("{{2,3},{4,5}}+{{5,4},{6,7}}*{{3,2},{2,2}}={{25.0, 21.0}, {36.0, 31.0}} OK");
+    }
+
+    @Test(timeout = 5000)
+    public void longCreateVarMatrixCalc() throws Exception {
+        parser.calc("A={{2,3},{4,5}}+{{5,4},{6,7}}*{{3,2},{2,2}}");
+        Var var= Var.createVar("A");
+        String expected = "{{25.0, 21.0}, {36.0, 31.0}}";
+        assert var != null;
+        String actual = var.toString();
+        assertEquals(expected, actual);
+        System.out.println("A={{2,3},{4,5}}+{{5,4},{6,7}}*{{3,2},{2,2}}={{25.0, 21.0}, {36.0, 31.0}} OK");
     }
 }

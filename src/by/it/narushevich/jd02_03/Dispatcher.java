@@ -1,11 +1,36 @@
-package by.it.narushevich.jd02_01;
+package by.it.narushevich.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Dispatcher {
-    static final int K_SPEED =10000;
-    static final int FINISH_TIME =120;
+
+    private Dispatcher() {
+    }
+
+    static final int K_SPEED = 1000;
+
+    private static final int PLAN = 100;
+    private static final AtomicInteger BUYER_COUNTER = new AtomicInteger(0);
+    private static final AtomicInteger BUYER_IN_MARKET = new AtomicInteger(0);
+
+    static double SUM = 0;
+
+    public static int getBuyerCounter() {
+        return BUYER_COUNTER.get();
+    }
+    public static int getBuyerInMarket() {
+        return BUYER_IN_MARKET.get();
+    }
+
+    static void newBuyer() {
+            BUYER_COUNTER.getAndIncrement();
+            BUYER_IN_MARKET.getAndIncrement();
+    }
+    static void deleteBuyer() {
+            BUYER_IN_MARKET.getAndDecrement();
+    }
 
     private static final Map<String, Double> listOfGoods = new HashMap<>();
 
@@ -38,4 +63,13 @@ class Dispatcher {
     public static Map<String, Double> getListOfGoods() {
         return listOfGoods;
     }
+
+    static boolean marketOpened() {
+        return BUYER_COUNTER.get() < PLAN || BUYER_IN_MARKET.get() > 0;
+    }
+
+    static boolean planInComplete() {
+        return BUYER_COUNTER.get() != PLAN;
+    }
 }
+

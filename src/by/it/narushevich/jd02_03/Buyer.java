@@ -1,16 +1,27 @@
-package by.it.narushevich.jd02_02;
+package by.it.narushevich.jd02_03;
 
 import java.util.*;
+import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
+    private  boolean waitService;
+
+    public void setWaitService(boolean waitService) {
+        this.waitService = waitService;
+    }
+
+    Object monitorBuyer() {
+        return this;
+    }
+
     Buyer(int number) {
         super("Buyer №" + number);
-        if (number % 4 == 0) {
-            pensioneer = true;
-            this.setName("Buyer №" + number + " pensioneer" );}
+        if (number % 4 == 0) pensioneer = true;
         Dispatcher.newBuyer();
     }
+    Semaphore shopping = new Semaphore(20);
+    Semaphore tookBasket = new Semaphore(50);
 
     Basket basket = new Basket(this);
 
@@ -18,16 +29,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     public HashMap<String, Double> getMyGoods() {
         return myGoods;
-    }
-
-    Object monitorBuyer() {
-        return this;
-    }
-
-    private boolean waitService;
-
-    public void setWaitService(boolean waitService) {
-        this.waitService = waitService;
     }
 
     boolean pensioneer = false;
@@ -51,23 +52,33 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer) {
-            int newTimeOut = (timeout * 3) / 2;
-            Util.sleep(newTimeOut);
-        } else Util.sleep(timeout);
-        System.out.println(this + " take basket");
+        try {
+            tookBasket.acquire();
+            int timeout = Util.random(100, 200);
+            if (pensioneer) {
+                int newTimeOut = (timeout * 3) / 2;
+                Util.sleep(newTimeOut);
+            } else Util.sleep(timeout);
+            System.out.println(this + " take basket");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " start to choose goods");
-        int timeout = Util.random(500, 2000);
-        if (pensioneer) {
-            int newTimeOut = (timeout * 3) / 2;
-            Util.sleep(newTimeOut);
-        } else Util.sleep(timeout);
-        System.out.println(this + " finish to choose goods");
+        try {
+            shopping.acquire();
+            System.out.println(this + " start to choose goods");
+            int timeout = Util.random(500, 2000);
+            if (pensioneer) {
+                int newTimeOut = (timeout * 3) / 2;
+                Util.sleep(newTimeOut);
+            } else Util.sleep(timeout);
+            System.out.println(this + " finish to choose goods");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -85,18 +96,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void addToQueue() {
         System.out.println(this + " added to queue and wait");
-        if (pensioneer){QueueBuyers.addPensioneer(this);}
-        else QueueBuyers.add(this);
+        QueueBuyers.add(this);
+        shopping.release();
         waitService = true;
-        Cashier cashier = QueueCashiers.extract();
-        if (cashier != null) {
-            synchronized (cashier.monitorCashier()) {
-                cashier.setWaitBuyer(false);
-                cashier.monitorCashier().notify();
-            }
-            QueueCashiers.add(cashier);
-        }
-        else synchronized (this) {
+        synchronized (this) {
             while (waitService) try {
                 wait();
             } catch (InterruptedException e) {
@@ -111,6 +114,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void goOut() {
         System.out.println(this + " go out from the market");
         Dispatcher.deleteBuyer();
+        tookBasket.release();
     }
 
     @Override

@@ -1,31 +1,47 @@
 package by.it.narushevich.jd02_02;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-class Buyer extends Thread implements IBuyer, IUseBacket {
+class Buyer extends Thread implements IBuyer, IUseBasket {
+
+    Buyer(int number) {
+        super("Buyer №" + number);
+        if (number % 4 == 0) {
+            pensioneer = true;
+            this.setName("Buyer №" + number + " pensioneer" );}
+        Dispatcher.newBuyer();
+    }
+
+    Basket basket = new Basket(this);
+
+    private HashMap<String, Double> myGoods = basket.putGoods();
+
+    public HashMap<String, Double> getMyGoods() {
+        return myGoods;
+    }
+
+    Object monitorBuyer() {
+        return this;
+    }
+
+    private boolean waitService;
+
+    public void setWaitService(boolean waitService) {
+        this.waitService = waitService;
+    }
+
+    boolean pensioneer = false;
 
     @Override
     public void run() {
         enterToMarket();
-        takeBacket();
+        takeBasket();
         chooseGoods();
         putGoodsToBasket();
         addToQueue();
         goOut();
     }
 
-    Buyer(int number) {
-        super("Buyer №" + number);
-        Dispatcher.buyerCounter++;
-        Dispatcher.buyerInMarket++;
-    }
-
-    static boolean pensioneer = false;
-
-    static int inMarket = 0;
 
     @Override
     public void enterToMarket() {
@@ -34,10 +50,10 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
     }
 
     @Override
-    public void takeBacket() {
+    public void takeBasket() {
         int timeout = Util.random(100, 200);
         if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
+            int newTimeOut = (timeout * 3) / 2;
             Util.sleep(newTimeOut);
         } else Util.sleep(timeout);
         System.out.println(this + " take basket");
@@ -48,60 +64,53 @@ class Buyer extends Thread implements IBuyer, IUseBacket {
         System.out.println(this + " start to choose goods");
         int timeout = Util.random(500, 2000);
         if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
+            int newTimeOut = (timeout * 3) / 2;
             Util.sleep(newTimeOut);
         } else Util.sleep(timeout);
         System.out.println(this + " finish to choose goods");
     }
 
     @Override
+    public void putGoodsToBasket() {
+        int timeout = Util.random(100, 200);
+        System.out.println(this.toString() + " bought: " + myGoods);
+        if (pensioneer) {
+            int newTimeOut = (timeout * 3) / 2;
+            Util.sleep(newTimeOut);
+        } else {
+            Util.sleep(timeout);
+        }
+    }
+
+    @Override
     public void addToQueue() {
         System.out.println(this + " added to queue and wait");
-        QueueBuyers.add(this);
-        synchronized (this) {
-            try {
+        if (pensioneer){QueueBuyers.addPensioneer(this);}
+        else QueueBuyers.add(this);
+        waitService = true;
+        Cashier cashier = QueueCashiers.extract();
+        if (cashier != null) {
+            synchronized (cashier.monitorCashier()) {
+                cashier.setWaitBuyer(false);
+                cashier.monitorCashier().notify();
+            }
+            QueueCashiers.add(cashier);
+        }
+        else synchronized (this) {
+            while (waitService) try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println(this + " complete service at cashier");
     }
 
     @Override
-    public void putGoodsToBasket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer) {
-            int newTimeOut = (timeout * 3)/2;
-            putGoods();
-            Util.sleep(newTimeOut);
-        } else {
-            putGoods();
-            Util.sleep(timeout);
-        }
-    }
-
-    private void putGoods() {
-        int numberOfGoods = Util.random(1, 4);
-        List<String> keysList = new ArrayList<>(Dispatcher.listOfGoods.keySet());
-        StringBuilder list = new StringBuilder();
-        double sum = 0;
-        for (int i = 1; i < numberOfGoods + 1; i++) {
-            Collections.shuffle(keysList);
-            String randomKey = keysList.get(new Random().nextInt(keysList.size()));
-            Double price = Dispatcher.listOfGoods.get(randomKey);
-            keysList.remove(randomKey);
-            sum += price;
-            list.append(randomKey);
-            if (i == numberOfGoods) list.append(" - total price is ");
-            else list.append(", ");
-        }
-        System.out.printf("%s put goods: %s%5.2f%n",this,list,sum);
-    }
-
-    @Override
     public void goOut() {
         System.out.println(this + " go out from the market");
+        Dispatcher.deleteBuyer();
     }
 
     @Override

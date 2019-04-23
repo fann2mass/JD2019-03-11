@@ -18,6 +18,7 @@ class Cashier implements Runnable{
                 Util.sleep(timeout);
                 System.out.println(this + " конец обслуживания " + buyer);
                 synchronized (buyer.getMonitor()){
+                    buyer.setWait(false);
                     buyer.getMonitor().notify();
                 }
             }

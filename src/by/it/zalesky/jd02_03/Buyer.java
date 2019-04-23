@@ -3,6 +3,11 @@ package by.it.zalesky.jd02_03;
 
 class Buyer extends Thread implements IBuyer {
 
+    private boolean wait;
+
+    void setWait(boolean wait){
+        this.wait = wait;
+    }
 
     @Override
     public void run() {
@@ -40,8 +45,9 @@ class Buyer extends Thread implements IBuyer {
     public void addToQueue() {
         System.out.println(this + " добавлен в очередь и ждет");
         QueueBuyers.add(this);
+        wait = true;
         synchronized (this){
-            try {
+           while (wait) try {
                 wait();
             }catch (InterruptedException e){
                 System.err.println(e.getMessage());

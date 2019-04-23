@@ -1,21 +1,21 @@
 package by.it.zalesky.jd02_03;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class QueueBuyers {
 
     private QueueBuyers(){
 
     }
-    private static final Deque<Buyer> buyerDeque = new ArrayDeque<>();
+    private static final BlockingDeque<Buyer> BUYERS = new LinkedBlockingDeque<>();
 
     static synchronized void add(Buyer buyer){
-        buyerDeque.addLast(buyer);
+        BUYERS.addLast(buyer);
     }
 
     static synchronized Buyer extract(){
-        return buyerDeque.pollFirst();
+        return BUYERS.pollFirst();
     }
 
 }

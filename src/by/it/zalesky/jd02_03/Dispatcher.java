@@ -1,5 +1,7 @@
 package by.it.zalesky.jd02_03;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Dispatcher {
 
     private Dispatcher(){
@@ -7,30 +9,27 @@ public class Dispatcher {
 
     private static final Object monitorCounters = new Object();
 
-    static final int K_SPEED = 10;
+    static final int K_SPEED = 1000;
 
     private static final int PLAN = 100;
-    private static volatile int buyerCounter = 0;
-    private static volatile int buyerInMarket = 0;
+    private static final AtomicInteger buyerCounter = new AtomicInteger(0);
+    private static final AtomicInteger buyerInMarket = new AtomicInteger(0);
 
     static void newBuyer(){
-        synchronized (monitorCounters){
-            buyerCounter++;
-            buyerInMarket++;
-        }
+            buyerCounter.getAndIncrement();
+            buyerInMarket.getAndIncrement();
     }
 
     static void deleteBuyer(){
-        synchronized (monitorCounters){
-            buyerInMarket--;
-        }
+            buyerInMarket.getAndDecrement();
+
     }
 
     static boolean marketOpened(){
-        return buyerCounter < PLAN || buyerInMarket > 0;
+        return buyerCounter.get() < PLAN|| buyerInMarket.get() > 0;
     }
 
     static boolean planComplete(){
-        return buyerCounter == PLAN;
+        return buyerCounter.get() == PLAN;
     }
 }

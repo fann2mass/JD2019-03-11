@@ -1,47 +1,38 @@
 package by.it.zalesky.jd02_03;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import java.util.ArrayList;
-import java.util.List;
 
 class Market {
     public static void main(String[] args) {
 
-        List<Thread> threads = new ArrayList<>();
+
         System.out.println("Магазин открыт");
 
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         for (int i = 1; i <= 2 ; i++) {
             Cashier cashier = new Cashier(i);
-            Thread threadCashier = new Thread(cashier);
-            threadCashier.start();
-            threads.add(threadCashier);
+            executorService.execute(cashier);
+
         }
 
         int numberBuyer = 0;
-
-        while (!Dispatcher.planComplete()) {
+        while (!Dispatcher.planComplete()){
             int count = Util.random(2);
-            for (int i = 0; i < count; i++) {
+            for (int i=0; i < count; i++){
                 if (!Dispatcher.planComplete()){
                     Buyer buyer = new Buyer(++numberBuyer);
                     buyer.start();
-                    threads.add(buyer);
+                }
             }
-
-        }
             Util.sleep(1000);
         }
 
-        for (Thread th : threads){
-            try {
-                    th.join();
-            } catch (InterruptedException e) {
-                System.out.println("ого");
-                Thread.currentThread().interrupt();
-            }
-
-        }
-
-        System.out.println("===========магазин закрыт");
+        executorService.shutdown();
+        while (!executorService.isTerminated())
+            Util.sleep(1);
+        System.out.println("=================Магазин закрыт");
     }
+
 }

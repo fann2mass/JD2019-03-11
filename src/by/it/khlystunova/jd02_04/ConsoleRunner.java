@@ -11,7 +11,7 @@ public class ConsoleRunner {
         }catch (Exception e){
             e.printStackTrace();
         }
-        Parser parser = new Parser();//анализатор
+        Parser parser = new Parser();
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
         while(true){

@@ -73,7 +73,7 @@ public class Vector extends Var {
             }
             return new Scalar(result0);
         }
-        return super.sub(other);
+        return super.mul(other);
     }
 
     @Override

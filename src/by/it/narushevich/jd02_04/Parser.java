@@ -13,7 +13,6 @@ class Parser {
         mapPriority.put("-", 1);
         mapPriority.put("*", 2);
         mapPriority.put("/", 2);
-        mapPriority.put("()",3);
     }
 
     private int getIndexOperation(List<String> operations) {
@@ -53,18 +52,59 @@ class Parser {
         }
     }
 
+    static boolean checkParentheses(String expr) {
+        int opened = 0;
+        for (int i = 0; i < expr.length(); i++) {
+            if (expr.charAt(i) == '(')
+                opened++;
+            else if (expr.charAt(i) == ')') {
+                if (opened == 0)
+                    return false;
+                opened--;
+            }
+        }
+        return opened == 0;
+    }
+
 
     Var calc(String expr) throws CalcException {
+        expr = expr.replaceAll("\\s+", "");
+        Var result;
+        if (expr.contains("(")){
+            if (!checkParentheses(expr))
+                throw new CalcException("В выражении неправильно расставлены скобки");
+            else {
+                Pattern pattern = Pattern.compile(Patterns.PARENTHESIS);
+                Matcher matcher = pattern.matcher(expr);
+                while (matcher.find()){
+                    StringBuilder sb = new StringBuilder();
+                    String string = matcher.group();
+                    String string1 = sb.append(string).deleteCharAt(0).deleteCharAt(sb.length() - 1).toString();
+                    Var result0 = whenExpressionWithoutParenthesis(string1);
+                    expr = expr.replace(string, result0.toString());
+                    if (expr.contains("(")){
+                        matcher = pattern.matcher(expr);
+                    }
+                }
+                result = whenExpressionWithoutParenthesis(expr);
+            }
+        }
+        else {
+            result = whenExpressionWithoutParenthesis(expr);
+        }
+        return result;
+    }
+
+    private Var whenExpressionWithoutParenthesis(String expr) throws CalcException {
         List<String> operations=new ArrayList<>();
         List<String> operands= new ArrayList<>(
                 Arrays.asList(expr.split(Patterns.OPERATION))
         );
 
-        expr = expr.replaceAll("\\s+", "");
         Pattern pattern = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = pattern.matcher(expr);
-            while (matcher.find())
-                operations.add(matcher.group());
+        while (matcher.find())
+            operations.add(matcher.group());
         while (!operations.isEmpty()) {
             int index = getIndexOperation(operations);
             String operation = operations.remove(index);

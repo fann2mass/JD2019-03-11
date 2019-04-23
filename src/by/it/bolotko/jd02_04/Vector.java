@@ -34,18 +34,12 @@ public class Vector extends Var {
     @Override
     public Var sub(Var other) throws CalcException {
         Vector result = new Vector(value);
-        if (other instanceof Scalar) {
+        if (other.toString().matches(Patterns.SCALAR)) {
             for (int i = 0; i < result.value.length; i++) {
                 result.value[i] = result.value[i] - ((Scalar) other).getValue();
             }
             return result;
         }
-//        if (other.toString().matches(Patterns.SCALAR)) {
-//            for (int i = 0; i < result.value.length; i++) {
-//                result.value[i] = result.value[i] - ((Scalar) other).getValue();
-//            }
-//            return result;
-//        }
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
@@ -105,15 +99,23 @@ public class Vector extends Var {
     }
 
     Vector(String strVector) {
-        StringBuilder sb = new StringBuilder(strVector);
-        sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
-        String str = sb.toString();
-        String[] arrayString = str.split("[^\\d.]+");
-        double[] arrayDouble = new double[arrayString.length];
-        for (int i = 0; i < arrayString.length; i++) {
-            arrayDouble[i] = Double.parseDouble(arrayString[i]);
+        String[] arr = strVector
+                .replace("{", "")
+                .replace("}", "")
+                .split(",");
+        value=new double[arr.length];
+        for (int i = 0; i < value.length; i++) {
+            value[i]=Double.parseDouble(arr[i]);
         }
-        this.value = arrayDouble;
+//        StringBuilder sb = new StringBuilder(strVector);
+//        sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
+//        String str = sb.toString();
+//        String[] arrayString = str.split("[^\\d.]+");
+//        double[] arrayDouble = new double[arrayString.length];
+//        for (int i = 0; i < arrayString.length; i++) {
+//            arrayDouble[i] = Double.parseDouble(arrayString[i]);
+//        }
+//        this.value = arrayDouble;
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 class Printer {
-    Logger logger = new Logger();
+    private Logger logger = new Logger();
 
     public void print(Var result) {
         if (result != null) {

@@ -1,4 +1,4 @@
-package by.it.bolotko.calcTest;
+package by.it.bolotko.jd02_04;
 
 
 import org.junit.Test;

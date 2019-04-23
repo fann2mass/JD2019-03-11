@@ -6,7 +6,7 @@ public class ConsoleRunner {
     public static void main(String[] args) {
         try {
             Var.load();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         Scanner scan = new Scanner(System.in);
         String line;

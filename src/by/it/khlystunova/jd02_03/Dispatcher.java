@@ -72,7 +72,7 @@ class Dispatcher {
         return LIST_OF_GOODS;
    }
 
-   public static void executorShutDown() {
+    static void executorShutDown() {
       executorService.shutdown();
       while (!executorService.isTerminated()) {
          Util.sleep(10);

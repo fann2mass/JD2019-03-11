@@ -1,4 +1,4 @@
-package by.it.zalesky.JD01_13;
+package by.it.zalesky.jd01_13;
 
 import java.util.Scanner;
 

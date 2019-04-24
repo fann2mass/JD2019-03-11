@@ -1,6 +1,5 @@
 package by.it.zalesky.jd02_04;
 
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;

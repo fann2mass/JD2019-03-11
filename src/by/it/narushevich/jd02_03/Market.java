@@ -2,7 +2,6 @@ package by.it.narushevich.jd02_03;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 class Market {
 
@@ -32,14 +31,8 @@ class Market {
 
         executorService.shutdown();
 
-        while (!executorService.isTerminated()) {
-            try {
-                executorService.awaitTermination(1, TimeUnit.MILLISECONDS );
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
+        while (!executorService.isTerminated())
+            Util.sleep(10);
         System.out.println("market is closed");
     }
 

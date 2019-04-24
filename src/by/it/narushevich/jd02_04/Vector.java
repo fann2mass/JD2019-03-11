@@ -1,8 +1,10 @@
-package by.it.narushevich.calc;
+package by.it.narushevich.jd02_04;
 
 import java.util.Arrays;
 
 public class Vector extends Var {
+
+    private static final String MESSAGE = "Неподходящий размер";
 
     private double[] value;
 
@@ -22,7 +24,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
@@ -43,7 +45,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
@@ -65,7 +67,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < this.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result0 += this.value[i] * ((Vector) other).value[i];
             }

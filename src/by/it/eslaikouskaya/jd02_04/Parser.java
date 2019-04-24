@@ -110,7 +110,7 @@ class Parser {
             while (expression.toString().contains("(")&expression.toString().contains(")"))
             calcWithBracket(expression);
             Var calc = null;
-            
+
         try {
             calc = calc(expression.toString());
         } catch (CalcException e) {

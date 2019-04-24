@@ -1,0 +1,4 @@
+message.welcome=Привет!
+message.question=Как дела?
+person.firstname=Александр
+person.lastname=Хмелев

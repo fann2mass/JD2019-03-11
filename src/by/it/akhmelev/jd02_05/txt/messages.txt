@@ -1,0 +1,4 @@
+message.welcome=Welcome!
+message.question=How do you do?
+person.firstname=Alexander
+person.lastname=Khmelov

@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.util.Scanner;
 
@@ -24,13 +24,14 @@ public class ConsoleRunner {
                 continue;
             }
             try {
+               // if (expression.contains("("))
+               //     expression = parser.removeBrakets(expression);
                 Var result = parser.calc(expression);
                 printer.print(result);
                 Var.save();
             } catch (CalcException e) {
                 System.out.println(e.getMessage());
             }
-
         }
     }
 }

@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.util.Map;
 

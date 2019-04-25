@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.io.*;
 import java.util.HashMap;
@@ -34,9 +34,7 @@ abstract class Var implements Operation {
             sortedList.put(key, value);
         }
         return sortedList;
-
     }
-
 
     static Var saveVar(String name, Var var) {
         vars.put(name, var);
@@ -83,19 +81,16 @@ abstract class Var implements Operation {
     @Override
     public Var sub(Var other) throws CalcException {
         throw new CalcException("Операция вычитания " + this + " - " + other + " невозможна");
-
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
         throw new CalcException("Операция умножения " + this + " * " + other + " невозможна");
-
     }
 
     @Override
     public Var div(Var other) throws CalcException {
         throw new CalcException("Операция деления " + this + " / " + other + " невозможна");
-
     }
 
     @Override

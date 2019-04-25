@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -30,13 +30,13 @@ class Parser {
         return index;
     }
 
-    private Var doOperation(String strOne, String operation, String strTwo) throws CalcException {
-        Var rightVar = Var.createVar(strTwo);
+    private Var doOperation(String strLeft, String operation, String strRight) throws CalcException {
+        Var rightVar = Var.createVar(strRight);
         if (operation.equals("=")) {
-            Var.saveVar(strOne, rightVar);
+            Var.saveVar(strLeft, rightVar);
             return rightVar;
         }
-        Var leftVar = Var.createVar(strOne);
+        Var leftVar = Var.createVar(strLeft);
         if (leftVar == null || rightVar == null)
             throw new CalcException("неизвестная операция");
         switch (operation) {
@@ -53,7 +53,37 @@ class Parser {
         }
     }
 
+    String removeBrakets(String expression) {
+     /*   Pattern pattern = Pattern.compile(Patterns.BRAKETS);
+        Matcher matcher = pattern.matcher(expression);
+        while (matcher.find()) ;*/
+        int braketsStart = 0;
+        int braketsFinish = 0;
+        int braketsOpened = 0;
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == '(' && braketsOpened != 0) {
+                String insideExpr = expression.substring(i);
+                expression = removeBrakets(insideExpr);
+            }
+            if (expression.charAt(i) == '(' && braketsOpened == 0) {
+                braketsOpened++;
+                braketsStart = i;
+            }
+            if (expression.charAt(i) == ')' && braketsOpened != 0) {
+                braketsOpened--;
+                braketsFinish = i;
+            }
+        }
+        try {
+            expression = calc(expression.substring(braketsStart, braketsFinish)).toString();
+        } catch (CalcException e) {
+            e.printStackTrace();
+        }
+        return expression;
+    }
+
     Var calc(String expression) throws CalcException {
+        expression = expression.replaceAll("\\(", "").replaceAll("\\)", "");
         List<String> operations = new ArrayList<>();
         List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
         Pattern pattern = Pattern.compile(Patterns.OPERATION);

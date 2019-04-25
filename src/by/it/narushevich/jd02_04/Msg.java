@@ -3,6 +3,7 @@ package by.it.narushevich.jd02_04;
 public interface Msg {
 
     String WELCOME = "message.welcome";
+    String WELCOME2 = "message.welcome2";
     String ERROR = "error.error";
     String SIZE = "error.size";
     String BY_ZERO = "error.byZero";

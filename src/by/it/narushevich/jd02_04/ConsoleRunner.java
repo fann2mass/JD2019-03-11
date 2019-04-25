@@ -9,25 +9,26 @@ public class ConsoleRunner {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome! To select a language type: ru - Русский; be - Беларускі; en - English");
         Locale locale;
+        System.out.println(manager.getString(Msg.WELCOME));
+
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
         switch (text) {
             case "ru":
                 locale = new Locale("ru", "RU");
                 manager.changeLocale(locale);
-                System.out.println(manager.getString(Msg.WELCOME));
+                System.out.println(manager.getString(Msg.WELCOME2));
                 break;
             case "be":
                 locale = new Locale("be", "BY");
                 manager.changeLocale(locale);
-                System.out.println(manager.getString(Msg.WELCOME));
+                System.out.println(manager.getString(Msg.WELCOME2));
                 break;
             case "en":
                 locale = new Locale("en", "US");
                 manager.changeLocale(locale);
-                System.out.println(manager.getString(Msg.WELCOME));
+                System.out.println(manager.getString(Msg.WELCOME2));
                 break;
             default:
                 System.out.println(manager.getString(Msg.ERROR1));

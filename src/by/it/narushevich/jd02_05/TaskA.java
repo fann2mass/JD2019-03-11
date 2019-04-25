@@ -1,18 +1,24 @@
 package by.it.narushevich.jd02_05;
 
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class TaskA {
-
     public static void main(String[] args) {
-        Locale locale=new Locale("be","BY");
-        ResourceBundle resourceBundle =
-                ResourceBundle.getBundle("by.it.narushevich.jd02_05.message");
+
+        ResourceManager manager = ResourceManager.INSTANCE;
+
+        Locale locale=Locale.ENGLISH;
+        if (args.length==2){
+            String language=args[0];
+            String country=args[1];
+            locale=new Locale(language,country);
+        }
+        manager.changeLocale(locale);
         System.out.printf("%s%n%s%n%s %s%n",
-                resourceBundle.getString(Msg.WELCOME),
-                resourceBundle.getString(Msg.QUESTION),
-                resourceBundle.getString(Msg.FIRSTNAME),
-                resourceBundle.getString(Msg.LASTNAME));
+                manager.getString(Msg.WELCOME),
+                manager.getString(Msg.QUESTION),
+                manager.getString(Msg.FIRSTNAME),
+                manager.getString(Msg.LASTNAME)
+        );
     }
 }

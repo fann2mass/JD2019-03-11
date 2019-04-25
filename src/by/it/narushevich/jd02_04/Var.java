@@ -84,7 +84,7 @@ abstract class Var implements Operation {
 
     @Override
     public String toString() {
-        return "Это класс Var";
+        return "This is class Var";
     }
 
 }

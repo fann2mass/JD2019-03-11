@@ -35,13 +35,13 @@ public class Scalar extends Var {
         if (other.toString().matches(Patterns.SCALAR)) {
             double z = ((Scalar) other).value;
             if (z==0){
-                throw new CalcException("Деление на ноль");
+                throw new CalcException(ConsoleRunner.manager.getString(Msg.BY_ZERO));
             }
             return new Scalar(this.value / z);
         }
 
         if (!other.toString().matches(Patterns.SCALAR)) {
-            throw new CalcException("Деление невозможно из-за несоответствия типов");
+            throw new CalcException(ConsoleRunner.manager.getString(Msg.TYPE));
         }
         return other.div(this);
     }

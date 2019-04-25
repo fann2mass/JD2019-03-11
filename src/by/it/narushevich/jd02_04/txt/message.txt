@@ -1,0 +1,9 @@
+message.welcome=All message will be written in English
+error.error=ERROR:
+error.size=Wrong size
+error.byZero=Division by zero
+error.type=Division is impossible due to type mismatch
+error.parenthesis=Parenthesis are incorrectly placed in the expression
+error.absent=No such operation
+error.operand=Operation is impossible, operand or operands missing
+error.error1=That locale don't exist

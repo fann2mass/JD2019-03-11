@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Vector extends Var {
 
-    private static final String MESSAGE = "Неподходящий размер";
-
+    private static final String MESSAGE = ConsoleRunner.manager.getString(Msg.SIZE);
     private double[] value;
 
     public double[] getValue() {
@@ -83,7 +82,7 @@ public class Vector extends Var {
             for (int i = 0; i < result.value.length; i++) {
                 double z = ((Scalar) other).getValue();
                 if (z==0) {
-                    throw new CalcException("Деление на ноль");
+                    throw new CalcException(ConsoleRunner.manager.getString(Msg.BY_ZERO));
                 }
                 result.value[i] = result.value[i] / z;
             }

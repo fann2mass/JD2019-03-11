@@ -2,7 +2,7 @@ package by.it.narushevich.jd02_04;
 
 public class CalcException extends Exception {
 
-    public static final String ERROR = "ERROR: ";
+    public static final String ERROR = ConsoleRunner.manager.getString(Msg.ERROR);
 
     public CalcException() {
     }

@@ -1,9 +1,38 @@
 package by.it.narushevich.jd02_04;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ConsoleRunner {
+
+    public static ResourceManager manager = ResourceManager.INSTANCE;
+
     public static void main(String[] args) {
+
+        System.out.println("Welcome! To select a language type: ru - Русский; be - Беларускі; en - English");
+        Locale locale;
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        switch (text) {
+            case "ru":
+                locale = new Locale("ru", "RU");
+                manager.changeLocale(locale);
+                System.out.println(manager.getString(Msg.WELCOME));
+                break;
+            case "be":
+                locale = new Locale("be", "BY");
+                manager.changeLocale(locale);
+                System.out.println(manager.getString(Msg.WELCOME));
+                break;
+            case "en":
+                locale = new Locale("en", "US");
+                manager.changeLocale(locale);
+                System.out.println(manager.getString(Msg.WELCOME));
+                break;
+            default:
+                System.out.println(manager.getString(Msg.ERROR1));
+        }
+
         try {
             Var.load();
             Logger.loadLog();
@@ -13,7 +42,6 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         Logger logger = new Logger();
-        Scanner scanner = new Scanner(System.in);
         String expr;
         for (; ; ) {
             expr = scanner.nextLine();

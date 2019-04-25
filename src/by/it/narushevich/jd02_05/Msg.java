@@ -5,5 +5,7 @@ public interface Msg {
     String QUESTION = "message.question";
     String FIRSTNAME = "person.firstname";
     String LASTNAME = "person.lastname";
+    String ERROR = "error.error1";
 
 }
+

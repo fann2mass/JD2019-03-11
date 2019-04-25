@@ -52,36 +52,45 @@ class Parser {
                 throw new CalcException("неизвестная операция");
         }
     }
-
+/*
     String removeBrakets(String expression) {
-     /*   Pattern pattern = Pattern.compile(Patterns.BRAKETS);
-        Matcher matcher = pattern.matcher(expression);
-        while (matcher.find()) ;*/
+     //   Pattern pattern = Pattern.compile(Patterns.BRAKETS);
+     //   Matcher matcher = pattern.matcher(expression);
+     //   while (matcher.find()) ;
         int braketsStart = 0;
         int braketsFinish = 0;
         int braketsOpened = 0;
+        StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < expression.length(); i++) {
+
             if (expression.charAt(i) == '(' && braketsOpened != 0) {
-                String insideExpr = expression.substring(i);
+                String insideExpr = expression.substring(i + 1);
                 expression = removeBrakets(insideExpr);
             }
+
             if (expression.charAt(i) == '(' && braketsOpened == 0) {
                 braketsOpened++;
                 braketsStart = i;
             }
+
             if (expression.charAt(i) == ')' && braketsOpened != 0) {
                 braketsOpened--;
                 braketsFinish = i;
             }
         }
+
+        for (int i = braketsStart; i < braketsFinish; i++) {
+            sb.append(expression.charAt(i));
+        }
         try {
-            expression = calc(expression.substring(braketsStart, braketsFinish)).toString();
+            expression = calc(sb.toString()).toString();
         } catch (CalcException e) {
             e.printStackTrace();
         }
         return expression;
     }
-
+*/
     Var calc(String expression) throws CalcException {
         expression = expression.replaceAll("\\(", "").replaceAll("\\)", "");
         List<String> operations = new ArrayList<>();

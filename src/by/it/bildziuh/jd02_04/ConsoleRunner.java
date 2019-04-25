@@ -24,8 +24,8 @@ public class ConsoleRunner {
                 continue;
             }
             try {
-               // if (expression.contains("("))
-               //     expression = parser.removeBrakets(expression);
+      /*          if (expression.contains("("))
+                    expression = parser.removeBrakets(expression);*/
                 Var result = parser.calc(expression);
                 printer.print(result);
                 Var.save();

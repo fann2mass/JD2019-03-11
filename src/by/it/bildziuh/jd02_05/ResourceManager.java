@@ -10,7 +10,7 @@ public enum ResourceManager {
     private String baseName = "by.it.bildziuh.jd02_05.res.messages";
     private Locale locale;
 
-    private ResourceManager() {
+    ResourceManager() {
         locale=Locale.getDefault();
         setLocale(locale);
     }
@@ -20,6 +20,10 @@ public enum ResourceManager {
     }
 
     void setLocale(Locale locale){
+        this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
+    }
+
+    void switchLocale(Locale locale){
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 }

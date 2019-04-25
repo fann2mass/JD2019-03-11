@@ -1,4 +1,4 @@
-package by.it.bildziuh.jd02_05;
+package by.it.bildziuh.jd02_04;
 
 public interface Msg {
  String WELCOME="message.welcome";

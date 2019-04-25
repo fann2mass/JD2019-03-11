@@ -1,8 +1,10 @@
 package by.it.bildziuh.jd02_04;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ConsoleRunner {
+
     public static void main(String[] args) {
         try {
             Var.load();
@@ -12,6 +14,7 @@ public class ConsoleRunner {
         String expression;
         Parser parser = new Parser();
         Printer printer = new Printer();
+        Locale locale;
 
         while (!(expression = scanner.nextLine()).equals("end")) {
             expression = expression.replace(" ", "");
@@ -20,6 +23,15 @@ public class ConsoleRunner {
             }
             if (expression.equals("sortvar")) {
                 printer.print(Var.sortVarList());
+            }
+            if (expression.equals("ru")) {
+                locale = new Locale("ru", "RU");
+            }
+            if (expression.equals("by")) {
+                locale = new Locale("be", "BY");
+            }
+            if (expression.equals("en")) {
+                locale = new Locale("en", "EN");
             }
             try {
       /*          if (expression.contains("("))

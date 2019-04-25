@@ -10,11 +10,7 @@ import java.io.IOException;
 
 
 public class TaskB {
-    /**
-     * @param cl   class
-     * @param name create file Name
-     * @return file
-     */
+
     private static String createFile(Class<?> cl, String name) {
         String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         String replacePath = cl.getPackage().getName().replace(".", File.separator);
@@ -22,8 +18,8 @@ public class TaskB {
     }
 
     public static void main(String[] args) {
-        String result = createFile(TaskB.class, "TaskB.txt");//путь к файлу, в котором будет лежать текст программы
-        String from = createFile(TaskB.class, "TaskB.java");//путь к файлу, в котором лежит текст программы
+        String result = createFile(TaskB.class, "TaskB.txt");
+        String from = createFile(TaskB.class, "TaskB.java");
         readChangeAndWrite(from, result);
         showFile(result);
     }

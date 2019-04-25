@@ -1,0 +1,4 @@
+message.welcome=Прывітанне!
+message.question=Як справы?
+person.firstname=Марыана
+person.lastname=Нарушэвіч

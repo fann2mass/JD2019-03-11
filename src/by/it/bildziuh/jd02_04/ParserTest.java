@@ -40,7 +40,7 @@ public class ParserTest {
     }
 
     @Test
-    public void VectorAddScalar() throws Exception {
+    public void vectorAddScalar() throws Exception {
         Var var = parser.calc("{1,2}+3");
         String expected = "{4.0, 5.0}";
         String actual = var.toString();
@@ -48,7 +48,7 @@ public class ParserTest {
     }
 
     @Test
-    public void MatrixAddScalar() throws Exception {
+    public void matrixAddScalar() throws Exception {
         Var var = parser.calc("{{1,2},{3,4}}+5");
         String expected = "{{6.0, 7.0}, {8.0, 9.0}}";
         String actual = var.toString();
@@ -148,7 +148,7 @@ public class ParserTest {
         Var var = parser.calc("{2,4}/2");
         String actual = var.toString();
         String expected = "{1.0, 2.0}";
-        assertEquals(expected, actual);//проверяет на равенство значений expected и actual с возможной погрешностью delta.
+        assertEquals(expected, actual);
     }
 
 }

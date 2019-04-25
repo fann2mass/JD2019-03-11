@@ -54,9 +54,6 @@ class Parser {
     }
 /*
     String removeBrakets(String expression) {
-     //   Pattern pattern = Pattern.compile(Patterns.BRAKETS);
-     //   Matcher matcher = pattern.matcher(expression);
-     //   while (matcher.find()) ;
         int braketsStart = 0;
         int braketsFinish = 0;
         int braketsOpened = 0;

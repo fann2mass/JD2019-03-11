@@ -23,7 +23,14 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        throw new CalcException("Невозможно создать " + operand);
+        else {
+            Var var = vars.get(operand);
+            if (var != null) {
+                return var;
+            }
+            throw new CalcException("Невозможно создать " + operand);
+        }
+
     }
 
     static Map<String, Var> sortVarList() {
@@ -41,38 +48,39 @@ abstract class Var implements Operation {
         return var;
     }
 
-    static void save() {
-        try (PrintWriter out = new PrintWriter(new FileWriter(getFileName()))) {
-            for (Map.Entry<String, Var> pair : vars.entrySet()) {
-                out.println(pair.getKey() + "=" + pair.getValue());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void load() throws CalcException {
-        Parser p = new Parser();
-        File file = new File(getFileName());
-        if (file.exists()) {
-            try (BufferedReader in = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = in.readLine()) != null) {
-                    p.calc(line);
+    /*
+        static void save() {
+            try (PrintWriter out = new PrintWriter(new FileWriter(getFileName()))) {
+                for (Map.Entry<String, Var> pair : vars.entrySet()) {
+                    out.println(pair.getKey() + "=" + pair.getValue());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
 
-    private static String getFileName() {
-        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String strPackage = Var.class.getPackage().getName();
-        String relPath = strPackage.replace(".", File.separator);
-        return src + relPath + File.separator + "vars.txt";
-    }
+        static void load() throws CalcException {
+            Parser p = new Parser();
+            File file = new File(getFileName());
+            if (file.exists()) {
+                try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        p.calc(line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
+        private static String getFileName() {
+            String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+            String strPackage = Var.class.getPackage().getName();
+            String relPath = strPackage.replace(".", File.separator);
+            return src + relPath + File.separator + "vars.txt";
+        }
+    */
     @Override
     public Var add(Var other) throws CalcException {
         throw new CalcException("Операция сложения " + this + " + " + other + " невозможна");

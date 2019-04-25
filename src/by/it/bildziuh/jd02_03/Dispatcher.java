@@ -13,12 +13,17 @@ class Dispatcher {
 
     private static final AtomicInteger buyerCounter = new AtomicInteger(0);
     static final AtomicInteger buyerInMarket = new AtomicInteger(0);
+//    static final AtomicInteger buyerInQueue = new AtomicInteger(0);
 
-    static double income = 0;
-    static int maxCashier = 5;
+
+
+    static final AtomicInteger cashierActual = new AtomicInteger(0);
+    static int cashierMax = 5;
     //параметры вывода чека на печать
     static int checkWidth = 18;
     static int checkTab = 4;
+
+    static double income = 0;
 
     final static HashMap<String, Double> listOfGoods = new HashMap<String, Double>() {
         {

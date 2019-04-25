@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBucket {
+
+    private static Semaphore chosingGoods = new Semaphore(20);
+    private static Semaphore bucketPicked = new Semaphore(50);
 
     HashMap<String, Double> paymentCheck = new HashMap<>();
 
@@ -26,6 +30,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
     }
 
     boolean pensioneer = false;
+    private boolean wait;
 
     Buyer(int number) {
         super("Buyer № " + number);
@@ -39,33 +44,54 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
         System.out.println(this + " enter to the market");
     }
 
+    void setWait(boolean wait) {
+        this.wait = wait;
+    }
+
     @Override
     public void chooseGoods() {
-        System.out.println(this + " start to choose goods");
-        int timeout = Util.random(500, 2000);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " finish to choose goods");
+        try {
+            chosingGoods.acquire();
+            System.out.println(this + " start to choose goods");
+            int timeout = Util.random(500, 2000);
+            if (pensioneer)
+                timeout *= 3 / 2;
+            Util.sleep(timeout);
+            System.out.println(this + " finish to choose goods");
+            chosingGoods.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void addToQueue() {
-        System.out.println(this + " added to queue and wait");
-        QueueBuyers.add(this);
-        synchronized (this) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                System.err.println(e.getMessage());
-                Thread.currentThread().interrupt();
+        while (true) {
+            if (QueueBuyers.size() < 30) {
+                QueueBuyers.add(this);
+                break;
+            } else {
+                //              System.err.println(this + " waiting queue is full");
+                Util.sleep(10);
             }
+        }
+        System.out.println(this + " added to queue and wait");
+        wait = true;
+        synchronized (this) {
+            while (wait)
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    System.err.println(e.getMessage());
+                    Thread.currentThread().interrupt();
+                }
         }
         System.out.println(this + " complete service at cashier");
     }
 
     @Override
     public void goOut() {
+        bucketPicked.release();
         System.out.println(this + " go out from the market");
         Dispatcher.deleteBuyer();
     }
@@ -77,6 +103,11 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
 
     @Override
     public void takeBucket() {
+        try {
+            bucketPicked.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         int timeout = Util.random(100, 200);
         if (pensioneer)
             timeout *= 3 / 2;

@@ -1,30 +1,29 @@
 package by.it.bildziuh.jd02_03;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class QueueBuyers {
 
     private QueueBuyers() {
     }
 
-    private static final Deque<Buyer> buyerDeque = new ArrayDeque<>();
-    private static final Deque<Buyer> pensioneerDeque = new ArrayDeque<>();
+    private static final BlockingDeque<Buyer> buyersQueue = new LinkedBlockingDeque<>(30);
 
-    static synchronized void add(Buyer buyer) {
+    static void add(Buyer buyer) {
         if (buyer.pensioneer)
-            pensioneerDeque.addLast(buyer);
+            buyersQueue.addFirst(buyer);
         else
-            buyerDeque.addLast(buyer);
+            buyersQueue.addLast(buyer);
+//        Dispatcher.buyerInQueue.getAndIncrement();
     }
 
-    static synchronized Buyer extract() {
-        if (pensioneerDeque.size() != 0)
-            return pensioneerDeque.pollFirst();
-        return buyerDeque.pollFirst();
+    static Buyer extract() {
+//        Dispatcher.buyerInQueue.getAndDecrement();
+        return buyersQueue.poll();
     }
 
-    static synchronized int size() {
-        return buyerDeque.size() + pensioneerDeque.size();
+    static int size() {
+        return buyersQueue.size();
     }
 }

@@ -28,6 +28,7 @@ class Cashier implements Runnable {
                     printCheck(buyer);
                 }
                 synchronized (buyer.getMonitor()) {
+                    buyer.setWait(false);
                     buyer.getMonitor().notify();
                 }
             }
@@ -38,7 +39,7 @@ class Cashier implements Runnable {
     private void printCheck(Buyer buyer) {
         double total = 0;
         String preCheckTab = stringFill((Dispatcher.checkWidth + Dispatcher.checkTab) * (number - 1), ' ');
-        String postCheckTab = stringFill((Dispatcher.maxCashier - number) * (Dispatcher.checkWidth + Dispatcher.checkTab) + Dispatcher.checkTab, ' ');
+        String postCheckTab = stringFill((Dispatcher.cashierMax - number) * (Dispatcher.checkWidth + Dispatcher.checkTab) + Dispatcher.checkTab, ' ');
         String tab = stringFill(Dispatcher.checkTab, ' ');
         String line = stringFill(Dispatcher.checkWidth, '-');
         String border = preCheckTab + line + postCheckTab + line + tab + line;
@@ -46,7 +47,8 @@ class Cashier implements Runnable {
         System.out.printf("%s\n%s| %-13s |%s| In queue %-5s |%s| Total income%-2s |\n%s\n",
                 border,
                 preCheckTab, buyer, postCheckTab, " ", tab, " ",
-                border);
+                border
+        );
 
         for (HashMap.Entry<String, Double> entry : buyer.paymentCheck.entrySet()) {
             total += entry.getValue();
@@ -57,7 +59,8 @@ class Cashier implements Runnable {
         System.out.printf("%s\n%s| Total  = %-5.2f |%s| %-14s |%s| %-14.2f |\n%s\n",
                 border,
                 preCheckTab, total, postCheckTab, QueueBuyers.size(), tab, Dispatcher.income,
-                border);
+                border
+        );
     }
 
     private String stringFill(int length, char symbol) {

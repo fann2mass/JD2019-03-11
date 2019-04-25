@@ -63,23 +63,20 @@ class Parser {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < expression.length(); i++) {
-
-            if (expression.charAt(i) == '(' && braketsOpened != 0) {
-                String insideExpr = expression.substring(i + 1);
-                expression = removeBrakets(insideExpr);
-            }
-
             if (expression.charAt(i) == '(' && braketsOpened == 0) {
                 braketsOpened++;
                 braketsStart = i;
+                continue;
             }
-
+            if (expression.charAt(i) == '(' && braketsOpened != 0) {
+                String insideExpr = expression.substring(i);
+                expression = removeBrakets(insideExpr);
+            }
             if (expression.charAt(i) == ')' && braketsOpened != 0) {
                 braketsOpened--;
                 braketsFinish = i;
             }
         }
-
         for (int i = braketsStart; i < braketsFinish; i++) {
             sb.append(expression.charAt(i));
         }

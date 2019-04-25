@@ -54,6 +54,7 @@ class Cashier implements Runnable {
             total += entry.getValue();
             System.out.printf("%s| %-6s = %-5.2f |%s| %-14s |%s| %-14s |\n", preCheckTab, entry.getKey(), entry.getValue(), postCheckTab, " ", tab, " ");
         }
+
         Dispatcher.income += total;
 
         System.out.printf("%s\n%s| Total  = %-5.2f |%s| %-14s |%s| %-14.2f |\n%s\n",

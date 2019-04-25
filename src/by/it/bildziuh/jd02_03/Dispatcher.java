@@ -18,10 +18,10 @@ class Dispatcher {
 
 
     static final AtomicInteger cashierActual = new AtomicInteger(0);
-    static int cashierMax = 5;
+    static final int cashierMax = 5;
     //параметры вывода чека на печать
-    static int checkWidth = 18;
-    static int checkTab = 4;
+    static final int checkWidth = 18;
+    static final int checkTab = 4;
 
     static double income = 0;
 

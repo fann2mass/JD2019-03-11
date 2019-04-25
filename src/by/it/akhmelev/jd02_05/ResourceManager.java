@@ -10,16 +10,16 @@ public enum ResourceManager {
     private String baseName = "by.it.akhmelev.jd02_05.res.messages";
     private Locale locale;
 
-    ResourceManager() {
+    private ResourceManager() {
         locale=Locale.getDefault();
         setLocale(locale);
     }
 
-    public String getString(String key) {
+    String getString(String key) {
         return resourceBundle.getString(key);
     }
 
-    public void setLocale(Locale locale) {
+    void setLocale(Locale locale) {
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 }

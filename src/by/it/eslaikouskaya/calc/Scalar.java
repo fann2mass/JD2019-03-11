@@ -3,13 +3,14 @@ package by.it.eslaikouskaya.calc;
 class Scalar extends Var {
 
 	private double value;
+	private ResourceManager manager = ResourceManager.INSTANCE;
 
 	public double getValue() {
 		return value;
 	}
 
 	@Override
-	public Var add(Var other) throws CalcException{
+	public Var add(Var other) throws CalcException {
 		if (other instanceof Scalar)
 			return new Scalar(this.value + ((Scalar) other).value);
 		return other.add(this);
@@ -24,17 +25,17 @@ class Scalar extends Var {
 	}
 
 	@Override
-	public Var mul(Var other) throws CalcException{
+	public Var mul(Var other) throws CalcException {
 		if (other instanceof Scalar)
 			return new Scalar(this.value * ((Scalar) other).value);
 		return other.mul(this);
 	}
 
 	@Override
-	public Var div(Var other) throws CalcException{
+	public Var div(Var other) throws CalcException {
 		if (other instanceof Scalar) {
 			if (((Scalar) other).value == 0)
-				throw new CalcException("Деление на ноль");
+				throw new CalcException(manager.getString("message.zero"));
 			return new Scalar(this.value / ((Scalar) other).value);
 		}
 		return super.div(other);

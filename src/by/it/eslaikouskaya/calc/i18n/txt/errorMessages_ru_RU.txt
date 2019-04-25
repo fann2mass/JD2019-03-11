@@ -1,0 +1,12 @@
+message.size=Неподходящий размер
+message.number=Число введено не верно или не указана оперция
+message.operation=Операция введена не верно
+message.noOperation=Нет такой операции
+message.zero=Деление на ноль
+message.create=Невозможно создать
+message.sum=Сложение
+message.sub=Вычитание
+message.mul=Умножение
+message.div=Деление
+message.impossible=невозможно
+massage.class=Это класс

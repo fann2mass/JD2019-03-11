@@ -6,6 +6,7 @@ import java.util.Arrays;
 class Vector extends Var {
 
 	private double[] value;
+	private ResourceManager manager = ResourceManager.INSTANCE;
 
 	public double[] getValue() {
 		return value;
@@ -13,13 +14,11 @@ class Vector extends Var {
 
 
 	@Override
-	public Var add(Var other) throws CalcException{
+	public Var add(Var other) throws CalcException {
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (this.value.length!=((Vector) other).value.length)
-					throw new CalcException("Размер не подходит");
 				result.value[i] = result.value[i] + ((Scalar) other).getValue();
 			}
 			return result;
@@ -27,7 +26,7 @@ class Vector extends Var {
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
 				if (this.value.length!=((Vector) other).value.length)
-					throw new CalcException("Размер не подходит");
+					throw new CalcException(manager.getString("message.size"));
 				result.value[i] = result.value[i] + ((Vector) other).value[i];
 			}
 			return result;
@@ -36,7 +35,7 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var sub(Var other) throws CalcException{
+	public Var sub(Var other) throws CalcException {
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
@@ -48,7 +47,7 @@ class Vector extends Var {
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
 				if (this.value.length!=((Vector) other).value.length)
-					throw new CalcException("Размер не подходит");
+					throw new CalcException((manager.getString("message.size")));
 				result.value[i] = result.value[i] - ((Vector) other).value[i];
 			}
 			return result;
@@ -57,7 +56,7 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var mul(Var other) throws CalcException{
+	public Var mul(Var other) throws CalcException {
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
@@ -71,7 +70,7 @@ class Vector extends Var {
 			double sum = 0;
 			for (int i = 0; i < result.value.length; i++) {
 				if (this.value.length!=((Vector) other).value.length)
-					throw new CalcException("Размер не подходит");
+					throw new CalcException((manager.getString("message.size")));
 				result.value[i] = result.value[i] * ((Vector) other).value[i];
 				sum=sum+result.value[i];
 			}
@@ -81,12 +80,12 @@ class Vector extends Var {
 	}
 
 	@Override
-	public Var div(Var other) throws CalcException{
+	public Var div(Var other) throws CalcException {
 		Vector result = new Vector(value);
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (((Scalar) other).getValue()==0) throw new CalcException("Деление на ноль");
+				if (((Scalar) other).getValue() == 0) throw new CalcException((manager.getString("message.zero")));
 				result.value[i] = result.value[i] / ((Scalar) other).getValue();
 			}
 			return result;
@@ -104,8 +103,8 @@ class Vector extends Var {
 	}
 
 
-	Vector(String strVector){
-		String[] arr = strVector
+	Vector(String strValue) {
+		String[] arr = strValue
 				.replace("{", "")
 				.replace("}", "")
 				.split(",");
@@ -122,10 +121,9 @@ class Vector extends Var {
 		String delimiter = "";
 		for (double element : value) {
 			sb.append(delimiter).append(element);
-			delimiter=", ";
+			delimiter = ", ";
 		}
 		sb.append("}");
-
 		return sb.toString();
 	}
 }

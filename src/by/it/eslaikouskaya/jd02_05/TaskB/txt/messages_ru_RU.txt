@@ -1,4 +1,5 @@
 message.welcome=Привет!
 message.question=Как дела?
+message.date=GMT+3
 person.firstname=Екатерина
 person.lastname=Слайковская

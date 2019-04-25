@@ -24,6 +24,14 @@ public class Market {
                     buyer.start();
                     buyers.add(buyer);
                 }
+	            if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time))
+		            continue;
+
+	            if (time <= 30 && Dispatcher.buyerInMarket <= time + 5)
+		            continue;
+
+	            Util.sleep(1000);
+	            time++;
             }
             time++;
             Util.sleep(1000);

@@ -23,6 +23,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket{
     @Override
     public void enterToMarket() {
         System.out.println(this+" enter to the market");
+	    Dispatcher.newBuyer();
     }
 
     @Override
@@ -76,6 +77,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket{
     @Override
     public void goOut() {
         System.out.println(this+" go out from the market");
+	    Dispatcher.deleteBuyer();
     }
 
     @Override

@@ -39,12 +39,11 @@ public class TaskB {
         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, locale);
         String data = df.format(currentDate);
 
-        System.out.printf("%s%n%s%n%s %s%n%s%n",
-                manager.getString(Msg.WELCOME),
+        System.out.printf("%s%n%s%n%s%n%s %s%n",
+                data,manager.getString(Msg.WELCOME),
                 manager.getString(Msg.QUESTION),
                 manager.getString(Msg.FIRSTNAME),
-                manager.getString(Msg.LASTNAME),
-                data
+                manager.getString(Msg.LASTNAME)
         );
     }
 }

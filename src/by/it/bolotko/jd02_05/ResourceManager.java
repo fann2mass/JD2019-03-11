@@ -7,11 +7,9 @@ public enum ResourceManager {
     INSTANCE;
 
     private ResourceBundle resourceBundle;
-    private String baseName = "by.it.bolotko.jd02_05.res.messages";
-    private Locale locale;
 
-    private ResourceManager() {
-        locale=Locale.US;
+    ResourceManager() {
+        Locale locale = Locale.getDefault();
         setLocale(locale);
     }
 
@@ -20,6 +18,7 @@ public enum ResourceManager {
     }
 
     void setLocale(Locale locale){
+        String baseName = "by.it.bolotko.jd02_05.res.messages";
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 }

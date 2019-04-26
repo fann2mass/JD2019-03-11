@@ -1,4 +1,0 @@
-message.welcome=Добро пожаловать!
-message.question=Как дела?
-person.firstName=Лиза
-person.lastName=Хлыстунова

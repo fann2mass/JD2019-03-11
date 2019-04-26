@@ -1,4 +1,4 @@
-package by.it.bolotko.jd02_04;
+package by.it.bolotko.jd02_06.calc;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Logger {
+class Logger {
     private static final int capacity = 50;
-    String logFile = createFile(Logger.class, "log.txt");
+    private String logFile = createFile(Logger.class, "log.txt");
     private static LinkedHashMap<String, String> hashMap = new LinkedHashMap<String, String>(capacity, 1.0f, true) {
         @Override
         protected boolean
@@ -17,7 +17,7 @@ public class Logger {
         }
     };
 
-    public void fillReport(String s) {
+    void fillReport(String s) {
         hashMap.put(data(), s);
         saveLog();
     }

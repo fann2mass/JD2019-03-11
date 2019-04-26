@@ -1,4 +1,0 @@
-message.welcome=Welcome!
-message.question=How do you do?
-person.firstName=Kostja
-person.lastName=Bolotko

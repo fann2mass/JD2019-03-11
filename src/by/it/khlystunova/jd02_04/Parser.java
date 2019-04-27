@@ -12,15 +12,60 @@ class Parser {
             this.put("+",1);
             this.put("-",1);
             this.put("*",2);
+            this.put("/",2);
         }
     };
 
+
+    private static boolean isBracketsCorrect(String expression) {
+        int openedBracket = 0;
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == '(')
+                openedBracket++;
+            else if (expression.charAt(i) == ')') {
+                if (openedBracket == 0)
+                    return false;
+                openedBracket--;
+            }
+        }
+        return openedBracket == 0;
+    }
+
     Var calc(String expression) throws CalcException {
+        Var result;
+        expression = expression.replace(" ", "");
+        if(expression.contains("(")) {
+            if (!isBracketsCorrect(expression)) {
+                throw new CalcException("Скобки расставлены неправильно!");
+            }
+            else {
+
+                Pattern pattern = Pattern.compile(Patterns.ROUND_BRACKET);
+                Matcher matcher = pattern.matcher(expression);
+                while (matcher.find()) {
+                    StringBuilder sb = new StringBuilder();
+                    String group = matcher.group();
+                    sb.append(group);
+                    sb.deleteCharAt(0);
+                    sb.deleteCharAt(sb.length() - 1);
+                    Var simpleResult = calcWithoutBrackets(sb.toString());
+                    expression = expression.replace(group, simpleResult.toString());
+                    if (expression.contains("("))
+                        matcher = pattern.matcher(expression);
+                }
+                result = calcWithoutBrackets(expression);
+            }
+
+        }else result = calcWithoutBrackets(expression);
+        return result;
+    }
+
+    private Var calcWithoutBrackets(String expression) throws CalcException {
         expression = expression.replace(" ", "");
         List<String> operations=new ArrayList<>();
         List<String> operands= new ArrayList<>(
-                  Arrays.asList(expression.split(Patterns.OPERATION))
-            );//сплитим по операциям и заносим это в массив операций
+                Arrays.asList(expression.split(Patterns.OPERATION))
+        );//сплитим по операциям и заносим опернанды в массив операций
         Pattern pattern=Pattern.compile(Patterns.OPERATION);
         Matcher matcher = pattern.matcher(expression);
         while (matcher.find())
@@ -53,7 +98,7 @@ class Parser {
     }
 
     private Var oneOperation(String strLeftPart, String operation, String strRightPart)
-                                                          throws CalcException {
+            throws CalcException {
         Var rightPart = Var.createVar(strRightPart);
         if (operation.equals("=")) {
             Var.saveVar(strLeftPart, rightPart);

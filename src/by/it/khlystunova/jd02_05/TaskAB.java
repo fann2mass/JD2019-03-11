@@ -7,29 +7,41 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
+@SuppressWarnings("all")
  class TaskAB {
 
         public static void main(String[] args) {
 
             ResourceManager manager=ResourceManager.INSTANCE;
             Scanner scanner = new Scanner(System.in);
-            System.out.println("please,choose language:\nen-English\nbe-беларуский\nru-русский");
+            System.out.println("please,choose language:\n" +
+                               "en-English\n" +
+                               "be-беларуский\n" +
+                               "ru-русский");
             while (true) {
-                String country = "";
                 String language = "";
+                String country = "";
                 String line = scanner.nextLine();
-                if (line.equals("end")) {
-                    break;
-                }
-                if(line.equals("en")) {
-                    country = "EN";
-                    language = "en";
+                switch (line){
+                    case"en":
+                        language="en";
+                        country="EN";
+                        break;
+                    case"be":
+                        language="be";
+                        country="BY";
+                        break;
+                    case"ru":
+                        language="ru";
+                        country="RU";
+                        break;
+                    default:
+                            language = "en";
+                            country = "EN";
+                            break;
+
                 }
 
-                if(line.equals("be")){
-                    country = "BY";
-                    language = "be";
-                    }
                 Locale locale  = new Locale(language,country);
                 manager.setLocale(locale);
                 Date date = new Date();

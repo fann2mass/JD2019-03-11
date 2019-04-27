@@ -1,4 +1,4 @@
-message.welcome="Welcome! To select a language type: ru - Русский; be - Беларускі; en - English or press Enter"
+message.welcome="Welcome! Type to select a language: ru - Русский; be - Беларускі; en - English or press Enter"
 message.welcome2=All message will be written in English
 error.error=ERROR:
 error.size=Wrong size

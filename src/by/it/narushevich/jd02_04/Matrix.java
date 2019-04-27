@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class Matrix extends Var {
 
-    private static final String SIZE = ConsoleRunner.manager.getString(Msg.SIZE);
+    private static final String SIZE = SwitchLanguage.manager.getString(Msg.SIZE);
 
     private double[][] value;
 

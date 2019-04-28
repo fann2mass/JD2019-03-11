@@ -7,31 +7,31 @@ class Cashier implements Runnable {
 
    private int number;
 
-   Cashier(int number){
-       this.number =  number ;
-       Dispatcher.newCashier();
+   Cashier(){
+       this.number = Dispatcher.cashiersCounter.incrementAndGet();
    }
    @Override
    public void run() {
-       while (Dispatcher.marketOpened()) {
-           Buyer buyer;
-           if (QueuePensionners.getSize() > 0) {
-               buyer = QueuePensionners.extract();
-           } else {
+       synchronized (System.out) {
+           System.out.println(this + " Opened");
+           System.out.println("Queue  is: " + QueueBuyers.getBuyers().size());
+       }
+       while (QueueBuyers.needService()) {
+           Buyer buyer = null;
+           if (QueueBuyers.getBuyers().size() > 0)
                buyer = QueueBuyers.extract();
-           }
            if (buyer != null) {
                    service(buyer);
-
            }
        }
        System.out.println(this + " closed");
-       Dispatcher.deleteCashier();
+       Dispatcher.cashiersCounter.decrementAndGet();
    }
 
     private void service(Buyer buyer) {
            double totalPrise = 0;
         StringBuilder check = new StringBuilder();
+        check.append("====================\n");
         check.append(this + " started service " + buyer+"\n ");
            int timeOut = Util.random(2000, 5000);
            Util.sleep(timeOut);
@@ -44,14 +44,17 @@ class Cashier implements Runnable {
            }
            Dispatcher.SUM += totalPrise;
            check.append(this + " finished service " + buyer + "\n ");
+           check.append("====================\n");
            check.append(" total prise:  "+ totalPrise+"\n");
+           check.append("Queue is: "+QueueBuyers.getBuyers().size());
            printCheack(check);
 
            synchronized (buyer.getMonitor()) {
                buyer.setWait(false);
                buyer.getMonitor().notify();
            }
-
+           if(!(QueueBuyers.needService()))
+           Util.sleep(500);
     }
 
     private void printCheack(StringBuilder check) {

@@ -76,6 +76,7 @@ class Cashier implements Runnable {
     private void printTable(Buyer buyer) {
         System.out.println("\n"+space + this + " started" +space2+ " Buyers  " + "     Market  ");
         System.out.println(space + "service " + buyer +space2+ " in queue " + "    revenue ");
+        if (buyer.pensioneer) System.out.println(space+"pensioneer");
         System.out.printf("%s====================%s%2d%n",space,space2,QueueBuyers.getBUYERS().size());
         int timeout = Util.random(2000, 5000);
         HashMap<String, Double> myGoods = buyer.getMyGoods();

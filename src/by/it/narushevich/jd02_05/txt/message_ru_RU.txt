@@ -1,0 +1,5 @@
+message.welcome=Привет!
+message.question=Как дела?
+person.firstname=Марианна
+person.lastname=Нарушевич
+error.error1=Такая местность не существует

@@ -1,9 +1,17 @@
-package by.it.narushevich.calc;
+package by.it.narushevich.jd02_04;
 
 import java.util.Scanner;
 
 public class ConsoleRunner {
+
     public static void main(String[] args) {
+
+        System.out.println(SwitchLanguage.manager.getString(Msg.WELCOME));
+
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        SwitchLanguage.switchLang(text);
+
         try {
             Var.load();
             Logger.loadLog();
@@ -13,7 +21,6 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         Logger logger = new Logger();
-        Scanner scanner = new Scanner(System.in);
         String expr;
         for (; ; ) {
             expr = scanner.nextLine();

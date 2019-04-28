@@ -65,11 +65,11 @@ class Dispatcher {
     }
 
     static boolean marketOpened() {
-        return BUYER_COUNTER.get() < PLAN || BUYER_IN_MARKET.get() > 0;
+        return BUYER_COUNTER.get() <= PLAN && BUYER_IN_MARKET.get() > 0;
     }
 
     static boolean planInComplete() {
-        return BUYER_COUNTER.get() != PLAN;
+        return BUYER_COUNTER.get() < PLAN;
     }
 }
 

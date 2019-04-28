@@ -1,0 +1,12 @@
+message.size=Incorrect size
+message.number=Number is not correct or operation is not available
+message.operation=Operation is not correct
+message.noOperation=Operation is not exist
+message.zero=Division by zero
+message.create=Can not create
+message.sum=Summarize
+message.sub=Subtraction
+message.mul=Multiplication
+message.div=Division
+message.impossible=is impossible
+massage.class=This is class

@@ -9,7 +9,7 @@ class Market {
 
         System.out.println("market is opened");
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i = 1; i <= 2; i++) {
             Cashier cashier = new Cashier(i);
             executorService.execute(cashier);

@@ -23,7 +23,4 @@ public enum ResourceManager {
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 
-    void switchLocale(Locale locale){
-        this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
-    }
 }

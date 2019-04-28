@@ -27,7 +27,7 @@ public class Market {
                 }
             }
 
-            if (time > 30 && Dispatcher.buyerInMarket.get() <= 50 + (30 - time)) {
+            if (time > 30 && Dispatcher.buyerInMarket.get() <= 40 + (30 - time)) {
                 Util.sleep(1);
                 continue;
             }

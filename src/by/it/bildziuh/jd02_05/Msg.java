@@ -5,6 +5,4 @@ public interface Msg {
  String QUESTION="message.question";
  String FISRTNAME="person.firstname";
  String LASTNAME="person.lastname";
- String DATE="system.date";
-
 }

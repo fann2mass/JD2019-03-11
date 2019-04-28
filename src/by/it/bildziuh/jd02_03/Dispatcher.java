@@ -15,8 +15,6 @@ class Dispatcher {
     static final AtomicInteger buyerInMarket = new AtomicInteger(0);
 //    static final AtomicInteger buyerInQueue = new AtomicInteger(0);
 
-
-
     static final AtomicInteger cashierActual = new AtomicInteger(0);
     static final int cashierMax = 5;
     //параметры вывода чека на печать

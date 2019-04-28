@@ -15,11 +15,11 @@ public enum ResourceManager {
         setLocale(locale);
     }
 
-    String getString(String key) {
+    String getString(String key){
         return resourceBundle.getString(key);
     }
 
-    void setLocale(Locale locale) {
+    void setLocale(Locale locale){
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 }

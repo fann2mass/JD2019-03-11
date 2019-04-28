@@ -24,7 +24,7 @@ public class ParserTestVectors {
 	@Test
 	public void createVarVector() throws Exception {
 		parser.calc("A={2, 5, 8}");
-		Var var = Var.createVar("A");
+		Var var = VarFactory.createVar("A");
 		String expected = "{2.0, 5.0, 8.0}";
 		String actual = var.toString();
 		assertEquals(expected, actual);
@@ -33,7 +33,7 @@ public class ParserTestVectors {
 	@Test
 	public void createVarAndCalcVector() throws Exception {
 		parser.calc("D={2, 5, 8}+2");
-		Var var = Var.createVar("D");
+		Var var = VarFactory.createVar("D");
 		String expected = "{4.0, 7.0, 10.0}";
 		String actual = var.toString();
 		assertEquals(expected, actual);
@@ -42,7 +42,7 @@ public class ParserTestVectors {
 	@Test
 	public void createVarAndCalcWithBrackets() throws Exception {
 		parser.calc("E={2,3}*(10/2)");
-		Var var = Var.createVar("E");
+		Var var = VarFactory.createVar("E");
 		String expected = "{10.0, 15.0}";
 		String actual = var.toString();
 		assertEquals(expected, actual);

@@ -34,8 +34,11 @@ class Scalar extends Var {
 	@Override
 	public Var div(Var other) throws CalcException {
 		if (other instanceof Scalar) {
-			if (((Scalar) other).value == 0)
+			if (((Scalar) other).value == 0) {
+				Singleton logger = Singleton.getInstance();
+				logger.log(manager.getString("message.zero"));
 				throw new CalcException(manager.getString("message.zero"));
+			}
 			return new Scalar(this.value / ((Scalar) other).value);
 		}
 		return super.div(other);

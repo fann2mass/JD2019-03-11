@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 class Parser {
 
     private ResourceManager manager = ResourceManager.INSTANCE;
+    private Singleton logger = Singleton.getInstance();
 
     private static Map<String, Integer> mapPriority = new HashMap<String, Integer>() {
         {
@@ -33,14 +34,16 @@ class Parser {
     }
 
     private Var oneOperation(String strOne, String operation, String strTwo) throws CalcException {
-        Var two = Var.createVar(strTwo);
+        Var two = VarFactory.createVar(strTwo);
         if (operation.equals("=")) {
-            Var.saveVar(strOne, two);
+            VarFactory.saveVar(strOne, two);
             return two;
         }
-        Var one = Var.createVar(strOne);
-        if (one == null || two == null)
+        Var one = VarFactory.createVar(strOne);
+        if (one == null || two == null) {
+            logger.log(manager.getString("message.noOperation"));
             throw new CalcException(manager.getString("message.noOperation"));
+        }
         switch (operation) {
             case "+":
                 return one.add(two);
@@ -50,14 +53,15 @@ class Parser {
                 return one.mul(two);
             case "/":
                 return one.div(two);
-            default:
+            default: {
+                logger.log(manager.getString("message.noOperation"));
                 throw new CalcException(manager.getString("message.noOperation"));
+            }
         }
 
     }
 
     Var calc(String expression) throws CalcException {
-        //{2.0, 3.0}+7
         if (expression.contains(")") & expression.contains("(")) {
             return calcWithBracket(new StringBuilder(expression));
         } else {
@@ -79,7 +83,7 @@ class Parser {
                 Var oneOperationResult = oneOperation(one, operation, two);
                 operands.add(index, oneOperationResult.toString());
             }
-            return Var.createVar(operands.get(0));
+            return VarFactory.createVar(operands.get(0));
         }
 
     }
@@ -108,8 +112,9 @@ class Parser {
         } catch (CalcException e) {
             e.printStackTrace();
         }
-        expression.replace(shortExpressionStarts, shortExpressionStarts +
-                shortExpression.length() + 2, oneOperationResult.toString());
+        if (oneOperationResult != null)
+            expression.replace(shortExpressionStarts, shortExpressionStarts +
+                    shortExpression.length() + 2, oneOperationResult.toString());
         while (expression.toString().contains("(") & expression.toString().contains(")"))
             calcWithBracket(expression);
         Var calc = null;

@@ -7,6 +7,7 @@ class Vector extends Var {
 
 	private double[] value;
 	private ResourceManager manager = ResourceManager.INSTANCE;
+	private Singleton logger = Singleton.getInstance();
 
 	public double[] getValue() {
 		return value;
@@ -25,8 +26,10 @@ class Vector extends Var {
 		}
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (this.value.length!=((Vector) other).value.length)
+				if (this.value.length != ((Vector) other).value.length) {
+					logger.log(manager.getString("message.size"));
 					throw new CalcException(manager.getString("message.size"));
+				}
 				result.value[i] = result.value[i] + ((Vector) other).value[i];
 			}
 			return result;
@@ -46,8 +49,10 @@ class Vector extends Var {
 		}
 		if (other instanceof Vector) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (this.value.length!=((Vector) other).value.length)
+				if (this.value.length != ((Vector) other).value.length) {
+					logger.log(manager.getString("message.size"));
 					throw new CalcException((manager.getString("message.size")));
+				}
 				result.value[i] = result.value[i] - ((Vector) other).value[i];
 			}
 			return result;
@@ -69,8 +74,10 @@ class Vector extends Var {
 		if (other instanceof Vector) {
 			double sum = 0;
 			for (int i = 0; i < result.value.length; i++) {
-				if (this.value.length!=((Vector) other).value.length)
+				if (this.value.length != ((Vector) other).value.length) {
+					logger.log(manager.getString("message.size"));
 					throw new CalcException((manager.getString("message.size")));
+				}
 				result.value[i] = result.value[i] * ((Vector) other).value[i];
 				sum=sum+result.value[i];
 			}
@@ -85,7 +92,10 @@ class Vector extends Var {
 		this.value=Arrays.copyOf(value,value.length);
 		if (other instanceof Scalar) {
 			for (int i = 0; i < result.value.length; i++) {
-				if (((Scalar) other).getValue() == 0) throw new CalcException((manager.getString("message.zero")));
+				if (((Scalar) other).getValue() == 0) {
+					logger.log(manager.getString("message.zero"));
+					throw new CalcException((manager.getString("message.zero")));
+				}
 				result.value[i] = result.value[i] / ((Scalar) other).getValue();
 			}
 			return result;

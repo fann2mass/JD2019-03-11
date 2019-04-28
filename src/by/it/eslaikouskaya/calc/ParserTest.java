@@ -26,7 +26,7 @@ public class ParserTest {
 
 	public void createVarCalc() throws Exception {
 		parser.calc("A=2+2*2");
-		Var var = Var.createVar("A");
+		Var var = VarFactory.createVar("A");
 		double expected = 6.0;
 		double actual = Double.parseDouble(var.toString());
 		assertEquals(expected, actual, 1e-6);

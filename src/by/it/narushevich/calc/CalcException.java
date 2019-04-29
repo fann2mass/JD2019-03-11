@@ -2,7 +2,7 @@ package by.it.narushevich.calc;
 
 public class CalcException extends Exception {
 
-    public static final String ERROR = SwitchLanguage.manager.getString(Msg.ERROR);
+    public static final String ERROR = ConsoleRunner.manager.getString(Msg.ERROR);
 
     public CalcException() {
     }

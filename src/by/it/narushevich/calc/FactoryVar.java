@@ -29,7 +29,7 @@ public class FactoryVar {
             return new Matrix(operand);
         if (vars.containsKey(operand))
             return vars.get(operand);
-        else throw new CalcException(SwitchLanguage.manager.getString(Msg.ABSENT2));
+        else throw new CalcException(ConsoleRunner.manager.getString(Msg.ABSENT2));
     }
 
     private static void save() {

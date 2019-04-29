@@ -19,7 +19,7 @@ abstract class Var {
     }
 
     public String toString() {
-        return SwitchLanguage.manager.getString(Msg.MESSAGE);
+        return ConsoleRunner.manager.getString(Msg.MESSAGE);
     }
 
 }

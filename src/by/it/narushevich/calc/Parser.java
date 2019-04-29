@@ -37,7 +37,7 @@ class Parser {
         }
         Var first = FactoryVar.createVar(leftOperand);
         if (first == null || second == null)
-            throw new CalcException(SwitchLanguage.manager.getString(Msg.OPERAND));
+            throw new CalcException(ConsoleRunner.manager.getString(Msg.OPERAND));
         switch (operation) {
             case "+":
                 return first.add(second);
@@ -48,7 +48,7 @@ class Parser {
             case "/":
                 return first.div(second);
             default:
-                throw new CalcException(SwitchLanguage.manager.getString(Msg.ABSENT));
+                throw new CalcException(ConsoleRunner.manager.getString(Msg.ABSENT));
         }
     }
 
@@ -72,7 +72,7 @@ class Parser {
         Var result;
         if (expr.contains("(")){
             if (!checkParentheses(expr))
-                throw new CalcException(SwitchLanguage.manager.getString(Msg.PARENTHESIS));
+                throw new CalcException(ConsoleRunner.manager.getString(Msg.PARENTHESIS));
             else {
                 Pattern pattern = Pattern.compile(Patterns.PARENTHESIS);
                 Matcher matcher = pattern.matcher(expr);

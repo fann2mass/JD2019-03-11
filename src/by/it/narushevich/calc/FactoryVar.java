@@ -1,12 +1,14 @@
-package by.it.narushevich.jd02_04;
+package by.it.narushevich.calc;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-abstract class Var implements Operation {
+public class FactoryVar {
 
     private static Map<String, Var> vars = new HashMap<>();
+
+    private static final String variables = createFile();
 
     public static Map<String, Var> getVars() {
         return vars;
@@ -17,7 +19,7 @@ abstract class Var implements Operation {
         save();
     }
 
-    static Var createVar(String operand) {
+    static Var createVar(String operand) throws CalcException {
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
@@ -27,14 +29,14 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         if (vars.containsKey(operand))
             return vars.get(operand);
-        return null;
+        else throw new CalcException(SwitchLanguage.manager.getString(Msg.ABSENT2));
     }
 
     private static void save() {
-        try (PrintWriter printWriter = new PrintWriter(new FileWriter(createFile()))){
-        for (Map.Entry<String, Var> pair : vars.entrySet()) {
-            printWriter.println(pair.getKey() +" = "+ pair.getValue());
-        }
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(variables))){
+            for (Map.Entry<String, Var> pair : vars.entrySet()) {
+                printWriter.println(pair.getKey() +" = "+ pair.getValue());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,7 +44,7 @@ abstract class Var implements Operation {
 
     static void load() throws CalcException {
         Parser p = new Parser();
-        File file = new File(createFile());
+        File file = new File(variables);
         if (file.exists()) {
             try (BufferedReader in = new BufferedReader(new FileReader(file))) {
                 String line;
@@ -61,30 +63,4 @@ abstract class Var implements Operation {
         String replacePath = Var.class.getPackage().getName().replace(".", File.separator);
         return src + replacePath + File.separator + "vars.txt";
     }
-
-    @Override
-    public Var add(Var other) throws CalcException {
-        throw new CalcException();
-    }
-
-    @Override
-    public Var sub(Var other) throws CalcException {
-        throw new CalcException();
-    }
-
-    @Override
-    public Var mul(Var other) throws CalcException {
-        throw new CalcException();
-    }
-
-    @Override
-    public Var div(Var other) throws CalcException {
-        throw new CalcException();
-    }
-
-    @Override
-    public String toString() {
-        return "This is class Var";
-    }
-
 }

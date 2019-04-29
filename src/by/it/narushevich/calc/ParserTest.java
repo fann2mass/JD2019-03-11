@@ -1,4 +1,4 @@
-package by.it.narushevich.jd02_04;
+package by.it.narushevich.calc;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class ParserTest {
         double expected = 7.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на сложение двух скаляров пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -29,7 +29,7 @@ public class ParserTest {
         double expected = 5.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на вычитание двух скаляров пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -38,7 +38,7 @@ public class ParserTest {
         double expected = 16.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на умножение двух скаляров пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 30)
@@ -47,7 +47,7 @@ public class ParserTest {
         double expected = 0.5;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на деление двух скаляров пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -56,7 +56,7 @@ public class ParserTest {
         String expected = "{4.0, 7.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на сложение вектора и скаляра пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -65,7 +65,7 @@ public class ParserTest {
         String expected = "{4.0, 11.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на сложение двух векторов пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -74,7 +74,7 @@ public class ParserTest {
         String expected = "{4.0, 1.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на вычитание скаляра из вектора пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -83,7 +83,7 @@ public class ParserTest {
         String expected = "{4.0, 0.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на вычитание вектора из другого вектора пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -92,7 +92,7 @@ public class ParserTest {
         String expected = "{8.0, 32.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на умножение вектора и скаляра пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
     @Test (timeout = 100)
     public void multiplicationVectorCalc() throws CalcException {
@@ -100,7 +100,7 @@ public class ParserTest {
         double expected = 32.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на произведение двух векторов пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 50)
@@ -109,7 +109,7 @@ public class ParserTest {
         String expected = "{1.0, 2.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на деление вектора на скаляр пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -118,7 +118,7 @@ public class ParserTest {
         double expected = 2.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на скалярные операции пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -127,7 +127,7 @@ public class ParserTest {
         String expected = "{{6.0, 7.0}, {8.0, 9.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на сложение матрицы и скаляра пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -136,7 +136,7 @@ public class ParserTest {
         String expected = "{{5.0, 7.0}, {9.0, 11.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на сложение двух матриц пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -145,7 +145,7 @@ public class ParserTest {
         String expected = "{{-2.0, -1.0}, {0.0, 1.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на вычитание скаляра из матрицы пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -154,7 +154,7 @@ public class ParserTest {
         String expected = "{{-1.0, -1.0}, {-1.0, -1.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на вычитание двух матриц пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -163,7 +163,7 @@ public class ParserTest {
         String expected = "{{6.0, 9.0}, {12.0, 15.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на произведение матрицы и скаляра пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -172,7 +172,7 @@ public class ParserTest {
         String expected = "{84.0, 144.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на произведение матрицы и вектора пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
     @Test (timeout = 100)
     public void multiplicationMatrixCalc() throws CalcException {
@@ -180,7 +180,7 @@ public class ParserTest {
         String expected = "{{21.0, 26.0}, {37.0, 46.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на произведение двух матриц пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -189,13 +189,13 @@ public class ParserTest {
         String expected = "{0.2, 0.3}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на операции с приоритетом у вектора пройден");
+        System.out.println(SwitchLanguage.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
     public void createVarCalc() throws CalcException {
         parser.calc("A=3+5*2");
-        Var var=Var.createVar("A");
+        Var var=FactoryVar.createVar("A");
         double expected = 13.0;
         assert var != null;
         double actual = Double.parseDouble(var.toString());
@@ -204,8 +204,8 @@ public class ParserTest {
     }
 
     @Test (timeout = 30)
-    public void createAndPrintScalar() {
-        Var var=Var.createVar("-25");
+    public void createAndPrintScalar() throws CalcException {
+        Var var=FactoryVar.createVar("-25");
         double expected = -25.0;
         assert var != null;
         double actual = Double.parseDouble(var.toString());
@@ -214,8 +214,8 @@ public class ParserTest {
     }
 
     @Test (timeout = 30)
-    public void createAndPrintVector() {
-        Var var=Var.createVar("{2,5,2.5}");
+    public void createAndPrintVector() throws CalcException {
+        Var var=FactoryVar.createVar("{2,5,2.5}");
         String expected = "{2.0, 5.0, 2.5}";
         assert var != null;
         String actual = var.toString();
@@ -224,14 +224,12 @@ public class ParserTest {
     }
 
     @Test (timeout = 30)
-    public void createAndPrintMatrix() {
-        Var var=Var.createVar("{{2,5.2,2.5},{7.1,8,9}}");
+    public void createAndPrintMatrix() throws CalcException {
+        Var var=FactoryVar.createVar("{{2,5.2,2.5},{7.1,8,9}}");
         String expected = "{{2.0, 5.2, 2.5}, {7.1, 8.0, 9.0}}";
         assert var != null;
         String actual = var.toString();
         assertEquals(expected, actual);
         System.out.println("Тест на создание переменной типа Matrix пройден");
     }
-
-
 }

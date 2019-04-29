@@ -1,4 +1,4 @@
-package by.it.narushevich.jd02_04;
+package by.it.narushevich.calc;
 
 import java.util.Locale;
 

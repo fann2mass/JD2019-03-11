@@ -1,4 +1,4 @@
-package by.it.narushevich.jd02_04;
+package by.it.narushevich.calc;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ enum ResourceManager {
     INSTANCE;
 
     private ResourceBundle resourceBundle;
-    private String name = "by.it.narushevich.jd02_04.res.message";
+    private final String name = "by.it.narushevich.calc.res.message";
 
     ResourceManager() {
         this.resourceBundle = ResourceBundle.getBundle(name, Locale.getDefault());

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://jd02_09.akhmelev.it.by/"
+        xmlns:my="http://jd02_09.akhmelev.it.by/"
+        elementFormDefault="qualified">
+<element name="users">
+  <complexType>
+    <sequence>
+      <element
+              name="user"
+              type="my:TypeOfUser"
+              minOccurs="1"
+              maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+</element>
+
+<complexType name="TypeOfUser">
+  <sequence>
+    <element name="login" type="string" />
+    <element name="password" type="string" />
+    <element name="email" type="string" />
+    <element name="ads" type="my:TypeOfAds" />
+  </sequence>
+</complexType>
+
+
+<complexType name="TypeOfAds">
+  <sequence>
+    <element name="ad"
+             type="my:TypeOfAd"
+             minOccurs="1"
+             maxOccurs="unbounded" />
+  </sequence>
+</complexType>
+
+<complexType name="TypeOfAd">
+  <all>
+    <element name="description" type="string" />
+    <element name="address" type="string" />
+    <element name="floor" type="integer" />
+    <element name="floors" type="positiveInteger" />
+    <element name="rooms" type="positiveInteger" />
+    <element name="price" type="my:TypeOfPrice" />
+  </all>
+</complexType>
+
+<complexType name="TypeOfPrice">
+  <simpleContent>
+    <extension base="double">
+      <attribute name="currency" type="string"/>
+    </extension>
+  </simpleContent>
+</complexType>
+
+
+</schema>

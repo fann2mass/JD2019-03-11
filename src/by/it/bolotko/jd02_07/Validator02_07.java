@@ -32,7 +32,7 @@ public class Validator02_07 {
             System.out.println(fileName + " VALIDATE!");
             System.out.println("All Good! :)");
         } catch (Exception e) {
-            System.out.println("Some problems :(");
+            System.out.println("Some problems");
             System.out.flush();
             throw e;
         }

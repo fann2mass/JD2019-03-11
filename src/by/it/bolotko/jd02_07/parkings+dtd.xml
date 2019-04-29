@@ -18,13 +18,13 @@
                 <car_type>Jeep</car_type>
                 <numbers>8359CB-1</numbers>
             </car>
-            <prices>
-                <price>
-                    <number_of_cars>2</number_of_cars>
-                    <total_price currency="BYN">120</total_price>
-                </price>
-            </prices>
         </cars>
+        <prices>
+            <price>
+                <number_of_cars>2</number_of_cars>
+                <total_price currency="BYN">120</total_price>
+            </price>
+        </prices>
     </parking>
     <parking>
         <first_name>Aleksandr</first_name>
@@ -38,13 +38,13 @@
                 <car_type>Passenger car</car_type>
                 <numbers>6122AA-2</numbers>
             </car>
-            <prices>
-                <price>
-                    <number_of_cars>1</number_of_cars>
-                    <total_price currency="BYN">60</total_price>
-                </price>
-            </prices>
         </cars>
+        <prices>
+            <price>
+                <number_of_cars>1</number_of_cars>
+                <total_price currency="BYN">60</total_price>
+            </price>
+        </prices>
     </parking>
 
 </parkings>

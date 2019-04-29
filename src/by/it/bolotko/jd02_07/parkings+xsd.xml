@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<parkings>
+<parkings xmlns="http://jd02_09.bolotko.it.by/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://jd02_09.bolotko.it.by/ parkings.xsd">
     <parking>
         <first_name>Michail</first_name>
         <last_name>Sidorov</last_name>

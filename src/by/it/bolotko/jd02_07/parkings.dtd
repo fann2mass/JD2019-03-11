@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
         <!ELEMENT parkings (parking)+>
-        <!ELEMENT parking (first_name,last_name,year_of_birth,drivers_license_number,category,cars)>
+        <!ELEMENT parking (first_name,last_name,year_of_birth,drivers_license_number,category,cars,prices)>
         <!ELEMENT first_name (#PCDATA)>
         <!ELEMENT last_name (#PCDATA)>
         <!ELEMENT year_of_birth (#PCDATA)>
         <!ELEMENT drivers_license_number (#PCDATA)>
         <!ELEMENT category (#PCDATA)>
-        <!ELEMENT cars (car,prices)+>
+        <!ELEMENT cars (car)+>
         <!ELEMENT car (car_model,car_type,numbers)
         <!ELEMENT car_model (#PCDATA)>
         <!ELEMENT car_type (#PCDATA)>

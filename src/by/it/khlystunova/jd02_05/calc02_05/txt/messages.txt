@@ -1,0 +1,11 @@
+messagesExeption.divByZero=Деление на ноль!
+messagesExeption.falseLength=Неправильная длина!
+messagesExeption.falseSizeMatrix=Неправильная размерность матриц!
+messagesExeption.falseSizeVector=Число столбцов матрицы должно быть равно кол-ву элементов вектора!
+messagesExeption.noSuchVariable=Нет такой переменной!
+messages.add=сложение
+messages.sub=вычитание
+messages.mul=умножение
+messages.div=деление
+messagesExeption.impossible=невозможно!
+messagesExeption=неизвестная операция!

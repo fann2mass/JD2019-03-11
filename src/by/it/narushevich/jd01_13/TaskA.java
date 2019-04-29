@@ -15,7 +15,7 @@ public class TaskA {
             for (StackTraceElement element : stackTrace) {
                 String className = element.getClassName();
                 int lineNumber = element.getLineNumber();
-                if (className.contains("TaskA")) {
+                if (className.contains("TaskB")) {
                     System.out.printf("name:  %s%n" +
                             "class: %s%n" +
                             "line:  %s%n", name, className, lineNumber);

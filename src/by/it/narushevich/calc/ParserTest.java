@@ -20,7 +20,7 @@ public class ParserTest {
         double expected = 7.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("additionScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -29,7 +29,7 @@ public class ParserTest {
         double expected = 5.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("subtractionScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -38,7 +38,7 @@ public class ParserTest {
         double expected = 16.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 30)
@@ -47,7 +47,7 @@ public class ParserTest {
         double expected = 0.5;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("divisionScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -56,7 +56,7 @@ public class ParserTest {
         String expected = "{4.0, 7.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("additionVectorScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -65,7 +65,7 @@ public class ParserTest {
         String expected = "{4.0, 11.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("additionVectorCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -74,7 +74,7 @@ public class ParserTest {
         String expected = "{4.0, 1.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("subtractionVectorScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -83,7 +83,7 @@ public class ParserTest {
         String expected = "{4.0, 0.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("subtractionVectorCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -92,7 +92,7 @@ public class ParserTest {
         String expected = "{8.0, 32.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationVectorScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
     @Test (timeout = 100)
     public void multiplicationVectorCalc() throws CalcException {
@@ -100,7 +100,7 @@ public class ParserTest {
         double expected = 32.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationVectorCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 50)
@@ -109,7 +109,7 @@ public class ParserTest {
         String expected = "{1.0, 2.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("divisionVectorScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -118,7 +118,7 @@ public class ParserTest {
         double expected = 2.0;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("scalarExpressionCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -127,7 +127,7 @@ public class ParserTest {
         String expected = "{{6.0, 7.0}, {8.0, 9.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("additionMatrixScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -136,7 +136,7 @@ public class ParserTest {
         String expected = "{{5.0, 7.0}, {9.0, 11.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("additionMatrixCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -145,7 +145,7 @@ public class ParserTest {
         String expected = "{{-2.0, -1.0}, {0.0, 1.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("subtractionMatrixScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -154,7 +154,7 @@ public class ParserTest {
         String expected = "{{-1.0, -1.0}, {-1.0, -1.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("subtractionMatrixCalc() " +ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -163,7 +163,7 @@ public class ParserTest {
         String expected = "{{6.0, 9.0}, {12.0, 15.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationMatrixScalarCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -172,7 +172,7 @@ public class ParserTest {
         String expected = "{84.0, 144.0}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationMatrixVectorCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
     @Test (timeout = 100)
     public void multiplicationMatrixCalc() throws CalcException {
@@ -180,7 +180,7 @@ public class ParserTest {
         String expected = "{{21.0, 26.0}, {37.0, 46.0}}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("multiplicationMatrixCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -189,7 +189,7 @@ public class ParserTest {
         String expected = "{0.2, 0.3}";
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println(ConsoleRunner.manager.getString(Msg.TEST));
+        System.out.println("vectorExpressionCalc() "+ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 100)
@@ -200,7 +200,7 @@ public class ParserTest {
         assert var != null;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на создание переменной пройден");
+        System.out.println("createVarCalc() " +ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 30)
@@ -210,7 +210,7 @@ public class ParserTest {
         assert var != null;
         double actual = Double.parseDouble(var.toString());
         assertEquals(expected, actual, 1e-6);
-        System.out.println("Тест на создание переменной типа Scalar пройден");
+        System.out.println("createAndPrintScalar() " +ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 30)
@@ -220,7 +220,7 @@ public class ParserTest {
         assert var != null;
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на создание переменной типа Vector пройден");
+        System.out.println("createAndPrintVector() " +ConsoleRunner.manager.getString(Msg.TEST));
     }
 
     @Test (timeout = 30)
@@ -230,6 +230,6 @@ public class ParserTest {
         assert var != null;
         String actual = var.toString();
         assertEquals(expected, actual);
-        System.out.println("Тест на создание переменной типа Matrix пройден");
+        System.out.println("createAndPrintMatrix() " +ConsoleRunner.manager.getString(Msg.TEST));
     }
 }

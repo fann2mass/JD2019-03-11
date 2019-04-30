@@ -14,6 +14,5 @@ public interface Msg {
     String ABSENT = "error.absent";
     String ABSENT2 = "error.absent2";
     String OPERAND = "error.operand";
-    String ERROR1 = "error.error1";
 }
 

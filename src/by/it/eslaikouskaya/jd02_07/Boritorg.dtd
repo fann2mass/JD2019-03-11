@@ -9,7 +9,8 @@
         <!ELEMENT name (#PCDATA)>
         <!ELEMENT aboutus (about)>
         <!ELEMENT about (#PCDATA)>
-        <!ELEMENT shortinfo (city, address, notation)>
+        <!ELEMENT shortinfo (city, address, notation, managerstel)>
+        <!ELEMENT managerstel (#PCDATA)>
         <!ELEMENT city (#PCDATA)>
         <!ELEMENT address (#PCDATA)>
         <!ELEMENT notation (#PCDATA)>

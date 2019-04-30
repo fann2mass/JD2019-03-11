@@ -71,6 +71,7 @@
             <element name="city" type="string"/>
             <element name="address" type="string"/>
             <element name="notation" type="string"/>
+            <element name="managerstel" type="string"/>
         </sequence>
     </complexType>
 

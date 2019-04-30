@@ -15,7 +15,7 @@ class FullReportBuilder extends ReportBuilder {
 
     @Override
     public void buildHeadline() {
-        report.setHeadline("Full report for Calculator");
+        report.setHeadline(ConsoleRunner.manager.getString(Msg.REPORT3));
     }
 
     @Override

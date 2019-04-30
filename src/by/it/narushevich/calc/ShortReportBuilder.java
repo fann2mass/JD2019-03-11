@@ -11,7 +11,7 @@ class ShortReportBuilder extends ReportBuilder {
 
     @Override
     public void buildHeadline() {
-        report.setHeadline("Short report for Calculator");
+        report.setHeadline(ConsoleRunner.manager.getString(Msg.REPORT2));
     }
 
     @Override

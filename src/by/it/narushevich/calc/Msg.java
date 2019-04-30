@@ -8,6 +8,8 @@ public interface Msg {
     String START_TIME = "message.startTime";
     String END_TIME = "message.endTime";
     String REPORT = "message.report";
+    String REPORT2 = "message.shortReport";
+    String REPORT3 = "message.fullReport";
     String TEST = "message.test";
     String ERROR = "error.error";
     String ERROR1 = "error.error1";

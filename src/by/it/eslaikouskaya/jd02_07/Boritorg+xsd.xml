@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site>
+<cite xmlns="http://jd02_09.eslaikouskaya.it.by/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jd02_09.eslaikouskaya.it.by/ Boritorg.xsd">
     <catalogs>
         <catalog>
             <name>Сантехника</name>
@@ -398,4 +400,4 @@
             </info>
         </property>
     </properties>
-</site>
+</cite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT site (catalogs, aboutus, shortinfo, properties)>
+        <!ELEMENT catalogs (catalog)+>
+        <!ELEMENT catalog (name, elements)>
+        <!ELEMENT elements (element)+>
+        <!ELEMENT element (description, content)>
+        <!ELEMENT description (#PCDATA)>
+        <!ELEMENT content (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT aboutus (about)>
+        <!ELEMENT about (#PCDATA)>
+        <!ELEMENT shortinfo (city, address, notation)>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT address (#PCDATA)>
+        <!ELEMENT notation (#PCDATA)>
+        <!ELEMENT properties (property)+>
+        <!ELEMENT property (mark, info)>
+        <!ELEMENT mark (#PCDATA)>
+        <!ELEMENT info (#PCDATA)>

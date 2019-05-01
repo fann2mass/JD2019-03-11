@@ -1,0 +1,12 @@
+messages.welcome = Вiтаю!
+messagesExeption.divByZero=Дзяленне на нуль!
+messagesExeption.falseLength=Няправільная даўжыня!
+messagesExeption.falseSizeMatrix=Няправільная памернасць матрыц!
+messagesExeption.falseSizeVector=Лік слупкоў матрыцы павінна быць роўна кол-ці элементаў вектара!
+messagesExeption.noSuchVariable=Няма такой зменнай!
+messages.add=складаньне
+messages.sub=адніманне
+messages.mul=множанне
+messages.div=дзяленне
+messagesExeption.impossible=немагчыма!
+messagesExeption=невядомая аперацыя!

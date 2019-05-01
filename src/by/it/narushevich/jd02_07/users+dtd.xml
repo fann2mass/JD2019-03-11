@@ -10,6 +10,7 @@
             <teaTag>
                 <trademark>Lipton</trademark>
                 <originCountry>India</originCountry>
+                <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">26</width>
                 <heigth currency="mm">28</heigth>
@@ -20,6 +21,7 @@
             <teaTag>
                 <trademark>Golden Bowl</trademark>
                 <originCountry>Sri-Lanka</originCountry>
+                <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">26</width>
                 <heigth currency="mm">28</heigth>
@@ -38,6 +40,7 @@
             <teaTag>
                 <trademark>Maitre de The</trademark>
                 <originCountry>China</originCountry>
+                <purchaseCountry>France</purchaseCountry>
                 <material>paper</material>
                 <width currency="mm">23</width>
                 <heigth currency="mm">28</heigth>
@@ -48,6 +51,7 @@
             <teaTag>
                 <trademark>Darling</trademark>
                 <originCountry>Sri-Lanka</originCountry>
+                <purchaseCountry>England</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">23</width>
                 <heigth currency="mm">28</heigth>

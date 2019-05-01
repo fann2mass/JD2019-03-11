@@ -15,10 +15,6 @@ public class Vector extends Var {
         this.vector = Arrays.copyOf(value, value.length);
     }
 
-    //Vector(Vector vector) {
-       // this.vector = vector.vector;
- // }
-
     Vector(String vector) {
 
         Pattern pattern = Pattern.compile("[^{}, ]+");
@@ -60,7 +56,7 @@ public class Vector extends Var {
                  for (int i = 0; i < result.vector.length; i++) {
                      result.vector[i] =result.vector[i]+((Vector) other).vector[i];
                  }
-             }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
+             }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
            return result;
          }else if(other instanceof Scalar){
              for (int i = 0; i < result.vector.length; i++) {
@@ -80,7 +76,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     result.vector[i] =result.vector[i]-((Vector) other).vector[i];
                 }
-            }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
+            }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
             return result;
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -101,7 +97,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     value +=result.vector[i]*((Vector) other).vector[i];
                 }
-            }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
+            }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
             return new Scalar(value);
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {

@@ -1,57 +1,56 @@
 package by.it.vasiliuk.jd02_02;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 class Buyer extends Thread implements IBuyer, IBucket {
 
-    private static final Object sync = new Object();
+    private boolean pensioneer = false;
+    HashMap<String,Double> basket = new HashMap<>();
 
-    HashMap<String, Double> paymentCheck = new HashMap<>();
+    Object getMonitor(){
+        return this;
+    }
+
+    Buyer(int number) {
+        super("Customer № " + number);
+        if(number%4==0)this.pensioneer = true;
+        Dispatcher.newBuyer();
+    }
+
 
     @Override
     public void run() {
         enterToMarket();
-        takeBucket();
+        takeBasket();
         chooseGoods();
-        putGoodsToBucket();
+        putGoodsToBasket();
         addToQueue();
         goOut();
     }
 
-    Object getMonitor() {
-        return this;
-    }
-
-    private boolean pensioneer = false;
-
-    Buyer(int number) {
-        super("Buyer № " + number);
-        if (Util.random(1, 4) == 4)
-            this.pensioneer = true;
-        Dispatcher.newBuyer();
-    }
-
     @Override
     public void enterToMarket() {
-        System.out.println(this + " entered to the market");
+        System.out.println(this+" Entered the market");
     }
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " started choosing goods");
-        int timeout = Util.random(500, 2000);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " finished choosing goods");
+        System.out.println(this+" Start choosing goods");
+        if(pensioneer) Util.sleep(Util.random(750,3_000));
+        Util.sleep(Util.random(500,2_000));
+        System.out.println(this+" Finish choosing goods");
+
     }
 
     @Override
     public void addToQueue() {
-        System.out.println(this + " added to queue and waiting");
-        QBuyers.add(this);
-        synchronized (this) {
+        System.err.println(this+" added to queue and waiting");
+        if(pensioneer)QueuePensionners.add(this);
+        else QueueBuyers.add(this);
+        synchronized (this){
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -59,65 +58,48 @@ class Buyer extends Thread implements IBuyer, IBucket {
                 Thread.currentThread().interrupt();
             }
         }
-        print();
-        System.out.println(this + " completed servicing at cashier");
-
-
+        System.out.println(this+" finished with the cashier");
     }
+
 
     @Override
     public void goOut() {
-        System.out.println(this + " left market");
+        System.out.println(this+" Went out from the market");
         Dispatcher.deleteBuyer();
     }
 
+
     @Override
     public String toString() {
-        return this.getName();
+        if(this.pensioneer)
+            return this.getName()+" pensioneer";
+        else return this.getName();
     }
 
     @Override
-    public void takeBucket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " took a bucket");
-
+    public void takeBasket() {
+        if(pensioneer) Util.sleep(Util.random(150,300));
+        Util.sleep(Util.random(100,200));
+        System.out.println(this+" Took a basket");
     }
 
     @Override
-    public void putGoodsToBucket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
-        Iterator iterator = chosenGoods.entrySet().iterator();
-        int size = chosenGoods.size();
-        while (iterator.hasNext() && chosenGoods.size() != Util.random(1, 4)) {
-            iterator.next();
-            if (Util.random(1, size) != size) {
-                iterator.remove();
-                size--;
-            }
-        }
-        System.out.println(this + " put goods into a bucket");
-        paymentCheck.putAll(chosenGoods);
-    }
+    public void putGoodsToBasket() {
+        if(pensioneer) Util.sleep(Util.random(150,300));
+        Util.sleep(Util.random(100,200));
+        int numberOfGoods = Util.random(1,4);
 
-    private void print() {
-        double total = 0;
-        System.out.println("------------------");
-        System.out.printf(" %-13s |\n", this);
-        System.out.println("------------------");
-        for (HashMap.Entry<String, Double> entry : paymentCheck.entrySet()) {
-            total += entry.getValue();
-            System.out.printf(" %-6s = %-5.2f |\n", entry.getKey(), entry.getValue());
-        }
-        System.out.println("------------------");
-        System.out.printf(" Total price = %-5.2f  |\n", total);
-        System.out.println("------------------");
+        Map<String, Double> listOfGoods = Dispatcher.getListOfGoods();
+        Set<String> keySets = listOfGoods.keySet();
 
+        ArrayList<String> listOfKeys = new ArrayList<>(keySets);
+
+        for (int i = 0; i < numberOfGoods ; i++) {
+            int indexRandom = Util.random(0,listOfKeys.size()-1);
+            String chosenGood = listOfKeys.remove(indexRandom);
+            Double prise = listOfGoods.get(chosenGood);
+            this.basket.put(chosenGood,prise);
+            System.out.println(this+" put to the basket: "+chosenGood+" "+prise);
+        }
     }
 }

@@ -1,81 +1,76 @@
 package by.it.vasiliuk.jd02_01;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
-public class Buyer extends Thread implements IBuyer, IBucket {
+public class Buyer extends Thread implements IBuyer,IBucket {
+
+    private boolean pensioneer = false;
+    static Integer numberInTheShop = 0;
+
+    Buyer(int number) {
+        super("Buyer № " + number+" ");
+        if(number%4==0)this.pensioneer=true;
+    }
 
     @Override
     public void run() {
+        numberInTheShop++;
         enterToMarket();
-        takeBucket();
+        takeBasket();
         chooseGoods();
-        putGoodsToBucket();
+        putGoodsToBasket();
         goOut();
-    }
+        numberInTheShop--;
 
-    private boolean pensioneer = false;
-
-    Buyer(int number) {
-        super("Buyer № " + number);
-        if (Util.random(1, 4) == 4)
-            this.pensioneer = true;
     }
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " enter to the market");
-        Dispatcher.newBuyer();
+        System.out.println(this+" Come to the market");
     }
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + " start to choose goods");
-        int timeout = Util.random(500, 2000);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " finish to choose goods");
+        System.out.println(this+" Start to choose goods");
+        if(pensioneer)Util.sleep(Util.random(750,3_000));
+        Util.sleep(Util.random(500,2_000));
+        System.out.println(this+" Finish to choose goods");
+
     }
 
     @Override
     public void goOut() {
-        System.out.println(this + " go out from the market");
-        Dispatcher.deleteBuyer();
+        System.out.println(this+" Go out from the market");
     }
 
     @Override
     public String toString() {
-        return this.getName();
+        return this.getName()+" "+pensioneer;
     }
 
     @Override
-    public void takeBucket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " took a bucket");
-
+    public void takeBasket() {
+        if(pensioneer)Util.sleep(Util.random(150,300));
+        Util.sleep(Util.random(100,200));
+        System.out.println(this+" Take a backet");
     }
 
     @Override
-    public void putGoodsToBucket() {
-        int timeout = Util.random(100, 200);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        HashMap<String, Double> chosenGoods = new HashMap<>(Dispatcher.listOfGoods);
-        Iterator iterator = chosenGoods.entrySet().iterator();
-        int size = chosenGoods.size();
-        while (iterator.hasNext() && chosenGoods.size() !=  Util.random(1, 4)) {
-            iterator.next();
-            if (Util.random(1, size) != size) {
-                iterator.remove();
-                size--;
-            }
+    public void putGoodsToBasket() {
+        if(pensioneer)Util.sleep(Util.random(150,300));
+        Util.sleep(Util.random(100,200));
+        int numberOfGoods = Util.random(1,4);
+
+        Map<String, Double> listOfGoods = Dispatcher.getListOfGoods();
+        Set<String> keySets = listOfGoods.keySet();
+
+        ArrayList<String> listOfKeys = new ArrayList<>(keySets);
+
+        for (int i = 0; i < numberOfGoods ; i++) {
+            int indexRandom = Util.random(0,listOfKeys.size()-1);
+            String chosenGood = listOfKeys.get(indexRandom);
+            Double prise = listOfGoods.get(chosenGood);
+            System.out.println(this+" Chosen: "+chosenGood+" "+prise);
         }
-        System.out.println(this + " putted goods into a bucket");
-        System.out.println(chosenGoods);
     }
 }

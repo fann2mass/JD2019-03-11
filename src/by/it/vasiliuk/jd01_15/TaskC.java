@@ -1,13 +1,5 @@
 package by.it.vasiliuk.jd01_15;
 
-/*TaskC Нужно реализовать на java приложение -аналог командной строки Windows.
-Приложение должно использовать класс File и поддерживать две команды консоли:
-команду cd-смена каталога (посмотрите пример: Win+R→cmd→cd \→dir).
-В тестах проверяются всего две команды cd ..и cd имя_папки_в_текущем_каталоге
-команду dir-вывод каталога, формат вывода -аналогичный формату в Windows.
-команда end–завершение работы.
-Стартовым каталогом при запуске приложения должна быть папка by.it.ваша_фамилия.jd01_15.*/
-
 import java.io.File;
 import java.util.Date;
 import java.util.Formatter;
@@ -29,10 +21,10 @@ public class TaskC {
         }
     }
     private static String getFirstPath() {
-        String source = System.getProperty("user.dir") + File.separator + "src" + File.separator;
+        String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         String strPackage = TaskA.class.getPackage().getName();
         String relPath = strPackage.replace(".", File.separator);
-        return source + relPath + File.separator;
+        return src + relPath + File.separator;
     }
 
 

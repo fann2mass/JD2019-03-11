@@ -3,41 +3,65 @@ package by.it.vasiliuk.jd02_02;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Market {
+
+class Market {
 
     public static void main(String[] args) {
 
+        System.out.println("//////////// Store is opened //////////////");
         List<Thread> threads = new ArrayList<>();
-        System.out.println("Market is opened");
+        int numberCashiers = 0;
 
-        for (int i = 1; i <= 2; i++) {
-            Cashier cashier = new Cashier(i);
+        for (int i = 0; i < 5 ; i++) {
+            Cashier cashier = new Cashier(++numberCashiers);
             Thread threadCashier = new Thread(cashier);
             threadCashier.start();
             threads.add(threadCashier);
+
         }
 
         int numberBuyer = 0;
+        int time = 0;
+
         while (!Dispatcher.planComplete()) {
-            int count = Util.random(2);
-            for (int n = 0; n < count; n++) {
-                if (!Dispatcher.planComplete()) {
-                    Buyer buyer = new Buyer(++numberBuyer);
-                    buyer.start();
-                    threads.add(buyer);
+            if (time <= 30) {
+                int count = Util.random(2);
+                if (!(Dispatcher.getBuyerInMarket() >= time + 10)) {
+                    for (int n = 0; n < count; n++) {
+                        if (!Dispatcher.planComplete()) {
+                            Buyer buyer = new Buyer(++numberBuyer);
+                            buyer.start();
+                            threads.add(buyer);
+                        }
+                    }
                 }
+                time++;
+                Util.sleep(1000);
+
+            } else {
+                int count = Util.random(2);
+                if (Dispatcher.getBuyerInMarket() <= 40 + (30 - time)) {
+                    for (int n = 0; n < count; n++) {
+                        if (!Dispatcher.planComplete()) {
+                            Buyer buyer = new Buyer(++numberBuyer);
+                            buyer.start();
+                            threads.add(buyer);
+                        }
+                    }
+                }
+                time++;
+                Util.sleep(1000);
             }
-            Util.sleep(1000);
+            if(time==Dispatcher.MINUTE)time=0;
         }
 
-        for (Thread th : threads) {
+        for (Thread buyer : threads) {
             try {
-                th.join();
+                buyer.join();
             } catch (InterruptedException e) {
-                System.out.println("wow");
+                e.printStackTrace();
             }
         }
-        System.out.println("=====market closed=====");
-
+        System.out.println("//////////// Store is closed //////////////");
     }
 }

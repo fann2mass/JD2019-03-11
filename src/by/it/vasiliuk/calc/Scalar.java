@@ -11,13 +11,11 @@ public class Scalar extends Var {
         this.value = value;
     }
 
-
     Scalar(String value) {
         this.value = Double.parseDouble(value);
     }
 
     @Override
-
     public String toString() {
         return Double.toString(value);
     }
@@ -48,7 +46,7 @@ public class Scalar extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if(other instanceof Scalar) {
-            if (((Scalar) other).value == 0) throw new CalcException("Деление на ноль.");
+            if (((Scalar) other).value == 0) throw new CalcException("Division by zero.");
             return new Scalar(this.value / ((Scalar) other).value);
         }
         else  return super.div(other);

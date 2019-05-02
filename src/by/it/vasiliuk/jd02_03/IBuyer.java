@@ -1,4 +1,4 @@
-package by.it.vasiliuk.jd02_01;
+package by.it.vasiliuk.jd02_03;
 
 public interface IBuyer {
 
@@ -8,4 +8,5 @@ public interface IBuyer {
 
     void goOut();
 
+    void addToQueue();
 }

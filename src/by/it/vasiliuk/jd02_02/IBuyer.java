@@ -2,11 +2,11 @@ package by.it.vasiliuk.jd02_02;
 
 interface IBuyer {
 
-    void enterToMarket();    //вошел в магазин (мгновенно)
+    void enterToMarket();
 
-    void chooseGoods();      //выбрал товар (от 0,5 до 2 секунд)
+    void chooseGoods();
 
-    void addToQueue();       //отправился в очередь
+    void goOut();
 
-    void goOut();            //отправился на выход(мгновенно)
+    void addToQueue();
 }

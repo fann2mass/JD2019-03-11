@@ -1,0 +1,4 @@
+message.welcome=你好！
+message.question=今天怎么样?
+person.firstname=凯特
+person.lastname=Slaikouskaya

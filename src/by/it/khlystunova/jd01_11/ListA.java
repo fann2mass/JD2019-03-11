@@ -2,7 +2,7 @@ package by.it.khlystunova.jd01_11;
 
 import java.util.*;
 
-/*TaskA. Свой ListA. Напишите класс ListA<T>, который реализует 3 метода add(T e),
+/*TaskB. Свой ListA. Напишите класс ListA<T>, который реализует 3 метода add(T e),
 remove(int index), get(int index)из интерфейса List<T>
 (реализация остальных –фиктивная)и плюс к этому реализует toString()как в ArrayList.*/
 

@@ -15,8 +15,8 @@ public class TaskB {
 		getDeleteAndPut(txt, java);
 	}
 	/*
-	* for creating files:
-	* output and input
+	 * for creating files:
+	 * output and input
 	 */
 	private static String getFileName(Class<?> cl, String name) {
 		String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
@@ -48,4 +48,3 @@ public class TaskB {
 		}
 	}
 }
-

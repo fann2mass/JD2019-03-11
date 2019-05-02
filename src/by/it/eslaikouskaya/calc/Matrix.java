@@ -1,5 +1,6 @@
 package by.it.eslaikouskaya.calc;
 
+
 import java.util.Arrays;
 
 class Matrix extends Var {
@@ -9,12 +10,18 @@ class Matrix extends Var {
 		return value;
 	}
 
+	private ResourceManager manager = ResourceManager.INSTANCE;
+	private Singleton logger = Singleton.getInstance();
 
 	@Override
-	public Var add(Var other) throws CalcException{
+	public Var add(Var other) throws CalcException {
 		Matrix result = new Matrix(value);
 		this.value= Arrays.copyOf(value,value.length);
 		if (other instanceof Matrix){
+			if (((Matrix) other).value.length != this.value.length) {
+				logger.log(manager.getString("message.size"));
+				throw new CalcException(manager.getString("message.size"));
+			}
 			for (int i = 0; i < result.value.length; i++) {
 				for (int j = 0; j < result.value[i].length; j++) {
 					result.value[i][j]+=((Matrix) other).getValue()[i][j];
@@ -25,9 +32,6 @@ class Matrix extends Var {
 		if (other instanceof Scalar){
 			for (int i = 0; i < result.value.length; i++) {
 				for (int j = 0; j < result.value[i].length; j++){
-					if (result.value[i].length!=((Matrix) other).value[j].length){
-					throw new CalcException("Размер не подходит");
-				}
 					result.value[i][j]+=((Scalar) other).getValue();
 				}
 			}
@@ -37,15 +41,17 @@ class Matrix extends Var {
 	}
 
 	@Override
-	public Var sub(Var other) throws CalcException{
+	public Var sub(Var other) throws CalcException {
 		Matrix result = new Matrix(value);
 		this.value=Arrays.copyOf(value,value.length);
 
 		if (other instanceof Matrix){
 			for (int i = 0; i < result.value.length; i++)
 				for (int j = 0; j < result.value[0].length; j++) {
-					if (result.value[j].length!=((Matrix) other).value[j].length)
-						throw new CalcException("Размер не подходит");
+					if (result.value[j].length != ((Matrix) other).value[j].length) {
+						logger.log(manager.getString("message.size"));
+						throw new CalcException(manager.getString("message.size"));
+					}
 					result.value[i][j]-=((Matrix) other).getValue()[i][j];
 				}
 			return result;
@@ -54,9 +60,6 @@ class Matrix extends Var {
 		if (other instanceof Scalar){
 			for (int i = 0; i < result.value.length; i++) {
 				for (int j = 0; j < result.value[i].length; j++) {
-					if (result.value[i].length!=((Matrix) other).value[j].length){
-						throw new CalcException("Размер не подходит");
-					}
 					result.value[i][j]-=((Scalar) other).getValue();
 				}
 			}
@@ -66,14 +69,16 @@ class Matrix extends Var {
 	}
 
 	@Override
-	public Var mul(Var other) throws CalcException{
+	public Var mul(Var other) throws CalcException {
 		this.value=Arrays.copyOf(value,value.length);
 		Matrix result = new Matrix(value);
 
 		if (other instanceof Matrix){
 			double[][] result0 = new double[result.value.length][((Matrix) other).value[0].length];
-			if (result.value.length!=((Matrix) other).value[0].length)
-				throw new CalcException("Размер не подходит");
+			if (result.value.length != ((Matrix) other).value[0].length) {
+				logger.log(manager.getString("message.size"));
+				throw new CalcException(manager.getString("message.size"));
+			}
 			for (int i = 0; i < result.value.length; i++)
 				for (int j = 0; j < ((Matrix) other).value[0].length; j++)
 					for (int k = 0; k < ((Matrix) other).value.length; k++)
@@ -95,7 +100,8 @@ class Matrix extends Var {
 			for (int i = 0; i < result.value.length; i++)
 				for (int j = 0; j < resultVector.length; j++) {
 					if (result.value[i].length != ((Vector) other).getValue().length) {
-						throw new CalcException("Размер не подходит");
+						logger.log(manager.getString("message.size"));
+						throw new CalcException(manager.getString("message.size"));
 					}
 					resultVector[i] += result.value[i][j] * ((Vector) other).getValue()[j];
 				}
@@ -107,7 +113,7 @@ class Matrix extends Var {
 
 
 	@Override
-	public Var div(Var other) throws CalcException{
+	public Var div(Var other) throws CalcException {
 		this.value=Arrays.copyOf(value,value.length);
 		Matrix result = new Matrix(value);
 		if (other instanceof Scalar){

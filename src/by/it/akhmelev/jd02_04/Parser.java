@@ -70,6 +70,7 @@ class Parser {
         while (matcher.find())
             operations.add(matcher.group());
 
+
         while (operations.size()>0) {
             int index = getIndexOperation(operations);
             String operation = operations.remove(index);

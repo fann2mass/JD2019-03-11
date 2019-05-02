@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT customers (customer)+>
+        <!ELEMENT customer (contactName, companyName, phone, orders)>
+        <!ELEMENT contactName (#PCDATA)>
+        <!ELEMENT companyName (#PCDATA)>
+        <!ELEMENT phone (#PCDATA)>
+        <!ELEMENT orders (order)+>
+        <!ELEMENT order (address,city,region,postalCode,country,price)>
+        <!ELEMENT address (#PCDATA)>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT region (#PCDATA)>
+        <!ELEMENT postalCode (#PCDATA)>
+        <!ELEMENT country (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ATTLIST price currency PCDATA #REQUIRED>
+

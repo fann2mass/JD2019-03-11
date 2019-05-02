@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_07;
+package by.it.zalesky.jd02_07;
 
 import org.xml.sax.SAXException;
 
@@ -18,11 +18,13 @@ public class TaskC {
     public static void main(String[] args) throws SAXException, IOException {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory schemaFactory = SchemaFactory.newInstance(language);
-        File xsdFile = new File(System.getProperty("user.dir") +
-                        "/src/by/it/akhmelev/jd02_07/customers.xsd");
+        File xsdFile = new File(
+                System.getProperty("user.dir") +
+                        "/src/by/it/zalesky/jd02_07/customers.xsd"
+        );
 
         String xml = System.getProperty("user.dir") +
-                "/src/by/it/akhmelev/jd02_07/customers+xsd.xml";
+                "/src/by/it/zalesky/jd02_07/customers+xsd.xml";
 
         Schema schema = schemaFactory.newSchema(xsdFile);
         Validator validator = schema.newValidator();
@@ -32,7 +34,7 @@ public class TaskC {
             Source source = new StreamSource(reader);
             validator.validate(source);
         } catch (Exception e) {
-            System.out.println("Имеем проблемы");
+            System.out.println("Some problems");
             System.out.flush();
             throw e;
         }

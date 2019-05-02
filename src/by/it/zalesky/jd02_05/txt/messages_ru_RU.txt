@@ -1,1 +1,4 @@
-message.welcome=Привет!
+message.welcome=Добро пожаловать!
+message.question=Как дела?
+person.firstName=Евгений
+person.lastName=Залесский

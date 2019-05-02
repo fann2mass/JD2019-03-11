@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE customers SYSTEM "customers.dtd" >
+<customers>
+  <customer>
+    <contactName>Dereck</contactName>
+    <companyName>Bob's Heating</companyName>
+    <phone>(503) 555-7555</phone>
+    <orders>
+      <order>
+        <address>2732 Baker Blvd.</address>
+        <city>Everett</city>
+        <region>WA</region>
+        <postalCode>97403</postalCode>
+        <country>USA</country>
+        <price currency="USD">750</price>
+      </order>
+      <order>
+        <address>City Center Plaza </address>
+        <city>Sammamish</city>
+        <region>WA</region>
+        <postalCode>97827</postalCode>
+        <country>USA</country>
+        <price currency="USD">980</price>
+      </order>
+    </orders>
+  </customer>
+  <customer>
+    <contactName>Peter</contactName>
+    <companyName>Deck Guru</companyName>
+    <phone>(509) 555-6221</phone>
+    <orders>
+      <order>
+        <address>Casino Road 15th</address>
+        <city>Linwood</city>
+        <region>WA</region>
+        <postalCode>97827</postalCode>
+        <country>USA</country>
+        <price currency="USD">560</price>
+      </order>
+    </orders>
+  </customer>
+</customers>

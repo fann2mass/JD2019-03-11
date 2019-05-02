@@ -1,16 +1,20 @@
 package by.it.khlystunova.jd02_03;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 @SuppressWarnings("all")
 class Dispatcher {
 
+   static ExecutorService executorService = Executors.newFixedThreadPool(5);
 
    static final int K_SPEED =1000;
    private static final int PLAN = 100;
    private static final AtomicInteger buyerCounter = new AtomicInteger(0);
    private static final AtomicInteger buyerInMarket = new AtomicInteger(0);
-   private static final AtomicInteger cashiersCounter = new AtomicInteger(0);
+    static final AtomicInteger cashiersCounter = new AtomicInteger(0);
+
    static  double SUM = 0;
 
 
@@ -29,14 +33,6 @@ class Dispatcher {
       buyerInMarket.getAndDecrement();
    }
 
-   static void newCashier() {
-      cashiersCounter.getAndIncrement();
-   }
-
-   static void deleteCashier() {
-      cashiersCounter.getAndDecrement();
-   }
-
    static int getBuyerInMarket(){
       return buyerInMarket.get();
    }
@@ -45,13 +41,17 @@ class Dispatcher {
       return buyerCounter.get() == PLAN;
    }
 
-    /*static boolean needCashiers() {
-      int allQueue = (QueueBuyers.getSize()+ QueuePensionners.getSize());
+
+
+    static boolean needCashiers() {
       boolean res;
-      res = (cashiersCounter.get()*5 < allQueue);
-         if (cashiersCounter.get() >= 5 ) res = false;
+      res = (cashiersCounter.get()*5 <QueueBuyers.getBuyers().size());
+         if (!res && cashiersCounter.get() == 1)
+          res = !Dispatcher.planComplete();
+         if (cashiersCounter.get() >= 5)
+            res = false;
         return res;
-    }*/
+    }
 
 
     private static final ConcurrentHashMap<String,Double> LIST_OF_GOODS = new ConcurrentHashMap<String, Double>(){{
@@ -71,5 +71,13 @@ class Dispatcher {
      static ConcurrentHashMap<String, Double> getListOfGoods() {
         return LIST_OF_GOODS;
    }
+
+    static void executorShutDown() {
+      executorService.shutdown();
+      while (!executorService.isTerminated()) {
+         Util.sleep(10);
+      }
+   }
+
 
 }

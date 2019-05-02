@@ -1,0 +1,12 @@
+message.size=尺寸写错了
+message.number=数不对或者没写了工序
+message.operation=工序不对
+message.noOperation=没有这种的工序
+message.zero=不能除法
+message.create=不能兴办
+message.sum=综法
+message.sub=减法
+message.mul=乘法
+message.div=除法
+message.impossible=不可能
+massage.class=这是

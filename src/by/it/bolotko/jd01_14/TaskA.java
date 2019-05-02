@@ -47,8 +47,8 @@ public class TaskA {
                 sum = sum + i;
                 count++;
             }
-            System.out.println("\navg " + sum / count);
-            out2.print("\navg" + sum / count);
+            System.out.println("\navg=" + sum / count);
+            out2.print("\navg=" + sum / count);
         } catch (IOException e) {
             e.printStackTrace();
         }

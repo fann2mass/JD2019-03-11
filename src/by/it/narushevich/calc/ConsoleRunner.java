@@ -3,7 +3,7 @@ package by.it.narushevich.calc;
 import java.util.Scanner;
 
 public class ConsoleRunner {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         try {
             Var.load();
             Logger.loadLog();
@@ -36,8 +36,6 @@ public class ConsoleRunner {
                     logger.fillReport(e.getMessage());
                 }
                 printer.print(result);
-
-
         }
     }
 }

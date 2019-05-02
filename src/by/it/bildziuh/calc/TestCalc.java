@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ParserTest {
+public class TestCalc {
 
     private static by.it.bildziuh.calc.Parser parser;
 

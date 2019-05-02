@@ -9,7 +9,7 @@ public class TaskB {
 
     private static ResourceManager manager = ResourceManager.INSTANCE;
     private static Locale locale;
-    private static String date;
+    private static String dateLocalized;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -37,9 +37,9 @@ public class TaskB {
     }
 
     private static void setDateFormat(){
-        Date dateTemp = new Date();
+        Date date = new Date();
         DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, locale);
-        date = df.format(dateTemp);
+        dateLocalized = df.format(date);
     }
 
     private static void print() {
@@ -48,7 +48,7 @@ public class TaskB {
                 manager.getString(Msg.QUESTION),
                 manager.getString(Msg.FISRTNAME),
                 manager.getString(Msg.LASTNAME),
-                date
+                dateLocalized
         );
     }
 }

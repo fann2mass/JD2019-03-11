@@ -29,7 +29,13 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        throw new CalcException(ConsoleRunner.manager.getString(Msg.UNABLETOCREATE) + ": " + operand);
+        else {
+            Var var = vars.get(operand);
+            if (var != null) {
+                return var;
+            }
+            throw new CalcException(ConsoleRunner.manager.getString(Msg.UNABLETOCREATE) + ": " + operand);
+        }
     }
 
     static Map<String, Var> sortVarList() {

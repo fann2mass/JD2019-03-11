@@ -7,6 +7,13 @@ import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
+    private static String UNABLETOCREATE = ConsoleRunner.manager.getString(Msg.UNABLETOCREATE);
+    private static String UNABLETODO = ConsoleRunner.manager.getString(Msg.UNABLETODO);
+/*    private static String UNABLETOSUM = ConsoleRunner.manager.getString(Msg.UNABLETOSUM);
+    private static String UNABLETOSUB = ConsoleRunner.manager.getString(Msg.UNABLETOSUB);
+    private static String UNABLETOMUL = ConsoleRunner.manager.getString(Msg.UNABLETOMUL);
+    private static String UNABLETODIV = ConsoleRunner.manager.getString(Msg.UNABLETODIV);*/
+
     private static Map<String, Var> vars = new HashMap<>();
 
     static Map<String, Var> varList() {
@@ -23,7 +30,7 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        throw new CalcException("Невозможно создать " + operand);
+        throw new CalcException(UNABLETOCREATE + operand);
     }
 
     static Map<String, Var> sortVarList() {
@@ -77,24 +84,24 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Операция сложения " + this + " + " + other + " невозможна");
+        throw new CalcException(UNABLETODO + this + " + " + other);
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычитания " + this + " - " + other + " невозможна");
+        throw new CalcException(UNABLETODO + this + " - " + other);
 
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения " + this + " * " + other + " невозможна");
+        throw new CalcException(UNABLETODO + this + " * " + other);
 
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления " + this + " / " + other + " невозможна");
+        throw new CalcException(UNABLETODO + this + " / " + other);
 
     }
 

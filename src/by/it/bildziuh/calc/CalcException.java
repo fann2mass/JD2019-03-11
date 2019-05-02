@@ -2,15 +2,17 @@ package by.it.bildziuh.calc;
 
 class CalcException extends Exception {
 
+    private static String ERRORCALCEXCEPTION = ConsoleRunner.manager.getString(Msg.ERRORCALCEXCEPTION);
+
     CalcException() {
     }
 
     CalcException(String message) {
-        super("ERROR: " + message);
+        super(ERRORCALCEXCEPTION + message);
     }
 
     CalcException(String message, Throwable cause) {
-        super("ERROR: " + message, cause);
+        super(Msg.ERRORCALCEXCEPTION + message, cause);
     }
 
     CalcException(Throwable cause) {
@@ -18,6 +20,6 @@ class CalcException extends Exception {
     }
 
     CalcException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super("ERROR: " + message, cause, enableSuppression, writableStackTrace);
+        super(ERRORCALCEXCEPTION + message, cause, enableSuppression, writableStackTrace);
     }
 }

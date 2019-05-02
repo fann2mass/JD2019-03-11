@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 class Parser {
 
+    private String UNKNOWNOPERATION = ConsoleRunner.manager.getString(Msg.UNKNOWNOPERATION);
+
     private static Map<String, Integer> mapPriority = new HashMap<String, Integer>() {
         {
             this.put("=", 0);
@@ -38,7 +40,7 @@ class Parser {
         }
         Var leftVar = Var.createVar(strOne);
         if (leftVar == null || rightVar == null)
-            throw new CalcException("неизвестная операция");
+            throw new CalcException(UNKNOWNOPERATION);
         switch (operation) {
             case "+":
                 return leftVar.add(rightVar);
@@ -49,7 +51,7 @@ class Parser {
             case "/":
                 return leftVar.div(rightVar);
             default:
-                throw new CalcException("неизвестная операция");
+                throw new CalcException(UNKNOWNOPERATION);
         }
     }
 

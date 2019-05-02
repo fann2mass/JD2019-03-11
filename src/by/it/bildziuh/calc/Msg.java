@@ -1,7 +1,7 @@
 package by.it.bildziuh.calc;
 
 public interface Msg {
-    String ERRORCALCEXCEPTION = "error.CalcException";
+    String CALCEXCEPTION = "error.CalcException";
     String UNKNOWNOPERATION = "error.unknownOperation";
     String UNABLETOCREATE = "error.unableToCreate";
     String UNABLETODO = "error.unableToDo";

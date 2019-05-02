@@ -7,12 +7,11 @@ import java.util.TreeMap;
 
 abstract class Var implements Operation {
 
-    private static String UNABLETOCREATE = ConsoleRunner.manager.getString(Msg.UNABLETOCREATE);
-    private static String UNABLETODO = ConsoleRunner.manager.getString(Msg.UNABLETODO);
-/*    private static String UNABLETOSUM = ConsoleRunner.manager.getString(Msg.UNABLETOSUM);
-    private static String UNABLETOSUB = ConsoleRunner.manager.getString(Msg.UNABLETOSUB);
-    private static String UNABLETOMUL = ConsoleRunner.manager.getString(Msg.UNABLETOMUL);
-    private static String UNABLETODIV = ConsoleRunner.manager.getString(Msg.UNABLETODIV);*/
+    private String UNABLETODO = ConsoleRunner.manager.getString(Msg.UNABLETODO);
+/*    private String UNABLETOSUM = ConsoleRunner.manager.getString(Msg.UNABLETOSUM);
+    private String UNABLETOSUB = ConsoleRunner.manager.getString(Msg.UNABLETOSUB);
+    private String UNABLETOMUL = ConsoleRunner.manager.getString(Msg.UNABLETOMUL);
+    private String UNABLETODIV = ConsoleRunner.manager.getString(Msg.UNABLETODIV);*/
 
     private static Map<String, Var> vars = new HashMap<>();
 
@@ -30,7 +29,7 @@ abstract class Var implements Operation {
             return new Matrix(operand);
         else if (vars.containsKey(operand))
             return vars.get(operand);
-        throw new CalcException(UNABLETOCREATE + operand);
+        throw new CalcException(ConsoleRunner.manager.getString(Msg.UNABLETOCREATE) + ": " + operand);
     }
 
     static Map<String, Var> sortVarList() {

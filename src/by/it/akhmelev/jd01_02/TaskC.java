@@ -1,7 +1,6 @@
 package by.it.akhmelev.jd01_02;
 
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TaskC {
@@ -62,7 +61,10 @@ public class TaskC {
         }
 
         for (int[] row : res) {
-            System.out.println(Arrays.toString(row));
+            for (int v : row) {
+                System.out.print(v+" ");
+            }
+            System.out.println();
         }
 
         return res;

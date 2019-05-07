@@ -1,7 +1,6 @@
 package by.it.narushevich.jd02_08;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class SaxHandler extends DefaultHandler {
@@ -11,27 +10,40 @@ public class SaxHandler extends DefaultHandler {
 
     @Override
     public void startDocument() {
-        System.out.println("Start Document");
+        tab = "";
+        text = new StringBuilder();
     }
 
     @Override
     public void endDocument() {
-        System.out.println("End Document");
+        System.out.println("=====");
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        tab = "";
-        super.startElement(uri, localName, qName, attributes);
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
+        System.out.print(tab+"<"+qName);
+        for (int i = 0; i < attributes.getLength(); i++) {
+            System.out.printf(" %s=\"%s\"",
+                    attributes.getLocalName(i),
+                    attributes.getValue(i));
+        }
+        System.out.println(">");
+        tab = tab + '\t';
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-        super.endElement(uri, localName, qName);
+    public void endElement(String uri, String localName, String qName){
+        String nodeText = text.toString().trim();
+        if (!nodeText.isEmpty()){
+            System.out.println(tab+nodeText);
+            text.setLength(0);
+        }
+        tab=tab.substring(1);
+        System.out.println(tab+"</"+qName+">");
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
-        super.characters(ch, start, length);
+    public void characters(char[] ch, int start, int length) {
+        text.append(ch,start,length);
     }
 }

@@ -13,7 +13,7 @@
                 <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">26</width>
-                <heigth currency="mm">28</heigth>
+                <height currency="mm">28</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2005</inCollectionSince>
                 <exchange>yes</exchange>
@@ -24,7 +24,7 @@
                 <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">26</width>
-                <heigth currency="mm">28</heigth>
+                <height currency="mm">28</height>
                 <corners>cut off</corners>
                 <inCollectionSince>1999</inCollectionSince>
                 <exchange>yes</exchange>
@@ -43,7 +43,7 @@
                 <purchaseCountry>France</purchaseCountry>
                 <material>paper</material>
                 <width currency="mm">23</width>
-                <heigth currency="mm">28</heigth>
+                <height currency="mm">28</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2012</inCollectionSince>
                 <exchange>yes</exchange>
@@ -54,7 +54,7 @@
                 <purchaseCountry>England</purchaseCountry>
                 <material>cardboard</material>
                 <width currency="mm">23</width>
-                <heigth currency="mm">28</heigth>
+                <height currency="mm">28</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2001</inCollectionSince>
                 <exchange>yes</exchange>

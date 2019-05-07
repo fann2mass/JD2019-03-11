@@ -7,7 +7,7 @@
     <!ELEMENT location (#PCDATA)>
     <!ELEMENT collection (teaTag)+>
     <!ELEMENT teaTag (trademark, originCountry, purchaseCountry,
-            material, width, heigth, corners, inCollectionSince, exchange)>
+            material, width, height, corners, inCollectionSince, exchange)>
     <!ELEMENT trademark (#PCDATA)>
     <!ELEMENT originCountry (#PCDATA)>
     <!ELEMENT purchaseCountry (#PCDATA)>
@@ -15,8 +15,8 @@
     <!ELEMENT width (#PCDATA)>
     <!ATTLIST width
                 currency PCDATA #REQUIRED>
-    <!ELEMENT heigth (#PCDATA)>
-    <!ATTLIST heigth
+    <!ELEMENT height (#PCDATA)>
+    <!ATTLIST height
                 currency PCDATA #REQUIRED>
     <!ELEMENT corners (#PCDATA)>
     <!ELEMENT inCollectionSince (#PCDATA)>

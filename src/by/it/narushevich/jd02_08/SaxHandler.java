@@ -16,7 +16,6 @@ public class SaxHandler extends DefaultHandler {
 
     @Override
     public void endDocument() {
-        System.out.println("=====");
     }
 
     @Override

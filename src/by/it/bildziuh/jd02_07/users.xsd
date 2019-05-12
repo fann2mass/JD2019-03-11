@@ -3,55 +3,59 @@
         targetNamespace="http://jd02_09.bildziuh.it.by/"
         xmlns:my="http://jd02_09.bildziuh.it.by/"
         elementFormDefault="qualified">
-<element name="users">
-  <complexType>
-    <sequence>
-      <element
-              name="user"
-              type="my:TypeOfUser"
-              minOccurs="1"
-              maxOccurs="unbounded" />
-    </sequence>
-  </complexType>
-</element>
+    <element name="users">
+        <complexType>
+            <sequence>
+                <element
+                        name="admin"
+                        type="my:Admin"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+                <element
+                        name="user"
+                        type="my:TypeOfUser"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
 
-<complexType name="TypeOfUser">
-  <sequence>
-    <element name="login" type="string" />
-    <element name="password" type="string" />
-    <element name="email" type="string" />
-    <element name="ads" type="my:TypeOfAds" />
-  </sequence>
-</complexType>
+    </element>
 
+    <complexType name="TypeOfUser">
+        <sequence>
+            <element name="login" type="string"/>
+            <element name="password" type="string"/>
+            <element name="email" type="string"/>
+            <element name="mods" type="my:TypeOfMods"/>
+        </sequence>
+    </complexType>
 
-<complexType name="TypeOfAds">
-  <sequence>
-    <element name="ad"
-             type="my:TypeOfAd"
-             minOccurs="1"
-             maxOccurs="unbounded" />
-  </sequence>
-</complexType>
+    <complexType name="Admin">
+        <sequence>
+            <element name="login" type="string"/>
+            <element name="password" type="string"/>
+            <element name="email" type="string"/>
+        </sequence>
+    </complexType>
 
-<complexType name="TypeOfAd">
-  <all>
-    <element name="description" type="string" />
-    <element name="address" type="string" />
-    <element name="floor" type="integer" />
-    <element name="floors" type="positiveInteger" />
-    <element name="rooms" type="positiveInteger" />
-    <element name="price" type="my:TypeOfPrice" />
-  </all>
-</complexType>
+    <complexType name="TypeOfMods">
+        <sequence>
+            <element name="mod"
+                     type="my:TypeOfMod"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
 
-<complexType name="TypeOfPrice">
-  <simpleContent>
-    <extension base="double">
-      <attribute name="currency" type="string"/>
-    </extension>
-  </simpleContent>
-</complexType>
-
+    <complexType name="TypeOfMod">
+        <all>
+            <element name="game" type="string"/>
+            <element name="group" type="string"/>
+            <element name="name" type="string"/>
+            <element name="standalone" type="boolean"/>
+            <element name="description" type="string"/>
+            <element name="size" type="positiveInteger"/>
+        </all>
+    </complexType>
 
 </schema>

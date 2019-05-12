@@ -21,6 +21,14 @@
 
     </element>
 
+    <complexType name="Admin">
+        <sequence>
+            <element name="login" type="string"/>
+            <element name="password" type="string"/>
+            <element name="email" type="string"/>
+        </sequence>
+    </complexType>
+
     <complexType name="TypeOfUser">
         <sequence>
             <element name="login" type="string"/>
@@ -30,13 +38,6 @@
         </sequence>
     </complexType>
 
-    <complexType name="Admin">
-        <sequence>
-            <element name="login" type="string"/>
-            <element name="password" type="string"/>
-            <element name="email" type="string"/>
-        </sequence>
-    </complexType>
 
     <complexType name="TypeOfMods">
         <sequence>

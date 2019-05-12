@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Matrix extends Var {
 
-    private String INCONSISTENTDIM = ConsoleRunner.manager.getString(Msg.INCONSISTENTDIM);
+    private String INCONSISTENTDIM = Localization.manager.getString(Msg.INCONSISTENTDIM);
 
     private double[][] value;
 

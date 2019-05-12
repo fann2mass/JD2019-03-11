@@ -11,5 +11,7 @@ public interface Msg {
     String UNABLETODIV = "error.unableToDiv";
     String DIVIDEDBYZERO = "error.dividedByZero";
     String INCONSISTENTDIM = "error.inconsistent";
-
+    String LOG = "error.log";
+    String VAR = "msg.var";
+    String LOCALE = "msg.locale";
 }

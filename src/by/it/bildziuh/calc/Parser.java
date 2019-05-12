@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    private String UNKNOWNOPERATION = ConsoleRunner.manager.getString(Msg.UNKNOWNOPERATION);
+    private String UNKNOWNOPERATION = Localization.manager.getString(Msg.UNKNOWNOPERATION);
 
     private static Map<String, Integer> mapPriority = new HashMap<String, Integer>() {
         {
@@ -33,12 +33,12 @@ class Parser {
     }
 
     private Var doOperation(String strOne, String operation, String strTwo) throws CalcException {
-        Var rightVar = Var.createVar(strTwo);
+        Var rightVar = VarFactory.createVar(strTwo);
         if (operation.equals("=")) {
-            Var.saveVar(strOne, rightVar);
+            VarFactory.saveVar(strOne, rightVar);
             return rightVar;
         }
-        Var leftVar = Var.createVar(strOne);
+        Var leftVar = VarFactory.createVar(strOne);
         if (leftVar == null || rightVar == null)
             throw new CalcException(UNKNOWNOPERATION);
         switch (operation) {
@@ -71,6 +71,6 @@ class Parser {
             Var doOperationResult = doOperation(leftPart, operation, rightPart);
             operands.add(index, doOperationResult.toString());
         }
-        return Var.createVar(operands.get(0));
+        return VarFactory.createVar(operands.get(0));
     }
 }

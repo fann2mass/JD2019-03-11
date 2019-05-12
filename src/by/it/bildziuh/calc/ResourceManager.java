@@ -22,4 +22,6 @@ public enum ResourceManager {
         this.resourceBundle = ResourceBundle.getBundle(baseName, locale);
     }
 
+
+
 }

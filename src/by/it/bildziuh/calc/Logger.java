@@ -1,14 +1,15 @@
 package by.it.bildziuh.calc;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 
 class Logger {
 
+    private String logError = Localization.manager.getString(Msg.LOG);
+
     private static volatile Logger instance;
+
+    private static StringBuilder sb = new StringBuilder();
 
     private static String getFileName(String name) {
         String src = System.getProperty("user.dir") + File.separator + "src" + File.separator;
@@ -34,6 +35,22 @@ class Logger {
         return instance;
     }
 
+    void loadLog(){
+        File file = new File(getFileName(filename));
+
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                    sb.append('\n');
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     void log(String message) {
         try (
                 BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))
@@ -44,9 +61,10 @@ class Logger {
             out.newLine();
             out.flush();
         } catch (IOException e) {
-            System.out.println("У нас проблемы...");
+            Logger logger = Logger.getInstance();
+            logger.log(logError);
+            System.out.println(logError);
         }
     }
-
 
 }

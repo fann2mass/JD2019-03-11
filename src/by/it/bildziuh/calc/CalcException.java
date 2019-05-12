@@ -6,11 +6,11 @@ class CalcException extends Exception {
     }
 
     CalcException(String message) {
-        super(ConsoleRunner.manager.getString(Msg.CALCEXCEPTION) + ": " + message);
+        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message);
     }
 
     CalcException(String message, Throwable cause) {
-        super(ConsoleRunner.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause);
+        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause);
     }
 
     CalcException(Throwable cause) {
@@ -18,6 +18,6 @@ class CalcException extends Exception {
     }
 
     CalcException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(ConsoleRunner.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause, enableSuppression, writableStackTrace);
+        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause, enableSuppression, writableStackTrace);
     }
 }

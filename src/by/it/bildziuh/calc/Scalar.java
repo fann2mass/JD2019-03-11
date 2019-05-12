@@ -2,7 +2,7 @@ package by.it.bildziuh.calc;
 
 class Scalar extends Var implements Operation {
 
-    private String DIVIDEDBYZERO = ConsoleRunner.manager.getString(Msg.DIVIDEDBYZERO);
+    private String DIVIDEDBYZERO = Localization.manager.getString(Msg.DIVIDEDBYZERO);
 
     private double value;
 

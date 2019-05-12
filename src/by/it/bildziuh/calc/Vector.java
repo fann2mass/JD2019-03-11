@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 class Vector extends Var  {
 
-    private String DIVIDEDBYZERO = ConsoleRunner.manager.getString(Msg.DIVIDEDBYZERO);
-    private String INCONSISTENTDIM = ConsoleRunner.manager.getString(Msg.INCONSISTENTDIM);
+    private String DIVIDEDBYZERO = Localization.manager.getString(Msg.DIVIDEDBYZERO);
 
     private double[] value;
 
@@ -58,7 +57,7 @@ class Vector extends Var  {
         } else if (other instanceof Vector) {
             double[] res = Arrays.copyOf(value, value.length);
             if (((Vector) other).value.length != this.value.length)
-                throw new CalcException(INCONSISTENTDIM);
+                throw new CalcException(Localization.manager.getString(Msg.INCONSISTENTDIM));
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] + ((Vector) other).value[i];
             }
@@ -78,7 +77,7 @@ class Vector extends Var  {
         } else if (other instanceof Vector) {
             double[] res = Arrays.copyOf(value, value.length);
             if (((Vector) other).value.length != this.value.length)
-                throw new CalcException(INCONSISTENTDIM);
+                throw new CalcException(Localization.manager.getString(Msg.INCONSISTENTDIM));
             for (int i = 0; i < res.length; i++) {
                 res[i] = res[i] - ((Vector) other).value[i];
             }
@@ -98,7 +97,7 @@ class Vector extends Var  {
         } else if (other instanceof Vector) {
             double[] thisVector = Arrays.copyOf(value, value.length);
             if (((Vector) other).value.length != this.value.length)
-                throw new CalcException(INCONSISTENTDIM);
+                throw new CalcException(Localization.manager.getString(Msg.INCONSISTENTDIM));
             double res = 0;
             for (int i = 0; i < thisVector.length; i++) {
                 thisVector[i] = thisVector[i] * ((Vector) other).value[i];

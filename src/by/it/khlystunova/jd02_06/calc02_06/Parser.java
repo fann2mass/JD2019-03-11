@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd02_05.calc02_05;
+package by.it.khlystunova.jd02_06.calc02_06;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -35,7 +35,7 @@ class Parser {
             Var oneOperationResult = oneOperation(leftPart, operation, rightPart);
             operands.add(indexPriorityOperation,oneOperationResult.toString());
         }
-        return Var.createVar(operands.get(0));
+        return VarFactory.createVar(operands.get(0));
 
     }
 
@@ -55,14 +55,14 @@ class Parser {
 
     private Var oneOperation(String strLeftPart, String operation, String strRightPart)
                                                           throws CalcException {
-        Var rightPart = Var.createVar(strRightPart);
+        Var rightPart = VarFactory.createVar(strRightPart);
         if (operation.equals("=")) {
-            Var.saveVar(strLeftPart, rightPart);
+            VarFactory.saveVar(strLeftPart, rightPart);
             return rightPart;
         }
-        Var leftPart = Var.createVar(strLeftPart);
+        Var leftPart = VarFactory.createVar(strLeftPart);
         if (leftPart == null || rightPart == null)
-            throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION));
+            throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION));
         //ok find op
         switch (operation) {
             case "+":
@@ -74,7 +74,7 @@ class Parser {
             case "/":
                 return leftPart.div(rightPart);
             default:
-                throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION));
+                throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION));
         }
 
     }

@@ -12,6 +12,7 @@ public class SaxParser {
 
     public static void main(String[] args)
             throws ParserConfigurationException, SAXException, IOException {
+
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         SAXParser saxParser = saxParserFactory.newSAXParser();
         SaxHandler handler=new SaxHandler();

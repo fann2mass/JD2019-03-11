@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd02_05.calc02_05;
+package by.it.khlystunova.jd02_06.calc02_06;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -69,7 +69,7 @@ public class Matrix extends Var {
                     }
                 }
             return new Matrix(result);
-        }else throw  new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX));
+        }else throw  new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX));
         }else if(other instanceof Scalar){
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix.length; j++) {
@@ -93,7 +93,7 @@ public class Matrix extends Var {
                     }
                 }
             return new Matrix(result);
-            }else throw  new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX));
+            }else throw  new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX));
         }else if(other instanceof Scalar){
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix.length; j++) {
@@ -116,7 +116,7 @@ public class Matrix extends Var {
                     }
                 }
                 return new Vector(result);
-            }else throw  new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_SIZE_VECTOR));
+            }else throw  new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_SIZE_VECTOR));
         }else if(other instanceof Matrix) {
             double[][] result = new double[this.matrix.length][this.matrix[0].length];
             //кол-во столбцов 1 матрицы = кол-ву строк во 2
@@ -129,7 +129,7 @@ public class Matrix extends Var {
                     }
                 }
             return new Matrix(result);
-            }else throw  new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX+"\n"));
+            }else throw  new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_SIZE_MATRIX+"\n"));
         }else if(other instanceof Scalar){
             double[][] result = new double[this.matrix.length][this.matrix[0].length];
             for (int i = 0; i < this.matrix.length; i++) {

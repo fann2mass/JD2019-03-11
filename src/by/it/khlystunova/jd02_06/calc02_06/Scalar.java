@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd02_05.calc02_05;
+package by.it.khlystunova.jd02_06.calc02_06;
 
 public class Scalar extends Var {
     private double value;
@@ -10,6 +10,10 @@ public class Scalar extends Var {
     Scalar(double value){
         this.value = value;
     }
+
+    //Scalar(Scalar scalar) {
+     //   this.value = scalar.value;
+  //  }
 
     Scalar(String value) {
         this.value = Double.parseDouble(value);
@@ -48,7 +52,7 @@ public class Scalar extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if(other instanceof Scalar) {
-            if (((Scalar) other).value == 0) throw new CalcException(ConsoleRunner.manager.getString(Msg.MESSAGES_EXEPTION_DIV_BY_ZERO));
+            if (((Scalar) other).value == 0) throw new CalcException(ResourceManager.INSTANCE.getString(Msg.MESSAGES_EXEPTION_DIV_BY_ZERO));
             return new Scalar(this.value / ((Scalar) other).value);
         }
         else  return super.div(other);//вызваем метод родителя, потому что число можно поделить только на число(на матрицу и вектор нельзя)

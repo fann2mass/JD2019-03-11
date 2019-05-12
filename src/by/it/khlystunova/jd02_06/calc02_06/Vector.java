@@ -1,4 +1,4 @@
-package by.it.khlystunova.jd02_05.calc02_05;
+package by.it.khlystunova.jd02_06.calc02_06;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -56,7 +56,7 @@ public class Vector extends Var {
                  for (int i = 0; i < result.vector.length; i++) {
                      result.vector[i] =result.vector[i]+((Vector) other).vector[i];
                  }
-             }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
+             }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
            return result;
          }else if(other instanceof Scalar){
              for (int i = 0; i < result.vector.length; i++) {
@@ -76,7 +76,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     result.vector[i] =result.vector[i]-((Vector) other).vector[i];
                 }
-            }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
+            }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
             return result;
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {
@@ -97,7 +97,7 @@ public class Vector extends Var {
                 for (int i = 0; i < result.vector.length; i++) {
                     value +=result.vector[i]*((Vector) other).vector[i];
                 }
-            }else throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION_FALSE_LENGTH));
+            }else throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION_FALSE_LENGTH));
             return new Scalar(value);
         }else if(other instanceof Scalar){
             for (int i = 0; i < result.vector.length; i++) {

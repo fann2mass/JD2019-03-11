@@ -39,14 +39,12 @@ public class Market {
             time++;
         }
 
-        for (Thread buyer : Buyer.buyers) {
-            try {
-                buyer.join();
-            } catch (InterruptedException e) {
-                System.out.println("wow");
-            }
-        }
-        System.out.println("=================market is closed");
+        executorService.shutdown();
+
+        while (!executorService.isTerminated())
+            Util.sleep(10);
+
+        System.out.println("======================market is closed========================");
 
     }
 }

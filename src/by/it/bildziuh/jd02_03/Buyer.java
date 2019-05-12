@@ -90,7 +90,7 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
     public void goOut() {
         System.out.println(this + " go out from the market");
         Dispatcher.deleteBuyer();
-        //bucketPicked.release();
+        bucketPicked.release();
     }
 
     @Override

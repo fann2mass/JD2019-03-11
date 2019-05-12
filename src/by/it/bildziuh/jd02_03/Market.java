@@ -42,7 +42,7 @@ public class Market {
         executorService.shutdown();
 
         while (!executorService.isTerminated())
-            Util.sleep(10);
+            Util.sleep(1000);
 
         System.out.println("======================market is closed========================");
 

@@ -1,8 +1,6 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 class Scalar extends Var implements Operation {
-
-    private String DIVIDEDBYZERO = Localization.manager.getString(Msg.DIVIDEDBYZERO);
 
     private double value;
 
@@ -45,7 +43,7 @@ class Scalar extends Var implements Operation {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException(DIVIDEDBYZERO);
+                throw new CalcException("Деление на ноль");
             double div = this.value / ((Scalar) other).value;
             return new Scalar(div);
         } else return super.div(other);

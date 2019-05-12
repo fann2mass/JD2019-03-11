@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT users (admin)(user)+>
+        <!ELEMENT admin (login,password,email)>
+        <!ELEMENT user (login,password,email,mods)>
+        <!ELEMENT login (#PCDATA)>
+        <!ELEMENT password (#PCDATA)>
+        <!ELEMENT email (#PCDATA)>
+        <!ELEMENT mods (mod)+>
+        <!ELEMENT mod (game,group,name,standalone,description,size)>
+        <!ELEMENT game (#PCDATA)>
+        <!ELEMENT group (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT standalone (#PCDATA)>
+        <!ELEMENT description (#PCDATA)>
+        <!ELEMENT size (#PCDATA)>
+
+

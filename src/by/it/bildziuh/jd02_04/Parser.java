@@ -1,12 +1,10 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-
-    private String UNKNOWNOPERATION = Localization.manager.getString(Msg.UNKNOWNOPERATION);
 
     private static Map<String, Integer> mapPriority = new HashMap<String, Integer>() {
         {
@@ -32,15 +30,15 @@ class Parser {
         return index;
     }
 
-    private Var doOperation(String strOne, String operation, String strTwo) throws CalcException {
-        Var rightVar = VarFactory.createVar(strTwo);
+    private Var doOperation(String strLeft, String operation, String strRight) throws CalcException {
+        Var rightVar = Var.createVar(strRight);
         if (operation.equals("=")) {
-            VarFactory.saveVar(strOne, rightVar);
+            Var.saveVar(strLeft, rightVar);
             return rightVar;
         }
-        Var leftVar = VarFactory.createVar(strOne);
+        Var leftVar = Var.createVar(strLeft);
         if (leftVar == null || rightVar == null)
-            throw new CalcException(UNKNOWNOPERATION);
+            throw new CalcException("неизвестная операция");
         switch (operation) {
             case "+":
                 return leftVar.add(rightVar);
@@ -51,11 +49,44 @@ class Parser {
             case "/":
                 return leftVar.div(rightVar);
             default:
-                throw new CalcException(UNKNOWNOPERATION);
+                throw new CalcException("неизвестная операция");
         }
     }
+/*
+    String removeBrakets(String expression) {
+        int braketsStart = 0;
+        int braketsFinish = 0;
+        int braketsOpened = 0;
+        StringBuilder sb = new StringBuilder();
 
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == '(' && braketsOpened == 0) {
+                braketsOpened++;
+                braketsStart = i;
+                continue;
+            }
+            if (expression.charAt(i) == '(' && braketsOpened != 0) {
+                String insideExpr = expression.substring(i);
+                expression = removeBrakets(insideExpr);
+            }
+            if (expression.charAt(i) == ')' && braketsOpened != 0) {
+                braketsOpened--;
+                braketsFinish = i;
+            }
+        }
+        for (int i = braketsStart; i < braketsFinish; i++) {
+            sb.append(expression.charAt(i));
+        }
+        try {
+            expression = calc(sb.toString()).toString();
+        } catch (CalcException e) {
+            e.printStackTrace();
+        }
+        return expression;
+    }
+*/
     Var calc(String expression) throws CalcException {
+        expression = expression.replaceAll("\\(", "").replaceAll("\\)", "");
         List<String> operations = new ArrayList<>();
         List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
         Pattern pattern = Pattern.compile(Patterns.OPERATION);
@@ -71,6 +102,6 @@ class Parser {
             Var doOperationResult = doOperation(leftPart, operation, rightPart);
             operands.add(index, doOperationResult.toString());
         }
-        return VarFactory.createVar(operands.get(0));
+        return Var.createVar(operands.get(0));
     }
 }

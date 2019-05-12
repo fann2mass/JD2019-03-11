@@ -1,4 +1,7 @@
-package by.it.bildziuh.jd02_02;
+package by.it.bildziuh.jd02_03;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Market {
 
@@ -6,12 +9,10 @@ public class Market {
 
         System.out.println("market is opened");
 
-        for (int i = 1; i <= 5; i++) {
+        ExecutorService executorService = Executors.newFixedThreadPool(Dispatcher.cashierMax);
+        for (int i = 1; i <= Dispatcher.cashierMax; i++) {
             Cashier cashier = new Cashier(i);
-            Thread threadCashier = new Thread(cashier);
-            threadCashier.start();
-            Buyer.buyers.add(threadCashier);
-            Util.activeCashier++;
+            executorService.execute(cashier);
         }
 
         int time = 0;
@@ -23,15 +24,14 @@ public class Market {
                 if (!Dispatcher.planComplete()) {
                     Buyer buyer = new Buyer(++numberBuyer);
                     buyer.start();
-                    Buyer.buyers.add(buyer);
                 }
             }
 
-            if (time > 30 && Dispatcher.buyerInMarket <= 30 + (30 - time)) {
+            if (time > 30 && Dispatcher.buyerInMarket.get() <= 40 + (30 - time)) {
                 Util.sleep(1);
                 continue;
             }
-            if (time <= 30 && Dispatcher.buyerInMarket <= time + 10) {
+            if (time <= 30 && Dispatcher.buyerInMarket.get() <= time + 10) {
                 Util.sleep(1);
                 continue;
             }

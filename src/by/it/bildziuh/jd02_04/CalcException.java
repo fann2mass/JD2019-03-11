@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 class CalcException extends Exception {
 
@@ -6,11 +6,11 @@ class CalcException extends Exception {
     }
 
     CalcException(String message) {
-        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message);
+        super("ERROR: " + message);
     }
 
     CalcException(String message, Throwable cause) {
-        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause);
+        super("ERROR: " + message, cause);
     }
 
     CalcException(Throwable cause) {
@@ -18,6 +18,6 @@ class CalcException extends Exception {
     }
 
     CalcException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(Localization.manager.getString(Msg.CALCEXCEPTION) + ": " + message, cause, enableSuppression, writableStackTrace);
+        super("ERROR: " + message, cause, enableSuppression, writableStackTrace);
     }
 }

@@ -1,4 +1,4 @@
-package by.it.bildziuh.calc;
+package by.it.bildziuh.jd02_04;
 
 import java.util.Map;
 
@@ -12,7 +12,5 @@ class Printer {
         for (Map.Entry<String, Var> entry : vars.entrySet())
             System.out.println(entry.getKey() + " = " + entry.getValue());
     }
-
-
 
 }

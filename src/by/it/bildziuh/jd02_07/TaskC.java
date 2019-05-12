@@ -18,9 +18,8 @@ public class TaskC {
     public static void main(String[] args) throws SAXException, IOException {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory schemaFactory = SchemaFactory.newInstance(language);
-        File xsdFile = new File(
-                System.getProperty("user.dir") +
-                        "/src/by/it/bildziuh/jd02_07/users.xsd"
+        File xsdFile = new File(System.getProperty("user.dir") +
+                "/src/by/it/bildziuh/jd02_07/users.xsd"
         );
 
         String xml = System.getProperty("user.dir") +

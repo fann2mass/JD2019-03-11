@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user>
+        <login>Masha05</login>
+        <password>qwerty</password>
+        <email>masha.dot@gmail.com</email>
+        <location>Belarus, Minsk</location>
+        <collection>
+            <teaTag>
+                <trademark>Lipton</trademark>
+                <originCountry>India</originCountry>
+                <purchaseСountry>Belarus</purchaseСountry>
+                <material>cardboard</material>
+                <width currency="mm">26</width>
+                <height currency="mm">28</height>
+                <corners>cut off</corners>
+                <inCollectionSince>2005</inCollectionSince>
+                <exchange>yes</exchange>
+            </teaTag>
+            <teaTag>
+                <trademark>Golden Bowl</trademark>
+                <originCountry>Sri-Lanka</originCountry>
+                <purchaseСountry>Belarus</purchaseСountry>
+                <material>cardboard</material>
+                <width currency="mm">26</width>
+                <height currency="mm">28</height>
+                <corners>cut off</corners>
+                <inCollectionSince>1999</inCollectionSince>
+                <exchange>yes</exchange>
+            </teaTag>
+        </collection>
+    </user>
+    <user>
+        <login>Robby98</login>
+        <password>njimko</password>
+        <email>mir.tea@gmail.com</email>
+        <location>France, Paris</location>
+        <collection>
+            <teaTag>
+                <trademark>Maitre de The</trademark>
+                <originCountry>China</originCountry>
+                <purchaseСountry>France</purchaseСountry>
+                <material>paper</material>
+                <width currency="mm">23</width>
+                <height currency="mm">28</height>
+                <corners>cut off</corners>
+                <inCollectionSince>2012</inCollectionSince>
+                <exchange>yes</exchange>
+            </teaTag>
+            <teaTag>
+                <trademark>Darling</trademark>
+                <originCountry>Sri-Lanka</originCountry>
+                <purchaseСountry>England</purchaseСountry>
+                <material>cardboard</material>
+                <width currency="mm">23</width>
+                <height currency="mm">28</height>
+                <corners>cut off</corners>
+                <inCollectionSince>2001</inCollectionSince>
+                <exchange>yes</exchange>
+            </teaTag>
+        </collection>
+    </user>
+</users>

@@ -15,6 +15,9 @@ public class Vector extends Var {
         this.vector = Arrays.copyOf(value, value.length);
     }
 
+    Vector(Vector vector) {
+        this.vector = vector.vector;
+    }
 
     Vector(String vector) {
 
@@ -109,13 +112,13 @@ public class Vector extends Var {
 
     @Override
     public Var div(Var other) throws CalcException {
-        Vector res = new Vector(this.vector);
+        Vector result = new Vector(this.vector);
         if(other instanceof Scalar){
             if(((Scalar) other).getValue()==0) throw new CalcException("Деление на ноль.");
-            for (int i = 0; i < res.vector.length; i++) {
-                res.vector[i] = res.vector[i] / ((Scalar)other).getValue();
+            for (int i = 0; i < result.vector.length; i++) {
+                result.vector[i] = result.vector[i] / ((Scalar)other).getValue();
             }
-            return res;
+            return result;
         }
         return super.div(other);
     }

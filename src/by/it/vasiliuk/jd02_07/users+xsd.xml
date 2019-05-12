@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://jd02_09.vasiliuk.it.by/"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://jd02_09.vasiliuk.it.by/ users.xsd">
+    <user>
+        <login>Vasya</login>
+        <password>qwerty</password>
+        <email>vasya@gmail.com</email>
+        <ads>
+            <ad>
+                <description>Best blocks of flat in Minsk</description>
+                <address>Minsk, Pushkin street,55</address>
+                <floor>9</floor>
+                <floors>12</floors>
+                <rooms>3</rooms>
+                <comfort>9</comfort>
+                <price currency="USD">17500</price>
+            </ad>
+            <ad>
+                <description>Best blocks of flat in Pinsk</description>
+                <address>Pinsk, Kolotushkin street, 12</address>
+                <floor>4</floor>
+                <floors>7</floors>
+                <rooms>1</rooms>
+                <comfort>7</comfort>
+                <price currency="USD">10300</price>
+            </ad>
+        </ads>
+    </user>
+    <user>
+        <login>Flight_core</login>
+        <password>notqwer</password>
+        <email>free_me@tut.by</email>
+        <ads>
+            <ad>
+                <description>Small place in Minsk</description>
+                <address>Minsk, Hykalo street, 17</address>
+                <floor>2</floor>
+                <floors>6</floors>
+                <rooms>2</rooms>
+                <comfort>8</comfort>
+                <price currency="BYN">3500</price>
+            </ad>
+        </ads>
+    </user>
+</users>

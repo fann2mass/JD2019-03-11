@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_08;
+package by.it.zalesky.jd02_08;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -8,15 +8,16 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-public class XsltTransformer {
+public class XSLTransformer {
     public static void main(String[] args) throws TransformerException {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        TransformerFactory tf = TransformerFactory.newInstance();
 
-        Source rules=new StreamSource(Path.XSL);
+        Source template=new StreamSource(Path.XSL);
         Source xml=new StreamSource(Path.XML);
         Result html=new StreamResult(Path.HTML);
-        Transformer transformer = transformerFactory.newTransformer(rules);
+        Transformer transformer = tf.newTransformer(template);
         transformer.transform(xml,html);
 
     }
 }
+

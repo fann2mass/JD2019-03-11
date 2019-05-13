@@ -11,8 +11,8 @@ import javax.xml.transform.stream.StreamSource;
 public class XsltTransformer {
     public static void main(String[] args)
             throws TransformerException {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Source rules=new StreamSource(Path.XSL);
         Source xml=new StreamSource(Path.XML);
         Result html=new StreamResult(Path.HTML);

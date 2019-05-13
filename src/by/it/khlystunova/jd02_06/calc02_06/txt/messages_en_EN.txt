@@ -1,0 +1,12 @@
+messages.welcome = Welcome !)
+messagesExeption.divByZero=Division by zero!
+messagesExeption.falseLength=Wrong length!
+messagesExeption.falseSizeMatrix=Wrong size matrixs!
+messagesExeption.falseSizeVector=The number of matrix columns must be equal to the number of vector elements!
+messagesExeption.noSuchVariable=No such variable!
+messages.add=addition
+messages.sub=subtraction
+messages.mul=multiplication
+messages.div=division
+messagesExeption.impossible=impossible!
+messagesExeption=unknown operation!

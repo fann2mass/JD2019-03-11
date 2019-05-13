@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ConsoleRunner {
     public static void main(String[] args) {
         try {
-            Var.load();
+            VarFactory.load();
             Logger.loadLog();
         } catch (CalcException e) {
             e.printStackTrace();
@@ -20,11 +20,11 @@ public class ConsoleRunner {
             if (expr.equals("end"))
                 break;
             if (expr.equals("printVar")){
-                printer.println(Var.getVars());
+                printer.println(VarFactory.getVars());
                 continue;
             }
             if (expr.equals("sortVar")){
-                printer.sortPrint(Var.getVars());
+                printer.sortPrint(VarFactory.getVars());
                 continue;
             }
             Var result = null;

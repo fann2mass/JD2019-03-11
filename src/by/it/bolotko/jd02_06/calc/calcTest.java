@@ -191,7 +191,7 @@ public class calcTest {
     @Test(timeout = 5000)
     public void longCreateVarScalarCalc() throws Exception {
         parser.calc("A=2+2*2");
-        Var var= Var.createVar("A");
+        Var var= VarFactory.createVar("A");
         double expected = 6.0;
         assert var != null;
         double actual = Double.parseDouble(var.toString());
@@ -211,7 +211,7 @@ public class calcTest {
     @Test(timeout = 5000)
     public void longCreateVarVectorCalc() throws Exception {
         parser.calc("A={2,3,4}*{3,4,5}+{7,6,5}-{2,1,3}");
-        Var var= Var.createVar("A");
+        Var var= VarFactory.createVar("A");
         String expected = "{43.0, 43.0, 40.0}";
         assert var != null;
         String actual = var.toString();
@@ -231,7 +231,7 @@ public class calcTest {
     @Test(timeout = 5000)
     public void longCreateVarMatrixCalc() throws Exception {
         parser.calc("A={{2,3},{4,5}}+{{5,4},{6,7}}*{{3,2},{2,2}}");
-        Var var= Var.createVar("A");
+        Var var= VarFactory.createVar("A");
         String expected = "{{25.0, 21.0}, {36.0, 31.0}}";
         assert var != null;
         String actual = var.toString();

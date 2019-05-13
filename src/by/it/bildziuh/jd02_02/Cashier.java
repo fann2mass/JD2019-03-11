@@ -38,26 +38,27 @@ class Cashier implements Runnable {
     private void printCheck(Buyer buyer) {
 
         double total = 0;
-        char[] tabCashierCh = new char[22 * (number - 1)];
-        char[] tabCh = new char[92 - 22 * (number - 1)];
+        char[] tabCashierCh = new char[22 * (number - 1)]; //Расчитываем количество пробелов до чека.
+        char[] tabCh = new char[92 - 22 * (number - 1)]; //Расчитываем количество пробелов после напечатанного чека.
         Arrays.fill(tabCashierCh, ' ');
         Arrays.fill(tabCh, ' ');
         String tabCashier = new String(tabCashierCh);
         String tab = new String(tabCh);
         String line = "------------------";
-    //    synchronized (System.out) {
-            System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-            System.out.printf("%s| %-13s |%s| In queue %-5s | \t| Total income%-2s |\n", tabCashier, buyer, tab, " ", " ");
-            System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-            for (HashMap.Entry<String, Double> entry : buyer.paymentCheck.entrySet()) {
-                total += entry.getValue();
-                System.out.printf("%s| %-6s = %-5.2f |%s| %-14s |\t| %-14s |\n", tabCashier, entry.getKey(), entry.getValue(), tab, " ", " ");
-            }
-            Util.income += total;
-            System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-            System.out.printf("%s| Total  = %-5.2f |%s| %-14s |\t| %-14.2f |\n", tabCashier, total, tab, QueueBuyers.size(), Util.income);
-            System.out.printf("%s%s%s%s\t%s\n", tabCashier, line, tab, line, line);
-    //    }
+        String border = tabCashier + line + tab + line + "\t" + line;
+        //    synchronized (System.out) {
+        System.out.println(border);
+        System.out.printf("%s| %-13s |%s| In queue %-5s | \t| Total income%-2s |\n", tabCashier, buyer, tab, " ", " ");
+        System.out.println(border);
+        for (HashMap.Entry<String, Double> entry : buyer.paymentCheck.entrySet()) {
+            total += entry.getValue();
+            System.out.printf("%s| %-6s = %-5.2f |%s| %-14s |\t| %-14s |\n", tabCashier, entry.getKey(), entry.getValue(), tab, " ", " ");
+        }
+        Util.income += total;
+        System.out.println(border);
+        System.out.printf("%s| Total  = %-5.2f |%s| %-14s |\t| %-14.2f |\n", tabCashier, total, tab, QueueBuyers.size(), Util.income);
+        System.out.println(border);
+        //    }
     }
 
     @Override

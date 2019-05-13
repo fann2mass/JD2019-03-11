@@ -30,12 +30,12 @@ class Parser {
     }
 
     private Var oneOperation(String strOne, String operation, String strTwo) throws CalcException {
-        Var two = Var.createVar(strTwo);
+        Var two = VarFactory.createVar(strTwo);
         if (operation.equals("=")) {
-            Var.saveVar(strOne, two);
+            VarFactory.saveVar(strOne, two);
             return two;
         }
-        Var one = Var.createVar(strOne);
+        Var one = VarFactory.createVar(strOne);
         if (one == null || two == null)
             throw new CalcException("неизвестная операция");
         //ok find op
@@ -73,6 +73,6 @@ class Parser {
             Var oneOperationResult = oneOperation(one, operation, two);
             operands.add(index, oneOperationResult.toString());
         }
-        return Var.createVar(operands.get(0));
+        return VarFactory.createVar(operands.get(0));
     }
 }

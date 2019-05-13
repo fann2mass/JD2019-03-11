@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<users xmlns="http://beans.jd02_09.narushevich.it.by/"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://beans.jd02_09.narushevich.it.by/ users.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users xmlns="http://beans.jd02_09.narushevich.it.by/">
     <user>
         <login>Masha05</login>
         <password>qwerty</password>
@@ -13,8 +11,8 @@
                 <originCountry>India</originCountry>
                 <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
-                <width currency="mm">26</width>
-                <height currency="mm">28</height>
+                <width currency="mm">26.0</width>
+                <height currency="mm">28.0</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2005</inCollectionSince>
                 <exchange>true</exchange>
@@ -24,8 +22,8 @@
                 <originCountry>Sri-Lanka</originCountry>
                 <purchaseCountry>Belarus</purchaseCountry>
                 <material>cardboard</material>
-                <width currency="mm">26</width>
-                <height currency="mm">28</height>
+                <width currency="mm">26.0</width>
+                <height currency="mm">28.0</height>
                 <corners>cut off</corners>
                 <inCollectionSince>1999</inCollectionSince>
                 <exchange>true</exchange>
@@ -43,8 +41,8 @@
                 <originCountry>China</originCountry>
                 <purchaseCountry>France</purchaseCountry>
                 <material>paper</material>
-                <width currency="mm">23</width>
-                <height currency="mm">28</height>
+                <width currency="mm">23.0</width>
+                <height currency="mm">28.0</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2012</inCollectionSince>
                 <exchange>true</exchange>
@@ -54,8 +52,8 @@
                 <originCountry>Sri-Lanka</originCountry>
                 <purchaseCountry>England</purchaseCountry>
                 <material>cardboard</material>
-                <width currency="mm">23</width>
-                <height currency="mm">28</height>
+                <width currency="mm">23.0</width>
+                <height currency="mm">28.0</height>
                 <corners>cut off</corners>
                 <inCollectionSince>2001</inCollectionSince>
                 <exchange>true</exchange>

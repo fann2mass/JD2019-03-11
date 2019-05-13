@@ -180,12 +180,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", location='" + location + '\'' +
-                ", collection=" + collection +
-                '}';
+        return "\n\t\tUser\n" +
+                "\t\t\tlogin = " + login + ",\n" +
+                "\t\t\tpassword = " + password + ",\n" +
+                "\t\t\temail = " + email + ",\n" +
+                "\t\t\tlocation = " + location + ",\n" +
+                "\t\t\tcollection = " + collection;
     }
 }

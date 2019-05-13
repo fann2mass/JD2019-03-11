@@ -84,8 +84,4 @@ public class ObjectFactory {
         return new Width();
     }
 
-    @Override
-    public String toString() {
-        return "ObjectFactory{}";
-    }
 }

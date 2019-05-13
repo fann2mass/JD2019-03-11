@@ -75,8 +75,7 @@ public class Collection {
 
     @Override
     public String toString() {
-        return "Collection{" +
-                "teaTag=" + teaTag +
-                '}';
+        return "\n\t\t\t\tCollection of Tea Tags"
+                + teaTag;
     }
 }

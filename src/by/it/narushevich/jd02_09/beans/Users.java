@@ -70,15 +70,14 @@ public class Users {
      */
     public List<User> getUser() {
         if (user == null) {
-            user = new ArrayList<User>();
+            user = new ArrayList<>();
         }
         return this.user;
     }
 
     @Override
     public String toString() {
-        return "Users{" +
-                "user=" + user +
-                '}';
+        return "Users\n" +
+                "\tuser" + user;
     }
 }

@@ -85,9 +85,8 @@ public class Width {
 
     @Override
     public String toString() {
-        return "Width{" +
-                "value=" + value +
-                ", currency='" + currency + '\'' +
-                '}';
+        return  value +
+                " " + currency +
+                "\n";
     }
 }

@@ -39,7 +39,7 @@
         <all>
             <element name="trademark" type="string" />
             <element name="originCountry" type="string" />
-            <element name="purchaseСountry" type="string" />
+            <element name="purchaseCountry" type="string" />
             <element name="material" type="string" />
             <element name="width" type="my:Width" />
             <element name="height" type="my:Height" />

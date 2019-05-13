@@ -85,9 +85,8 @@ public class Height {
 
     @Override
     public String toString() {
-        return "Height{" +
-                "value=" + value +
-                ", currency='" + currency + '\'' +
-                '}';
+        return value +
+                " " + currency +
+                "\n";
     }
 }

@@ -278,16 +278,15 @@ public class TeaTag {
 
     @Override
     public String toString() {
-        return "TeaTag{" +
-                "trademark='" + trademark + '\'' +
-                ", originCountry='" + originCountry + '\'' +
-                ", purchaseCountry='" + purchaseCountry + '\'' +
-                ", material='" + material + '\'' +
-                ", width=" + width +
-                ", height=" + height +
-                ", corners='" + corners + '\'' +
-                ", inCollectionSince=" + inCollectionSince +
-                ", exchange=" + exchange +
-                '}';
+        return "\n\t\t\t\t\tTeaTag\n" +
+                "\t\t\t\t\t\ttrademark = " + trademark + ",\n" +
+                "\t\t\t\t\t\toriginCountry = " + originCountry + ",\n" +
+                "\t\t\t\t\t\tpurchaseCountry = " + purchaseCountry + ",\n" +
+                "\t\t\t\t\t\tmaterial = " + material + ",\n" +
+                "\t\t\t\t\t\twidth = " + width +
+                "\t\t\t\t\t\theight = " + height +
+                "\t\t\t\t\t\tcorners = " + corners + ",\n" +
+                "\t\t\t\t\t\tinCollectionSince = " + inCollectionSince + ",\n"+
+                "\t\t\t\t\t\texchange = " + exchange;
     }
 }

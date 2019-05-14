@@ -77,7 +77,7 @@ public class Parkings {
 
     @Override
     public String toString() {
-        return "Parkings{" +
+        return "\n\tParkings{" +
                 "parking=" + parking +
                 '}';
     }

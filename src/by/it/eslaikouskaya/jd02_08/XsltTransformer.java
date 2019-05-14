@@ -1,6 +1,5 @@
 package by.it.eslaikouskaya.jd02_08;
 
-
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -15,6 +14,5 @@ public class XsltTransformer {
 		Result html = new StreamResult(Path.HTML);
 		Transformer transformer = transformerFactory.newTransformer(rules);
 		transformer.transform(xml, html);
-
 	}
 }

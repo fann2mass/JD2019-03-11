@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cite xmlns="http://beans.jd02_09.eslaikouskaya.it.by/">
+    <catalogs>
+        <catalog>
+            <name>Сантехника</name>
+            <elements>
+                <element>
+                    <description>Системы трубопровода из полипропилена</description>
+                    <content>Трубы серые армированные
+                        Угольники
+                        Муфты
+                        Американки
+                        Тройники
+                        Опоры
+                        Краны
+                        Фильтры из полипропилена
+                    </content>
+                </element>
+                <element>
+                    <description>Трубные стальные заготовки</description>
+                    <content>Сгоны
+                        Резьбы
+                        Контргайки
+                        Муфты
+                        Бочонки
+                        Угольники
+                        Тройники
+                        Отводы
+                        Черные и оцинкованные
+                    </content>
+                </element>
+                <element>
+                    <description>Запорная арматура</description>
+                    <content>Краны шаровые муфтовые
+                        Фланцевые задвижки
+                        Вентили
+                        Фильтры
+                        Обратные клапаны и фланцы к ним
+                    </content>
+                </element>
+                <element>
+                    <description>Элементы креплений</description>
+                    <content>Болты
+                        Гайки
+                        Шайбы
+                        Шпильки
+                        Хомуты ремонтные
+                        Хомуты для крепления труб
+                    </content>
+                </element>
+                <element>
+                    <description>Радиаторы и системы отопления</description>
+                    <content>Радиаторы алюминевые
+                        Радиаторы биметаллические
+                        Радиаторы чугунные
+                        Кронштейны
+                        Клапаны для регулировки
+                        Монтажные комплекты
+                    </content>
+                </element>
+                <element>
+                    <description>Трубы полиэтиленовые</description>
+                    <content>Трубы ПЭ от 25-63 мм
+                        Муфты
+                        Тройники
+                        Угольники
+                        Заглушки и другие фитинги к ним
+                    </content>
+                </element>
+                <element>
+                    <description>Трубы асбестноцементные</description>
+                    <content>Трубы безнапорные 110х3.95м, 160х3.95м
+                        Трубы напорные 200х5м
+                    </content>
+                </element>
+                <element>
+                    <description>Сантехническое оборудование</description>
+                    <content>Унитазы
+                        Умывальники
+                        Поддоны душевые
+                        Биде
+                        Писсуары
+                        Смесители
+                        Гибкие подводки и прочее
+                    </content>
+                </element>
+                <element>
+                    <description>Уплотнительные материалы и прочее</description>
+                    <content>Паронитовые прокладки
+                        Техпластина каболка
+                        Лен сантехнический
+                        Шнур асбестовый
+                        Асбокартон
+                        Электроды
+                    </content>
+                </element>
+                <element>
+                    <description>Трубы канализационные ПВХ и НПВХ</description>
+                    <content>Трубы для наружней и внутренней канализации, фасонные части к ним
+                        Трапы
+                        Люки
+                    </content>
+                </element>
+            </elements>
+        </catalog>
+        <catalog>
+            <name>Металлопрокат</name>
+            <elements>
+                <element>
+                    <description>Уголок</description>
+                    <content>Уголок 25-100 мм</content>
+                </element>
+                <element>
+                    <description>Арматура рифленая</description>
+                    <content>Арматура рифленая 6 — 20 мм</content>
+                </element>
+                <element>
+                    <description>Трубы круглые</description>
+                    <content>Труба ВГП 15-50 мм
+                        Труба электросварная 57-325 мм
+                        Труба оцинкованная 15-108 мм
+                    </content>
+                </element>
+                <element>
+                    <description>Полоса</description>
+                    <content>Полоса 25х4 и 40х4</content>
+                </element>
+                <element>
+                    <description>Трубы профильные</description>
+                    <content>Трубы профильные от 15х15 до 100х100 мм</content>
+                </element>
+                <element>
+                    <description>Листы</description>
+                    <content>Лист г/к 2 — 10 мм
+                        Лист х/к 0.8 — 1.5 мм
+                        Лист оцинкованный
+                        Лист с полимерным покрытием
+                        Лист рифленый
+                        Лист ПВЛ
+                    </content>
+                </element>
+                <element>
+                    <description>Проволока вязальная</description>
+                    <content>Проволока вязальная 1.2 — 5 мм</content>
+                </element>
+                <element>
+                    <description>Швеллер</description>
+                    <content>Швеллер 8 — 20 мм</content>
+                </element>
+                <element>
+                    <description>Круг гладкий</description>
+                    <content>Круг 6 -12 мм</content>
+                </element>
+                <element>
+                    <description>Квадрат</description>
+                    <content>Квадрат 10х10 мм</content>
+                </element>
+            </elements>
+        </catalog>
+        <catalog>
+            <name>Стройматериалы</name>
+            <elements>
+                <element>
+                    <description>Блоки газосиликатные</description>
+                    <content>100х290х600
+                        200х290х600
+                        250х300х600
+                        250х400х600
+                        Перемычки газосиликатные
+                    </content>
+                </element>
+                <element>
+                    <description>Кирпич</description>
+                    <content>Кирпич силикатный
+                        Кирпич керамический
+                        Кирпич цветной гиперпрессованный
+                        Кирпич лицевой
+                        Кирпич огнеупорный
+                    </content>
+                </element>
+                <element>
+                    <description>Поликарбонат</description>
+                    <content>Поликарбонат 4-10мм 2100х6000
+                        Прозрачный
+                        Цветной
+                        Профиль торцевой
+                        Профиль пристенный
+                        Профиль соединительный
+                    </content>
+                </element>
+                <element>
+                    <description>Гипсокартон и комплектующие</description>
+                    <content>Гипсокартон стеновой
+                        Гипсокартон потолочный
+                        Гипсокартон влагостойкий
+                        Профиль
+                        Подвесы
+                        Крабы и др
+                    </content>
+                </element>
+                <element>
+                    <description>Цемент и строительные смеси</description>
+                    <content>Цемент
+                        Штукатурка
+                        Шпатлевка
+                        Клей
+                        Расстворы
+                        Стяжка и др
+                    </content>
+                </element>
+                <element>
+                    <description>Плиты стружечные</description>
+                    <content>ДСП
+                        ДВП
+                        плита ОСБ 9-18 мм
+                        ФАНЕРА
+                        ЦСП
+                    </content>
+                </element>
+                <element>
+                    <description>Сетка</description>
+                    <content>3мм 0.5х2 (50х50)
+                        3мм 1х2(100х100)
+                        3мм 1х2(150х150)
+                        4мм 0.5х2 (50х50)
+                        4мм 1х2(100х100)
+                        5мм 1х2(100х100)
+                        Сетка рабица
+                        Сетка ССШ
+                    </content>
+                </element>
+                <element>
+                    <description>Кольца колодцев</description>
+                    <content>Кольцо ж/б 1.0 -2.0 м
+                        Плита перекрытия
+                        Днище колодца
+                        Доборные кольца 0.7м
+                        Люки чугунные
+                        Люки полимерные
+                    </content>
+                </element>
+                <element>
+                    <description>Плитка тротуарная, бордюры</description>
+                    <content>Плитка серая красная
+                        Кирпичик 60,80мм
+                        Старый город
+                        Черепашка
+                        Калифорния
+                        Квадрат ажурный
+                        Борт тротуарный и дорожный
+                    </content>
+                </element>
+                <element>
+                    <description>Теплоизоляция</description>
+                    <content>Утеплитель фасадный
+                        Рулоны и плиты «Кнауф»
+                        Минвата
+                        Пенопласт
+                        Керамзит и др
+                    </content>
+                </element>
+            </elements>
+        </catalog>
+        <catalog>
+            <name>Кровля</name>
+            <elements>
+                <element>
+                    <description>Направляемая кровля</description>
+                    <content>Технониколь
+                        Бикрост
+                        Линокром
+                        Элактром
+                    </content>
+                </element>
+                <element>
+                    <description>Шифер</description>
+                    <content>Шифер
+                        Шиферные гвозди
+                    </content>
+                </element>
+                <element>
+                    <description>Гибкая черепица</description>
+                    <content>Коллекции «Шинглас» под заказ
+                        Подкладочный ковер
+                        Гвозди
+                        Мастика и все необходимое для нее
+                    </content>
+                </element>
+                <element>
+                    <description>Ондулин и комплектующие</description>
+                    <content>Ондулин красный
+                        Ондулин коричневый
+                        Ондулин зеленый
+                        Ондулин черепица
+                        Конек
+                        Ендова
+                        Ветровая планка
+                        Гвозди
+                        Пленка и др
+                    </content>
+                </element>
+                <element>
+                    <description>Металлопрофиль</description>
+                    <content>Металлочерепица
+                        Профнастил
+                        Доборные элементы кровли
+                        Саморезы пленка и др.
+                    </content>
+                </element>
+                <element>
+                    <description>Пленка подкровельная</description>
+                    <content>Гидроизоляция
+                        Пароизоляция
+                        Армированная и др.
+                    </content>
+                </element>
+            </elements>
+        </catalog>
+    </catalogs>
+    <aboutus>
+        <about>Наша организация занимается оптовой и розничной продажей металлопроката, сантехники, кровельных и
+            строительных материалов. Компания основана в 1999г. (c 1999 г. – Бориторг, с 2005г. – Бориторг плюс).
+            Предприятие имеет в собственности территорию размером 1,1га. Налаженна инфраструктура для погрузки-разгрузки
+            материалов. Имеется крытый склад площадью около 1000 м2 и несколько открытых площадок, в том числе с
+            козловым краном. Наличие специализированной техники обеспечат любые погрузо-разгрузочные работы аккуратно и
+            быстро.
+            Имеется свой парк автомобилей, грузоподъемностью от 1 до 20 т. По желанию клиента можно организовать
+            оперативную доставку и выгрузку строительных материалов к месту назначения.
+            Основная наша задача – превратить закупку строительных материалов из разряда «НУДНОЕ ТЯЖЕЛОЕ ЗАНЯТИЕ» в
+            разряд «ПРИЯТНЫЕ ХЛОПОТЫ». Чтобы это осуществить мы стараемся предоставить клиенту максимальный ассортимент
+            строительных материалов высокого качества по доступной цене, не останавливаться на достигнутом, постоянно
+            развиваться и предоставлять больше услуг для наших дорогих клиентов
+        </about>
+    </aboutus>
+    <shortinfo>
+        <city>г. Борисов</city>
+        <address>ул. Демина 35 Б</address>
+        <notation>Мы находимся рядом с магазином «Практик» и строительным рынком. Заехать можно со стороны Гагарина или
+            с трассы М1. Въезд на территорию с двух сторон
+        </notation>
+        <managerstel>+375(177)74-27-77
+            +375(177)93-17-77
+            +375(29)687-27-93
+            +375(33)674-03-70
+        </managerstel>
+    </shortinfo>
+    <properties>
+        <property>
+            <mark>Почтовый индекс</mark>
+            <info>222518</info>
+        </property>
+        <property>
+            <mark>Адрес</mark>
+            <info>Республика Беларусь, Минская область, г. Борисов, ул. Демина 35б, каб. №2</info>
+        </property>
+        <property>
+            <mark>Расчётный счёт</mark>
+            <info>BY15BPSB30121417650159330000</info>
+        </property>
+        <property>
+            <mark>Банк</mark>
+            <info>ОАО «БПС-Банк»</info>
+        </property>
+        <property>
+            <mark>Отделение банка</mark>
+            <info>г. Борисове, пр. Революции 56, код МФО BPSBBY2X</info>
+        </property>
+        <property>
+            <mark>УНП</mark>
+            <info>690353915</info>
+        </property>
+        <property>
+            <mark>ОКПО</mark>
+            <info>292757176000</info>
+        </property>
+        <property>
+            <mark>Тел/факс</mark>
+            <info>+375(177)74-27-77
+                +37(177)74-27-47
+            </info>
+        </property>
+        <property>
+            <mark>Часы работы</mark>
+            <info>Вс 8:30-15:30
+                Пн-Пт 8:00-17:00
+            </info>
+        </property>
+        <property>
+            <mark>Выходной</mark>
+            <info>Суббота</info>
+        </property>
+        <property>
+            <mark>Номера телефонов</mark>
+            <info>+375(29)687-27-93
+                +375(17)774-27-77
+                +375(17)774-27-47
+            </info>
+        </property>
+        <property>
+            <mark>email</mark>
+            <info>boritorg-plus@yandex.ru
+                boritorg@list.ru
+            </info>
+        </property>
+    </properties>
+</cite>

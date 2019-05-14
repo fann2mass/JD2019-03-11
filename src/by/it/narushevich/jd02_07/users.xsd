@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://jd02_09.narushevich.it.by/"
+        xmlns:my="http://jd02_09.narushevich.it.by/"
+        elementFormDefault="qualified">
+    <element name="users">
+        <complexType>
+            <sequence>
+                <element
+                        name="user"
+                        type="my:UserType"
+                        minOccurs="1"
+                        maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="UserType">
+        <sequence>
+            <element name="login" type="string" />
+            <element name="password" type="string" />
+            <element name="email" type="string" />
+            <element name="location" type="string" />
+            <element name="collection" type="my:CollectionType" />
+        </sequence>
+    </complexType>
+
+
+    <complexType name="CollectionType">
+        <sequence>
+            <element name="teaTag"
+                     type="my:TeaTagType"
+                     minOccurs="1"
+                     maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <complexType name="TeaTagType">
+        <all>
+            <element name="trademark" type="string" />
+            <element name="originCountry" type="string" />
+            <element name="purchaseСountry" type="string" />
+            <element name="material" type="string" />
+            <element name="width" type="my:WidthType" />
+            <element name="height" type="my:HeightType" />
+            <element name="corners" type="string" />
+            <element name="inCollectionSince" type="positiveInteger" />
+            <element name="exchange" type="boolean" />
+        </all>
+    </complexType>
+
+    <complexType name="WidthType">
+        <simpleContent>
+            <extension base="double">
+                <attribute name="currency" type="string"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <complexType name="HeightType">
+        <simpleContent>
+            <extension base="double">
+                <attribute name="currency" type="string"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+
+</schema>

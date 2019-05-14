@@ -1,9 +1,11 @@
 package by.it.narushevich.calc;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 class Printer {
-    Logger logger = new Logger();
+    Logger logger = Logger.getInstance();
 
     public void print(Var result) {
         if (result != null) {

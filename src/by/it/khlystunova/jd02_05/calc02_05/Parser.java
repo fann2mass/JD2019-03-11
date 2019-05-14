@@ -62,7 +62,7 @@ class Parser {
         }
         Var leftPart = Var.createVar(strLeftPart);
         if (leftPart == null || rightPart == null)
-            throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION));
+            throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION));
         //ok find op
         switch (operation) {
             case "+":
@@ -74,7 +74,7 @@ class Parser {
             case "/":
                 return leftPart.div(rightPart);
             default:
-                throw new CalcException(ResourceManager.INSTANCE.getString(Msg.EXEPTION));
+                throw new CalcException(ConsoleRunner.manager.getString(Msg.EXEPTION));
         }
 
     }

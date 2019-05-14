@@ -18,7 +18,7 @@ public class Singleton {
 
     private String filename;
 
-    public Singleton() {
+    private Singleton() {
         filename = getPath("log.txt");
     }
 
@@ -34,11 +34,12 @@ public class Singleton {
     }
 
     void log(String message){
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
-            Date current = new Date();
-            out.append(current.toString()).append('\t');
+        try (
+             BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))
+        ) {
+            out.append(new Date().toString()).append('\t');
             out.append(message).append('\n');
-
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

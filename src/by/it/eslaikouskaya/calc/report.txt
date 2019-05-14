@@ -1,0 +1,56 @@
+=====Full report for calc=====
+Start time: Sun Apr 28 17:38:34 MSK 2019
+-----------
+B=13
+result: 13.0
+C={1,2,3,4}
+result: {1.0, 2.0, 3.0, 4.0}
+X=A+B
+result: 16.0
+N=A-B
+result: -10.0
+end
+-----------
+Finish time: Sun Apr 28 17:38:57 MSK 2019
+
+
+=====Short report for calc=====
+Start time: java.text.SimpleDateFormat@1f0aae38
+-----------
+A=3
+result: 3.0
+B=5
+result: 5.0
+end
+-----------
+Finish time: java.text.SimpleDateFormat@1f0aae38
+
+
+=====Short report for calc=====
+Start time: Sun Apr 28 17:56:36 MSK 2019
+-----------
+a=12
+result: 12.0
+n=15
+result: 15.0
+end
+-----------
+Finish time: Sun Apr 28 17:56:41 MSK 2019
+
+
+=====Full report for calc=====
+Start time: Sun Apr 28 17:59:05 MSK 2019
+-----------
+A=13
+result: 13.0
+B={1,2,3}
+result: {1.0, 2.0, 3.0}
+N=A+{{1,2,3},{1,5,7}}
+result: {{14.0, 15.0, 16.0}, {14.0, 18.0, 20.0}}
+G=1235
+result: 1235.0
+end
+-----------
+Finish time: Sun Apr 28 17:59:32 MSK 2019
+
+

@@ -1,6 +1,6 @@
 package by.it.vasiliuk.calc;
 
- class CalcException extends  Exception {
+class CalcException extends  Exception {
 
     public CalcException() {
     }

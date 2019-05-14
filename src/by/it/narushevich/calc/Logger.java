@@ -6,16 +6,36 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Logger {
-    private static final int capacity = 50;
-    String logFile = createFile(Logger.class, "log.txt");
-    private static LinkedHashMap<String, String> hashMap = new LinkedHashMap<String, String>(capacity, 1.0f, true) {
-        @Override
-        protected boolean
-        removeEldestEntry(Map.Entry<String, String> eldest) {
-            return this.size() > capacity || super.removeEldestEntry(eldest);
+class Logger {
+
+    private static volatile Logger instance;
+
+    private final String logFile;
+
+    public Logger() {
+        logFile = createFile(Logger.class, "log.txt");
+    }
+
+    public static Logger getInstance() {
+        if (instance == null) {
+            synchronized (Logger.class) {
+                if (instance == null) {
+                    instance = new Logger();
+                }
+            }
         }
-    };
+        return instance;
+    }
+
+    private static final int CAPACITY = 50;
+    private static LinkedHashMap<String, String> hashMap =
+            new LinkedHashMap<String, String>(CAPACITY, 1.0f, true) {
+                @Override
+                protected boolean
+                removeEldestEntry(Map.Entry<String, String> eldest) {
+                    return this.size() > CAPACITY || super.removeEldestEntry(eldest);
+                }
+            };
 
     public void fillReport(String s) {
         hashMap.put(data(), s);
@@ -32,29 +52,25 @@ public class Logger {
         }
     }
 
-    static void loadLog() {
-        File file = new File(createFile(Logger.class, "log.txt"));
-        if (file.exists()) {
-            try (BufferedReader in = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = in.readLine()) != null) {
-                    String[] splitedLine = line.split("\\s:\\s");
-                    for (int i = 0; i < 2; i++) {
-                        String data = splitedLine[0];
-                        String log = splitedLine[1];
-                        hashMap.put(data, log);
-                    }
+    void loadLog() {
+        try (BufferedReader in = new BufferedReader(new FileReader(logFile))) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                String[] splittedLine = line.split("\\s:\\s");
+                for (int i = 0; i < 2; i++) {
+                    String data = splittedLine[0];
+                    String log = splittedLine[1];
+                    hashMap.put(data, log);
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     private static String createFile(Class<?> cl, String name) {
         String userDir = System.getProperty("user.dir") + File.separator + "src" + File.separator;
         String pathPack = cl.getPackage().getName().replace(".", File.separator) + File.separator;
-        ;
         return userDir + pathPack + name;
     }
 

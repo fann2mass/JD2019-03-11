@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!ELEMENT users (user)+>
+    <!ELEMENT user (login, password, email, location, collection)>
+    <!ELEMENT login (#PCDATA)>
+    <!ELEMENT password (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT location (#PCDATA)>
+    <!ELEMENT collection (teaTag)+>
+    <!ELEMENT teaTag (trademark, originCountry, purchaseCountry,
+            material, width, height, corners, inCollectionSince, exchange)>
+    <!ELEMENT trademark (#PCDATA)>
+    <!ELEMENT originCountry (#PCDATA)>
+    <!ELEMENT purchaseCountry (#PCDATA)>
+    <!ELEMENT material (#PCDATA)>
+    <!ELEMENT width (#PCDATA)>
+    <!ATTLIST width
+                currency PCDATA #REQUIRED>
+    <!ELEMENT height (#PCDATA)>
+    <!ATTLIST height
+                currency PCDATA #REQUIRED>
+    <!ELEMENT corners (#PCDATA)>
+    <!ELEMENT inCollectionSince (#PCDATA)>
+    <!ELEMENT exchange (#PCDATA)>

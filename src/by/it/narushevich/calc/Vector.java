@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Vector extends Var {
 
+    private static final String MESSAGE = ConsoleRunner.manager.getString(Msg.SIZE);
     private double[] value;
 
     public double[] getValue() {
@@ -22,7 +23,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result.value[i] = result.value[i] + ((Vector) other).value[i];
             }
@@ -43,7 +44,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < result.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result.value[i] = result.value[i] - ((Vector) other).value[i];
             }
@@ -65,7 +66,7 @@ public class Vector extends Var {
         if (other.toString().matches(Patterns.VECTOR)) {
             for (int i = 0; i < this.value.length; i++) {
                 if (this.value.length!=((Vector) other).value.length){
-                    throw new CalcException("Несоответствующий размер");
+                    throw new CalcException(MESSAGE);
                 }
                 result0 += this.value[i] * ((Vector) other).value[i];
             }
@@ -81,7 +82,7 @@ public class Vector extends Var {
             for (int i = 0; i < result.value.length; i++) {
                 double z = ((Scalar) other).getValue();
                 if (z==0) {
-                    throw new CalcException("Деление на ноль");
+                    throw new CalcException(ConsoleRunner.manager.getString(Msg.BY_ZERO));
                 }
                 result.value[i] = result.value[i] / z;
             }
@@ -102,7 +103,7 @@ public class Vector extends Var {
         StringBuilder sb = new StringBuilder(strVector);
         sb.deleteCharAt(0).deleteCharAt(sb.length() - 1);
         String str = sb.toString();
-        String[] arrayString = str.split("[^\\d.]+");
+        String[] arrayString = str.split("[^-\\d.]+");
         double[] arrayDouble = new double[arrayString.length];
         for (int i = 0; i < arrayString.length; i++) {
             arrayDouble[i] = Double.parseDouble(arrayString[i]);

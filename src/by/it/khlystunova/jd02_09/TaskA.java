@@ -25,6 +25,7 @@ public class TaskA {
         }
 
         Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         try(FileOutputStream out = new FileOutputStream(TO_XML)){
             marshaller.marshal(clients,out);
             marshaller.marshal(clients,System.out);

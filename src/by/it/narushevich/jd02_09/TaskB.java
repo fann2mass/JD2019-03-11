@@ -30,6 +30,8 @@ public class TaskB {
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         try (FileInputStream fis = new FileInputStream(xml)) {
             users = (Users) unmarshaller.unmarshal(fis);
+            System.out.println("=============== FROM XML TO BEAN ===============");
+            System.out.println(users);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,7 +40,7 @@ public class TaskB {
     static String getJson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         String json = gson.toJson(users);
-        System.out.println("=============== JSON FROM XML ===============");
+        System.out.println("\n=============== JSON FROM BEAN ===============");
         System.out.println(json);
         return json;
     }
@@ -46,6 +48,8 @@ public class TaskB {
     static void readJson(String json) {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         Users users = gson.fromJson(json, Users.class);
+        System.out.println("\n=============== BEAN FROM JSON ===============");
+        System.out.println(users);
     }
 
     static void saveXml() throws JAXBException {
@@ -55,7 +59,7 @@ public class TaskB {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
         try (FileOutputStream fos = new FileOutputStream(xml2)) {
             marshaller.marshal(users, fos);
-            System.out.println("=============== XML FROM JSON ===============");
+            System.out.println("\n=============== XML FROM JSON ===============");
             marshaller.marshal(users, System.out);
         } catch (IOException e) {
             e.printStackTrace();

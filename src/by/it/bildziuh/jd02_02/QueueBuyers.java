@@ -27,5 +27,4 @@ class QueueBuyers {
     static synchronized int size() {
         return buyerDeque.size() + pensioneerDeque.size();
     }
-
 }

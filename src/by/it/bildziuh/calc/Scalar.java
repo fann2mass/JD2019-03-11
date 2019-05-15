@@ -2,6 +2,8 @@ package by.it.bildziuh.calc;
 
 class Scalar extends Var implements Operation {
 
+    private String DIVIDEDBYZERO = Localization.manager.getString(Msg.DIVIDEDBYZERO);
+
     private double value;
 
     public double getValue() {
@@ -43,7 +45,7 @@ class Scalar extends Var implements Operation {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value == 0)
-                throw new CalcException("Деление на ноль");
+                throw new CalcException(DIVIDEDBYZERO);
             double div = this.value / ((Scalar) other).value;
             return new Scalar(div);
         } else return super.div(other);

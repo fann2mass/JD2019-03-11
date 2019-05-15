@@ -12,4 +12,7 @@ class Printer {
         for (Map.Entry<String, Var> entry : vars.entrySet())
             System.out.println(entry.getKey() + " = " + entry.getValue());
     }
+
+
+
 }

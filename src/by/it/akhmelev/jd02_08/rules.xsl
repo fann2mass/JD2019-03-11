@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html"/>
 
   <xsl:template match="/users">
     <body>
-      <table>
+      <table border="1">
         <tr>
           <td>Address</td>
           <td>Description</td>

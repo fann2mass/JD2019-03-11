@@ -19,7 +19,7 @@ public class TaskC {
         }
     }
 
-    private static String path = getPath(TaskC.class);
+    private static String path = "D:/";
 
     private static String getPath(Class<?> cl) {
         String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;

@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
 
+    public static ResourceManager manager = ResourceManager.INSTANCE;
+
     public static void main(String[] args) {
         try{
             Var.load();
@@ -13,7 +15,6 @@ public class ConsoleRunner {
             e.printStackTrace();
         }
 
-        ResourceManager manager=ResourceManager.INSTANCE;
         System.out.println("You can select language:\nen-English\nbe-беларуский\nru-русский");
         Scanner scanner1 = new Scanner(System.in);
         String text = scanner1.nextLine();
@@ -34,7 +35,7 @@ public class ConsoleRunner {
             default:
                     System.out.println("Неправильный ввод");
         }
-        System.out.println(ResourceManager.INSTANCE.getString(Msg.WELCOME));
+        System.out.println(manager.getString(Msg.WELCOME));
         Parser parser = new Parser();
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);

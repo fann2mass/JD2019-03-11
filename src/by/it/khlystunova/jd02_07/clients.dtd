@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+        <!ELEMENT clients (client)+>
+        <!ELEMENT client (name,surname,dateOfBirthday,buys)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT surname (#PCDATA)>
+        <!ELEMENT dateOfBirthday (#PCDATA)>
+        <!ELEMENT buys (buy)+>
+        <!ELEMENT buy (description,firm,price,size,color) >
+        <!ELEMENT description (#PCDATA)>
+        <!ELEMENT firm (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ATTLIST price
+                currency PCDATA #REQUIRED>
+        <!ELEMENT size (#PCDATA)>
+        <!ELEMENT color (#PCDATA)>

@@ -29,7 +29,7 @@ public class C_Init {
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `bildziuh` DEFAULT CHARACTER SET utf8 ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bildziuh`.`roles` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `role` VARCHAR(100) NULL,\n" +
+                    "  `role` VARCHAR(45) NULL,\n" +
                     "  PRIMARY KEY (`ID`))\n" +
                     "ENGINE = InnoDB;\n");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bildziuh`.`users` (\n" +

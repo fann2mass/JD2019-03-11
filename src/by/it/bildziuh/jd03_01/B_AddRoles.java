@@ -19,7 +19,7 @@ public class B_AddRoles {
 
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bildziuh`.`roles` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `role` VARCHAR(100) NULL,\n" +
+                    "  `role` VARCHAR(45) NULL,\n" +
                     "  PRIMARY KEY (`ID`))\n" +
                     "ENGINE = InnoDB;\n");
 

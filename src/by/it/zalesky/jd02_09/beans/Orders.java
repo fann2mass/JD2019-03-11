@@ -6,28 +6,27 @@
 //
 
 
-package by.it.akhmelev.jd02_09.beans;
+package by.it.zalesky.jd02_09.beans;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Ads complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Ads">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="user" type="{http://beans.jd02_09.akhmelev.it.by/}User" maxOccurs="unbounded"/>
+ *         &lt;element name="ad" type="{http://beans.jd02_09.akhmelev.it.by/}Ad" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,48 +36,47 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "user"
+@XmlType(name = "Orders", propOrder = {
+    "order"
 })
-@XmlRootElement(name = "users")
-public class Users {
+public class Orders {
 
     @XmlElement(required = true)
-    protected List<User> user;
+    protected List<Order> order;
 
     /**
-     * Gets the value of the user property.
-     * 
+     * Gets the value of the ad property.
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the user property.
-     * 
+     * This is why there is not a <CODE>set</CODE> method for the ad property.
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getUser().add(newItem);
+     *    getAd().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link User }
-     * 
-     * 
+     * {@link Order }
+     *
+     *
      */
-    public List<User> getUser() {
-        if (user == null) {
-            user = new ArrayList<>();
+    public List<Order> getOrder() {
+        if (order == null) {
+            order = new ArrayList<>();
         }
-        return this.user;
+        return this.order;
     }
 
     @Override
     public String toString() {
-        return "Users{" +
-                "user=" + user +
+        return "Orders{" +
+                "order=" + order +
                 '}';
     }
 }

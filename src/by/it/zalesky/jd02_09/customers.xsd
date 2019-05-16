@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://jd02_07.zalesky.it.by/"
-        xmlns:my="http://jd02_07.zalesky.it.by/"
+        targetNamespace="http://beans.jd02_09.zalesky.it.by/"
+        xmlns:my="http://beans.jd02_09.zalesky.it.by/"
         elementFormDefault="qualified">
 <element name="customers">
   <complexType>

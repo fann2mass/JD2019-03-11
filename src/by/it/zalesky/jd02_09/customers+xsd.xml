@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<customers xmlns="http://jd02_07.zalesky.it.by/"
+<customers xmlns="http://beans.jd02_09.zalesky.it.by/"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://jd02_07.zalesky.it.by/ customers.xsd">
+       xsi:schemaLocation="http://beans.jd02_09.zalesky.it.by/  customers.xsd">
   <customer>
     <contactName>Dereck</contactName>
     <companyName>Bob's Heating</companyName>

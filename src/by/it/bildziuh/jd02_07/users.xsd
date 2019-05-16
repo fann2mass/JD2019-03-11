@@ -53,9 +53,9 @@
             <element name="game" type="string"/>
             <element name="group" type="string"/>
             <element name="name" type="string"/>
-            <element name="standalone" type="boolean"/>
-            <element name="description" type="string"/>
+            <element name="description" type="string" />
             <element name="size" type="positiveInteger"/>
+            <element name="link" type="string"/>
         </all>
     </complexType>
 

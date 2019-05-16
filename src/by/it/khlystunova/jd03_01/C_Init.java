@@ -7,10 +7,6 @@ import java.sql.Statement;
 
 public class C_Init {
 
-    private static final String URL="jdbc:mysql://127.0.0.1:2016/";
-    private static final String USER="root";
-    private static final String PASSWORD="";
-
 //    static {
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
@@ -21,58 +17,76 @@ public class C_Init {
 
 
     public static void main(String[] args) throws SQLException {
-        try (
-                Connection connection= DriverManager.getConnection(URL,USER,PASSWORD);
-                Statement statement = connection.createStatement()
-        ){
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `akhmelev`");
-            statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `akhmelev` DEFAULT CHARACTER SET utf8 ;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `akhmelev`.`roles` (\n" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `role` VARCHAR(100) NULL,\n" +
-                    "  PRIMARY KEY (`id`))\n" +
-                    "ENGINE = InnoDB;\n");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `akhmelev`.`users` (\n" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `login` VARCHAR(100) NULL,\n" +
-                    "  `password` VARCHAR(100) NULL,\n" +
-                    "  `email` VARCHAR(100) NULL,\n" +
-                    "  `roles_id` INT NOT NULL,\n" +
-                    "  PRIMARY KEY (`id`),\n" +
+        try (Connection connection= DriverManager.getConnection(CN.URL,CN.USER,CN.PASSWORD);
+                Statement statement = connection.createStatement()) {
+
+            statement.executeUpdate("DROP SCHEMA IF EXISTS `khlystunova`");
+            statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `khlystunova` DEFAULT CHARACTER SET utf8 ;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `khlystunova`.`roles` (\n" +
+                    "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `Role` VARCHAR(50) NULL,\n" +
+                    "  PRIMARY KEY (`ID`))\n" +
+                    "ENGINE = InnoDB;");
+            statement.executeUpdate("\n" +
+                    "CREATE TABLE IF NOT EXISTS `khlystunova`.`users` (\n" +
+                    "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `Login` VARCHAR(45) NULL,\n" +
+                    "  `Password` VARCHAR(45) NULL,\n" +
+                    "  `Email` VARCHAR(45) NULL,\n" +
+                    "  `roles_ID` INT NOT NULL,\n" +
+                    "  PRIMARY KEY (`ID`),\n" +
                     "  CONSTRAINT `fk_users_roles`\n" +
-                    "    FOREIGN KEY (`roles_id`)\n" +
-                    "    REFERENCES `akhmelev`.`roles` (`id`)\n" +
+                    "    FOREIGN KEY (`roles_ID`)\n" +
+                    "    REFERENCES `khlystunova`.`roles` (`ID`)\n" +
                     "    ON DELETE RESTRICT\n" +
                     "    ON UPDATE RESTRICT)\n" +
-                    "ENGINE = InnoDB;\n");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `akhmelev`.`ads` (\n" +
-                    "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `description` VARCHAR(5000) NULL,\n" +
-                    "  `address` VARCHAR(400) NULL,\n" +
-                    "  `rooms` INT NULL,\n" +
-                    "  `floor` INT NULL,\n" +
-                    "  `floors` INT NULL,\n" +
-                    "  `price` DOUBLE NULL,\n" +
-                    "  `area` DOUBLE NULL,\n" +
-                    "  `users_id` INT NOT NULL,\n" +
-                    "  PRIMARY KEY (`id`),\n" +
-                    "  CONSTRAINT `fk_ads_users1`\n" +
-                    "    FOREIGN KEY (`users_id`)\n" +
-                    "    REFERENCES `akhmelev`.`users` (`id`)\n" +
+                    "ENGINE = InnoDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `khlystunova`.`coffemachines` (\n" +
+                    "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `Name` VARCHAR(50) NULL,\n" +
+                    "  `Firm` VARCHAR(50) NULL,\n" +
+                    "  `Type` VARCHAR(45) NULL,\n" +
+                    "  `Power` INT NULL,\n" +
+                    "  `Size` VARCHAR(50) NULL,\n" +
+                    "  `Weight` DOUBLE NULL,\n" +
+                    "  `Steam` VARCHAR(45) NULL,\n" +
+                    "  `WaterContainer` VARCHAR(45) NULL,\n" +
+                    "  `BeansContainer` VARCHAR(45) NULL,\n" +
+                    "  `Color` VARCHAR(45) NULL,\n" +
+                    "  `Price` DOUBLE NULL,\n" +
+                    "  PRIMARY KEY (`ID`))\n" +
+                    "ENGINE = InnoDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `khlystunova`.`requests` (\n" +
+                    "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `Contact` VARCHAR(45) NULL,\n" +
+                    "  `DeliveryAdress` VARCHAR(50) NULL,\n" +
+                    "  `DeliveryMethod` VARCHAR(45) NULL,\n" +
+                    "  `MethodPayment` VARCHAR(45) NULL,\n" +
+                    "  `users_ID` INT NOT NULL,\n" +
+                    "  `coffemachines_ID` INT NOT NULL,\n" +
+                    "  PRIMARY KEY (`ID`),\n" +
+                    "  CONSTRAINT `fk_requests_users1`\n" +
+                    "    FOREIGN KEY (`users_ID`)\n" +
+                    "    REFERENCES `khlystunova`.`users` (`ID`)\n" +
+                    "    ON DELETE CASCADE\n" +
+                    "    ON UPDATE CASCADE,\n" +
+                    "  CONSTRAINT `fk_requests_coffemachines1`\n" +
+                    "    FOREIGN KEY (`coffemachines_ID`)\n" +
+                    "    REFERENCES `khlystunova`.`coffemachines` (`ID`)\n" +
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'admin', 'qwerty', 'a@gmail.com', 1);\n");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user', 'asdfgh', 'user@mail.ru', 2);\n");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`id`, `login`, `password`, `email`, `roles_id`) VALUES (DEFAULT, 'user2', 'zxcvbn', 'user2@ya.ru', 2);\n");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `rooms`, `floor`, `floors`, `price`, `area`, `users_id`) VALUES (DEFAULT, 'good flat', 'Minsk Lenina 2 4', 2, 3, 6, 99999, 50, 2);\n");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `rooms`, `floor`, `floors`, `price`, `area`, `users_id`) VALUES (DEFAULT, 'bad flat', 'Minsk Tractorny Zavod 55 99', 1, 1, 1, 44444, 33, 2);\n");
-            statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`id`, `description`, `address`, `rooms`, `floor`, `floors`, `price`, `area`, `users_id`) VALUES (DEFAULT, 'just flat', 'Minsk Scryganova 14a', 1, 5, 6, 55555, 30, 3);\n");
-        }
+            statement.executeUpdate("INSERT INTO `khlystunova`.`roles` (`ID`, `Role`) VALUES (1, 'Administrator');");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`roles` (`ID`, `Role`) VALUES (2, 'User');");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`roles` (`ID`, `Role`) VALUES (3, 'Guest');");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'admin', 'padmin', 'admin@gmail.com', 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'Petrov', 'puser', 'user@gmail.com', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`users` (`ID`, `Login`, `Password`, `Email`, `roles_ID`) VALUES (DEFAULT, 'Sidorov', 'psidorov', 'sidorov@mail.ru', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Type`, `Power`, `Size`, `Weight`, `Steam`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 'GAGIA', 'professional ', 1600, '625x472x510 ', 49.3, 'Panarello', '13 l', '7 l', 'Metalic', 5650);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Type`, `Power`, `Size`, `Weight`, `Steam`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 'GAGIA', 'professional ', 1200, '530x550x420 ', 30.4, 'Panarello', '2,3 l', '2 l', 'Red', 4620);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+375293455837', 'Frolova27f3', 'pickup', 'cash', 2, 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+375296256313', 'Pr.Mira27b12', 'courier', 'card', 3, 2);\n");
 
+        }
     }
 }

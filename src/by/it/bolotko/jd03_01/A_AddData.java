@@ -23,6 +23,5 @@ public class A_AddData {
             statement.executeUpdate("INSERT INTO `TaskA`.`information` (`id`, `model`, `colour`, `price`, `cars_id`) VALUES (DEFAULT, 'Q7', 'green', '9999', 2);\n");
             statement.executeUpdate("INSERT INTO `TaskA`.`information` (`id`, `model`, `colour`, `price`, `cars_id`) VALUES (DEFAULT, 'priora', 'black', '444', 3);\n");
         }
-
     }
 }

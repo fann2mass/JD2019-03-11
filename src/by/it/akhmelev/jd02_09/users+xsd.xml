@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://beans.jd02_09.akhmelev.it.by/"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://beans.jd02_09.akhmelev.it.by/ users.xsd">
+  <user>
+    <login>Vasya</login>
+    <password>qwerty</password>
+    <email>vasya@gmail.com</email>
+    <ads>
+      <ad>
+        <description>Самая лучшая квартира в Минске</description>
+        <address>г. Минск, ул. Ленина 42, кв 42</address>
+        <floor>3</floor>
+        <floors>5</floors>
+        <rooms>3</rooms>
+        <price currency="USD">99999</price>
+      </ad>
+      <ad>
+        <description>Самая лучшая квартира в Пинске</description>
+        <address>г. Пинск, ул. Гагарина 12, кв 32</address>
+        <floor>2</floor>
+        <floors>6</floors>
+        <rooms>2</rooms>
+        <price currency="USD">77777</price>
+      </ad>
+    </ads>
+  </user>
+  <user>
+    <login>Petya</login>
+    <password>asdfgh</password>
+    <email>petya@tut.by</email>
+    <ads>
+      <ad>
+        <description>Маленькая квартирка в Минске</description>
+        <address>г. Минск, ул. Гикало 2, кв 2</address>
+        <floor>1</floor>
+        <floors>5</floors>
+        <rooms>1</rooms>
+        <price currency="BYN">88888.8</price>
+      </ad>
+    </ads>
+  </user>
+</users>

@@ -1,6 +1,6 @@
 package by.it.bolotko.jd03_02.crud;
 
-import by.it.bolotko.jd03_02.beans.User;
+import by.it.bolotko.jd03_02.beans.Role;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 
-public class UserCRUD {
+public class RoleCRUD {
 
-    public boolean create(User user) throws SQLException {
+    public boolean create(Role role) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
                 "INSERT INTO " +
-                        "`users`(`login`, `password`, `email`, `phone`, `roles_id`) " +
-                        "VALUES ('%s','%s','%s','%s',%d)",
-                user.getLogin(), user.getPassword(),user.getEmail(), user.getPhone(), user.getRoles_id()
+                        "`roles`(`role`) " +
+                        "VALUES ('%s')",
+                role.getRole()
         );
 
         try (
@@ -26,7 +26,7 @@ public class UserCRUD {
             if (count == 1) {
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    user.setId(generatedKeys.getLong(1));
+                    role.setId(generatedKeys.getLong(1));
                     return true;
                 }
             }
@@ -34,9 +34,9 @@ public class UserCRUD {
         return false;
     }
 
-    public User read(long id) throws SQLException {
+    public Role read(long id) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
-                "SELECT * FROM `users` WHERE `id`=%d", id
+                "SELECT * FROM `roles` WHERE `id`=%d", id
         );
 
         try (
@@ -46,13 +46,9 @@ public class UserCRUD {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
 
-                return new User(
+                return new Role(
                         resultSet.getLong("id"),
-                        resultSet.getString("login"),
-                        resultSet.getString("password"),
-                        resultSet.getString("email"),
-                        resultSet.getString("phone"),
-                        resultSet.getLong("roles_id")
+                        resultSet.getString("role")
                 );
             }
         }
@@ -60,14 +56,11 @@ public class UserCRUD {
     }
 
 
-    public void update(User user) throws SQLException {
+    public void update(Role role) throws SQLException {
         String sql = String.format(Locale.ENGLISH,
-                "UPDATE `users` " +
-                        "SET `login`='%s',`password`='%s'," +
-                        "`email`='%s',`phone`='%s',`roles_id`=%d WHERE `id`=%d",
-                user.getLogin(), user.getPassword(),
-                user.getEmail(), user.getPhone(),
-                user.getRoles_id(), user.getId()
+                "UPDATE `roles` " +
+                        "SET `role`='%s' WHERE `id`=%d",
+                role.getRole(), role.getId()
         );
 
         try (
@@ -78,8 +71,8 @@ public class UserCRUD {
         }
     }
 
-    public boolean delete(User user) throws SQLException {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM `users` WHERE `id`=%d", user.getId());
+    public boolean delete(Role role) throws SQLException {
+        String sql = String.format(Locale.ENGLISH, "DELETE FROM `roles` WHERE `id`=%d", role.getId());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

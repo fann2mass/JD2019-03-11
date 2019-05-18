@@ -16,6 +16,18 @@ CREATE SCHEMA IF NOT EXISTS `TaskA` DEFAULT CHARACTER SET utf8 ;
 USE `TaskA` ;
 
 -- -----------------------------------------------------
+-- Table `TaskA`.`roles`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `TaskA`.`roles` ;
+
+CREATE TABLE IF NOT EXISTS `TaskA`.`roles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `role` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `TaskA`.`users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `TaskA`.`users` ;
@@ -23,7 +35,13 @@ DROP TABLE IF EXISTS `TaskA`.`users` ;
 CREATE TABLE IF NOT EXISTS `TaskA`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user` VARCHAR(100) NULL,
-  PRIMARY KEY (`id`))
+  `roles_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_users_roles1`
+    FOREIGN KEY (`roles_id`)
+    REFERENCES `TaskA`.`roles` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -60,8 +78,8 @@ CREATE TABLE IF NOT EXISTS `TaskA`.`information` (
   CONSTRAINT `fk_information_cars1`
     FOREIGN KEY (`cars_id`)
     REFERENCES `TaskA`.`cars` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

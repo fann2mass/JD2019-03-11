@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://beans.jd02_09.bildziuh.it.by/"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://beans.jd02_09.bildziuh.it.by/ users.xsd">
+    <admin>
+        <login>admin</login>
+        <password>admin</password>
+        <email>admin@admin.admin</email>
+    </admin>
+    <user>
+        <login>Vasya</login>
+        <password>qwerty</password>
+        <email>vasya@gmail.com</email>
+        <mods>
+            <mod>
+                <game>Skyrim</game>
+                <group>UI</group>
+                <name>better UI</name>
+                <description>Улучшить интерфейс бесплатно, без смс и регистрации</description>
+                <size>42</size>
+                <link>gdisk</link>
+            </mod>
+            <mod>
+                <game>Witcher 3</game>
+                <group>Animations</group>
+                <name>Killing spree</name>
+                <description>Новые анимации</description>
+                <size>84</size>
+                <link>gdisk</link>
+            </mod>
+        </mods>
+    </user>
+    <user>
+        <login>Petya</login>
+        <password>asdfgh</password>
+        <email>petya@tut.by</email>
+        <mods>
+            <mod>
+                <game>World of warcraft</game>
+                <group>UI</group>
+                <name>Deadly Boss Mods</name>
+                <description>Отображение дополнительных панелей информации</description>
+                <size>480</size>
+                <link>gdisk</link>
+            </mod>
+        </mods>
+    </user>
+    <user>
+        <login>Vanya</login>
+        <password>zxcvb</password>
+        <email>vanya@mail.sru</email>
+        <mods>
+            <mod>
+                <game>World of warcraft</game>
+                <group>UI</group>
+                <name>DBM Legion</name>
+                <description>расширение DBM для контента Legion. Необходимо иметь установленный Deadly Boss Mods
+                </description>
+                <size>120</size>
+                <link>gdisk</link>
+            </mod>
+        </mods>
+    </user>
+</users>

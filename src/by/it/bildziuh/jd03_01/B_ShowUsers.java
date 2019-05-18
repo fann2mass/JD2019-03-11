@@ -15,7 +15,22 @@ public class B_ShowUsers {
         ) {
             ResultSet resultSet = statement.executeQuery("select * from `bildziuh`.`users`;");
             while (resultSet.next()) {
-                String out = resultSet.getString("Email") + ", " + resultSet.getString("Login");
+                String role = "";
+                switch (Integer.parseInt(resultSet.getString("roles_id"))) {
+                    case 1:
+                        role = "admin";
+                        break;
+                    case 2:
+                        role = "moderator";
+                        break;
+                    case 3:
+                        role = "user";
+                        break;
+                    case 4:
+                        role = "guest";
+                        break;
+                }
+                String out = resultSet.getString("Login") + ", " + role;
                 System.out.println(out);
             }
         } catch (Exception e) {

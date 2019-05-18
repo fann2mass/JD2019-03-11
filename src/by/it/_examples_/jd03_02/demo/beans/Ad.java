@@ -108,7 +108,7 @@ public class Ad {
 
     @Override
     public String toString() {
-        return "Ad{" +
+        return "Mod{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", address='" + address + '\'' +

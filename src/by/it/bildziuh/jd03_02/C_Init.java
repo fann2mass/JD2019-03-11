@@ -1,4 +1,4 @@
-package by.it.bildziuh.jd03_01;
+package by.it.bildziuh.jd03_02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class C_Init {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String URL="jdbc:mysql://127.0.0.1:2016/";
+    private static final String USER="root";
+    private static final String PASSWORD="";
 
 //    static {
 //        try {
@@ -22,9 +22,9 @@ public class C_Init {
 
     public static void main(String[] args) throws SQLException {
         try (
-                Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                Statement statement = connection.createStatement()
-        ) {
+        Connection connection= DriverManager.getConnection(URL,USER,PASSWORD);
+        Statement statement = connection.createStatement()
+        ){
             statement.executeUpdate("DROP SCHEMA IF EXISTS `bildziuh`");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `bildziuh` DEFAULT CHARACTER SET utf8 ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `bildziuh`.`roles` (\n" +
@@ -56,14 +56,12 @@ public class C_Init {
                     "  `link` VARCHAR(1000) NULL,\n" +
                     "  `users_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
-          //          "  UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) VISIBLE,\n" +
                     "  CONSTRAINT `fk_mods_users1`\n" +
                     "    FOREIGN KEY (`users_id`)\n" +
                     "    REFERENCES `bildziuh`.`users` (`id`)\n" +
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
-
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
@@ -74,6 +72,5 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Skyrim', 'User interface', 'Better UI', 'Improve ur interface w/o registration and for free', 42, 'gdisk', 2);\n");
             statement.executeUpdate("INSERT INTO `bildziuh`.`mods` (`ID`, `Game`, `Group`, `Name`, `Description`, `Size`, `Link`, `users_ID`) VALUES (DEFAULT, 'Witcher 3', 'Animations', 'Killing spree', 'New animations', 84, 'gdisk', 3);\n");
         }
-        System.out.println("Database created!");
     }
 }

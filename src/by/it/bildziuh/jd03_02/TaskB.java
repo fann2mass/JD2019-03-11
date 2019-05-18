@@ -1,7 +1,6 @@
 package by.it.bildziuh.jd03_02;
 
 
-import javax.xml.transform.Result;
 import java.sql.*;
 
 public class TaskB {
@@ -15,10 +14,9 @@ public class TaskB {
                 Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 Statement statement = connection.createStatement()) {
 
-            //получаем пользователей. Если неизвестно число полей, то нужно получить метаданные
             int countUsers = 0;
             int countRoles = 0;
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM users INNER JOIN roles ON users.roles_ID=roles.ID");
+            ResultSet resultSet = statement.executeQuery("SELECT login,roles.role FROM users INNER JOIN roles ON users.roles_ID=roles.ID");
             while (resultSet.next()) {
                 ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
                 int columnCount = resultSetMetaData.getColumnCount();

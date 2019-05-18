@@ -53,7 +53,7 @@ public class C_Init {
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
+            statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'administrator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'moderator');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'user');");
             statement.executeUpdate("INSERT INTO `bildziuh`.`roles` (`id`, `role`) VALUES (DEFAULT, 'guest');");

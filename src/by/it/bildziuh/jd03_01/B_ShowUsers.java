@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class B_ShowUsers {
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/";
+    private static final String URL = "jdbc:mysql://127.0.0.1:2016/bildziuh?";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -13,7 +13,7 @@ public class B_ShowUsers {
                 Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 Statement statement = connection.createStatement()
         ) {
-            ResultSet resultSet = statement.executeQuery("select * from `bildziuh`.`users`;");
+            ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()) {
                 String role = "";
                 switch (Integer.parseInt(resultSet.getString("roles_id"))) {

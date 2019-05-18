@@ -11,15 +11,6 @@ public class C_Init {
     private static final String USER="root";
     private static final String PASSWORD="";
 
-//    static {
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//        } catch (Exception ex) {
-//            // handle the error
-//        }
-//    }
-
-
     public static void main(String[] args) throws SQLException {
         try (
         Connection connection= DriverManager.getConnection(URL,USER,PASSWORD);

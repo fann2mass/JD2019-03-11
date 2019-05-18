@@ -16,9 +16,10 @@ public class TaskB {
 
             int countUsers = 0;
             int countRoles = 0;
-            ResultSet resultSet = statement.executeQuery("SELECT login,roles.role FROM users INNER JOIN roles ON users.roles_ID=roles.ID");
+            ResultSet resultSet = statement.executeQuery("SELECT login,roles.role FROM users LEFT JOIN roles ON users.roles_ID=roles.ID");
             while (resultSet.next()) {
                 ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+                resultSet.getMetaData().getColumnCount();
                 int columnCount = resultSetMetaData.getColumnCount();
                 for (int i = 1; i < columnCount + 1; i++)
                     System.out.print(

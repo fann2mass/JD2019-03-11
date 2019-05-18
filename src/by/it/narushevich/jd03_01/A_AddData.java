@@ -7,6 +7,18 @@ public class A_AddData {
 
     public static void createCollection(Statement statement) throws SQLException {
 
+        statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `narushevich_a` DEFAULT CHARACTER SET utf8 ;");
+        statement.executeUpdate("CREATE TABLE IF NOT EXISTS `narushevich_a`.`teatag` (\n" +
+                "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                "  `trademark` VARCHAR(45) NULL,\n" +
+                "  `subtitle` VARCHAR(45) NULL,\n" +
+                "  `country` VARCHAR(25) NULL,\n" +
+                "  `material` VARCHAR(10) NULL,\n" +
+                "  `width_x_height` VARCHAR(10) NULL,\n" +
+                "  `in_collection_since` YEAR(4) NULL,\n" +
+                "  `fk_users` int(11) NULL,\n" +
+                "  PRIMARY KEY (`id`))\n" +
+                "ENGINE = InnoDB;");
         statement.executeUpdate("insert into teatag(id, trademark, subtitle, country, " +
                 "material, width_x_height, in_collection_since, fk_users)" +
                 "values (default,'AHMAD TEA','English Tea #1','Belarus','cardboard','28 x 32',2017, 1)");

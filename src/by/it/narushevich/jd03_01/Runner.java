@@ -18,6 +18,7 @@ public class Runner {
              Statement statement = connection.createStatement()
         ) {
             CheckConnection.check(connection);
+            statement.executeUpdate("DROP SCHEMA IF EXISTS `narushevich_a` ;");
             //B_AddRoles.createRoles(statement);
             //A_AddUser.createUsers(statement);
             //A_AddData.createCollection(statement);

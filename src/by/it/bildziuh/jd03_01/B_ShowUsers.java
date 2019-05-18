@@ -18,7 +18,7 @@ public class B_ShowUsers {
                 String role = "";
                 switch (Integer.parseInt(resultSet.getString("roles_id"))) {
                     case 1:
-                        role = "admin";
+                        role = "administrator";
                         break;
                     case 2:
                         role = "moderator";

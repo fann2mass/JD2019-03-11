@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<parkings xmlns="http://beans.jd02_09.bolotko.it.by/">
+    <parking>
+        <first_name>Michail</first_name>
+        <last_name>Sidorov</last_name>
+        <year_of_birth>12.04.1994</year_of_birth>
+        <drivers_license_number>2156812</drivers_license_number>
+        <category>A,B</category>
+        <cars>
+            <car>
+                <car_model>Audi</car_model>
+                <car_type>Passenger car</car_type>
+                <numbers>8354CB-1</numbers>
+            </car>
+            <car>
+                <car_model>BMW</car_model>
+                <car_type>Jeep</car_type>
+                <numbers>8359CB-1</numbers>
+            </car>
+        </cars>
+        <prices>
+            <price>
+                <number_of_cars>2</number_of_cars>
+                <total_price currency="BYN">120.0</total_price>
+            </price>
+        </prices>
+    </parking>
+    <parking>
+        <first_name>Aleksandr</first_name>
+        <last_name>Potapov</last_name>
+        <year_of_birth>24.12.1984</year_of_birth>
+        <drivers_license_number>2105361</drivers_license_number>
+        <category>B</category>
+        <cars>
+            <car>
+                <car_model>Lada</car_model>
+                <car_type>Passenger car</car_type>
+                <numbers>6122AA-2</numbers>
+            </car>
+        </cars>
+        <prices>
+            <price>
+                <number_of_cars>1</number_of_cars>
+                <total_price currency="BYN">60.0</total_price>
+            </price>
+        </prices>
+    </parking>
+</parkings>

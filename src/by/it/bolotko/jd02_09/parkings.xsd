@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.bolotko.it.by/"
+        xmlns:my="http://beans.jd02_09.bolotko.it.by/"
+        elementFormDefault="qualified">
+<element name="parkings">
+  <complexType>
+    <sequence>
+      <element name="parking"
+               type="my:Parking"
+               maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+</element>
+
+  <complexType name="Parking">
+    <sequence>
+      <element name="first_name" type="string" />
+      <element name="last_name" type="string" />
+      <element name="year_of_birth" type="string" />
+      <element name="drivers_license_number" type="string" />
+      <element name="category" type="string" />
+      <element name="cars" type="my:Cars" />
+      <element name="prices" type="my:Prices" />
+    </sequence>
+  </complexType>
+
+  <complexType name="Cars">
+    <sequence>
+      <element name="car"
+               type="my:Car"
+               maxOccurs="unbounded" />
+
+    </sequence>
+  </complexType>
+
+  <complexType name="Car">
+    <sequence>
+      <element name="car_model" type="string" />
+      <element name="car_type" type="string" />
+      <element name="numbers" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="Prices">
+    <sequence>
+      <element name="price"
+               type="my:Price"
+               maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="Price">
+    <sequence>
+      <element name="number_of_cars" type="string" />
+      <element name="total_price" type="my:Total_price" />
+    </sequence>
+  </complexType>
+
+  <complexType name="Total_price">
+    <simpleContent>
+      <extension base="double">
+        <attribute name="currency" type="string" />
+      </extension>
+    </simpleContent>
+  </complexType>
+</schema>

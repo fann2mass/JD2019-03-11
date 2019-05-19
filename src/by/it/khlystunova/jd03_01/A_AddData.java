@@ -20,9 +20,9 @@ public class A_AddData {
     public static void main(String[] args) throws SQLException {
         try (Connection connection= DriverManager.getConnection(CN.URL,CN.USER,CN.PASSWORD);
              Statement statement = connection.createStatement()) {
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 1);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
 
         }
     }

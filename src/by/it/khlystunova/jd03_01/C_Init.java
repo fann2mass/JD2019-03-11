@@ -78,7 +78,7 @@ public class C_Init {
                     "  `ID` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `users_ID` INT NOT NULL,\n" +
                     "  `Contact` VARCHAR(45) NULL,\n" +
-                    "  `DeliveryAdress` VARCHAR(50) NULL,\n" +
+                    "  `DeliveryAddress` VARCHAR(50) NULL,\n" +
                     "  `coffemachines_ID` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`ID`),\n" +
                     "  CONSTRAINT `fk_requests_users1`\n" +
@@ -105,8 +105,8 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'panarello');\n");
             statement.executeUpdate("INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 1, 1600, '625x472x510 ', 49.3, 1, '13 l', '7 l', 'Metalic', 5650);\n");
             statement.executeUpdate("INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 2, 1200, '530x550x420 ', 30.4, 2, '2,3 l', '2 l', 'Red', 4620);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+375293455837', 'Frolova27f3', 1);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 3, '+375296256313', 'Pr.Mira27b12', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+375293455837', 'Frolova27f3', 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 3, '+375296256313', 'Pr.Mira27b12', 2);\n");
 
         }
     }

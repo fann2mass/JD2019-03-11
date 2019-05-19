@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `khlystunova`.`requests` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `users_ID` INT NOT NULL,
   `Contact` VARCHAR(45) NULL,
-  `DeliveryAdress` VARCHAR(50) NULL,
+  `DeliveryAddress` VARCHAR(50) NULL,
   `coffemachines_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_requests_users1`
@@ -194,8 +194,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `khlystunova`;
-INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+375293455837', 'Frolova27f3', 1);
-INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 3, '+375296256313', 'Pr.Mira27b12', 2);
+INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+375293455837', 'Frolova27f3', 1);
+INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAddress`, `coffemachines_ID`) VALUES (DEFAULT, 3, '+375296256313', 'Pr.Mira27b12', 2);
 
 COMMIT;
 

@@ -5,8 +5,9 @@ import java.sql.*;
 public class B_AddRoles {
 
     public static void createRoles(Statement statement) throws SQLException {
-        statement.executeUpdate("insert into roles(id, role)" + "values (default,'administrator')");
-        statement.executeUpdate("insert into roles(id, role)" + "values (default,'user')");
-        statement.executeUpdate("insert into roles(id, role)" + "values (default,'guest')");
+
+        statement.executeUpdate("INSERT INTO narushevich_ab.roles (`id`, `role`) VALUES (DEFAULT, 'administrator');");
+        statement.executeUpdate("INSERT INTO narushevich_ab.roles (`id`, `role`) VALUES (DEFAULT, 'user');");
+        statement.executeUpdate("INSERT INTO narushevich_ab.roles (`id`, `role`) VALUES (DEFAULT, 'guest');");
     }
 }

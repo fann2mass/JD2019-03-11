@@ -18,12 +18,12 @@ public class Runner {
              Statement statement = connection.createStatement()
         ) {
             CheckConnection.check(connection);
-            statement.executeUpdate("DROP SCHEMA IF EXISTS `narushevich_a` ;");
-            //B_AddRoles.createRoles(statement);
-            //A_AddUser.createUsers(statement);
-            //A_AddData.createCollection(statement);
-            C_init.createFullDataBase(statement);
+            A_Init.createSchema(statement);
+            B_AddRoles.createRoles(statement);
+            A_AddUser.createUsers(statement);
+            A_AddData.createCollection(statement);
             B_ShowUsers.show(statement);
+            C_init.createFullDataBase(statement);
             //C_reset.resetDataBase(statement);
         }
     }

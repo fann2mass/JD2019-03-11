@@ -3,6 +3,7 @@ package by.it.narushevich.jd03_02.beans;
 public class User {
 
     private long id;
+    private String nickname;
     private String login;
     private String password;
     private String email;
@@ -11,8 +12,9 @@ public class User {
     public User() {
     }
 
-    public User(long id, String login, String password, String email, long roles_id) {
+    public User(long id, String nickname, String login, String password, String email, long roles_id) {
         this.id = id;
+        this.nickname = nickname;
         this.login = login;
         this.password = password;
         this.email = email;
@@ -25,6 +27,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getLogin() {
@@ -63,6 +73,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", nickname='" + nickname + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

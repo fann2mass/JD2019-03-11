@@ -17,7 +17,7 @@ public class TeatagCRUD {
                         "`in_collection_since`, `users_id`) " +
                         "VALUES (%d,'%s',%d,%d,'%s',%d)",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
-                teatag.getWidth_x_height(),teatag.getIn_collection_since(),teatag.getUsers_id());
+                teatag.getWidth_x_height_id(),teatag.getIn_collection_since(),teatag.getUsers_id());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()
@@ -62,7 +62,7 @@ public class TeatagCRUD {
                         "SET `trademark_id`=%d,`subtitle`='%s',`material_id`=%d," +
                         "`width_x_height_id`=%d,`in_collection_since`='%s',`users_id`=%d WHERE `id`=%d",
                 teatag.getTrademark_id(),teatag.getSubtitle(),teatag.getMaterial_id(),
-                teatag.getWidth_x_height(),teatag.getIn_collection_since(),teatag.getUsers_id(),teatag.getId());
+                teatag.getWidth_x_height_id(),teatag.getIn_collection_since(),teatag.getUsers_id(),teatag.getId());
         try (
                 Connection connection = ConnectionCreator.get();
                 Statement statement = connection.createStatement()

@@ -57,11 +57,11 @@ public class Teatag {
         this.material_id = material_id;
     }
 
-    public long getWidth_x_height() {
+    public long getWidth_x_height_id() {
         return width_x_height_id;
     }
 
-    public void setWidth_x_height(long width_x_height_id) {
+    public void setWidth_x_height_id(long width_x_height_id) {
         this.width_x_height_id = width_x_height_id;
     }
 

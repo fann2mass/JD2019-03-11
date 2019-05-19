@@ -29,18 +29,21 @@ public class Runner {
         System.out.println(role);
         roleCRUD.delete(role);
 
-//        Teatag teatag=new Teatag();
-//        teatag.setSubtitle("Very tasty tea");
-//        teatag.setUsers_id(3);
-//        TeatagCRUD teatagCRUD=new TeatagCRUD();
-//        teatagCRUD.create(teatag);
-//        teatag=teatagCRUD.read(teatag.getId());
-//        System.out.println(teatag);
-//        teatag.setSubtitle("Jasmin tea");
-//        teatagCRUD.update(teatag);
-//        teatag=teatagCRUD.read(teatag.getId());
-//        System.out.println(teatag);
-//        teatagCRUD.delete(teatag);
+        Teatag teatag=new Teatag();
+        teatag.setSubtitle("Very tasty tea");
+        teatag.setUsers_id(3);
+        teatag.setMaterial_id(1);
+        teatag.setTrademark_id(2);
+        teatag.setWidth_x_height_id(11);
+        TeatagCRUD teatagCRUD=new TeatagCRUD();
+        teatagCRUD.create(teatag);
+        teatag=teatagCRUD.read(teatag.getId());
+        System.out.println(teatag);
+        teatag.setSubtitle("Jasmin tea");
+        teatagCRUD.update(teatag);
+        teatag=teatagCRUD.read(teatag.getId());
+        System.out.println(teatag);
+        teatagCRUD.delete(teatag);
 
         Material material = new Material(0,"Aluminium");
         MaterialCRUD materialCRUD=new MaterialCRUD();

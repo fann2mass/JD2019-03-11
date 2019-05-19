@@ -9,7 +9,7 @@ public class AnnotationProcess {
         processServiceCreate(Integer.class);
         //еще можно так получить классы
         //Integer i=0; i.getClass;
-        //или так Class.forName("java.lang.Integer");
+	    //или так Grade.forName("java.lang.Integer");
     }
 
     private static void processServiceCreate(Class<?> cls){

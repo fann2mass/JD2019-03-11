@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class ConnectionCreator {
+public class ConnectionCreator {
 
     private ConnectionCreator() {
     }
@@ -28,7 +28,7 @@ class ConnectionCreator {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    static Connection get() throws SQLException {
+    public static Connection get() throws SQLException {
         if (connection == null || connection.isClosed()) {
             synchronized (ConnectionCreator.class) {
                 if (connection == null || connection.isClosed()) {

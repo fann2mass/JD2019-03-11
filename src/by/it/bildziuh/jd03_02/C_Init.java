@@ -1,20 +1,17 @@
 package by.it.bildziuh.jd03_02;
 
+import by.it.bildziuh.jd03_02.crud.ConnectionCreator;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class C_Init {
 
-    private static final String URL="jdbc:mysql://127.0.0.1:2016/";
-    private static final String USER="root";
-    private static final String PASSWORD="";
-
     public static void main(String[] args) throws SQLException {
         try (
-        Connection connection= DriverManager.getConnection(URL,USER,PASSWORD);
-        Statement statement = connection.createStatement()
+                Connection connection = ConnectionCreator.get();
+                Statement statement = connection.createStatement()
         ){
             statement.executeUpdate("DROP SCHEMA IF EXISTS `bildziuh`");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `bildziuh` DEFAULT CHARACTER SET utf8 ;");

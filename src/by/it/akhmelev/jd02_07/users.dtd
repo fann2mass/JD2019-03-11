@@ -13,5 +13,6 @@
         <!ELEMENT rooms (#PCDATA)>
         <!ELEMENT price (#PCDATA)>
         <!ATTLIST price
-                currency PCDATA #REQUIRED>
+                currency PCDATA #REQUIRED
+                >
 

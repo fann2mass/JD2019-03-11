@@ -8,6 +8,7 @@ public class Teatag {
     private long material_id;
     private long width_x_height_id;
     private String in_collection_since;
+    private String num_in_catalog;
     private long users_id;
 
     public Teatag() {
@@ -73,6 +74,14 @@ public class Teatag {
         this.in_collection_since = in_collection_since;
     }
 
+    public String getNum_in_catalog() {
+        return num_in_catalog;
+    }
+
+    public void setNum_in_catalog(String num_in_catalog) {
+        this.num_in_catalog = num_in_catalog;
+    }
+
     public long getUsers_id() {
         return users_id;
     }
@@ -90,6 +99,7 @@ public class Teatag {
                 ", material_id=" + material_id +
                 ", width_x_height='" + width_x_height_id + '\'' +
                 ", in_collection_since=" + in_collection_since +
+                ", num_in_catalog=" + num_in_catalog +
                 ", users_id=" + users_id +
                 '}';
     }

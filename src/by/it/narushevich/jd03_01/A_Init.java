@@ -38,6 +38,7 @@ public class A_Init {
                         "  `material` VARCHAR(10) NULL DEFAULT NULL,\n" +
                         "  `width_x_height` VARCHAR(10) NULL DEFAULT NULL,\n" +
                         "  `in_collection_since` VARCHAR(10) NULL DEFAULT NULL,\n" +
+                        "  `num_in_catalog` VARCHAR(10) NULL DEFAULT NULL,\n" +
                         "  `fk_users` INT(11) NOT NULL,\n" +
                         "  PRIMARY KEY (`id`),\n" +
                         "  CONSTRAINT `fk_teatags_users1`\n" +

@@ -28,25 +28,23 @@ public class Market {
             }
 
             if (time > 30 && Dispatcher.buyerInMarket.get() <= 40 + (30 - time)) {
-                Util.sleep(1);
+                Util.sleep(10);
                 continue;
             }
             if (time <= 30 && Dispatcher.buyerInMarket.get() <= time + 10) {
-                Util.sleep(1);
+                Util.sleep(10);
                 continue;
             }
             Util.sleep(1000);
             time++;
         }
 
-        for (Thread buyer : Buyer.buyers) {
-            try {
-                buyer.join();
-            } catch (InterruptedException e) {
-                System.out.println("wow");
-            }
-        }
-        System.out.println("=================market is closed");
+        executorService.shutdown();
+
+        while (!executorService.isTerminated())
+            Util.sleep(1000);
+
+        System.out.println("======================market is closed========================");
 
     }
 }

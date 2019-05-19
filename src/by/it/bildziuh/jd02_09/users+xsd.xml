@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<users xmlns="http://jd02_09.bildziuh.it.by/"
+<users xmlns="http://beans.jd02_09.bildziuh.it.by/"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://jd02_09.bildziuh.it.by/ users.xsd">
-
+       xsi:schemaLocation="http://beans.jd02_09.bildziuh.it.by/ users.xsd">
     <admin>
         <login>admin</login>
         <password>admin</password>

@@ -1,6 +1,6 @@
 package by.it.bildziuh.calc;
 
-public class Constructor {
+class Reporter {
 
     private ReportBuilder reportBuilder;
 

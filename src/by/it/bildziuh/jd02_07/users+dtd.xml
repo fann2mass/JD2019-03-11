@@ -15,17 +15,17 @@
                 <game>Skyrim</game>
                 <group>UI</group>
                 <name>better UI</name>
-                <standalone>true</standalone>
                 <description>Улучшить интерфейс бесплатно, без смс и регистрации</description>
                 <size>42</size>
+                <link>gdisk</link>
             </mod>
             <mod>
                 <game>Witcher 3</game>
                 <group>Animations</group>
                 <name>Killing spree</name>
-                <standalone>true</standalone>
                 <description>Новые анимации добивания оппонента</description>
                 <size>84</size>
+                <link>gdisk</link>
             </mod>
         </mods>
     </user>
@@ -38,9 +38,9 @@
                 <game>World of warcraft</game>
                 <group>UI</group>
                 <name>Deadly Boss Mods</name>
-                <standalone>true</standalone>
                 <description>Отображение дополнительных панелей информации</description>
                 <size>480</size>
+                <link>gdisk</link>
             </mod>
         </mods>
     </user>
@@ -53,10 +53,10 @@
                 <game>World of warcraft</game>
                 <group>UI</group>
                 <name>DBM Legion</name>
-                <standalone>false</standalone>
                 <description>расширение DBM для контента Legion. Необходимо иметь установленный Deadly Boss Mods
                 </description>
                 <size>120</size>
+                <link>gdisk</link>
             </mod>
         </mods>
     </user>

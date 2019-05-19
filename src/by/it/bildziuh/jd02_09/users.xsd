@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://jd02_09.bildziuh.it.by/"
-        xmlns:my="http://jd02_09.bildziuh.it.by/"
+        targetNamespace="http://beans.jd02_09.bildziuh.it.by/"
+        xmlns:my="http://beans.jd02_09.bildziuh.it.by/"
         elementFormDefault="qualified">
     <element name="users">
         <complexType>
@@ -53,7 +53,7 @@
             <element name="game" type="string"/>
             <element name="group" type="string"/>
             <element name="name" type="string"/>
-            <element name="description" type="string" />
+            <element name="description" type="string"/>
             <element name="size" type="positiveInteger"/>
             <element name="link" type="string"/>
         </all>

@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 public class A_AddData {
 
+
 //    static {
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
@@ -19,9 +20,10 @@ public class A_AddData {
     public static void main(String[] args) throws SQLException {
         try (Connection connection= DriverManager.getConnection(CN.URL,CN.USER,CN.PASSWORD);
              Statement statement = connection.createStatement()) {
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+3752945980123', 'Stiapianka 34/12', 'pickup', 'cash', 4, 1);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+3752945980123', 'Stiapianka 34/12', 'courier', 'card',4, 2);\n");
-            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+3752945980123', 'Stiapianka 34/12', 'courier', 'card', 4, 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 1);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
+            statement.executeUpdate("INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+37529555555', 'Stiapianka 23/12', 2);\n");
+
         }
     }
 }

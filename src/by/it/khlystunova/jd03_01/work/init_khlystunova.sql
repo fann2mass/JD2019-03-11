@@ -48,6 +48,30 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `khlystunova`.`firm`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `khlystunova`.`firm` ;
+
+CREATE TABLE IF NOT EXISTS `khlystunova`.`firm` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `firm` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `khlystunova`.`steam`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `khlystunova`.`steam` ;
+
+CREATE TABLE IF NOT EXISTS `khlystunova`.`steam` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `Steam` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `khlystunova`.`coffemachines`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `khlystunova`.`coffemachines` ;
@@ -55,17 +79,26 @@ DROP TABLE IF EXISTS `khlystunova`.`coffemachines` ;
 CREATE TABLE IF NOT EXISTS `khlystunova`.`coffemachines` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(50) NULL,
-  `Firm` VARCHAR(50) NULL,
-  `Type` VARCHAR(45) NULL,
+  `firm_ID` INT NOT NULL,
   `Power` INT NULL,
   `Size` VARCHAR(50) NULL,
   `Weight` DOUBLE NULL,
-  `Steam` VARCHAR(45) NULL,
+  `steam_ID` INT NOT NULL,
   `WaterContainer` VARCHAR(45) NULL,
   `BeansContainer` VARCHAR(45) NULL,
   `Color` VARCHAR(45) NULL,
   `Price` DOUBLE NULL,
-  PRIMARY KEY (`ID`))
+  PRIMARY KEY (`ID`),
+  CONSTRAINT `fk_coffemachines_firm1`
+    FOREIGN KEY (`firm_ID`)
+    REFERENCES `khlystunova`.`firm` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_coffemachines_steam1`
+    FOREIGN KEY (`steam_ID`)
+    REFERENCES `khlystunova`.`steam` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -76,11 +109,9 @@ DROP TABLE IF EXISTS `khlystunova`.`requests` ;
 
 CREATE TABLE IF NOT EXISTS `khlystunova`.`requests` (
   `ID` INT NOT NULL AUTO_INCREMENT,
+  `users_ID` INT NOT NULL,
   `Contact` VARCHAR(45) NULL,
   `DeliveryAdress` VARCHAR(50) NULL,
-  `DeliveryMethod` VARCHAR(45) NULL,
-  `MethodPayment` VARCHAR(45) NULL,
-  `users_ID` INT NOT NULL,
   `coffemachines_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_requests_users1`
@@ -91,8 +122,8 @@ CREATE TABLE IF NOT EXISTS `khlystunova`.`requests` (
   CONSTRAINT `fk_requests_coffemachines1`
     FOREIGN KEY (`coffemachines_ID`)
     REFERENCES `khlystunova`.`coffemachines` (`ID`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -125,12 +156,35 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `khlystunova`.`firm`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `khlystunova`;
+INSERT INTO `khlystunova`.`firm` (`ID`, `firm`) VALUES (DEFAULT, 'Gagia');
+INSERT INTO `khlystunova`.`firm` (`ID`, `firm`) VALUES (DEFAULT, 'Italic');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `khlystunova`.`steam`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `khlystunova`;
+INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'automatic');
+INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'autonomy');
+INSERT INTO `khlystunova`.`steam` (`ID`, `Steam`) VALUES (DEFAULT, 'panarello');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `khlystunova`.`coffemachines`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `khlystunova`;
-INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Type`, `Power`, `Size`, `Weight`, `Steam`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 'GAGIA', 'professional ', 1600, '625x472x510 ', 49.3, 'Panarello', '13 l', '7 l', 'Metalic', 5650);
-INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `Firm`, `Type`, `Power`, `Size`, `Weight`, `Steam`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 'GAGIA', 'professional ', 1200, '530x550x420 ', 30.4, 'Panarello', '2,3 l', '2 l', 'Red', 4620);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'LC/D', 1, 1600, '625x472x510 ', 49.3, 1, '13 l', '7 l', 'Metalic', 5650);
+INSERT INTO `khlystunova`.`coffemachines` (`ID`, `Name`, `firm_ID`, `Power`, `Size`, `Weight`, `steam_ID`, `WaterContainer`, `BeansContainer`, `Color`, `Price`) VALUES (DEFAULT, 'GE-GD ONE', 2, 1200, '530x550x420 ', 30.4, 2, '2,3 l', '2 l', 'Red', 4620);
 
 COMMIT;
 
@@ -140,8 +194,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `khlystunova`;
-INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+375293455837', 'Frolova27f3', 'pickup', 'cash', 2, 1);
-INSERT INTO `khlystunova`.`requests` (`ID`, `Contact`, `DeliveryAdress`, `DeliveryMethod`, `MethodPayment`, `users_ID`, `coffemachines_ID`) VALUES (DEFAULT, '+375296256313', 'Pr.Mira27b12', 'courier', 'card', 3, 2);
+INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 2, '+375293455837', 'Frolova27f3', 1);
+INSERT INTO `khlystunova`.`requests` (`ID`, `users_ID`, `Contact`, `DeliveryAdress`, `coffemachines_ID`) VALUES (DEFAULT, 3, '+375296256313', 'Pr.Mira27b12', 2);
 
 COMMIT;
 

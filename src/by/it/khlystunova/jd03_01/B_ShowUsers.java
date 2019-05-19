@@ -11,13 +11,13 @@ public class B_ShowUsers {
 //            // handle the error
 //        }
 //    }
-    
+
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DriverManager.getConnection
                                                 (CN.URL,CN.USER,CN.PASSWORD);
              Statement statement = connection.createStatement()) {
            //получаем пользователей
-            ResultSet resultSet = statement.executeQuery("select * from users;");
+            ResultSet resultSet = statement.executeQuery("select * from `khlystunova`.`users`;");
             while(resultSet.next()){
              String out = resultSet.getString("Login")+", "+resultSet.getString("roles_ID");
                 System.out.println(out);

@@ -6,12 +6,12 @@
         <!ELEMENT password (#PCDATA)>
         <!ELEMENT email (#PCDATA)>
         <!ELEMENT mods (mod)+>
-        <!ELEMENT mod (game,group,name,standalone,description,size)>
+        <!ELEMENT mod (game,group,name,description,size, link)>
         <!ELEMENT game (#PCDATA)>
         <!ELEMENT group (#PCDATA)>
         <!ELEMENT name (#PCDATA)>
-        <!ELEMENT standalone (#PCDATA)>
         <!ELEMENT description (#PCDATA)>
         <!ELEMENT size (#PCDATA)>
+        <!ELEMENT link (#PCDATA)>
 
 

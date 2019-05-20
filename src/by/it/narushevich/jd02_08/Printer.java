@@ -37,7 +37,6 @@ class Printer {
 
             case Node.TEXT_NODE: {
                 if (node.getTextContent().contains("\n")){
-                    System.out.print("");
                     break;
                 }
                 System.out.println(tab+node.getNodeValue().trim());

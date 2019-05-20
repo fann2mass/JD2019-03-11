@@ -6,7 +6,7 @@ public class Class04_UnionExInJava7 {
     public static void main(String[] args) {
             try {
                 Class loadedClass = Class.forName(CLASS_TO_LOAD);
-                System.out.println("Class " + loadedClass + " found successfully!");
+	            System.out.println("Grade " + loadedClass + " found successfully!");
                 loadedClass.newInstance();
 
             }

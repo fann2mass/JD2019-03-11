@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.bildziuh.it.by/"
+        xmlns:my="http://beans.jd02_09.bildziuh.it.by/"
+        elementFormDefault="qualified">
+    <element name="users">
+        <complexType>
+            <sequence>
+                <element
+                        name="admin"
+                        type="my:Admin"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+                <element
+                        name="user"
+                        type="my:TypeOfUser"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+
+    </element>
+
+    <complexType name="Admin">
+        <sequence>
+            <element name="login" type="string"/>
+            <element name="password" type="string"/>
+            <element name="email" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="TypeOfUser">
+        <sequence>
+            <element name="login" type="string"/>
+            <element name="password" type="string"/>
+            <element name="email" type="string"/>
+            <element name="mods" type="my:TypeOfMods"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="TypeOfMods">
+        <sequence>
+            <element name="mod"
+                     type="my:TypeOfMod"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="TypeOfMod">
+        <all>
+            <element name="game" type="string"/>
+            <element name="group" type="string"/>
+            <element name="name" type="string"/>
+            <element name="description" type="string"/>
+            <element name="size" type="positiveInteger"/>
+            <element name="link" type="string"/>
+        </all>
+    </complexType>
+
+</schema>

@@ -1,0 +1,78 @@
+<body>
+<table border="1">
+<tr>
+<td>game</td><td>group</td><td>name</td><td>standalone</td><td>description</td><td>size</td>
+</tr>
+    
+        admin
+        admin
+        admin@admin.admin
+    
+    
+        
+        
+        
+        
+            <tr>
+                
+<td>Skyrim</td>
+                <td>UI</td>
+                <td>better UI</td>
+                <td>yes</td>
+                <td>Улучшить интерфейс бесплатно, без смс и регистрации</td>
+                <td>42</td>
+            
+</tr>
+            
+<tr>
+                
+<td>Witcher 3</td>
+                <td>Animations</td>
+                <td>Killing spree</td>
+                <td>yes</td>
+                <td>Новые анимации добивания оппонента</td>
+                <td>84</td>
+            
+</tr>
+        
+    
+    
+        
+        
+        
+        
+            
+<tr>
+                
+<td>World of warcraft</td>
+                <td>UI</td>
+                <td>Deadly Boss Mods</td>
+                <td>yes</td>
+                <td>Отображение дополнительных панелей информации</td>
+                <td>480</td>
+            
+</tr>
+        
+    
+    
+        
+        
+        
+        
+            
+<tr>
+                
+<td>World of warcraft</td>
+                <td>UI</td>
+                <td>DBM Legion</td>
+                <td>no</td>
+                <td>расширение DBM для контента Legion. Необходимо иметь установленный Deadly Boss Mods
+                </td>
+                <td>120</td>
+            
+</tr>
+        
+    
+
+</table>
+</body>

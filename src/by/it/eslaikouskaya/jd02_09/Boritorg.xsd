@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://beans.jd02_09.eslaikouskaya.it.by/"
+        xmlns:my="http://beans.jd02_09.eslaikouskaya.it.by/"
+        elementFormDefault="qualified">
+    <element name="cite">
+        <complexType>
+            <sequence>
+                <element
+                        name="catalogs"
+                        type="my:Catalogs"/>
+                <element
+                        name="aboutus"
+                        type="my:AboutUs"/>
+                <element
+                        name="shortinfo"
+                        type="my:ShortInfo"/>
+                <element
+                        name="properties"
+                        type="my:Properties"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <complexType name="Catalogs">
+        <sequence>
+            <element
+                    name="catalog"
+                    type="my:Catalog"
+                    maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="Catalog">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="elements" type="my:Elements"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="Elements">
+        <sequence>
+            <element
+                    name="element"
+                    type="my:Element"
+                    maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="Element">
+        <sequence>
+            <element name="description" type="string"/>
+            <element name="content" type="string"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="AboutUs">
+        <sequence>
+            <element name="about" type="string"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="ShortInfo">
+        <sequence>
+            <element name="city" type="string"/>
+            <element name="address" type="string"/>
+            <element name="notation" type="string"/>
+            <element name="managerstel" type="string"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="Properties">
+        <sequence>
+            <element name="property"
+                     type="my:Property"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="Property">
+        <sequence>
+            <element name="mark" type="string"/>
+            <element name="info" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
+

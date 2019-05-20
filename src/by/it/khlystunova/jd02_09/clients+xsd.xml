@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clients xmlns="http://beans.jd02_09.khlystunova.it.by/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://beans.jd02_09.khlystunova.it.by/  clients.xsd">
+    <client>
+        <name>Lisa</name>
+        <surname>Khlystunova</surname>
+        <dateOfBirthday>21.03.1997</dateOfBirthday>
+        <buys>
+            <buy>
+                <description>Кожаные туфли</description>
+                <firm>ecco</firm>
+                <price currency="EUR">200</price>
+                <size>39</size>
+                <color>black</color>
+            </buy>
+            <buy>
+                <description>Лонслив</description>
+                <firm>H(&amp;)M</firm>
+                <price currency="EUR">3400</price>
+                <size>S</size>
+                <color>white</color>
+            </buy>
+            <buy>
+                <description>Джинсы</description>
+                <firm>Levi(&apos;)s</firm>
+                <price currency="USD">4500</price>
+                <size>S</size>
+                <color>white</color>
+            </buy>
+        </buys>
+    </client>
+    <client>
+        <name>Nastia</name>
+        <surname>Tolmachova</surname>
+        <dateOfBirthday>21.02.1998</dateOfBirthday>
+        <buys>
+            <buy>
+                <description>Пальто</description>
+                <firm>Milan</firm>
+                <price currency="USD">77777</price>
+                <size>S</size>
+                <color>red</color>
+            </buy>
+            <buy>
+                <description>Майка</description>
+                <firm>adidas</firm>
+                <price currency="USD">77777</price>
+                <size>S</size>
+                <color>blue</color>
+            </buy>
+            <buy>
+                <description>Юбка</description>
+                <firm>Morgan</firm>
+                <price currency="USD">77777</price>
+                <size>S</size>
+                <color>blue</color>
+            </buy>
+        </buys>
+    </client>
+</clients>

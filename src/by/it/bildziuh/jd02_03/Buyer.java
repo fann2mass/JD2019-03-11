@@ -1,9 +1,7 @@
 package by.it.bildziuh.jd02_03;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBucket {
@@ -12,8 +10,6 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
     private static Semaphore bucketPicked = new Semaphore(50);
 
     HashMap<String, Double> paymentCheck = new HashMap<>();
-
-    static List<Thread> buyers = new ArrayList<>();
 
     @Override
     public void run() {
@@ -58,9 +54,10 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
                 timeout *= 3 / 2;
             Util.sleep(timeout);
             System.out.println(this + " finish to choose goods");
-            chosingGoods.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            chosingGoods.release();
         }
     }
 
@@ -91,9 +88,9 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
 
     @Override
     public void goOut() {
-        bucketPicked.release();
         System.out.println(this + " go out from the market");
         Dispatcher.deleteBuyer();
+        bucketPicked.release();
     }
 
     @Override
@@ -105,14 +102,16 @@ class Buyer extends Thread implements IBuyer, IUseBucket {
     public void takeBucket() {
         try {
             bucketPicked.acquire();
+            int timeout = Util.random(100, 200);
+            if (pensioneer)
+                timeout *= 3 / 2;
+            Util.sleep(timeout);
+            System.out.println(this + " took a bucket");
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            bucketPicked.release();
         }
-        int timeout = Util.random(100, 200);
-        if (pensioneer)
-            timeout *= 3 / 2;
-        Util.sleep(timeout);
-        System.out.println(this + " took a bucket");
     }
 
     @Override

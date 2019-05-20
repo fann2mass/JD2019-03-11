@@ -13,7 +13,7 @@ public class C_Reset {
 
 //    static {
 //        try {
-//            Class.forName("com.mysql.jdbc.Driver");
+//            Grade.forName("com.mysql.jdbc.Driver");
 //        } catch (Exception ex) {
 //            // handle the error
 //        }

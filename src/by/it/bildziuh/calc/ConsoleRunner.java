@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
 
-    static boolean logFull = true;
+    private static boolean logFull = true;
 
     static Date start;
     static Date finish;
@@ -80,13 +80,13 @@ public class ConsoleRunner {
         }
 
         ConsoleRunner.finish = new Date();
-        Constructor constructor = new Constructor();
+        Reporter reporter = new Reporter();
         ReportBuilder reportBuilder = logFull ? new ReportBuilderFull() : new ReportBuilderShort();
-        constructor.setReportBuilder(reportBuilder);
-        constructor.constructReport();
-        Report report = constructor.getReport();
+        reporter.setReportBuilder(reportBuilder);
+        reporter.constructReport();
+        Report report = reporter.getReport();
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter(ConsoleRunner.getFileName("report.txt")))) {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(getFileName("report.txt")))) {
             bw.write(report.toString());
         } catch (
                 IOException e) {

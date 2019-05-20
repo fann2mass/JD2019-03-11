@@ -15,7 +15,7 @@ class Dispatcher {
     static final AtomicInteger buyerInMarket = new AtomicInteger(0);
 //    static final AtomicInteger buyerInQueue = new AtomicInteger(0);
 
-    static final AtomicInteger cashierActual = new AtomicInteger(0);
+    static final AtomicInteger cashierActive = new AtomicInteger(0);
     static final int cashierMax = 5;
     //параметры вывода чека на печать
     static final int checkWidth = 18;
@@ -53,5 +53,13 @@ class Dispatcher {
     static boolean planComplete() {
         return buyerCounter.get() == PLAN;
     }
+
+    public static int getBuyerCounter() {
+        return buyerCounter.get();
+    }
+    public static int getBuyerInMarket() {
+        return buyerInMarket.get();
+    }
+
 
 }

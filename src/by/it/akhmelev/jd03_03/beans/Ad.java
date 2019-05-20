@@ -10,7 +10,7 @@ public class Ad {
         private int floors;
         private double area;
         private double price;
-        private long usersId;
+        private long users_id;
 
     public Ad() {
     }
@@ -24,7 +24,7 @@ public class Ad {
         this.floors = floors;
         this.area = area;
         this.price = price;
-        this.usersId = usersId;
+        this.users_id = usersId;
     }
 
     public long getId() {
@@ -91,12 +91,12 @@ public class Ad {
         this.price = price;
     }
 
-    public long getUsersId() {
-        return usersId;
+    public long getUsers_id() {
+        return users_id;
     }
 
-    public void setUsersId(long usersId) {
-        this.usersId = usersId;
+    public void setUsers_id(long users_id) {
+        this.users_id = users_id;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class Ad {
                 ", floors=" + floors +
                 ", area=" + area +
                 ", price=" + price +
-                ", usersId=" + usersId +
+                ", users_id=" + users_id +
                 '}';
     }
 }

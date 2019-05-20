@@ -22,7 +22,7 @@ public class AdCRUD {
                         "%f,%f,%d)",
                 ad.getDescription(), ad.getAddress(),
                 ad.getRooms(), ad.getFloor(), ad.getFloors(),
-                ad.getArea(), ad.getPrice(), ad.getUsersId()
+                ad.getArea(), ad.getPrice(), ad.getUsers_id()
         );
 
         try (
@@ -81,7 +81,7 @@ public class AdCRUD {
                 ad.getDescription(), ad.getAddress(),
                 ad.getRooms(), ad.getFloor(), ad.getFloors(),
                 ad.getArea(), ad.getPrice(),
-                ad.getUsersId(), ad.getId()
+                ad.getUsers_id(), ad.getId()
                 );
 
         try (

@@ -18,7 +18,7 @@ public class UserDao extends AbstractDao<User> {
                 "INSERT INTO " +
                         "`users`(`login`, `password`, `email`, `roles_id`) " +
                         "VALUES ('%s','%s','%s',%d)",
-                user.getLogin(), user.getPassword(), user.getEmail(), user.getRolesId()
+                user.getLogin(), user.getPassword(), user.getEmail(), user.getRoles_id()
         );
         long id = executeCreate(sql);
         if (id > 0)
@@ -33,7 +33,7 @@ public class UserDao extends AbstractDao<User> {
                         "SET `login`='%s',`password`='%s'," +
                         "`email`='%s',`roles_id`=%d WHERE `id`=%d",
                 user.getLogin(), user.getPassword(),
-                user.getEmail(), user.getRolesId(), user.getId()
+                user.getEmail(), user.getRoles_id(), user.getId()
         );
         return executeUpdate(sql);
     }

@@ -7,9 +7,6 @@ import java.sql.Statement;
 
 public class C_Init {
 
-    private static final String URL="jdbc:mysql://127.0.0.1:2016/";
-    private static final String USER="root";
-    private static final String PASSWORD="";
 
 //    static {
 //        try {
@@ -22,7 +19,7 @@ public class C_Init {
 
     public static void main(String[] args) throws SQLException {
         try (
-        Connection connection= DriverManager.getConnection(URL,USER,PASSWORD);
+        Connection connection= DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
         Statement statement = connection.createStatement()
         ){
             statement.executeUpdate("DROP SCHEMA IF EXISTS `zalesky`");
@@ -74,8 +71,6 @@ public class C_Init {
                     "  `quantity` INT NOT NULL,\n" +
                     "  `address` VARCHAR(100) NOT NULL,\n" +
                     "  `postal_code` VARCHAR(45) NOT NULL,\n" +
-                    "  `order_date` DATE NULL,\n" +
-                    "  `order_time` TIME NULL,\n" +
                     "  `Users_id` INT NOT NULL,\n" +
                     "  `Products_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
@@ -91,7 +86,7 @@ public class C_Init {
                     "    ON UPDATE RESTRICT);");
             statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'Administrator');\n");
             statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'User');\n");
-            statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'Administrator');\n");
+            statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'Guest');");
             statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, NULL);\n");
             statement.executeUpdate("INSERT INTO `zalesky`.`Users` (`id`, `login`, `password`, `email`, `Roles_id`) VALUES (DEFAULT, 'Administrator', 'admin', 'admin@t.by', 1);\n");
             statement.executeUpdate("INSERT INTO `zalesky`.`Users` (`id`, `login`, `password`, `email`, `Roles_id`) VALUES (DEFAULT, 'User', 'user', 'user@t.by', 2);\n");
@@ -99,7 +94,7 @@ public class C_Init {
             statement.executeUpdate("INSERT INTO `zalesky`.`Category` (`id`, `name`) VALUES (DEFAULT, 'desktops');\n");
             statement.executeUpdate("INSERT INTO `zalesky`.`Products` (`id`, `title`, `discription`, `price`, `Category_id`) VALUES (DEFAULT, 'Dell-Allienwar', 'Notebook', 2000, 1);\n");
             statement.executeUpdate("INSERT INTO `zalesky`.`Products` (`id`, `title`, `discription`, `price`, `Category_id`) VALUES (DEFAULT, 'HyperX-PC', 'Desktop', 2500, 2);\n");
-            statement.executeUpdate("INSERT INTO `zalesky`.`Orders` (`id`, `product`, `price`, `quantity`, `address`, `postal_code`, `order_date`, `order_time`, `Users_id`, `Products_id`) VALUES (DEFAULT, 'Dell-Allienwar', 2000, 1, 'ул.Машерова 21', '98125', '21.06.2019', '22.00', 2, 1);\n");
+            statement.executeUpdate("INSERT INTO `zalesky`.`Orders` (`id`, `product`, `price`, `quantity`, `address`, `postal_code`, `Users_id`, `Products_id`) VALUES (DEFAULT, 'Dell-Allienwar', 2000, 1, 'ул.Машерова 21', '98125', 2, 1);\n");
 
         }
 

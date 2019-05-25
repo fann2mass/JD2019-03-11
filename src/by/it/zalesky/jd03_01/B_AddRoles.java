@@ -8,14 +8,19 @@ public class B_AddRoles {
 
     public static void main(String[] args) {
 
-
             try (Connection connection= DriverManager.getConnection
                     (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
                  Statement statement= connection.createStatement()) {
 
-                statement.executeUpdate(
-                        "INSERT INTO Roles(`role`,`id`)"+
-                                " VALUES ('Guest',2);");
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS `zalesky`.`Roles` (\n" +
+                        " `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                        " `role` VARCHAR(50) NULL,\n" +
+                        " PRIMARY KEY (`id`))\n" +
+                        " ENGINE = InnoDB; ");
+
+                statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'Administrator2');\n");
+                statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'User2');\n");
+                statement.executeUpdate("INSERT INTO `zalesky`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'Guest2');");
 
             }
             catch (Exception e){

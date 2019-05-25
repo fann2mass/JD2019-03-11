@@ -1,4 +1,0 @@
-message.welcome=Прывiтанне!
-message.question=Як справы?
-person.firstname=Аляксандр
-person.lastname=Хмялеу

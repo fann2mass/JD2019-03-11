@@ -8,7 +8,6 @@ public class A_AddUser {
 
     public static void main(String[] args) {
 
-
         try (Connection connection= DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
              Statement statement= connection.createStatement()) {

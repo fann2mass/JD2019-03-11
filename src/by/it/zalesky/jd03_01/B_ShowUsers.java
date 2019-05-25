@@ -16,7 +16,7 @@ public class B_ShowUsers {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS;");
 
             while (resultSet.next()) {
-                String out = resultSet.getString("Email") + ", " + resultSet.getString("Login");
+                String out = resultSet.getString("login") + ", " + resultSet.getString("roles_id");
                 System.out.println(out);
             }
         }

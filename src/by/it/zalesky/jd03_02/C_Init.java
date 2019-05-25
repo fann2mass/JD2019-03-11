@@ -1,4 +1,6 @@
-package by.it.zalesky.jd03_01;
+package by.it.zalesky.jd03_02;
+
+import by.it.zalesky.jd03_01.CN;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

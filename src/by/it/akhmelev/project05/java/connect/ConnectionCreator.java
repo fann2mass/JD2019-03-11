@@ -1,25 +1,25 @@
-package by.it.zalesky.jd03_02.crud;
+package by.it.akhmelev.project05.java.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-class ConnectionCreator {
+public class ConnectionCreator {
 
     private ConnectionCreator() {
     }
 
     private static Connection connection;
 
-//    static {
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//        } catch (Exception ex) {
+    static {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception ex) {
             // handle the error
-//        }
-//    }
+        }
+    }
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:2016/zalesky?" +
+    private static final String URL = "jdbc:mysql://127.0.0.1:2016/akhmelev?" +
             "useUnicode=true&" +
             "characterEncoding=UTF-8&" +
             "useJDBCCompliantTimezoneShift=true&" +
@@ -28,7 +28,7 @@ class ConnectionCreator {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    static Connection get() throws SQLException {
+    public static Connection get() throws SQLException {
         if (connection == null || connection.isClosed()) {
             synchronized (ConnectionCreator.class) {
                 if (connection == null || connection.isClosed()) {

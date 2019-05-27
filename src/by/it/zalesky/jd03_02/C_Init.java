@@ -1,7 +1,5 @@
 package by.it.zalesky.jd03_02;
 
-import by.it.zalesky.jd03_01.CN;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,8 +8,8 @@ import java.sql.Statement;
 public class C_Init {
     public static void main(String[] args) throws SQLException {
         try (
-        Connection connection= DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
-        Statement statement = connection.createStatement()
+                Connection connection= DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+                Statement statement = connection.createStatement()
         ){
             statement.executeUpdate("DROP SCHEMA IF EXISTS `zalesky`");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `zalesky` DEFAULT CHARACTER SET utf8;");
